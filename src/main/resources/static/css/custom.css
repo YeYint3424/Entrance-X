@@ -1,0 +1,20 @@
+.ex{
+    position: relative;
+    left: 125px;
+}
+.search-bar{
+    position: relative;
+    left:450px;
+}
+.main-sign-up{
+    position: relative;
+    left: 850px;
+}
+.main-sign-in{
+    position: relative;
+    left: 860px;
+}
+.sp{
+    position: relative;
+    left: 850px;
+}
