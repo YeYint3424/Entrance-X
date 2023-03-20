@@ -8,7 +8,7 @@
 }
 .main-sign-up{
     position: relative;
-    left: 850px;
+    left: 855px;
 }
 .main-sign-in{
     position: relative;
@@ -16,5 +16,22 @@
 }
 .sp{
     position: relative;
-    left: 850px;
+    left: 865px;
+}
+.slide-img{
+    max-height: 350px;
+    min-height: 350px;
+}
+.event-type{
+    color: blueviolet;
+    position: relative;
+    left: 200px;
+    top:15px;
+}
+.second-event{
+    position: relative;
+    left: auto;
+  }
+.policy > div{
+    padding: 4px;
 }
