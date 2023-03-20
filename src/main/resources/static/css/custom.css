@@ -1,32 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: SansSerif
+}
+.wrapper .sidenav{
+    position: fixed;
+    left:0;
+    top: 0;
+    width: 15vw;
+    height: 100vh;
+    background: #231f20;
+}
+.wrapper .sidenav h4{
+    color: white;
+    text-align: center;
+    line-height: 90px;
+
+}
+.wrapper .sidenav ul li a{
+    color: white;
+    text-decoration: none;
+}
+.wrapper .sidenav ul li{
+    text-align: center;
+    list-style: none;
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.wrapper .main-content{
+    width:85vw;
+    margin-left: 15vw;
+}
+
 .ex{
     position: relative;
-    left: 125px;
+    left: 10px;
+}
+.logo{
+    position: relative;
+    left:50px;
 }
 .search-bar{
+    /*width: 300px;*/
     position: relative;
-    left:800px;
+    left:640px;
+}
+.search-button{
+    background: grey;
+}
+.search-button i{
+    color: white;
 }
 .main-sign-up{
     position: relative;
-    left: 870px;
-}
-.main-sign-in{
-    position: relative;
-    left: 860px;
+    left: 660px;
 }
 .sp{
     position: relative;
-    left: 865px;
+    left: 655px;
 }
+.main-sign-in{
+    position: relative;
+    left: 650px;
+}
+
 .slide-img{
     max-height: 350px;
     min-height: 350px;
 }
 .event-type{
-    color: blueviolet;
+    color: blue;
     position: relative;
-    left: 200px;
-    top:15px;
+    text-align:left;
+
+    padding: 15px;
+    border-top: 3px solid  navy;
+    text-underline-color: #231f20;
+
 }
 .second-event{
     position: relative;
@@ -34,4 +87,32 @@
   }
 .policy > div{
     padding: 4px;
+}
+#testfooter{
+    background:grey;
+    height: 60px;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 20px 0px 0px;
+    /*position: fixed;*/
+    width: 100%;
+    float: bottom;
+}
+.copyright{
+    position: relative;
+    right: 250px;
+}
+.contact{
+    position: relative;
+    left:80px;
+}
+.fb-link{
+    position: relative;
+    left:82px;
+}
+.ig-link{
+    position: relative;
+    left:84px;
 }
