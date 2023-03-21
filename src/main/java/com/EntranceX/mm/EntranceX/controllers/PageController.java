@@ -20,6 +20,11 @@ public class PageController {
     public String org_home(){
         return"main/org-page";
     }
+
+    @RequestMapping("/main-promotion")
+    public String main_promotion(){
+        return"event/promotion";
+    }
 }
 
 
