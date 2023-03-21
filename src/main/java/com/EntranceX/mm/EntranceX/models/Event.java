@@ -13,15 +13,21 @@ public class Event {
     private int id;
     private String eventName,time,date,place,singer,ticketType,ticketLimit,price,promotion,paymentMethod,eventDescription;
 
+//  many to many from event to user
     @ManyToMany(mappedBy = "events")
     private List<User> user= new ArrayList<>();
-//    Many to one join with organizer to events.
+
+//  many to one join with event to organizer
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Organizer_id")
     private  Organizer organizer;
+
+//    many to one join with event to admin
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Admin_id")
     private Admin admin;
+
+
     public Event() {
     }
 
