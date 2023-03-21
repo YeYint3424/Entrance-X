@@ -54,7 +54,7 @@ body{
 .search-bar{
     /*width: 300px;*/
     position: relative;
-    left:450px;
+    left:480px;
 }
 .search-button{
     background: grey;
@@ -83,6 +83,9 @@ body{
     position: relative;
     left: auto;
   }
+.policy{
+    top: ;
+}
 .policy > div{
     padding: 4px;
 }
@@ -123,6 +126,6 @@ body{
 }
 #navbarSupportedContent ul{
     position: relative;
-    left:500px;
+    left:530px;
     font-size: larger;
 }
