@@ -12,14 +12,20 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName,lastName,userName,email,password;
+
+//    one to many from Admin to Event
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> event= new ArrayList<>();
+
+//    one to many from Admin to User
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> user= new ArrayList<>();
+
+//    one to many from Admin to Organizer
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Organizer> organizer= new ArrayList<>();
-    public Admin() {
 
+    public Admin() {
     }
 
     public Admin(String firstName, String lastName, String userName, String email, String password) {

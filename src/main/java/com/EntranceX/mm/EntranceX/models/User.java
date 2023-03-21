@@ -13,13 +13,15 @@ public class User {
     private int id;
     private String firstName,lastName,username,email,dateOfBirth,gender,phone,password;
 
+//    many to many from user to Event
     @ManyToMany
     @JoinTable(
             name = "Voucher-History",
             joinColumns = { @JoinColumn(name = "User_id") },
             inverseJoinColumns = { @JoinColumn(name = "Event_id") }
-    )
-    private List<Event> events= new ArrayList<>();
+    )private List<Event> events= new ArrayList<>();
+
+//    many to one from user to admin
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Admin_id")
     private Admin admin;
