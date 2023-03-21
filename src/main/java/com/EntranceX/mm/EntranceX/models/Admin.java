@@ -2,6 +2,9 @@ package com.EntranceX.mm.EntranceX.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "Admin Data")
 public class Admin {
@@ -9,8 +12,14 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName,lastName,userName,email,password;
-
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> event= new ArrayList<>();
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<User> user= new ArrayList<>();
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Organizer> organizer= new ArrayList<>();
     public Admin() {
+
     }
 
     public Admin(String firstName, String lastName, String userName, String email, String password) {

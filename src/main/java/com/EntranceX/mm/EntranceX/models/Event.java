@@ -2,6 +2,9 @@ package com.EntranceX.mm.EntranceX.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "Event Data")
 public class Event {
@@ -10,6 +13,15 @@ public class Event {
     private int id;
     private String eventName,time,date,place,singer,ticketType,ticketLimit,price,promotion,paymentMethod,eventDescription;
 
+    @ManyToMany(mappedBy = "events")
+    private List<User> user= new ArrayList<>();
+//    Many to one join with organizer to events.
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Organizer_id")
+    private  Organizer organizer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Admin_id")
+    private Admin admin;
     public Event() {
     }
 

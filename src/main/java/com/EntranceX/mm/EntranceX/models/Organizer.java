@@ -2,6 +2,9 @@ package com.EntranceX.mm.EntranceX.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "Organizer Data")
 public class Organizer {
@@ -10,7 +13,11 @@ public class Organizer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String organizerName,companyName,organizerEmail,companyEmail,companyPhone,companyAddress,companyBio,password;
-
+    @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> events= new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Admin_id")
+    private Admin admin;
     public Organizer() {
     }
 

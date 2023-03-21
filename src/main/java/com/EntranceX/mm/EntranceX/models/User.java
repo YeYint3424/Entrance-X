@@ -2,6 +2,9 @@ package com.EntranceX.mm.EntranceX.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "User Data")
 public class User {
@@ -9,6 +12,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName,lastName,username,email,dateOfBirth,gender,phone,password;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Voucher-History",
+            joinColumns = { @JoinColumn(name = "User_id") },
+            inverseJoinColumns = { @JoinColumn(name = "Event_id") }
+    )
+    private List<Event> events= new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Admin_id")
+    private Admin admin;
 
     public User() {
     }
