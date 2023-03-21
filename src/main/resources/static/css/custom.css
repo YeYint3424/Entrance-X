@@ -5,11 +5,14 @@
 body{
     font-family: SansSerif
 }
+.wrapper{
+    background: linear-gradient(to right,#283048, #859398);
+}
 .wrapper .sidenav{
     position: fixed;
     left:0;
     top: 0;
-    width: 15vw;
+    width: 10vw;
     height: 100vh;
     background: #231f20;
 }
@@ -31,8 +34,12 @@ body{
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .wrapper .main-content{
-    width:85vw;
-    margin-left: 15vw;
+
+    width:90vw;
+    margin-left: 10vw;
+}
+.navbar{
+    background: grey;
 }
 
 .ex{
@@ -72,12 +79,12 @@ body{
     min-height: 350px;
 }
 .event-type{
-    color: blue;
+    color: gainsboro;
     position: relative;
     text-align:left;
 
     padding: 15px;
-    border-top: 3px solid  navy;
+    border-top: 3px solid #283048;
     text-underline-color: #231f20;
 
 }
@@ -89,6 +96,7 @@ body{
     padding: 4px;
 }
 #testfooter{
+    color: white;
     background:grey;
     height: 60px;
     text-align: center;
@@ -113,6 +121,18 @@ body{
     left:82px;
 }
 .ig-link{
+
     position: relative;
     left:84px;
+}
+#testfooter .fb-link a i{
+    color: white;
+}
+#testfooter .ig-link a i{
+    color: white;
+}
+#navbarSupportedContent ul{
+    position: relative;
+    left:700px;
+    font-size: larger;
 }
