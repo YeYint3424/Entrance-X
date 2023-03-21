@@ -12,7 +12,7 @@ body{
     position: fixed;
     left:0;
     top: 0;
-    width: 10vw;
+    width: 12vw;
     height: 100vh;
     background: #231f20;
 }
@@ -35,8 +35,8 @@ body{
 }
 .wrapper .main-content{
 
-    width:90vw;
-    margin-left: 10vw;
+    width:88vw;
+    margin-left: 12vw;
 }
 .navbar{
     background: grey;
@@ -79,14 +79,16 @@ body{
     min-height: 350px;
 }
 .event-type{
-    color: gainsboro;
+    top: 25px;
+    color: greenyellow;
+    text-shadow: 2px 2px brown;
     position: relative;
-    text-align:left;
+    left:1vw ;
 
-    padding: 15px;
-    border-top: 3px solid #283048;
-    text-underline-color: #231f20;
-
+}
+.event{
+    position: relative;
+    left:5vw ;
 }
 .second-event{
     position: relative;
