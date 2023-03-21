@@ -37,7 +37,7 @@ body{
 
     width:88vw;
     margin-left: 12vw;
-    height: 100vh;
+    height: 100%;
 }
 .navbar{
     background: grey;
@@ -54,25 +54,13 @@ body{
 .search-bar{
     /*width: 300px;*/
     position: relative;
-    left:640px;
+    left:450px;
 }
 .search-button{
     background: grey;
 }
 .search-button i{
     color: white;
-}
-.main-sign-up{
-    position: relative;
-    left: 660px;
-}
-.sp{
-    position: relative;
-    left: 655px;
-}
-.main-sign-in{
-    position: relative;
-    left: 650px;
 }
 
 .slide-img{
@@ -135,6 +123,6 @@ body{
 }
 #navbarSupportedContent ul{
     position: relative;
-    left:700px;
+    left:500px;
     font-size: larger;
 }
