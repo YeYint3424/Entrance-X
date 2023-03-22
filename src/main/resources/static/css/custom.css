@@ -4,6 +4,10 @@
     font-family: 'poppins',sans-serif;
     box-sizing: border-box;
 }
+body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 .wrapper{
     background: linear-gradient(to right,#283048, #859398);
@@ -91,31 +95,31 @@
     color: white;
     background:#231f20;
     text-align: center;
-    text-shadow:1px 2px 3px #231f20;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px 20px 0px 0px;
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    font-size: 18px;
+    padding: 25px;
     /*position: -ms-device-fixed;*/
 
     float: bottom;
 }
 .copyright{
     position: relative;
-    right: 350px;
+    right: 420px;
 }
-.contact{
-    position: relative;
-    left:50px;
-}
+/*.contact{*/
+/*    position: relative;*/
+/*    left:50px;*/
+/*}*/
 .fb-link{
     position: relative;
-    left:52px;
+    left:10px;
 }
 .ig-link{
 
     position: relative;
-    left:54px;
+    left:12px;
 }
 
 #testfooter .fb-link a i{
@@ -123,6 +127,13 @@
 }
 #testfooter .ig-link a i{
     color: white;
+}
+#testfooter .rule a{
+    color: white;
+}
+.rule{
+    position: relative;
+    left: 350px;
 }
 #navbarSupportedContent ul{
     position: relative;
