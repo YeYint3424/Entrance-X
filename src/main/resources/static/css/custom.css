@@ -1,10 +1,10 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'poppins',sans-serif;
+    box-sizing: border-box;
 }
-body{
-    font-family: SansSerif
-}
+
 .wrapper{
     background: linear-gradient(to right,#283048, #859398);
 }
@@ -12,14 +12,14 @@ body{
     position: fixed;
     left:0;
     top: 0;
-    width: 12vw;
-    height: 100vh;
+    width: 12%;
+    height: 100%;
     background: #231f20;
 }
 .wrapper .sidenav h4{
     color: white;
     text-align: center;
-    line-height: 90px;
+    line-height: 52px;
 
 }
 .wrapper .sidenav ul li a{
@@ -33,28 +33,21 @@ body{
     border-top: 1px solid rgba(255,255,255,0.1);
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-.wrapper .main-content{
+.wrapper .container .main-content{
 
-    width:88vw;
-    margin-left: 12vw;
+    width: 88%;
+    margin-left: 12%;
     height: 100%;
+
 }
 .navbar{
-    background: grey;
+    background: #231f20;
 }
 
-.ex{
-    position: relative;
-    left: 10px;
-}
-.logo{
-    position: relative;
-    left:50px;
-}
 .search-bar{
     /*width: 300px;*/
     position: relative;
-    left:480px;
+    left:830px;
 }
 .search-button{
     background: grey;
@@ -63,61 +56,68 @@ body{
     color: white;
 }
 
-.slide-img{
+.sliding-img{
+    position: relative;
+    left: 7%;
+}
+.wrapper .main-content .slide-img{
+
     max-height: 350px;
     min-height: 350px;
 }
-.event-type{
+.wrapper .main-content .event-type{
     top: 25px;
     color: greenyellow;
     text-shadow: 2px 2px brown;
     position: relative;
-    left:1vw ;
+    left:5vw ;
 
 }
-.event{
+.wrapper .main-content .event{
     position: relative;
     left:5vw ;
 }
-.second-event{
+.wrapper .main-content .second-event{
     position: relative;
     left: auto;
   }
 .policy{
-    top: ;
+    position: fixed;
 }
 .policy > div{
     padding: 4px;
 }
 #testfooter{
     color: white;
-    background:grey;
+    background:#231f20;
     text-align: center;
+    text-shadow:1px 2px 3px #231f20;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 20px 20px 0px 0px;
-    position: -ms-device-fixed;
-    width: 100%;
+    /*position: -ms-device-fixed;*/
+
     float: bottom;
 }
 .copyright{
     position: relative;
-    right: 250px;
+    right: 350px;
 }
 .contact{
     position: relative;
-    left:80px;
+    left:50px;
 }
 .fb-link{
     position: relative;
-    left:82px;
+    left:52px;
 }
 .ig-link{
 
     position: relative;
-    left:84px;
+    left:54px;
 }
+
 #testfooter .fb-link a i{
     color: white;
 }
@@ -126,6 +126,6 @@ body{
 }
 #navbarSupportedContent ul{
     position: relative;
-    left:530px;
+    left:860px;
     font-size: larger;
 }

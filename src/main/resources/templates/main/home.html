@@ -17,59 +17,53 @@
 
 </head>
 <body>
+<!--        nav-bar         -->
+<nav class="navbar navbar-expand-lg navbar-dark">
 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <form class="form-inline my-2 my-lg-0 search-bar">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+        <button class="btn btn-dark my-2 my-sm-0 search-button" type="submit">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+    </form>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link " href="#">Sign Up</a>
+            </li>
+            <a class="nav-link active">|</a>
+            <li class="nav-item active">
+                <a class="nav-link " href="#">Sign In</a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+<!--        nav-bar end         -->
 <div class="wrapper">
 <!--  sidenav Bar  -->
     <div class="sidenav">
-        <h4>Events</h4>
+        <h4>Logo</h4>
         <ul>
             <li><a href="event/promotion">Promotion</a></li>
             <li><a href="#">Trending</a></li>
             <li><a href="#">Upcoming</a></li>
         </ul>
     </div>
+
+
 <!--         main page         -->
-    <div class="main-content">
-
-<!--        nav-bar         -->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar">
-            <a class="navbar-brand">
-
-                <img class="logo" src="" width="30" height="30"/>
-                <span class="ex"><h3>Entrance-X</h3></span>
-
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <form class="form-inline my-2 my-lg-0 search-bar">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
-                <button class="btn btn-dark my-2 my-sm-0 search-button" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </form>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">Sign Up</a>
-                    </li>
-                    <a class="nav-link active">|</a>
-                    <li class="nav-item active">
-                        <a class="nav-link " href="#">Sign In</a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </nav>
-<!--        nav-bar end         -->
+    <div class="container main-content">
 
 <!--        sliding photos      -->
         <div class="container ">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <div id="carouselExampleControls" class="carousel slide sliding-img" data-ride="carousel" data-interval="4000">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="https://playtoearndiary.com/wp-content/uploads/2022/11/Picture1-5.png" class="d-block w-100 slide-img" alt="...">
@@ -242,28 +236,24 @@
         </div>
 
 
-
-
-
-
-<!--            Footer            -->
-        <div id="testfooter">
-            <div class="pull-right mr-4 d-flex policy">
-
-                <div>Terms of Use</div>
-                <div>Privacy Policy</div>
-                <div>Cookie Policy</div>
-
-            </div>
-            <span class="copyright">Copyright &#169; God-X</span>
-            <span class="contact">Contact Us</span>
-            <span class="fb-link"><a href=" "><i class="fa fa-facebook-official" aria-hidden="true"></i></a> </span>
-            <span class="ig-link"><a href=" "><i class="fa fa-instagram" aria-hidden="true"></i></a> </span>
-        </div>
-
     </div>
 
 </div>
+<!--            Footer            -->
+    <div id="testfooter">
+        <div class="pull-right mr-4 d-flex policy tpc">
+
+            <div>Terms of Use</div>
+            <div>Privacy Policy</div>
+            <div>Cookie Policy</div>
+
+        </div>
+        <span class="copyright">Copyright &#169; God-X</span>
+        <span class="contact">Contact Us</span>
+        <span class="fb-link"><a href=" "><i class="fa fa-facebook-official" aria-hidden="true"></i></a> </span>
+        <span class="ig-link"><a href=" "><i class="fa fa-instagram" aria-hidden="true"></i></a> </span>
+    </div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"
