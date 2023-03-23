@@ -78,11 +78,14 @@ body{
     left:5vw ;
 
 }
+
 .wrapper .main-content .event{
     position: relative;
     left:5vw ;
 }
-
+.tc{
+    color: white;
+}
 .policy{
     position: fixed;
 }
