@@ -11,7 +11,7 @@ body{
 
 .wrapper{
     background: linear-gradient(to right,#283048, #859398);
-    min-height: 81vh;
+    min-height: 90vh;
 }
 .wrapper .sidenav{
     position: fixed;
