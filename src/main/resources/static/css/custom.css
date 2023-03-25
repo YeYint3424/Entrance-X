@@ -41,12 +41,17 @@ body{
 .wrapper .container .main-content{
 
     width: 88%;
+    top: 50px;
     margin-left: 12%;
     min-height: 100%;
 
 }
 .navbar{
+    position: sticky;
+    width: 100%;
+    top: 0;
     background: #231f20;
+    float: top;
 }
 
 .search-bar{

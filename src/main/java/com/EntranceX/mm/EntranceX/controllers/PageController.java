@@ -21,6 +21,32 @@ public class PageController {
         return"main/org-page";
     }
 
+    @RequestMapping("/about")
+    public String about(){
+        return "main/about";
+    }
+    @RequestMapping("/contact")
+    public String contact(){
+        return "main/contact";
+    }
+    @RequestMapping("/help")
+    public String help(){
+        return "main/help";
+    }
+    @RequestMapping("/privacypolicy")
+    public String privacypolicy(){
+        return "main/privacyPolicy";
+    }
+    @RequestMapping("/termsandconditions")
+    public String terms(){
+        return "main/termCondition";
+    }
+    @RequestMapping("/ticket-voucher")
+    public String ticketVoucher(){
+        return "main/ticketVoucher";
+    }
+
+
 }
 
 
