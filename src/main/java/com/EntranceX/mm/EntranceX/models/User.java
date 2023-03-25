@@ -16,7 +16,7 @@ public class User {
 //    many to many from user to Event
     @ManyToMany
     @JoinTable(
-            name = "Voucher-History",
+//            name = "Voucher-History",
             joinColumns = { @JoinColumn(name = "User_id") },
             inverseJoinColumns = { @JoinColumn(name = "Event_id") }
     )private List<Event> events= new ArrayList<>();
@@ -25,6 +25,9 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Admin_id")
     private Admin admin;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Voucher> voucher= new ArrayList<>();
 
     public User() {
     }

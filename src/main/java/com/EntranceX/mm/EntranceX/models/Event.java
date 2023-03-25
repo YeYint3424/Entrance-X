@@ -13,6 +13,9 @@ public class Event {
     private int id;
     private String eventName,time,date,place,singer,ticketType,ticketLimit,price,promotion,paymentMethod,eventDescription;
 
+    @Lob
+    private byte[] photo;
+
 //  many to many from event to user
     @ManyToMany(mappedBy = "events")
     private List<User> user= new ArrayList<>();
@@ -27,38 +30,8 @@ public class Event {
     @JoinColumn(name = "Admin_id")
     private Admin admin;
 
-
-    public Event() {
-    }
-
-    public Event(String eventName, String time, String date, String place, String singer, String ticketType, String ticketLimit, String price, String promotion, String paymentMethod, String eventDescription) {
-        this.eventName = eventName;
-        this.time = time;
-        this.date = date;
-        this.place = place;
-        this.singer = singer;
-        this.ticketType = ticketType;
-        this.ticketLimit = ticketLimit;
-        this.price = price;
-        this.promotion = promotion;
-        this.paymentMethod = paymentMethod;
-        this.eventDescription = eventDescription;
-    }
-
-    public Event(int id, String eventName, String time, String date, String place, String singer, String ticketType, String ticketLimit, String price, String promotion, String paymentMethod, String eventDescription) {
-        this.id = id;
-        this.eventName = eventName;
-        this.time = time;
-        this.date = date;
-        this.place = place;
-        this.singer = singer;
-        this.ticketType = ticketType;
-        this.ticketLimit = ticketLimit;
-        this.price = price;
-        this.promotion = promotion;
-        this.paymentMethod = paymentMethod;
-        this.eventDescription = eventDescription;
-    }
+    @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Voucher> voucher= new ArrayList<>();
 
     public int getId() {
         return id;
@@ -154,5 +127,47 @@ public class Event {
 
     public void setEventDescription(String eventDescription) {
         this.eventDescription = eventDescription;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public Event(int id, String eventName, String time, String date, String place, String singer, String ticketType, String ticketLimit, String price, String promotion, String paymentMethod, String eventDescription, byte[] photo) {
+        this.id = id;
+        this.eventName = eventName;
+        this.time = time;
+        this.date = date;
+        this.place = place;
+        this.singer = singer;
+        this.ticketType = ticketType;
+        this.ticketLimit = ticketLimit;
+        this.price = price;
+        this.promotion = promotion;
+        this.paymentMethod = paymentMethod;
+        this.eventDescription = eventDescription;
+        this.photo = photo;
+    }
+
+    public Event(String eventName, String time, String date, String place, String singer, String ticketType, String ticketLimit, String price, String promotion, String paymentMethod, String eventDescription, byte[] photo) {
+        this.eventName = eventName;
+        this.time = time;
+        this.date = date;
+        this.place = place;
+        this.singer = singer;
+        this.ticketType = ticketType;
+        this.ticketLimit = ticketLimit;
+        this.price = price;
+        this.promotion = promotion;
+        this.paymentMethod = paymentMethod;
+        this.eventDescription = eventDescription;
+        this.photo = photo;
+    }
+
+    public Event() {
     }
 }
