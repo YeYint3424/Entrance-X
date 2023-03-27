@@ -14,24 +14,15 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int user_id;
     private String userName,email,gender,phone,password;
     private int dateOfBirth;
 
-//    many to many from user to Event
-    @ManyToMany
-    @JoinTable(
-
-            joinColumns = { @JoinColumn(name = "User_id") },
-            inverseJoinColumns = { @JoinColumn(name = "Event_id") }
-    )private List<Event> events= new ArrayList<>();
-
-//    many to one from user to admin
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Admin_id")
-    private Admin admin;
-
+    //one to many from user to order & history
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Voucher> voucher= new ArrayList<>();
+    private List<TicketOrder_History> orderHistory= new ArrayList<>();
 
+    //one to many from user to watch later
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WatchLater> watchLater = new ArrayList<>();
 }

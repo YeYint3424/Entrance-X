@@ -7,23 +7,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "Ticket & History")
-public class Voucher {
-
+@Table(name = "Ticket_Order & History")
+public class TicketOrder_History {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int order_id;
 
-    private String eventName, date, time, venue, type, quantity, promotion, shippingCost, paymentMethod;
-    private String userName, email, phone;
-    private  int price;
+    private int standardTicketSold, VipTicketQuantitySold,  VVipTicketQuantitySold, totalPrice;
 
+//many to one from order & history to user
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "User_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
+//many to one from order & history to event
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Event_id")
+    @JoinColumn(name = "event_id")
     private Event event;
 
 

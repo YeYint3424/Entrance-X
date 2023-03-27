@@ -14,29 +14,26 @@ import java.util.List;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String eventName,time,place,artist,ticketType,ticketLimit,price,promotion,shippingCost, paymentMethod,eventDescription,encodedPhoto;
-    private int date;
+    private int event_id;
+    private String eventName, time, venue, artist, promotion, paymentMethod, eventDescription, encodedPhoto;
+    private int shippingCost, standardTicketPrice, standardTicketQuantity, VipTicketPrice, VipTicketQuantity, VVipTicketPrice, VVipTicketQuantity, date;
 
     @Lob
     private byte[] photo;
 
-//  many to many from event to user
-    @ManyToMany(mappedBy = "events")
-    private List<User> user= new ArrayList<>();
+
 
 //  many to one join with event to organizer
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Organizer_id")
+    @JoinColumn(name = "organizer_id")
     private  Organizer organizer;
 
-//    many to one join with event to admin
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Admin_id")
-    private Admin admin;
-
+//    one to many from event to order & history;
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Voucher> voucher= new ArrayList<>();
+    private List<TicketOrder_History> orderHistory= new ArrayList<>();
+//one to many from event to watch later
+    @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WatchLater> watchLater= new ArrayList<>();
 
 
 
