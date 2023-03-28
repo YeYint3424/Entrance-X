@@ -1,12 +1,14 @@
 package com.EntranceX.mm.EntranceX.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Watch Later Data")
 public class WatchLater {
     @Id
