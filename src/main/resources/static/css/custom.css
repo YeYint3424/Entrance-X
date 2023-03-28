@@ -5,10 +5,10 @@
     box-sizing: border-box;
 }
 body{
-    max-width: 100%;
+    padding-top: 50px;
     overflow-x: hidden;
+    min-height: 100vh;
 }
-
 .wrapper{
     background: linear-gradient(to right,#283048, #859398);
     min-height: 110vh;
@@ -46,11 +46,7 @@ body{
 .tc{
     color: white;
 }
-body{
-    padding-top: 50px;
-    overflow-x: hidden;
-    min-height: 100vh;
-}
+
 
 /* navbar */
 
@@ -106,13 +102,29 @@ body{
     padding-bottom:13px;
     width:110px;
     text-align:center;
-
 }
-
 #explore-btn:hover{
     color:#8000ff;
     font-size:19px;
 }
+#search {
+    font-size: 10px;
+    padding: 5px ;
+    color: white;
+    background-color: rgb(37, 32, 32);
+}
+#search:hover {
+    color: rgb(37, 32, 32);
+    background-color: white;
+}
+.navlist1 a i{
+    font-size: 19px;
+}
+.navlist1 a i:hover{
+    font-size: 22px;
+}
+
+
 
 #offcanvasRight{
     background-color: #111;
