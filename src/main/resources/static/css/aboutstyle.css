@@ -1,6 +1,7 @@
 body{
     padding-top: 50px;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* navbar */
@@ -327,7 +328,7 @@ footer .footer-content .social li{
 }
 
 .footer-menu{
-    margin-bottom: 20px;
+float: bottom;
 
 }
 
