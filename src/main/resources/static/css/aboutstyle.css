@@ -1,6 +1,7 @@
 body{
     padding-top: 50px;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* navbar */
@@ -137,7 +138,7 @@ body{
 #bgimage{
     width:100%;
     height:490px;
-    background-image:url(static/imgs/concertexop.png);
+    background-image:url(concertexop.png);
     background-size:cover;
     background-position:center;
     padding:10px 8%;
@@ -195,7 +196,7 @@ body{
     margin-left: -10px;
     color:transparent;
     -webkit-text-stroke:1px rgb(37, 32, 32);
-    background: url(static/imgs/back.png);
+    background: url(back.png);
     -webkit-background-clip: text;
     background-position: 0 0;
     animation:back 20s linear infinite;
@@ -327,7 +328,7 @@ footer .footer-content .social li{
 }
 
 .footer-menu{
-    margin-bottom: 20px;
+float: bottom;
 
 }
 
