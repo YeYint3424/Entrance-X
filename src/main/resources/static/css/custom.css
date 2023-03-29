@@ -29,18 +29,35 @@ body{
     position: center;
     right: 80px;
 }
+.add-event{
+    margin-top: 60px;
+    position: center;
+}
 .wrapper .main-content .slide-img{
 
     max-height: 350px;
     min-height: 350px;
 }
 .add-event-img{
-    position: center;
-    top: 20px;
-    max-height: 350px;
-    min-height: 350px;
-    bottom: 20px;
+    max-height: 200px;
+    min-height: 200px;
 }
+.add-event-title{
+    color: white;
+    text-shadow:2px 2px 3px brown ;
+    font-size: 50px;
+}
+.add-event-info{
+    color: aquamarine;
+    text-shadow:2px 2px 3px brown ;
+    font-size: 30px;
+}
+.add-event-i{
+    color: white;
+    text-shadow:2px 2px 3px brown ;
+    font-size: 50px;
+}
+
 .wrapper .main-content .event-type{
     top: 25px;
     color: greenyellow;
