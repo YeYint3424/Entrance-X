@@ -5,7 +5,6 @@
     <title>Title</title>
 
 
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -17,77 +16,74 @@
 
     <style>
         body{
+
             overflow-x: hidden;
         }
     </style>
 
-
 </head>
+
 
 <body>
 
 <div class="jumbotron text-center" style="background: black" >
     <h1>Welcome from Extrance-X</h1>
     <br>
-    <h2>Sign Up as Organizer !</h2>
+    <h2>Please User Sign Up !</h2>
 </div>
+
 
 <form class="form-horizontal" action="/">
 
     <div class="form-group">
-        <label class="control-label col-sm-5" for="orgname">Organizer Name:</label>
+        <label class="control-label col-sm-5" for="username">Username:</label>
         <div class="col-xs-3">
-            <input type="text" class="form-control" id="orgname" name="orgname">
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="orgemail">Organizer Email:</label>
-        <div class="col-xs-3">
-            <input type="email" class="form-control" id="orgemail" name="orgemail">
+            <input type="text" class="form-control" id="username" name="username">
         </div>
     </div>
     <br>
     <div class="from-group">
-        <label class="control-label col-sm-5" for="orgphone">Enter a phone number (Organizer):</label>
+        <label class="control-label col-sm-5" for="birthday">Date of Birth:</label>
         <div class="col-xs-3">
-            <input type="tel" id="orgphone" name="orgphone" placeholder="09-1234567">
+            <input type="date" class="form-control" id="birthday" name="birthday">
         </div>
     </div>
     <br>
-    <br><br>
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="cname">Company Name:</label>
-        <div class="col-xs-3">
-            <input type="text" class="form-control" id="cname" name="cname">
-        </div>
-    </div>
     <br>
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="cemail">Company Email:</label>
-        <div class="col-xs-3">
-            <input type="email" class="form-control" id="cemail" name="cemail">
-        </div>
-    </div>
     <br>
     <div class="from-group">
-        <label class="control-label col-sm-5" for="cphone">Enter a phone number (Company):</label>
-        <div class="col-xs-3">
-            <input type="tel" id="cphone" name="cphone" placeholder="09-1234567">
-        </div>
+        <label class="control-label col-sm-5">Gender:</label>
+
+        <label class="radio-inline">
+            <div class="col-xs-3">
+                <input type="radio" name="">Male
+            </div>
+        </label>
+        <label class="radio-inline">
+            <div class="col-xs-3">
+                <input type="radio" name="">Female
+            </div>
+        </label>
+        <label class="radio-inline">
+            <div class="col-xs-3">
+                <input type="radio" name="">Custom
+            </div>
+        </label>
+
     </div>
     <br>
-    <br><br>
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="caddress">Company Address:</label>
+    <br>
+    <div class="from-group">
+        <label class="control-label col-sm-5" for="phone">Enter a phone number:</label>
         <div class="col-xs-3">
-            <textarea class="form-control rows=5" id="caddress" name="caddress"></textarea>
+            <input type="tel" id="phone" name="phone" placeholder="09-1234567"  >
         </div>
     </div>
+    <br><br><br>
     <div class="form-group">
-        <label class="control-label col-sm-5" for="comment">Bio:</label>
+        <label class="control-label col-sm-5" for="email">Email:</label>
         <div class="col-xs-3">
-        <textarea class="form-control" rows="5" id="comment"></textarea>
+            <input type="email" class="form-control" id="email"  name="email">
         </div>
     </div>
     <br>
@@ -104,10 +100,11 @@
             <input type="password" class="form-control" id="cpassword"  name="cpassword">
         </div>
     </div>
-    <br><br>
+    <br>
+    <br>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-lg">Create</button>
         </li>
         <li>
             <button type="submit" class="btn btn-primary btn-lg">Back</button>
@@ -115,7 +112,5 @@
     </ul>
 
 </form>
-
-
 </body>
 </html>
