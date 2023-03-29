@@ -5,7 +5,6 @@
     box-sizing: border-box;
 }
 body{
-    padding-top: 50px;
     overflow-x: hidden;
     min-height: 100vh;
 }
@@ -22,12 +21,25 @@ body{
 }
 
 .sliding-img{
+    margin-top: 50px;
     position: center;
+}
+.card-title{
+    font-size: 23px;
+    position: center;
+    right: 80px;
 }
 .wrapper .main-content .slide-img{
 
     max-height: 350px;
     min-height: 350px;
+}
+.add-event-img{
+    position: center;
+    top: 20px;
+    max-height: 350px;
+    min-height: 350px;
+    bottom: 20px;
 }
 .wrapper .main-content .event-type{
     top: 25px;
@@ -313,7 +325,9 @@ body{
 
 
 
-
+.navbar-brand{
+    font-family: fantasy;
+}
 
 
 
@@ -347,7 +361,9 @@ footer{
     text-align:center;
 
 }
-
+.footer-content p{
+    font-family: fantasy;
+}
 footer .footer-content h3{
     font-size:2.1rem;
     font-weight: 500;
@@ -429,7 +445,7 @@ footer .footer-content .social li{
     text-align:center;
     font-size:14px;
     word-spacing:2px;
-
+    font-family: sans-serif;
 }
 
 @media(max-width:500px){
