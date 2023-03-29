@@ -3,6 +3,9 @@
     display:inline;
     float:right;
 }
+.navbar-brand{
+    font-family: fantasy;
+}
 
 .navlist{
     List-style:none;
@@ -165,7 +168,9 @@ footer{
     flex-direction:column;
     text-align:center;
 }
-
+.footer-content p{
+    font-family: fantasy;
+}
 footer .footer-content h3{
     font-size:2.1rem;
     font-weight: 500;
@@ -247,7 +252,7 @@ footer .footer-content .social li{
     text-align:center;
     font-size:14px;
     word-spacing:2px;
-
+    font-family: sans-serif;
 }
 
 @media(max-width:500px){
