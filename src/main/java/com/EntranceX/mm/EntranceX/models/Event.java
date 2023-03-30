@@ -4,21 +4,25 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "Event Data")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int event_id;
-    private String eventName, time, venue, artist, promotion, paymentMethod, eventDescription, encodedPhoto;
-    private int shippingCost, standardTicketPrice, standardTicketQuantity, VipTicketPrice, VipTicketQuantity, VVipTicketPrice, VVipTicketQuantity, date;
+    private String eventName, venue, artist, promotion, paymentMethod, eventDescription, encodedPhoto;
+    private int shippingCost, standardTicketPrice, standardTicketQuantity, VipTicketPrice, VipTicketQuantity, VVipTicketPrice, VVipTicketQuantity;
+    private LocalDate date;
+    private ZonedDateTime time;
 
     @Lob
     private byte[] photo;
