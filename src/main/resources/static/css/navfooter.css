@@ -1,10 +1,17 @@
+body{
+    font-family: sans-serif;
+}
+
 /* navbar */
+
+
 .navlistright{
     display:inline;
     float:right;
 }
+
 .navbar-brand{
-    font-family: fantasy;
+    font-family:fantasy;
 }
 
 .navlist{
@@ -34,7 +41,7 @@
 
 
 .navlist2:hover{
-    font-size:18px;
+    font-size:17px;
     color:#8000ff;
 
 }
@@ -44,19 +51,18 @@
     border:none;
     background-color: transparent;
     color:#fff;
-    font-size:16px;
+    font-size:20px;
     text-transform:uppercase;
     font-weight:bold;
-    padding:8px 8px;
-    padding-bottom:13px;
+    padding:5px 5px;
+    padding-bottom:10px;
     width:110px;
     text-align:center;
-
 }
 
 #explore-btn:hover{
     color:#8000ff;
-    font-size:19px;
+    font-size:21px;
 }
 
 #offcanvasRight{
@@ -144,9 +150,7 @@
     box-sizing: border-box;
 } */
 
-body{
-    font-family: sans-serif;
-}
+
 
 footer{
 
@@ -168,9 +172,11 @@ footer{
     flex-direction:column;
     text-align:center;
 }
+
 .footer-content p{
-    font-family: fantasy;
+    font-family:fantasy;
 }
+
 footer .footer-content h3{
     font-size:2.1rem;
     font-weight: 500;
@@ -252,10 +258,37 @@ footer .footer-content .social li{
     text-align:center;
     font-size:14px;
     word-spacing:2px;
-    font-family: sans-serif;
+    font-family:sans-serif;
+
 }
 
 @media(max-width:500px){
+    .navlist2{
+        width:95px;
+        font-size:13px;
+        padding:6px 6px;
+    }
+
+    #explore-btn{
+
+        font-size:19px;
+        padding:4px 4px;
+        padding-bottom:8px;
+        width:95px;
+        text-align:center;
+    }
+
+    .navlist2:hover{
+        font-size:14px;
+        color:#8000ff;
+
+    }
+
+    #explore-btn:hover{
+        color:#8000ff;
+        font-size:20px;
+    }
+
     .footer-menu ul{
         display:inline;
 

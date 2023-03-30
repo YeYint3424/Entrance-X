@@ -8,6 +8,13 @@
 
     <title>Ticket Comfirmation</title>
     <style>
+        .navbar{
+            background-color: rgb(255, 255, 255);
+            font-weight:bold;
+            border-bottom: 1px solid;
+            border-width:thin;
+        }
+
         th{
             text-align:right;
 
@@ -19,11 +26,35 @@
         .ptd{
             padding-left:80px
         }
+
+        .voucher-footer{
+            width:100%;
+            bottom:0;
+            left:0;
+            right:0;
+            padding:20px;
+            padding-top:30px;
+            text-align: center;
+            font-size:14px;
+            word-spacing:2px;
+            height:auto;
+            border-top:1px solid;
+            background-color: rgb(255, 255, 255);
+
+        }
+
+        .voucher-footer p{
+            color:#111;
+            font-weight:bold;
+
+        }
     </style>
+
+
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar">
 
     <div class="container-fluid">
 
@@ -81,6 +112,17 @@
             <td ><p class="ptd">none</p></td>
 
         </tr>
+
+        <tr>
+            <th  scope="row"><p class="pth">Shipping Fee</p></th>
+            <td ><p class="ptd">2000kyats</p></td>
+
+        </tr>
+        <tr>
+            <th  scope="row"><p class="pth">Total</p></th>
+            <td ><p class="ptd">102000kyats</p></td>
+
+        </tr>
         <tr>
             <th  scope="row"><p class="pth">Payment Method</p></th>
             <td ><p class="ptd">wavepay</p></td>
@@ -96,6 +138,12 @@
         <tr>
             <th class="w-25" scope="row"  ><p class="pth">Name</p></th>
             <td class="w-25" ><p class="ptd">Harry</p></td>
+
+        </tr>
+
+        <tr>
+            <th class="w-25" scope="row"  ><p class="pth">Username</p></th>
+            <td class="w-25" ><p class="ptd">harry12</p></td>
 
         </tr>
         <tr>
@@ -114,6 +162,12 @@
     <hr>
     <h4 style="text-align:center; padding:30px">Your QR Code</h4>
 </div>
+
+<footer class="voucher-footer text-center">
+    <img src="" width="40px" height="40px" alt="logo">
+    <p>ENTRANCEX</p>
+    <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
