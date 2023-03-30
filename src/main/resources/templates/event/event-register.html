@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/eventFormStyle.css">
+    <title>event registeration form</title>
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" ><img src="css/exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+            </ul>
+
+
+            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+
+                </div>
+
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <ul>
+
+                            <li><a href="">Events</a>
+                                <ul>
+                                    <li><a href="">Trending</a></li>
+                                    <li><a href="">This month</a></li>
+                                    <li><a href="">Upcoming</a></li>
+                                    <li><a href="">Promotion</a></li>
+                                </ul>
+                            </li>
+                            <li><a  href="">Sign Up</a></li>
+                            <li><a  href="">Sign Out</a></li>
+                            <li><a  href="">About</a></li>
+                            <li><a  href="">Help</a></li>
+                            <li><a  href="">Contact</a></li>
+                            <li><a  href="">Terms and Conditions</a></li>
+                            <li><a  href="">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--event form-->
+<div class="container">
+    <div class="event-div col-md-6 mx-auto">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h4>Event Registration Form</h4>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="input-box mb-3">
+                        <label for="eventName" class="form-label">Event Name</label>
+                        <input type="text" class="form-control" id="eventName" placeholder="Enter event name" required>
+                    </div>
+
+                    <div class="input-box mb-3" style="width:49%;display:inline-block">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="time" placeholder="Enter event time" required>
+                    </div>
+
+                    <div class="input-box mb-3" style="width:49%;display:inline-block">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" placeholder="Enter event date" required>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="place" class="form-label">Venue</label>
+                        <input type="text" class="form-control" id="place" placeholder="Enter event venue" required>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="artist" class="form-label">Artists</label>
+                        <input type="text" class="form-control" id="artist" placeholder="Enter artist names" required>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="eventPhoto" class="form-label">Event Photo</label>
+                        <input type="file" class="form-control" id="eventPhoto" required>
+                    </div>
+
+                    <div class="ticket-box">
+                        <h5>Ticket Type</h5>
+                        <div class="ticket-type">
+                            <div class="ticket form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="Standard" id="standard" name="ticketType" onclick="showStandard()">
+                                <label class="form-check-label" for="standard" >
+                                    Standard
+                                </label>
+                            </div>
+                            <div class="ticket form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="VIP" id="vip" name="ticketType" onclick="showVip()">
+                                <label class="form-check-label" for="vip">
+                                    VIP
+                                </label>
+                            </div>
+
+                            <div class="ticket form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="VVIP" id="vvip" name="ticketType" onclick="showVvip()">
+                                <label class="form-check-label" for="vvip">
+                                    VVIP
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="ticketLimit" class="form-label">Ticket Limit</label>
+                        <input type="number" class="form-control" id="ticketLimit" placeholder="Enter ticket limit" required>
+                    </div>
+
+                    <div class="input-box mb-3" id="standard-check" style="display:none">
+                        <label for="standardPrice" class="form-label">Standard Ticket Price</label>
+                        <input type="number" class="form-control" id="standardPrice" placeholder="Enter standard ticket price in kyats" required>
+
+                    </div>
+
+                    <div class="input-box mb-3" id="vip-check" style="display:none">
+                        <label for="vipPrice" class="form-label">VIP Ticket Price</label>
+                        <input type="number" class="form-control" id="vipPrice" placeholder="Enter VIP ticket price in kyats" required>
+
+                    </div>
+
+                    <div class="input-box mb-3" id="vvip-check" style="display:none">
+                        <label for="vvipPrice" class="form-label">VVIP Ticket Price</label>
+                        <input type="number" class="form-control" id="vvipPrice" placeholder="Enter VVIP ticket price in kyats" required>
+
+                    </div>
+
+
+                    <div class="promotion-box form-check mb-3">
+                        <input class="form-check-input" type="checkbox"  id="promotion-check"  onclick="showPromotion()">
+                        <label class="form-check-label" for="promotion-check" >
+                            Please check this if your event has promotion for ticket buyers.
+                        </label>
+                    </div>
+
+                    <div id="promotion-info" style="display:none">
+                        <div class="input-box mb-3">
+                            <label for="promotion" class="form-label">Promotion</label>
+                            <input type="number" class="form-control" id="promotion" placeholder="Enter promotion in %">
+                        </div>
+
+                        <div class="input-box mb-3">
+                            <label for="promotionPrice" class="form-label">New Price for Promotion</label>
+                            <input type="number" class="form-control" id="promotionPrice" placeholder="Enter new price for promotion in kyats">
+                        </div>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="shipping" class="form-label">Shipping Fee</label>
+                        <input type="number" class="form-control" id="shipping" placeholder="Enter shipping fee in kyats" required>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="total" class="form-label">Total</label>
+                        <input type="number" class="form-control" id="total" placeholder="Enter total price in kyats" required>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="paymentMethod" class="form-label">Payment Method</label>
+                        <input type="paymentMethod" class="form-control" id="paymentMethod" placeholder="Enter payment method" required>
+                    </div>
+
+                    <div class="input-box form-floating mb-3">
+                        <textarea class="form-control" placeholder="Describe the event..." id="eventDescription" style="height:150px"></textarea>
+                        <label for="eventDescription">Event Description</label>
+                    </div>
+                    <div class="form-btn">
+                        <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>
+                        <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p >ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+
+</footer>
+
+<script>
+    function showStandard(){
+        var standard=document.getElementById("standard");
+        var standardP=document.getElementById("standard-check");
+        if(standard.checked == true){
+            standardP.style.display="block";}
+        else{
+            standardP.style.display="none";
+        }
+    }
+
+    function showVip(){
+        var vip=document.getElementById("vip");
+        var vipP=document.getElementById("vip-check");
+        if(vip.checked == true){
+            vipP.style.display="block";}
+        else{
+            vipP.style.display="none";
+        }
+    }
+
+    function showVvip(){
+        var vvip=document.getElementById("vvip");
+        var vvipP=document.getElementById("vvip-check");
+        if(vvip.checked == true){
+            vvipP.style.display="block";}
+        else{
+            vvipP.style.display="none";
+        }
+    }
+
+    function showPromotion(){
+        var promo=document.getElementById("promotion-check");
+        var promoInfo=document.getElementById("promotion-info");
+        if(promo.checked == true){
+            promoInfo.style.display="block";}
+        else{
+            promoInfo.style.display="none";
+        }
+    }
+
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

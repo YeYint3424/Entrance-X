@@ -1,9 +1,11 @@
-body{
-    padding-top: 58px;
+html body{
+    padding-top:130px;
     font-family:sans-serif;
+    background:linear-gradient(rgb(73, 67, 73),rgb(29, 3, 28));
 }
 
 /* navbar */
+
 .navlistright{
     display:inline;
     float:right;
@@ -54,10 +56,13 @@ body{
     text-transform:uppercase;
     font-weight:bold;
     padding:5px 5px;
-    padding-bottom:10px;
+    padding-bottom:9px;
     width:110px;
     text-align:center;
+
+
 }
+
 
 #explore-btn:hover{
     color:#8000ff;
@@ -133,125 +138,91 @@ body{
     border-bottom:none;
 }
 
-
-
-
-/* background image */
-#bgimage{
-    width:100%;
-    height:490px;
-    background-image:url(concertexop.png);
-    background-size:cover;
-    background-position:center;
-    padding:10px 8%;
-
-
-
-
+/*event form*/
+.panel{
+    border:1px solid;
+    padding:20px;
+    padding-bottom:65px;
+    background-color: #ddd;
 }
 
-
-
-
-
-
-.content{
-    margin-top:11%;
-    color:rgb(34, 25, 11);
-
-}
-
-
-
-.content p{
-    font-size:30px;
+.event-div h4{
+    padding:25px;
     font-weight:bold;
-    line-height:40px;
-    font-family:cursive;
-    margin-bottom:15px;
-    color:rgb(37, 32, 32);
+    text-align: center;
 
 }
 
-.content .learnbtn{
-    width:150px;
-    margin-top:10px;
-    padding:0.4rem 0.8rem;
-    border:2px solid #fff;
-    border-radius: 25px;
-    background-color: transparent;
-    text-transform: uppercase;
-    color:#fff;
-    font-weight:bold;
-    font-size:15px;
-    box-shadow:inset 0 0 0 #966e00;
-    transition: 0.6s ease-out;
+
+
+.input-box, .ticket-box, .promotion-box, .form-btn{
+    padding-bottom:15px;
 }
 
-.content .learnbtn:hover{
-    box-shadow: inset 150px 0 0 #966e00;
+.ticket-box h5{
+    font-size:17px;
 }
 
-.anitext{
-    font-size:60px;
-    line-height:60px;
-    margin-left: -10px;
-    color:transparent;
-    -webkit-text-stroke:1px rgb(37, 32, 32);
-    background: url(back.png);
-    -webkit-background-clip: text;
-    background-position: 0 0;
-    animation:back 20s linear infinite;
-
+.ticket-type label{
+    font-size:14px;
 }
 
-@keyframes back{
-    100%{
-        background-position: 2000px 0;
-    }
+.ticket-box :where(.ticket-type, .ticket) {
+    display:flex;
+    align-items:center;
+    column-gap:50px;
+    flex-wrap: wrap;
 }
 
-
-.eachintro{
-    padding:30px 20px;
+.ticket-box .ticket{
+    column-gap: 5px;
 }
 
-.eachintro h3{
-    margin: 15px 0;
-    font-size: 20px;
-    font-weight: bold;
+.ticket input{
+    accent-color:turquoise;
 }
 
-.eachintro p{
-    text-align:justify;
+.ticket-box :where(.ticket input, .ticket label){
+    cursor:pointer;
 }
 
-.quickfacts{
-    background-color: black;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center center;
-    position:relative;
-    z-index:1;
+.promotion-box{
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
 }
 
-.eachfact{
-    color:white;
+.promotion-box input{
+    accent-color:turquoise;
+}
+
+.promotion-box input, .promotion-box label{
+    cursor:pointer;
+}
+
+.form-btn{
+    float:right;
+    margin-bottom:60px;
+}
+
+#resetbtn, #submitbtn{
+    width:80px;
+    margin:5px;
+    background-color:azure;
+    color:black;
     text-align:center;
-
+    transition: all 0.2s ease;
 }
 
-.eachfact h3{
-    font-weight:bold;
-    font-size:40px;
-
+#resetbtn:hover{
+    background-color: rgb(29, 20, 56);
+    color:#ddd;
 }
 
-
-
-
-
-
+#submitbtn:hover{
+    background-color: rgb(29, 20, 56);
+    color:#ddd;
+}
 
 /* footer */
 /* *{
@@ -264,7 +235,7 @@ body{
 
 footer{
     padding-top:40px;
-    margin-top:50px;
+    margin-top:55px;
     position:absolute;
     /* left:0;
     right:0;
@@ -375,10 +346,6 @@ footer .footer-content .social li{
 }
 
 @media(max-width:500px){
-    body{
-        padding-top:70px;
-    }
-
     .navlist2{
         width:95px;
         font-size:13px;
@@ -414,6 +381,3 @@ footer .footer-content .social li{
         margin-bottom:20px;
     }
 }
-
-
-
