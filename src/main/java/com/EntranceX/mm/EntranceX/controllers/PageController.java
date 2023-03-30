@@ -1,6 +1,7 @@
 package com.EntranceX.mm.EntranceX.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -46,6 +47,27 @@ public class PageController {
         return "main/ticketVoucher";
     }
 
+    @RequestMapping("/org-signUp")
+    public String orgSignUp(){
+        return "login-signup/Org Sign-up";
+    }
+    @RequestMapping("/signUp")
+    public String signUp(){
+        return "login-signup/Sign-Up";
+    }
+    @RequestMapping("/user-signUp")
+    public String User_signUp(){
+        return "login-signup/User Sign-Up";
+    }
+    @RequestMapping("/signIn")
+    public String signIn(){
+        return "login-signup/Sign-In";
+    }
+
+    @RequestMapping("/master")
+    public String master(){
+        return "main/master";
+    }
 
 }
 
