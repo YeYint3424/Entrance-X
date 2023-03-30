@@ -46,7 +46,7 @@
                 </li>
                 <li class="navlist1"><a class="navlist2" href="/user-page">HOME</a></li>
                 <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" href="/">SIGN OUT</a></li>
             </ul>
 
 
@@ -71,10 +71,11 @@
                                     <li><a href="/user-history">History</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="">About</a></li>
-                            <li><a  href="">Contact</a></li>
-                            <li><a  href="">Terms and Conditions</a></li>
-                            <li><a  href="">Privacy Policy</a></li>
+                            <li><a  href="/user-about">About</a></li>
+                            <li><a  href="/user-help">help</a></li>
+                            <li><a  href="/user-contact">Contact</a></li>
+                            <li><a  href="/user-term">Terms and Conditions</a></li>
+                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -87,9 +88,9 @@
     <div class="container main-content">
 
         <!--        sliding photos      -->
-        <div class="container ">
-            <div id="carouselExampleControls" class="carousel slide sliding-img" data-ride="carousel" data-interval="4000">
-                <div class="carousel-inner">
+        <div class="container" style="margin-bottom: 1rem;">
+            <div id="carouselExample" class="carousel slide sliding-img" data-bs-ride="carousel" data-bs-interval="3500">
+                <div class="carousel-inner rounded">
                     <div class="carousel-item active">
                         <img src="https://playtoearndiary.com/wp-content/uploads/2022/11/Picture1-5.png" class="d-block w-100 slide-img" alt="...">
                     </div>
@@ -100,27 +101,37 @@
                         <img src="https://i.ytimg.com/vi/Y2pqEsoGNXk/maxresdefault.jpg" class="d-block w-100 slide-img" alt="...">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
         </div>
 
         <!--        Event Type          -->
-        <h4 class="event-type">Trending Events</h4>
+        <table class="table" style="margin-top: 25px;">
+            <thead>
+            <tr>
+                <th scope="col " class="event-type  table-dark">Trending Events</th>
+                <th scope="col " class="event-see-more  table-dark"><a href="/user-trending">>>>>see more>>>></a> </th>
+            </tr>
+            </thead>
+        </table>
+
 
         <div class="container mt-5 event">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
+                <div class="col ">
+                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
 
@@ -136,40 +147,31 @@
                         </div>
 
                     </div>
-
                 </div>
                 <!--                for 1 event                     -->
 
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-
-                                Event Title
-
-                            </h5>
-                            <p class="card-text">
-
-                                Event Info
-
-                            </p>
-                            <a href="#" class="btn btn-primary">More Detail</a>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
         </div>
-        <h4 class="event-type">Upcoming Events</h4>
+        <!--        Event Type          -->
+        <table class="table" style="margin-top: 25px;">
+            <thead>
+            <tr>
+                <th scope="col " class="event-type  table-dark">Upcoming</th>
+                <th scope="col " class="event-see-more  table-dark"><a href="/user-upcoming">>>>>see more>>>></a> </th>
+            </tr>
+            </thead>
+        </table>
+
 
         <div class="container mt-5 event">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
+            <div class="row row-cols-1 row-cols-md-3">
+
+                <!--                for 1 event                 -->
+                <div class="col ">
+                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
 
@@ -185,39 +187,31 @@
                         </div>
 
                     </div>
-
                 </div>
+                <!--                for 1 event                     -->
 
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-
-                                Event Title
-
-                            </h5>
-                            <p class="card-text">
-
-                                Event Info
-
-                            </p>
-                            <a href="#" class="btn btn-primary">More Detail</a>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
         </div>
-        <h4 class="event-type">Promotion Events</h4>
+        <!--        Event Type          -->
+        <table class="table" style="margin-top: 25px;">
+            <thead>
+            <tr>
+                <th scope="col " class="event-type  table-dark">Promotion</th>
+                <th scope="col " class="event-see-more  table-dark"><a href="/user-promotion">>>>>see more>>>></a> </th>
+            </tr>
+            </thead>
+        </table>
+
 
         <div class="container mt-5 event">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
+            <div class="row row-cols-1 row-cols-md-3">
+
+                <!--                for 1 event                 -->
+                <div class="col ">
+                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
 
@@ -233,37 +227,17 @@
                         </div>
 
                     </div>
-
                 </div>
+                <!--                for 1 event                     -->
 
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-
-                                Event Title
-
-                            </h5>
-                            <p class="card-text">
-
-                                Event Info
-
-                            </p>
-                            <a href="#" class="btn btn-primary">More Detail</a>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
         </div>
+
 
     </div>
 
 </div>
-
 <!--            Footer            -->
 <footer>
     <div class="footer-content">
@@ -284,11 +258,11 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="/about">About</a></li>
-                <li><a href="/help">Help</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/termsandconditions">Terms and Conditions</a></li>
-                <li><a href="/ticket-voucher">Privacy Policy</a></li>
+                <li><a href="/user-about">About</a></li>
+                <li><a href="/user-help">Help</a></li>
+                <li><a href="/user-contact">Contact</a></li>
+                <li><a href="/user-term">Terms and Conditions</a></li>
+                <li><a href="/user-privacyPolicy">Privacy Policy</a></li>
             </ul>
         </div>
 

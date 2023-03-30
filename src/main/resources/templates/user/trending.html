@@ -26,8 +26,7 @@
             border-bottom: 1px solid white;
         }
     </style>
-
-    <title> Trending </title>
+    <title> Promotion </title>
 
 
 </head>
@@ -46,7 +45,7 @@
                 </li>
                 <li class="navlist1"><a class="navlist2" href="/user-page">HOME</a></li>
                 <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" href="/">SIGN OUT</a></li>
             </ul>
 
 
@@ -71,10 +70,11 @@
                                     <li><a href="/user-history">History</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/about">About</a></li>
-                            <li><a  href="/contact">Contact</a></li>
-                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
-                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
+                            <li><a  href="/user-about">About</a></li>
+                            <li><a  href="/user-help">help</a></li>
+                            <li><a  href="/user-contact">Contact</a></li>
+                            <li><a  href="/user-term">Terms and Conditions</a></li>
+                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,20 +82,27 @@
         </div>
     </div>
 </nav>
-<div class="wrapper">
-    <!--         main page         -->
+<div class="wrapper">    <!--         main page         -->
     <div class="container main-content">
 
         <!--        Event Type          -->
-        <h4 class="event-type">Trending Events</h4>
+        <table class="table" style="margin-top: 60px;">
+            <thead>
+            <tr>
+                <th scope="col " class="event-type  table-dark">Trending Events</th>
+            </tr>
+            </thead>
+        </table>
+
 
         <div class="container mt-5 event">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
+                <div class="col ">
+                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
 
@@ -111,37 +118,13 @@
                         </div>
 
                     </div>
-
                 </div>
                 <!--                for 1 event                     -->
 
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-
-                                Event Title
-
-                            </h5>
-                            <p class="card-text">
-
-                                Event Info
-
-                            </p>
-                            <a href="#" class="btn btn-primary">More Detail</a>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <!--            Footer            -->
@@ -164,11 +147,11 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="/about">About</a></li>
-                <li><a href="/help">Help</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/termsandconditions">Terms and Conditions</a></li>
-                <li><a href="/ticket-voucher">Privacy Policy</a></li>
+                <li><a href="/user-about">About</a></li>
+                <li><a href="/user-help">Help</a></li>
+                <li><a href="/user-contact">Contact</a></li>
+                <li><a href="/user-term">Terms and Conditions</a></li>
+                <li><a href="/user-privacyPolicy">Privacy Policy</a></li>
             </ul>
         </div>
 
@@ -188,3 +171,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
+</html>

@@ -19,6 +19,13 @@
 
             overflow-x: hidden;
         }
+        a{
+            color: white;
+        }
+        a:hover{
+            color: #cfd2d6;
+        }
+
     </style>
 
 </head>
@@ -33,7 +40,7 @@
 </div>
 
 
-<form class="form-horizontal" action="/">
+<form class="form-horizontal" action="/user-page" method="post">
 
     <div class="form-group">
         <label class="control-label col-sm-5" for="username">Username:</label>
@@ -106,11 +113,13 @@
         <li>
             <button type="submit" class="btn btn-primary btn-lg">Create</button>
         </li>
-        <li>
-            <button type="submit" class="btn btn-primary btn-lg">Back</button>
-        </li>
     </ul>
 
 </form>
+<ul class="pager">
+    <li>
+        <button type="submit" class="btn btn-primary"><a href="/">Back</a></button>
+    </li>
+</ul>
 </body>
 </html>

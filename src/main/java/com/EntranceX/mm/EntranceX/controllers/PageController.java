@@ -42,6 +42,7 @@ public class PageController {
     public String terms(){
         return "main/termCondition";
     }
+
     @RequestMapping("/ticket-voucher")
     public String ticketVoucher(){
         return "main/ticketVoucher";
@@ -64,10 +65,6 @@ public class PageController {
         return "login-signup/Sign-In";
     }
 
-    @RequestMapping("/master")
-    public String master(){
-        return "main/master";
-    }
 
 }
 

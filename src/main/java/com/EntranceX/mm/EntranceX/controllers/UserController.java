@@ -32,4 +32,25 @@ public class UserController {
         return "user/watch-later";
     }
 
+    @RequestMapping("/user-about")
+    public String userAbout(){
+        return "user/about";
+    }
+    @RequestMapping("/user-help")
+    public String userHelp(){
+        return "user/help";
+    }
+    @RequestMapping("/user-term")
+    public String userTerm(){
+        return "user/termCondition";
+    }
+    @RequestMapping("/user-privacyPolicy")
+    public String userPrivacyPolicy(){
+        return "user/privacyPolicy";
+    }
+    @RequestMapping("/user-contact")
+    public String userContact(){
+        return "user/contact";
+    }
+
 }
