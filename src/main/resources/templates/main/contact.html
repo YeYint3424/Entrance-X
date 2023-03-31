@@ -26,12 +26,18 @@
 
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="" width="30px" height="30px" alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#"><img src="css/ex.jpg" width="30px" height="30px" alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </li>
+                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href="/signIn">SIGN-IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="/signUp">SIGN-UP</a></li>
             </ul>
 
 
@@ -47,21 +53,21 @@
                     <div class="container">
                         <ul>
 
-                            <li><a href="">Events
+                            <li><a class="text:white">Events
                             </a>
                                 <ul>
-                                    <li><a href="">Trending</a></li>
-                                    <li><a href="">This month</a></li>
-                                    <li><a href="">Upcoming</a></li>
-                                    <li><a href="">Promotion</a></li>
+                                    <li><a href="/main-trending">Trending</a></li>
+                                    <li><a href="/main-this-month">This month</a></li>
+                                    <li><a href="/main-upcoming">Upcoming</a></li>
+                                    <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
-                            <li><a  href="">About</a></li>
-                            <li><a  href="">Help</a></li>
-                            <li><a  href="">Terms and Conditions</a></li>
-                            <li><a  href="">Privacy Policy</a></li>
+                            <li><a  href="/signUp">Sign-Up</a></li>
+                            <li><a  href="/signIn">Log-In</a></li>
+                            <li><a  href="/about">About</a></li>
+                            <li><a  href="/contact">Contact</a></li>
+                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
+                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -127,7 +133,7 @@
         <ul class="social">
             <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
             <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter"></i></a></li>
 
 
         </ul>
@@ -136,12 +142,11 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Help</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Terms and Conditions</a></li>
-                <li><a href="">Privacy Policy</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/help">Help</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/termsandconditions">Terms and Conditions</a></li>
+                <li><a href="/privacypolicy">Privacy Policy</a></li>
             </ul>
         </div>
 
@@ -152,6 +157,9 @@
 
 
 </footer>
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

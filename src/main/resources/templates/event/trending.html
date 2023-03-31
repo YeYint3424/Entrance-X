@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="css/custom.css">
 
-
     <style>
         @media (max-width:750px){
             #introTitle{
@@ -27,13 +26,14 @@
             border-bottom: 1px solid white;
         }
     </style>
-    <title> Trending </title>
+    <title> Upcoming </title>
+    <link rel="stylesheet" href="../../static/css/custom.css">
 </head>
 <body>
 <!--        nav-bar         -->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="" width="30px" height="30px" alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#"><img src="css/ex.jpg" width="30px" height="30px" alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
@@ -43,8 +43,8 @@
                     </form>
                 </li>
                 <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" href="/signIn">SIGN-IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="/signUp">SIGN-UP</a></li>
             </ul>
 
 
@@ -69,8 +69,8 @@
                                     <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
+                            <li><a  href="/signUp">Sign-Up</a></li>
+                            <li><a  href="/signIn">Log-In</a></li>
                             <li><a  href="/about">About</a></li>
                             <li><a  href="/contact">Contact</a></li>
                             <li><a  href="/termsandconditions">Terms and Conditions</a></li>
@@ -85,19 +85,28 @@
 <!--        nav-bar end         -->
 
 <div class="wrapper">
+
     <!--         main page         -->
     <div class="container main-content">
 
         <!--        Event Type          -->
-        <h4 class="event-type">Trending Events</h4>
+        <table class="table" style="margin-top: 60px;">
+            <thead>
+            <tr>
+                <th scope="col " class="event-type  table-dark">Trending Events</th>
+            </tr>
+            </thead>
+        </table>
+
 
         <div class="container mt-5 event">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
+                <div class="col ">
+                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
 
@@ -113,40 +122,14 @@
                         </div>
 
                     </div>
-
                 </div>
                 <!--                for 1 event                     -->
 
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-
-                                Event Title
-
-                            </h5>
-                            <p class="card-text">
-
-                                Event Info
-
-                            </p>
-                            <a href="#" class="btn btn-primary">More Detail</a>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
-
         </div>
-
     </div>
-
-
 </div>
-
 <!--            Footer            -->
 <footer>
     <div class="footer-content">

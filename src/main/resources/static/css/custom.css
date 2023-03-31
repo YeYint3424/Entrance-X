@@ -58,18 +58,25 @@ body{
 }
 
 .wrapper .main-content .event-type{
-    top: 25px;
+    font-size: 25px;
     color: greenyellow;
-    text-shadow: 2px 2px brown;
-    position: relative;
-    left:5vw ;
-
+    text-shadow: 2px 2px 3px brown;
+    position: center;
 }
+.wrapper .main-content .event-see-more{
+    font-size: 25px;
+    color: whitesmoke;
+    text-shadow: 2px 2px 3px brown;
+    position: center;
+    right: 50px;
+}
+
 
 .wrapper .main-content .event{
 
     position: center;
     height: 100%;
+
 }
 .tc{
     color: white;

@@ -40,7 +40,7 @@
                 <li class="navlist1"><a class="navlist2" href="/org-page">HOME</a></li>
                 <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-plus" aria-hidden="true"></i></a></li>
                 <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" href="/">SIGN OUT</a></li>
             </ul>
 
 
@@ -55,17 +55,18 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-                            <li><a class="text:white">Events</a>
+                            <li><a style="color: white">Events</a>
                                 <ul>
                                     <li><a href="/org-ongoing">Ongoing</a></li>
                                     <li><a href="/org-future">Future</a></li>
                                     <li><a href="/org-sale-record">Sale Record</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/about">About</a></li>
-                            <li><a  href="/contact">Contact</a></li>
-                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
-                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
+                            <li><a  href="/org-help">Help</a></li>
+                            <li><a  href="/org-about">About</a></li>
+                            <li><a  href="/org-contact">Contact</a></li>
+                            <li><a  href="/org-term">Terms and Conditions</a></li>
+                            <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,20 +77,29 @@
 
 <!--        nav-bar end         -->
 
+
 <div class="wrapper">
     <!--         main page         -->
     <div class="container main-content">
 
         <!--        Event Type          -->
-        <h4 class="event-type">Ongoing Event</h4>
+        <table class="table" style="margin-top: 60px;">
+            <thead>
+            <tr>
+                <th scope="col " class="event-type  table-dark">Ongoing</th>
+            </tr>
+            </thead>
+        </table>
+
 
         <div class="container mt-5 event">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
+                <div class="col ">
+                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
 
@@ -105,33 +115,11 @@
                         </div>
 
                     </div>
-
                 </div>
                 <!--                for 1 event                     -->
 
-                <div class="col-md-4">
-                    <div class="card " style="width: 18rem;">
-                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png" class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-
-                                Event Title
-
-                            </h5>
-                            <p class="card-text">
-
-                                Event Info
-
-                            </p>
-                            <a href="#" class="btn btn-primary">More Detail</a>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
-
         </div>
 
     </div>
@@ -157,11 +145,12 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="/about">About</a></li>
-                <li><a href="/help">Help</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/termsandconditions">Terms and Conditions</a></li>
-                <li><a href="/ticket-voucher">Privacy Policy</a></li>
+
+                <li><a href="/org-about">About</a></li>
+                <li><a href="/org-help">Help</a></li>
+                <li><a href="/org-contact">Contact</a></li>
+                <li><a href="/org-term">Terms and Conditions</a></li>
+                <li><a href="/org-privacyPolicy">Privacy Policy</a></li>
             </ul>
         </div>
 
