@@ -379,7 +379,30 @@ body{
     box-sizing: border-box;
 } */
 
+/* event detail button */
 
+
+.input-box{
+    padding:15px;
+}
+
+#eventdetailbtn1, #eventdetailbtn2{
+    background-color:#333;
+    color:#fff;
+    border-radius:10%;
+    width:80px;
+    transition:all 0.3s ease-out;
+}
+
+#eventdetailbtn1:hover{
+    background-color:rgb(197, 193, 193);
+    color:black;
+}
+
+#eventdetailbtn2:hover{
+    background-color:rgb(197, 193, 193);
+    color:black;
+}
 
 footer{
 
