@@ -39,9 +39,13 @@ body{
     position: center;
 }
 .card-title{
+    color: white;
+    text-shadow: 1px 2px brown;
+    text-outline: #111111;
     font-size: 23px;
     position: center;
     right: 80px;
+
 }
 .add-event{
     margin-top: 60px;
@@ -495,6 +499,7 @@ footer .footer-content .social li{
         margin-bottom:20px;
     }
 }
-
-
+.card{
+    box-shadow: 4px 4px #111111;
+}
 
