@@ -19,15 +19,16 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int event_id;
-    private String eventName, venue, artist, promotion, paymentMethod, eventDescription, encodedPhoto,time;
-    private int shippingCost, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity;
+    private String eventName, venue, artist, promotion, paymentMethod, eventDescription, time,standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity;
+    private int shippingCost;
     private LocalDate date;
 
 
     @Lob
     private byte[] photo;
 
-
+    @Lob
+    private byte[] encodedPhoto;
 
 //  many to one join with event to organizer
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,7 +45,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(int event_id, String eventName, String venue, String artist, String promotion, String paymentMethod, String eventDescription, String encodedPhoto, int shippingCost, int standardTicketPrice, int standardTicketQuantity, int vipTicketPrice, int vipTicketQuantity, int vvipTicketPrice, int vvipTicketQuantity, LocalDate date, String time, byte[] photo) {
+    public Event(int event_id, String eventName, String venue, String artist, String promotion, String paymentMethod, String eventDescription,  int shippingCost, String standardTicketPrice, String standardTicketQuantity, String vipTicketPrice, String vipTicketQuantity, String vvipTicketPrice, String vvipTicketQuantity, LocalDate date, String time, byte[] photo, byte[]encodedPhoto) {
         this.event_id = event_id;
         this.eventName = eventName;
         this.venue = venue;
@@ -65,7 +66,7 @@ public class Event {
         this.photo = photo;
     }
 
-    public Event(String eventName, String venue, String artist, String promotion, String paymentMethod, String eventDescription, String encodedPhoto, int shippingCost, int standardTicketPrice, int standardTicketQuantity, int vipTicketPrice, int vipTicketQuantity, int vvipTicketPrice, int vvipTicketQuantity, LocalDate date, String time, byte[] photo) {
+    public Event(String eventName, String venue, String artist, String promotion, String paymentMethod, String eventDescription, int shippingCost, String standardTicketPrice, String standardTicketQuantity, String vipTicketPrice, String vipTicketQuantity, String vvipTicketPrice, String vvipTicketQuantity, LocalDate date, String time, byte[] photo,byte[]encodedPhoto) {
         this.eventName = eventName;
         this.venue = venue;
         this.artist = artist;

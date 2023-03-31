@@ -27,22 +27,27 @@ public class EventController {
     @PostMapping("/event-register")
     public String registerEventPost(@RequestParam("eventName") String eventName, @RequestParam("time") String time, @RequestParam("date")LocalDate date,
                                     @RequestParam("venue") String venue, @RequestParam("artist")String artist, @RequestParam("eventPhoto") MultipartFile eventPhoto,
-                                    @RequestParam("standardTicketQuantity")int standardTicketQuantity, @RequestParam("standardTicketPrice")String standardTicketPrice,
-                                    @RequestParam("vipTicketQuantity")int vipTicketQuantity, @RequestParam("vipTicketPrice")String vipTicketPrice,
-                                    @RequestParam("vvipTicketQuantity")int vvipTicketQuantity, @RequestParam("vvipTicketPrice")String vvipTicketPrice,
-                                    @RequestParam("promotion")String promotion, @RequestParam("shippingCost")String shippingCost, @RequestParam("paymentMethod")String paymentMethod,
+                                    @RequestParam("standardTicketQuantity")int standardTicketQuantity, @RequestParam("standardTicketPrice")int standardTicketPrice,
+                                    @RequestParam("vipTicketQuantity")int vipTicketQuantity, @RequestParam("vipTicketPrice")int vipTicketPrice,
+                                    @RequestParam("vvipTicketQuantity")int vvipTicketQuantity, @RequestParam("vvipTicketPrice")int vvipTicketPrice,
+                                    @RequestParam("promotion")String promotion, @RequestParam("shippingCost")int shippingCost, @RequestParam("paymentMethod")String paymentMethod,
                                     @RequestParam("eventDescription")String eventDescription) throws IOException {
 
-        byte[] photoBytes = eventPhoto.getBytes();
+
         // Encode the byte array to a Base64 string
-        String encodedPhoto = Base64.encodeBase64String(photoBytes);
-        int stp=Integer.valueOf(standardTicketPrice);
-        int vtp=Integer.valueOf(vipTicketPrice);
-        int vvtp=Integer.valueOf(vvipTicketPrice);
-        int shipping=Integer.valueOf(shippingCost);
-        Event event= new Event(eventName, venue, artist, promotion, paymentMethod, eventDescription, encodedPhoto, shipping, stp, standardTicketQuantity,vtp, vipTicketQuantity,vvtp,vvipTicketQuantity,date,time,photoBytes);
-        System.out.println(eventName + time + venue+ artist+ promotion+ paymentMethod+ eventDescription+ encodedPhoto+shipping+
-                stp+standardTicketQuantity+vtp+vipTicketQuantity+vvtp+vvipTicketQuantity+date);
+         String encodedPhoto = Base64.encodeBase64String(eventPhoto.getBytes());
+
+        String stp=String.valueOf(standardTicketPrice);
+        String vtp=String.valueOf(vipTicketPrice);
+        String vvtp=String.valueOf(vvipTicketPrice);
+        String stq=String.valueOf(standardTicketQuantity);
+        String vtq=String.valueOf(vipTicketQuantity);
+        String vvtq=String.valueOf(vvipTicketQuantity);
+
+
+
+        Event event= new Event(eventName, venue, artist, promotion, paymentMethod, eventDescription, shippingCost, stp, stq,vtp, vtq,vvtp,vvtq,date,time,eventPhoto.getBytes(),encodedPhoto.getBytes());
+
         eventDao.save(event);
 
         return "redirect:/org-page";
