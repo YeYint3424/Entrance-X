@@ -1,24 +1,25 @@
 package com.EntranceX.mm.EntranceX.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Table(name = "User Data")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int user_id;
-    private String userName,email,gender,phone,password;
-    private int dateOfBirth;
+    private String name, userName,email,gender,password,phone;
+    private LocalDate dateOfBirth;
 
     //one to many from user to order & history
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
@@ -27,4 +28,29 @@ public class User {
     //one to many from user to watch later
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WatchLater> watchLater = new ArrayList<>();
+
+
+    public User(int user_id, String name, String userName, String email, String gender, String phone, String password, LocalDate dateOfBirth) {
+        this.user_id = user_id;
+        this.name=name;
+        this.userName = userName;
+        this.email = email;
+        this.gender = gender;
+        this.phone = phone;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User() {
+    }
+
+    public User(String name, String userName, String email, String gender, String phone, String password, LocalDate dateOfBirth) {
+        this.name=name;
+        this.userName = userName;
+        this.email = email;
+        this.gender = gender;
+        this.phone = phone;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+    }
 }
