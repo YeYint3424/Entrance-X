@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -32,7 +32,7 @@
 
 <body>
 
-<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border=1px solid;padding:0">
+<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:2px solid;padding:0">
     <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
     <h2 style="color:white">Welcome from Extrance-X</h2>
     <br>
@@ -113,7 +113,7 @@
         <div class="col-xs-3">
             <input type="password" class="form-control" id="cpassword"  name="cpassword">
             <br>
-            <a href="/org-signUp">Organizer Sign-Up !</a>
+            <a th:href="@{organizer/signup}">Organizer Sign-Up !</a>
         </div>
     </div>
     <br>
@@ -125,7 +125,7 @@
     </form>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn" style="background-color:#111111;color:#dddddd"><a href="/">Back</a></button>
+            <button type="submit" class="btn" style="background-color:#ffffff;color:#dddddd"><a href="/">Back</a></button>
         </li>
     </ul>
 </div>

@@ -41,8 +41,8 @@
                     </form>
                 </li>
                 <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="/signIn">SIGN-IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="/signUp">SIGN-UP</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/login}">LogIn</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{user/signup}">SIGN-UP</a></li>
             </ul>
 
 
@@ -67,8 +67,8 @@
                                     <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/signUp">Sign-Up</a></li>
-                            <li><a  href="/signIn">Log-In</a></li>
+                            <li><a  th:href="@{user/signup}">Sign-Up</a></li>
+                            <li><a  th:href="@{/login}">Log-In</a></li>
                             <li><a  href="/about">About</a></li>
                             <li><a  href="/contact">Contact</a></li>
                             <li><a  href="/termsandconditions">Terms and Conditions</a></li>

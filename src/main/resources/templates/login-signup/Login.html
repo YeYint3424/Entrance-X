@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -30,14 +30,14 @@
 </head>
 <body>
 
-<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border=1px solid;padding:0">
+<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
     <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
      <h2 style="color:white">Welcome back from Extrance-X</h2>
         <br>
      <h3 style="color:white">Sign in to Account</h3>
     </div>
 
-    <form class="form-horizontal" action="/">
+    <form class="form-horizontal" action="/admin" method="post">
 
         <div class="form-group">
                 <label class="control-label col-sm-5" for="username">Username:</label>
@@ -61,7 +61,7 @@
     </form>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn" style="background-color:#111111;color:#dddddd"><a href="/">Back</a></button>
+            <button type="submit" class="btn" style="background-color:#f6fcff;color:#dddddd"><a href="/">Back</a></button>
         </li>
     </ul>
 </div>
