@@ -19,11 +19,20 @@
 
             overflow-x: hidden;
         }
+        ul li button a{
+            color: #ffffff;
+        }
+        ul li button a:hover{
+            color: #cfd2d6;
+        }
         a{
             color: black;
         }
         a:hover{
-            color: #cfd2d6;
+            color: blue;
+        }
+        h2{
+            color: white;
         }
     </style>
 
@@ -32,10 +41,12 @@
 
 <body>
 
-<div class="jumbotron text-center" style="background: black" >
-    <h1>Welcome from Extrance-X</h1>
+<div class="container mx-auto" style="margin:40px; width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
+    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
+
+    <h2 style="color: white">Welcome from Extrance-X</h2>
     <br>
-    <h2>Please User Sign Up !</h2>
+    <h3 style="color: white">Please User Sign Up !</h3>
 </div>
 
 
@@ -118,15 +129,15 @@
     <br>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn" style="background-color: #111111; color: #dddddd">Create</button>
         </li>
     </ul>
     </form>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn btn-primary"><a href="/">Back</a></button>
+            <button type="submit" class="btn" style="background-color: #111111; color: #dddddd"><a href="/">Back</a></button>
         </li>
     </ul>
-
+</div>
 </body>
 </html>

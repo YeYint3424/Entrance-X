@@ -16,7 +16,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
+        body{
 
+            overflow-x: hidden;
+        }
+        ul li button a{
+            color: #ffffff;
+        }
+        ul li button a:hover{
+            color: #cfd2d6;
+        }
+        a{
+            color: #27bcda;
+        }
+        a:hover{
+            color: blue;
+        }
+        h2{
+            color: white;
+        }
     </style>
 
 
@@ -24,10 +42,12 @@
 
 <body>
 
-<div class="jumbotron text-center" >
-    <h1>Welcome from Extrance-X</h1>
+<div class="container mx-auto" style="margin:40px; width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
+    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
+
+    <h2 style="color: white">Welcome from Extrance-X</h2>
     <br>
-    <h2>Sign Up as Organizer !</h2>
+    <h3 style="color: white">Sign Up as Organizer !</h3>
 </div>
 
 <form class="form-horizontal" method="post">
@@ -109,18 +129,17 @@
             <input type="password" class="form-control" id="cpassword"  name="cpassword">
         </div>
     </div>
-    <br><br>
+    <br>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+            <button type="submit" class="btn" style="background-color: #111111; color: #dddddd">Sign In</button>
         </li>
         <li>
-            <button type="submit" class="btn btn-primary btn-lg">Back</button>
+            <button type="submit" class="btn" style="background-color: #111111; color: #dddddd">Back</button>
         </li>
     </ul>
 
 </form>
-
-
+</div>
 </body>
 </html>
