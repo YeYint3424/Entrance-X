@@ -7,10 +7,11 @@
 body{
     overflow-x: hidden;
     min-height: 100vh;
+
 }
 .wrapper{
-    background: linear-gradient(to right,#283048, #859398);
-    min-height: 110vh;
+    background: linear-gradient(to right ,#8000ff ,#859398);
+    min-height: 100vh;
 }
 
 .wrapper .container .main-content{
