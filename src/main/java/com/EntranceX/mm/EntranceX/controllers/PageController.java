@@ -73,8 +73,11 @@ public class PageController {
         return "main/termCondition";
     }
 
+
     @GetMapping("/ticket-voucher")
     public String ticketVoucher() {
+
+
         return "main/ticketVoucher";
     }
 
@@ -82,6 +85,7 @@ public class PageController {
     public String LoginPage() {
         return "login-signup/Login";
     }
+
 
     @PostMapping(value = "/login")
     public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("password")String password, HttpServletRequest request) {
@@ -104,6 +108,7 @@ public class PageController {
             return "redirect:/login";
         }
     }
+
 
     @GetMapping(value = "user/signup")
     public String userRegister() {
