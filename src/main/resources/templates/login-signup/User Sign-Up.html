@@ -40,26 +40,19 @@
 </div>
 
 
-<form class="form-horizontal" method="post">
+<form class="form-horizontal" action="/">
 
     <div class="form-group">
-        <label class="control-label col-sm-5" for="name">Your Name:</label>
+        <label class="control-label col-sm-5" for="username">Username:</label>
         <div class="col-xs-3">
-            <input type="text" class="form-control" id="name" name="name">
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="userName">Username:</label>
-        <div class="col-xs-3">
-            <input type="text" class="form-control" id="userName" name="userName">
+            <input type="text" class="form-control" id="username" name="username">
         </div>
     </div>
     <br>
     <div class="from-group">
-        <label class="control-label col-sm-5" for="dob">Date of Birth:</label>
+        <label class="control-label col-sm-5" for="birthday">Date of Birth:</label>
         <div class="col-xs-3">
-             <input type="date" class="form-control" id="dob" name="dateOfBirth">
+            <input type="date" class="form-control" id="birthday" name="birthday">
         </div>
     </div>
     <br>
@@ -70,17 +63,17 @@
 
         <label class="radio-inline">
             <div class="col-xs-3">
-            <input type="radio" name="gender" value="Male">Male
+                <input type="radio" name="">Male
             </div>
         </label>
         <label class="radio-inline">
             <div class="col-xs-3">
-            <input type="radio" id="male" name="gender" value="Female">Female
+                <input type="radio" name="">Female
             </div>
         </label>
         <label class="radio-inline">
             <div class="col-xs-3">
-            <input type="radio" id="female" name="gender" value="Custom">Custom
+                <input type="radio" name="">Custom
             </div>
         </label>
 
@@ -88,9 +81,9 @@
     <br>
     <br>
     <div class="from-group">
-    <label class="control-label col-sm-5" for="phone">Enter a phone number:</label>
+        <label class="control-label col-sm-5" for="phone">Enter a phone number:</label>
         <div class="col-xs-3">
-    <input type="tel" id="phone" name="phone" placeholder="09777159554"  >
+            <input type="tel" id="phone" name="phone" placeholder="09-1234567"  >
         </div>
     </div>
     <br><br><br>
@@ -112,8 +105,6 @@
         <label class="control-label col-sm-5" for="cpassword">Confirm Password:</label>
         <div class="col-xs-3">
             <input type="password" class="form-control" id="cpassword"  name="cpassword">
-            <br>
-            <a href="/org-signUp">Organizer Sign-Up !</a>
         </div>
     </div>
     <br>
@@ -122,7 +113,7 @@
             <button type="submit" class="btn" style="background-color:#111111;color:#dddddd">Create</button>
         </li>
     </ul>
-    </form>
+</form>
     <ul class="pager">
         <li>
             <button type="submit" class="btn" style="background-color:#111111;color:#dddddd"><a href="/">Back</a></button>
