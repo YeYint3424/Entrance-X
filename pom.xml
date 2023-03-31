@@ -41,15 +41,29 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
+
+=======
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+>>>>>>> 3eedcfd62f10d52ae5f1c126de73c50a12337d4f
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
 
         </dependency>
+<<<<<<< HEAD
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+
+=======
+>>>>>>> 3eedcfd62f10d52ae5f1c126de73c50a12337d4f
 	</dependencies>
 
 	<build>

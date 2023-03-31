@@ -138,6 +138,10 @@ public class PageController {
 //    }
     }
 
+    @RequestMapping("/admin")
+    public String admin(){
+        return "admin/admin";
+    }
 
 
 
