@@ -19,49 +19,46 @@
 
             overflow-x: hidden;
         }
-        ul li button a{
-            color: #ffffff;
-        }
-        ul li button a:hover{
-            color: #cfd2d6;
-        }
         a{
-            color: #27bcda;
+            color: black;
         }
         a:hover{
-            color: blue;
+            color: #cfd2d6;
         }
-        h2{
-            color: white;
-        }
-
     </style>
 
 </head>
 
 
 <body>
-<div class="container mx-auto" style="margin:40px; width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
-<div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0" >
-    <h2 style="color: white">Welcome from Extrance-X</h2>
+
+<div class="jumbotron text-center" style="background: black" >
+    <h1>Welcome from Extrance-X</h1>
     <br>
-    <h3 style="color: white">Please User Sign Up !</h3>
+    <h2>Please User Sign Up !</h2>
 </div>
 
 
-<form class="form-horizontal" action="/user-page" method="post">
+<form class="form-horizontal" method="post">
 
     <div class="form-group">
-        <label class="control-label col-sm-5" for="username">Username:</label>
+        <label class="control-label col-sm-5" for="name">Your Name:</label>
         <div class="col-xs-3">
-            <input type="text" class="form-control" id="username" name="username">
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label class="control-label col-sm-5" for="userName">Username:</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="userName" name="userName">
         </div>
     </div>
     <br>
     <div class="from-group">
-        <label class="control-label col-sm-5" for="birthday">Date of Birth:</label>
+        <label class="control-label col-sm-5" for="dob">Date of Birth:</label>
         <div class="col-xs-3">
-             <input type="date" class="form-control" id="birthday" name="birthday">
+             <input type="date" class="form-control" id="dob" name="dateOfBirth">
         </div>
     </div>
     <br>
@@ -72,17 +69,17 @@
 
         <label class="radio-inline">
             <div class="col-xs-3">
-            <input type="radio" name="">Male
+            <input type="radio" name="gender" value="Male">Male
             </div>
         </label>
         <label class="radio-inline">
             <div class="col-xs-3">
-            <input type="radio" name="">Female
+            <input type="radio" id="male" name="gender" value="Female">Female
             </div>
         </label>
         <label class="radio-inline">
             <div class="col-xs-3">
-            <input type="radio" name="">Custom
+            <input type="radio" id="female" name="gender" value="Custom">Custom
             </div>
         </label>
 
@@ -92,7 +89,7 @@
     <div class="from-group">
     <label class="control-label col-sm-5" for="phone">Enter a phone number:</label>
         <div class="col-xs-3">
-    <input type="tel" id="phone" name="phone" placeholder="09-1234567"  >
+    <input type="tel" id="phone" name="phone" placeholder="09777159554"  >
         </div>
     </div>
     <br><br><br>
@@ -121,17 +118,15 @@
     <br>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn" style="background-color: #111111; color: #dddddd">Create</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </li>
     </ul>
-
-</form>
+    </form>
     <ul class="pager">
         <li>
-            <button type="submit" class="btn" style="background-color: #111111; color: #dddddd"><a href="/">Back</a></button>
+            <button type="submit" class="btn btn-primary"><a href="/">Back</a></button>
         </li>
     </ul>
 
-</div>
 </body>
 </html>

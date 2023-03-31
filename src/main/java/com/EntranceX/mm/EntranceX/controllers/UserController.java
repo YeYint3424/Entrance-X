@@ -1,54 +1,54 @@
 package com.EntranceX.mm.EntranceX.controllers;
 
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class UserController {
 
 
-    @RequestMapping("/user-this-month")
-    public String user_thismonth(){
-        return "user/this-month";
-    }
-    @RequestMapping("/user-promotion")
+    @GetMapping("/user-this-month")
+    public String user_thismonth(){ return "user/this-month"; }
+    @GetMapping("/user-promotion")
     public String user_promotion(){
         return "user/promotion";
     }
-    @RequestMapping("/user-trending")
+    @GetMapping("/user-trending")
     public String user_trending(){
         return "user/trending";
     }
-    @RequestMapping("/user-upcoming")
+    @GetMapping("/user-upcoming")
     public String user_upcoming(){
         return "user/upcoming";
     }
-    @RequestMapping("/user-history")
+    @GetMapping("/user-history")
     public String user_history(){
         return "user/history";
     }
-    @RequestMapping("/user-watch-later")
+    @GetMapping("/user-watch-later")
     public String user_watch_later(){
         return "user/watch-later";
     }
 
-    @RequestMapping("/user-about")
+    @GetMapping("/user-about")
     public String userAbout(){
         return "user/about";
     }
-    @RequestMapping("/user-help")
+    @GetMapping("/user-help")
     public String userHelp(){
         return "user/help";
     }
-    @RequestMapping("/user-term")
+    @GetMapping("/user-term")
     public String userTerm(){
         return "user/termCondition";
     }
-    @RequestMapping("/user-privacyPolicy")
+    @GetMapping("/user-privacyPolicy")
     public String userPrivacyPolicy(){
         return "user/privacyPolicy";
     }
-    @RequestMapping("/user-contact")
+    @GetMapping("/user-contact")
     public String userContact(){
         return "user/contact";
     }
