@@ -65,6 +65,10 @@ public class PageController {
         return "login-signup/Sign-In";
     }
 
+    @RequestMapping("/admin")
+    public String admin(){
+        return "admin/admin";
+    }
 
 }
 
