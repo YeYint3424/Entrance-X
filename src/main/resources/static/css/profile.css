@@ -1,10 +1,11 @@
 html body{
-    padding-top:130px;
-    font-family:sans-serif;
-    background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
+    font-family: sans-serif;
+    padding-top:60px;
+    background:linear-gradient(rgb(73, 67, 73),rgb(29, 3, 28));
 }
 
 /* navbar */
+
 
 .navlistright{
     display:inline;
@@ -56,13 +57,10 @@ html body{
     text-transform:uppercase;
     font-weight:bold;
     padding:5px 5px;
-    padding-bottom:9px;
+    padding-bottom:10px;
     width:110px;
     text-align:center;
-
-
 }
-
 
 #explore-btn:hover{
     color:#8000ff;
@@ -138,110 +136,96 @@ html body{
     border-bottom:none;
 }
 
-/*event form*/
-.panel{
-    border:1px solid;
-    padding:20px;
-    padding-bottom:65px;
-    background-color: #ddd;
+/* profile card */
+
+#cardContainer{
+    margin:60px;
+
 }
 
-.event-div h4{
-    padding:25px;
-    font-weight:bold;
+.profile{
+    margin-bottom:70px;
+}
+
+.profile-header{
+
+    height:30vh;
+    padding-bottom:50px;
     text-align: center;
 
+    background:linear-gradient(rgb(189, 165, 189), rgb(140, 154, 188));
+
+
 }
 
+.header-content{
+    margin:20px;
+    padding:20px;
+    color:#fff;
 
-
-.input-box, .ticket-box, .promotion-box, .form-btn{
-    padding-bottom:15px;
 }
 
-.ticket-box h5{
-    font-size:17px;
+.header-content i{
+    padding:30px;
+    margin:15px;
+    margin-bottom:30px;
 }
 
-.ticket-type label{
-    font-size:14px;
+#body-part{
+    background-color: rgb(245, 240, 240);
 }
 
-.ticket-box :where(.ticket-type, .ticket) {
-    display:flex;
-    align-items:center;
-    column-gap:50px;
-    flex-wrap: wrap;
+.row h5{
+    font-size:18px;
+    font-weight: 500;
 }
 
-.ticket-box .ticket{
-    column-gap: 5px;
+.row p{
+    font-size:15px;
+    font-weight:450;
 }
 
-.ticket input{
-    accent-color:turquoise;
+#user-icon{
+    font-size:35px;
+    padding:15px;
+    border:1px solid;
+    border-radius: 50%;
 }
 
-.ticket-box :where(.ticket input, .ticket label){
-    cursor:pointer;
+.row{
+    padding:10px;
 }
 
-.promotion-box{
-    display:flex;
-    align-items:center;
-    flex-wrap: wrap;
-}
-
-.promotion-box input{
-    accent-color:turquoise;
-}
-
-.promotion-box input, .promotion-box label{
-    cursor:pointer;
-}
-
-.form-btn{
-    float:right;
-    margin-bottom:60px;
-}
-
-#resetbtn, #submitbtn{
-    width:80px;
-    margin:5px;
-    background-color:azure;
-    color:black;
+.card-footer{
+    width:100%;
     text-align:center;
-    transition: all 0.2s ease;
+    background:linear-gradient(rgb(189, 182, 188),rgb(85, 74, 83));
 }
 
-#resetbtn:hover{
-    background-color: rgb(29, 20, 56);
-    color:#ddd;
+
+.card-btn{
+    margin:15px;
+    padding:5px;
+    width:60px;
+    border-radius:30%;
+    color:#fff;
+    background-color: rgb(95, 94, 94);
+    transition:all 0.2s ease;
 }
 
-#submitbtn:hover{
-    background-color: rgb(29, 20, 56);
-    color:#ddd;
+.card-btn:hover{
+    background-color:rgb(59, 58, 59) ;
+
 }
-
-/* footer */
-/* *{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-} */
-
-
 
 footer{
-    padding-top:40px;
-    margin-top:55px;
-    position:absolute;
-    /* left:0;
+
+    bottom:0;
+    left:0;
     right:0;
-    bottom:0; */
     background:#111;
     height:auto;
+    padding-top:40px;
     width:100%;
     color:white;
 
@@ -253,7 +237,6 @@ footer{
     justify-content:center;
     flex-direction:column;
     text-align:center;
-
 }
 
 .footer-content p{
@@ -346,6 +329,8 @@ footer .footer-content .social li{
 }
 
 @media(max-width:500px){
+
+
     .navlist2{
         width:95px;
         font-size:13px;

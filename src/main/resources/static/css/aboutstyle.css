@@ -1,6 +1,7 @@
 body{
     padding-top: 58px;
     font-family:sans-serif;
+    background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
 }
 
 /* navbar */
@@ -220,10 +221,12 @@ body{
     margin: 15px 0;
     font-size: 20px;
     font-weight: bold;
+    color:#fff;
 }
 
 .eachintro p{
     text-align:justify;
+    color:#fff;
 }
 
 .quickfacts{
