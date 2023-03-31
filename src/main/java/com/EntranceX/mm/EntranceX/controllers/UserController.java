@@ -32,23 +32,23 @@ public class UserController {
         return "user/watch-later";
     }
 
-    @RequestMapping("/user-about")
+    @GetMapping("/user-about")
     public String userAbout(){
         return "user/about";
     }
-    @RequestMapping("/user-help")
+    @GetMapping("/user-help")
     public String userHelp(){
         return "user/help";
     }
-    @RequestMapping("/user-term")
+    @GetMapping("/user-term")
     public String userTerm(){
         return "user/termCondition";
     }
-    @RequestMapping("/user-privacyPolicy")
+    @GetMapping("/user-privacyPolicy")
     public String userPrivacyPolicy(){
         return "user/privacyPolicy";
     }
-    @RequestMapping("/user-contact")
+    @GetMapping("/user-contact")
     public String userContact(){
         return "user/contact";
     }

@@ -1,11 +1,50 @@
 package com.EntranceX.mm.EntranceX.controllers;
 
+import com.EntranceX.mm.EntranceX.dao.EventDao;
+import com.EntranceX.mm.EntranceX.models.Event;
+import jakarta.annotation.PostConstruct;
+import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 @Controller
 public class EventController {
+@Autowired
+    EventDao eventDao;
 
-    @RequestMapping("/event-register")
+    @GetMapping("/event-register")
     public String registerEvent(){return "event/event-register";}
+
+    @PostMapping("/event-register")
+    public String registerEventPost(@RequestParam("eventName") String eventName, @RequestParam("time") String time, @RequestParam("date")LocalDate date,
+                                    @RequestParam("venue") String venue, @RequestParam("artist")String artist, @RequestParam("eventPhoto") MultipartFile eventPhoto,
+                                    @RequestParam("standardTicketQuantity")int standardTicketQuantity, @RequestParam("standardTicketPrice")String standardTicketPrice,
+                                    @RequestParam("vipTicketQuantity")int vipTicketQuantity, @RequestParam("vipTicketPrice")String vipTicketPrice,
+                                    @RequestParam("vvipTicketQuantity")int vvipTicketQuantity, @RequestParam("vvipTicketPrice")String vvipTicketPrice,
+                                    @RequestParam("promotion")String promotion, @RequestParam("shippingCost")String shippingCost, @RequestParam("paymentMethod")String paymentMethod,
+                                    @RequestParam("eventDescription")String eventDescription) throws IOException {
+
+        byte[] photoBytes = eventPhoto.getBytes();
+        // Encode the byte array to a Base64 string
+        String encodedPhoto = Base64.encodeBase64String(photoBytes);
+        int stp=Integer.valueOf(standardTicketPrice);
+        int vtp=Integer.valueOf(vipTicketPrice);
+        int vvtp=Integer.valueOf(vvipTicketPrice);
+        int shipping=Integer.valueOf(shippingCost);
+        Event event= new Event(eventName, venue, artist, promotion, paymentMethod, eventDescription, encodedPhoto, shipping, stp, standardTicketQuantity,vtp, vipTicketQuantity,vvtp,vvipTicketQuantity,date,time,photoBytes);
+        System.out.println(eventName + time + venue+ artist+ promotion+ paymentMethod+ eventDescription+ encodedPhoto+shipping+
+                stp+standardTicketQuantity+vtp+vipTicketQuantity+vvtp+vvipTicketQuantity+date);
+        eventDao.save(event);
+
+        return "redirect:/org-page";
+    }
 }
