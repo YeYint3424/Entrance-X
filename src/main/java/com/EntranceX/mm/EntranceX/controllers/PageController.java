@@ -136,12 +136,12 @@ public class PageController {
 //       ;
 //        return "redirect:/login";
 //    }
-    }
+
 
     @RequestMapping("/admin")
     public String admin(){
         return "admin/admin";
     }
 
-
+}
 
