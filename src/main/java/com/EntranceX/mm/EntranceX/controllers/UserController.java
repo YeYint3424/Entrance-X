@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-
+    @GetMapping("/user-profile")
+    public String user_profile(){
+        return "user/user-profile";
+    }
     @GetMapping("/user-this-month")
     public String user_thismonth(){ return "user/this-month"; }
     @GetMapping("/user-promotion")
