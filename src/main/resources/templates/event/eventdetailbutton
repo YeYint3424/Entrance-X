@@ -29,7 +29,7 @@
             }
         </style>
 
-        <!--Event details-->
+         <!--Event details-->
                 <!-- popup button -->
         <button type="button" id="popupBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Event Details
@@ -75,34 +75,21 @@
                             <input type="file" class="form-control"  value="">
                           </div>
 
-                          <div class="ticket-box">
-                          <h5>Ticket Type</h5>
-                          <div class="ticket-type">
-                          <div class="ticket form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="Standard" id="standard" name="ticketType" >
-                            <label class="form-check-label" for="standard" >
-                              Standard
-                            </label>
-                          </div>
-                          <div class="ticket form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="VIP" id="vip" name="ticketType" >
-                            <label class="form-check-label" for="vip">
-                              VIP
-                            </label>
-                          </div>
 
-                          <div class="ticket form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="VVIP" id="vvip" name="ticketType" >
-                            <label class="form-check-label" for="vvip">
-                              VVIP
-                            </label>
-                          </div>
-                          </div>
+
+                          <div class="input-box mb-3">
+                            <label for="standardTicketQuantity" class="form-label">Standard Ticket Quantity</label>
+                            <input type="number" class="form-control" id="standardTicketQuantity" placeholder="How many standard tickets you want to buy?" required>
                           </div>
 
                           <div class="input-box mb-3">
-                            <label for="ticketQuantity" class="form-label">Ticket Quantity</label>
-                            <input type="number" class="form-control" id="ticketQuantity" placeholder="How many tickets you want to buy?" required>
+                            <label for="vipTicketQuantity" class="form-label">VIP Ticket Quantity</label>
+                            <input type="number" class="form-control" id="vipTicketQuantity" placeholder="How many VIP tickets you want to buy?" required>
+                          </div>
+
+                          <div class="input-box mb-3">
+                            <label for="vvipTicketQuantity" class="form-label">Standard Ticket Quantity</label>
+                            <input type="number" class="form-control" id="vvipTicketQuantity" placeholder="How many VVIP tickets you want to buy?" required>
                           </div>
 
                           <div class="input-box mb-3" id="standard-check" >
@@ -141,8 +128,15 @@
 
                           <div class="input-box mb-3" style="margin-bottom:50px">
                             <label for="paymentMethod" class="form-label">Payment Method</label>
-                            <input type="paymentMethod" class="form-control" id="paymentMethod" value="wavepay" disabled >
+                            <input type="text" class="form-control" id="paymentMethod" value="wavepay" disabled >
                           </div>
+
+                          <div class="input-box mb-3" style="margin-bottom:50px">
+                            <label for="paymentScreenshot" class="form-label">Payment Screenshot</label>
+                            <input type="file" class="form-control" id="paymentScreenshot">
+                          </div>
+
+
 
                           <div class="input-box form-floating mb-3">
                             <textarea class="form-control"  id="eventDescription" style="height:130px" disabled>dfouerhdfjodhfodfuoerha dhfoeurahdf  ohfoeurajdf hdoaurehfd ohdfouehajf</textarea>
