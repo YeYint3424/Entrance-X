@@ -88,7 +88,7 @@ public class PageController {
 
 
     @PostMapping(value = "/login")
-    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("password")String password, HttpServletRequest request) {
+    public String LoginPagePost(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpServletRequest request) {
 
         User user = userDao.findByUserNameAndPassword(userName, password);
         Organizer organizer = organizerDao.findByUserNameAndPassword(userName, password);
@@ -116,11 +116,11 @@ public class PageController {
     }
 
     @PostMapping(value = "user/signup")
-    public String userRegister(@RequestParam("name")String name, @RequestParam("userName") String userName, @RequestParam("dateOfBirth") LocalDate dateOfBirth,
+    public String userRegister(@RequestParam("name") String name, @RequestParam("userName") String userName, @RequestParam("dateOfBirth") LocalDate dateOfBirth,
                                @RequestParam("gender") String gender, @RequestParam("phone") String phone,
                                @RequestParam("email") String email, @RequestParam("password") String password) {
 //        int ph=Integer.valueOf(phone);
-        User user = new User(name , userName, email, gender,  phone,password, dateOfBirth);
+        User user = new User(name, userName, email, gender, phone, password, dateOfBirth);
 
         userDao.save(user);
         return "redirect:/login";
@@ -136,12 +136,13 @@ public class PageController {
 //       ;
 //        return "redirect:/login";
 //    }
-    }
+
 
     @RequestMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin/admin";
     }
+}
 
 
 
