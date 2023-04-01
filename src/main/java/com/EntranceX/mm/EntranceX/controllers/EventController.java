@@ -52,4 +52,7 @@ public class EventController {
 
         return "redirect:/org-page";
     }
+
+    @GetMapping("/event-detail")
+    public String eventDetails(){return "event/event-detail";}
 }

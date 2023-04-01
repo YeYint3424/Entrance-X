@@ -2,6 +2,20 @@ body{
     padding-top: 58px;
     font-family:sans-serif;
     background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
+    animation: color 10s ease-in-out infinite;
+}
+
+
+@keyframes color {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
 }
 
 /* navbar */
