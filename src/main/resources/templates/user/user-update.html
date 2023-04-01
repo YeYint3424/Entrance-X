@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/eventFormStyle.css">
+    <title>User Profile Update</title>
+    <style>
+        body{
+
+            overflow-x: hidden;
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            color: #cfd2d6;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:2px solid;padding:0">
+    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
+        <h2 style="color:white">Welcome from Extrance-X</h2>
+
+    </div>
+
+
+    <form class="form-horizontal" method="post">
+
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="name">Your Name:</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="name" name="name" value="Harry">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="userName">Username:</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="userName" name="userName" value="harry12">
+            </div>
+        </div>
+        <br>
+        <div class="from-group">
+            <label class="control-label col-sm-5" for="dob">Date of Birth:</label>
+            <div class="col-xs-3">
+                <input type="date" class="form-control" id="dob" name="dateOfBirth" value="12/2/2000">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="from-group">
+            <label class="control-label col-sm-5">Gender:</label>
+
+            <label class="radio-inline">
+                <div class="col-xs-3">
+                    <input type="radio" name="gender" value="Male" checked>Male
+                </div>
+            </label>
+            <label class="radio-inline">
+                <div class="col-xs-3">
+                    <input type="radio" id="male" name="gender" value="Female">Female
+                </div>
+            </label>
+            <label class="radio-inline">
+                <div class="col-xs-3">
+                    <input type="radio" id="female" name="gender" value="Custom">Custom
+                </div>
+            </label>
+
+        </div>
+        <br>
+        <br>
+        <div class="from-group">
+            <label class="control-label col-sm-5" for="phone">Enter a phone number:</label>
+            <div class="col-xs-3">
+                <input type="tel" id="phone" name="phone" placeholder="09777159554" value="0937438743"  >
+            </div>
+        </div>
+        <br><br><br>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="email">Email:</label>
+            <div class="col-xs-3">
+                <input type="email" class="form-control" id="email"  name="email" value="harry@gmail.com">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="password">New Password:</label>
+            <div class="col-xs-3">
+                <input type="password" class="form-control" id="password"  name="password">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="cpassword">Confirm New Password:</label>
+            <div class="col-xs-3">
+                <input type="password" class="form-control" id="cpassword"  name="cpassword">
+                <br>
+                <a th:href="@{organizer/signup}">Organizer Profile Update !</a>
+            </div>
+        </div>
+        <br>
+        <ul class="pager">
+            <li>
+                <button type="submit" class="btn" style="background-color:#111111;color:#dddddd">Update</button>
+            </li>
+        </ul>
+    </form>
+    <ul class="pager">
+        <li>
+            <button type="submit" class="btn" style="background-color:#ffffff;color:#dddddd"><a href="/">Back</a></button>
+        </li>
+    </ul>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

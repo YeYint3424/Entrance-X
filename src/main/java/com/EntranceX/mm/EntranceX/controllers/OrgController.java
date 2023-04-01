@@ -17,6 +17,9 @@ public class OrgController {
     @GetMapping("/org-profile")
     public String org_profile(){return "org/org-profile";}
 
+    @GetMapping("/org-profile-update")
+    public String org_update(){return "org/org-update";}
+
     @GetMapping("/org-ongoing")
     public String org_ongoing(){
         return "org/ongoing";

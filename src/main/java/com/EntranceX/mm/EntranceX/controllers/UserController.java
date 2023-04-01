@@ -13,6 +13,12 @@ public class UserController {
     public String user_profile(){
         return "user/user-profile";
     }
+
+    @GetMapping("/user-profile-update")
+    public String user_update(){
+        return "user/user-update";
+    }
+
     @GetMapping("/user-this-month")
     public String user_thismonth(){ return "user/this-month"; }
     @GetMapping("/user-promotion")
