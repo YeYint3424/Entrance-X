@@ -10,7 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -38,16 +40,8 @@ public class Event {
     @Column(columnDefinition = "longblob")
     private byte[] encodedPhoto;
 
-//  many to one join with event to organizer
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organizer_id")
-    private  Organizer organizer;
-//    one to many from event to order & history;
-    @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TicketOrder_History> orderHistory= new ArrayList<>();
-//  one to many from event to watch later
-    @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<WatchLater> watchLater= new ArrayList<>();
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<TicketOrder_History> ticketOrder_histories = new HashSet<>();
 
     public Event() {
     }
