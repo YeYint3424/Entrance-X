@@ -19,33 +19,40 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int event_id;
-    private String eventName, venue, artist, promotion, paymentMethod, eventDescription, time,standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity;
-    private int shippingCost;
-    private LocalDate date;
 
+    @Column(length = 30)
+    private String eventName, venue, time;
+
+    @Column(length = 10)
+    private String status;
+
+    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, shippingCost;
+    private LocalDate date;
+    private String artist, paymentMethod, eventDescription;
 
     @Lob
+    @Column(columnDefinition = "longblob")
     private byte[] photo;
 
     @Lob
+    @Column(columnDefinition = "longblob")
     private byte[] encodedPhoto;
 
 //  many to one join with event to organizer
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organizer_id")
     private  Organizer organizer;
-
 //    one to many from event to order & history;
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TicketOrder_History> orderHistory= new ArrayList<>();
-//one to many from event to watch later
+//  one to many from event to watch later
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WatchLater> watchLater= new ArrayList<>();
 
     public Event() {
     }
 
-    public Event(int event_id, String eventName, String venue, String artist, String promotion, String paymentMethod, String eventDescription,  int shippingCost, String standardTicketPrice, String standardTicketQuantity, String vipTicketPrice, String vipTicketQuantity, String vvipTicketPrice, String vvipTicketQuantity, LocalDate date, String time, byte[] photo, byte[]encodedPhoto) {
+    public Event(int event_id, String eventName, String venue, String artist, int promotion, String paymentMethod, String eventDescription,  int shippingCost, int standardTicketPrice, int standardTicketQuantity, int vipTicketPrice, int vipTicketQuantity, int vvipTicketPrice, int vvipTicketQuantity, LocalDate date, String time, byte[] photo, byte[]encodedPhoto) {
         this.event_id = event_id;
         this.eventName = eventName;
         this.venue = venue;
@@ -66,7 +73,7 @@ public class Event {
         this.photo = photo;
     }
 
-    public Event(String eventName, String venue, String artist, String promotion, String paymentMethod, String eventDescription, int shippingCost, String standardTicketPrice, String standardTicketQuantity, String vipTicketPrice, String vipTicketQuantity, String vvipTicketPrice, String vvipTicketQuantity, LocalDate date, String time, byte[] photo,byte[]encodedPhoto) {
+    public Event(String eventName, String venue, String artist, int promotion, String paymentMethod, String eventDescription, int shippingCost, int standardTicketPrice, int standardTicketQuantity, int vipTicketPrice, int vipTicketQuantity, int vvipTicketPrice, int vvipTicketQuantity, LocalDate date, String time, byte[] photo,byte[]encodedPhoto) {
         this.eventName = eventName;
         this.venue = venue;
         this.artist = artist;
