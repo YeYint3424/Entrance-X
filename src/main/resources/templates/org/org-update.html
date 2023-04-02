@@ -2,135 +2,173 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Organizer Profile Update</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 
-
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <style>
-        body{
-            overflow-x: hidden;
-        }
-        a{
-            color: black;
-        }
-        a:hover{
-            color: #cfd2d6;
-        }
-    </style>
-
-
+    <link rel="stylesheet" href="css/eventFormStyle.css">
+    <title>User Profile Update</title>
 </head>
-
 <body>
+<!--navbar-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" ><img src="css/exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+            </ul>
 
-<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
-    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
-        <h2 style="color:white" >Welcome from Extrance-X</h2>
-        <br>
-        <h3 style="color:white">Update your organizer account</h3>
+
+            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+
+                </div>
+
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <ul>
+
+                            <li><a href="">Events</a>
+                                <ul>
+                                    <li><a href="/org-ongoing">Ongoing</a></li>
+                                    <li><a href="/org-future">Future</a></li>
+                                    <li><a href="/org-sale-record">Sale Record</a></li>
+                                </ul>
+                            </li>
+                            <li><a  href="">Sign Up</a></li>
+                            <li><a  href="">Sign Out</a></li>
+                            <li><a  href="">About</a></li>
+                            <li><a  href="">Help</a></li>
+                            <li><a  href="">Contact</a></li>
+                            <li><a  href="">Terms and Conditions</a></li>
+                            <li><a  href="">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</nav>
 
-    <form class="form-horizontal" action="/">
+<!--event form-->
+<div class="container">
+    <div class="event-div col-md-6 mx-auto">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h4>Organizer Profile Update</h4>
+            </div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="input-box mb-3">
+                        <label for="orgname" class="form-label">Organizer Name</label>
+                        <input type="text" class="form-control" id="orgname" name="orgname" value="organizer">
+                    </div>
 
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="orgname">Organizer Name:</label>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" id="orgname" name="orgname" value="organizer">
+                    <div class="input-box mb-3">
+                        <label for="orgemail" class="form-label">Organizer Email</label>
+                        <input type="email" class="form-control" id="orgemail" name="orgemail" value="org@gamil.com" >
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="orgphone" class="form-label">Organizer Phone</label>
+                        <input type="tel" class="form-control" id="orgphone" name="orgphone" value="0934739434">
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="cname" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="cname" name="cname" value="company">
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="cemail" class="form-label">Company Email</label>
+                        <input type="email" class="form-control" id="cemail" name="cemail" value="com@gmail.com">
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="cphone" class="form-label">Company Phone</label>
+                        <input type="tel" class="form-control" id="cphone" name="cphone" value="0934739434">
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="caddress" class="form-label">Company Address</label>
+                        <input type="text" class="form-control" id="caddress" name="caddress" value="12/234, Yangon">
+                    </div>
+
+                    <div class="input-box form-floating mb-3">
+                        <textarea class="form-control"  id="comment" name="comment" style="height:150px">dhdaoudofud hdfadjlduf dlfhdlajdfl</textarea>
+                        <label for="comment">Bio</label>
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="password" class="form-label">Enter New Password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="123">
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="cpassword" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" value="123">
+                    </div>
+
+
+
+                    <div class="form-btn">
+                        <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>
+                        <button type="submit" class="btn btn-primary" id="submitbtn">Update</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="orgemail">Organizer Email:</label>
-            <div class="col-xs-3">
-                <input type="email" class="form-control" id="orgemail" name="orgemail" value="org@gamil.com">
-            </div>
-        </div>
-        <br>
-        <div class="from-group">
-            <label class="control-label col-sm-5" for="orgphone">Organizer Phone</label>
-            <div class="col-xs-3">
-                <input type="tel" id="orgphone" name="orgphone"  value="09347384">
-            </div>
-        </div>
-        <br>
-        <br><br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="cname">Company Name:</label>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" id="cname" name="cname" value="company">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="cemail">Company Email:</label>
-            <div class="col-xs-3">
-                <input type="email" class="form-control" id="cemail" name="cemail" value="com@gamil.com">
-            </div>
-        </div>
-        <br>
-        <div class="from-group">
-            <label class="control-label col-sm-5" for="cphone">Compnay Phone</label>
-            <div class="col-xs-3">
-                <input type="tel" id="cphone" name="cphone" value="091234567">
-            </div>
-        </div>
-        <br>
-        <br><br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="caddress">Company Address:</label>
-            <div class="col-xs-3">
-                <textarea class="form-control rows=5" id="caddress" name="caddress">12/234, Yangon</textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="comment">Bio:</label>
-            <div class="col-xs-3">
-                <textarea class="form-control" rows="5" id="comment">dhdoaufdo dfhdoufd dhfdjoufd</textarea>
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="password">Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="password"  name="password" value="123">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="password">New Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="newPassword"  name="newPassword">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="cpassword">Confirm New Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="cpassword"  name="newcpassword">
-            </div>
-        </div>
-        <br>
-        <ul class="pager">
-            <li>
-                <button type="submit" class="btn" style="background-color:#111111;color:#dddddd">Update</button>
-            </li>
-        </ul>
-    </form>
-    <ul class="pager">
-        <li>
-            <button type="submit" class="btn" style="background-color:#ffffff;color:#dddddd"><a href="/">Back</a></button>
-        </li>
-    </ul>
+    </div>
 </div>
 
+<!--footer-->
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p >ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+
+</footer>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

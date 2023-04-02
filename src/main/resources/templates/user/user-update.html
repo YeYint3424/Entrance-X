@@ -2,139 +2,185 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <style>
-        body{
-
-            overflow-x: hidden;
-        }
-        a{
-            color: black;
-        }
-        a:hover{
-            color: #cfd2d6;
-        }
-    </style>
-
+    <link rel="stylesheet" href="css/eventFormStyle.css">
+    <title>User Profile Update</title>
 </head>
-
-
 <body>
+<!--navbar-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" ><img src="css/exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+            </ul>
 
-<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:2px solid;padding:0">
-    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
-        <h2 style="color:white">Welcome from Extrance-X</h2>
-        <br>
-        <h3 style="color:white">User Profile Update !</h3>
+
+            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+
+                </div>
+
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <ul>
+
+                            <li><a href="">Events</a>
+                                <ul>
+                                    <li><a href="/user-trending">Trending</a></li>
+                                    <li><a href="/user-this-month">This month</a></li>
+                                    <li><a href="/user-upcoming">Upcoming</a></li>
+                                    <li><a href="/user-promotion">Promotion</a></li>
+                                    <li><a href="/user-watch-later">Watch Later</a></li>
+                                    <li><a href="/user-history">History</a></li>
+                                </ul>
+                            </li>
+                            <li><a  href="">Sign Up</a></li>
+                            <li><a  href="">Sign Out</a></li>
+                            <li><a  href="">About</a></li>
+                            <li><a  href="">Help</a></li>
+                            <li><a  href="">Contact</a></li>
+                            <li><a  href="">Terms and Conditions</a></li>
+                            <li><a  href="">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--event form-->
+<div class="container">
+    <div class="event-div col-md-6 mx-auto">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h4>User Profile Update</h4>
+            </div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="input-box mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="Harry">
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="userName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="userName" name="userName" value="harry12" >
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="dob" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" name="dob" value="2/22/2023">
+                    </div>
+
+                    <div class="ticket-box">
+                        <h5>Gender</h5>
+                        <div class="ticket-type">
+                            <div class="ticket form-check mb-3">
+                                <input class="form-check-input" type="radio" value="Male" id="male" name="gender" checked>
+                                <label class="form-check-label" for="male"  >
+                                    Male
+                                </label>
+                            </div>
+                            <div class="ticket form-check mb-3">
+                                <input class="form-check-input" type="radio" value="Female" id="female" name="gender" >
+                                <label class="form-check-label" for="female">
+                                    Female
+                                </label>
+                            </div>
+
+                            <div class="ticket form-check mb-3">
+                                <input class="form-check-input" type="radio" value="Custom" id="custom" name="gender" >
+                                <label class="form-check-label" for="custom">
+                                    Custom
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="0934734738">
+                    </div>
+
+                    <div class="input-box mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="harry@gmail.com">
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="password" class="form-label">Enter New Password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="123">
+                    </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="password" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" value="123">
+                    </div>
+
+
+                    <div class="form-btn">
+                        <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>
+                        <button type="submit" class="btn btn-primary" id="submitbtn">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p >ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
     </div>
 
 
-    <form class="form-horizontal" method="post">
+</footer>
 
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="name">Your Name:</label>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" id="name" name="name" value="Harry">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="userName">Username:</label>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" id="userName" name="userName" value="harry12">
-            </div>
-        </div>
-        <br>
-        <div class="from-group">
-            <label class="control-label col-sm-5" for="dob">Date of Birth:</label>
-            <div class="col-xs-3">
-                <input type="date" class="form-control" id="dob" name="dateOfBirth">
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="from-group">
-            <label class="control-label col-sm-5">Gender:</label>
 
-            <label class="radio-inline">
-                <div class="col-xs-3">
-                    <input type="radio" name="gender" value="Male" checked>Male
-                </div>
-            </label>
-            <label class="radio-inline">
-                <div class="col-xs-3">
-                    <input type="radio" id="male" name="gender" value="Female">Female
-                </div>
-            </label>
-            <label class="radio-inline">
-                <div class="col-xs-3">
-                    <input type="radio" id="female" name="gender" value="Custom">Custom
-                </div>
-            </label>
 
-        </div>
-        <br>
-        <br>
-        <div class="from-group">
-            <label class="control-label col-sm-5" for="phone">Phone</label>
-            <div class="col-xs-3">
-                <input type="tel" id="phone" name="phone" value="09777159554"  >
-            </div>
-        </div>
-        <br><br><br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="email">Email:</label>
-            <div class="col-xs-3">
-                <input type="email" class="form-control" id="email"  name="email" value="harry@gmail.com">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="password">Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="password"  name="password" value="123">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="password">New Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="newpassword"  name="newpassword">
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="cpassword">Confirm New Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="cpassword"  name="cpassword">
-                <br>
-                <a th:href="@{organizer/signup}">Organizer Update !</a>
-            </div>
-        </div>
-        <br>
-        <ul class="pager">
-            <li>
-                <button type="submit" class="btn" style="background-color:#111111;color:#dddddd">Update</button>
-            </li>
-        </ul>
-    </form>
-    <ul class="pager">
-        <li>
-            <button type="submit" class="btn" style="background-color:#ffffff;color:#dddddd"><a href="/">Back</a></button>
-        </li>
-    </ul>
-</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
