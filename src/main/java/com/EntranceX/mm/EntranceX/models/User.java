@@ -30,7 +30,13 @@ public class User {
     @Column(length = 15)
     private  String phone;
 
+//    one to many from user to order & history
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TicketOrder_History> orderHistory= new ArrayList<>();
 
+    //one to many from user to watch later
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WatchLater> watchLater = new ArrayList<>();
 
 
     public User(int user_id, String name, String userName, String email, String gender, String phone, String password, LocalDate dateOfBirth) {
