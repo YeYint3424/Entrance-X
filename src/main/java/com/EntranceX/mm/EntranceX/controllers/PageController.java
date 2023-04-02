@@ -142,6 +142,19 @@ public class PageController {
     public String admin() {
         return "admin/admin";
     }
+
+    @RequestMapping("/event-approve")
+    public String eventApprove() {
+        return "admin/event-approve";
+    }
+    @RequestMapping("/unban")
+    public String unban() {
+        return "admin/unban";
+    }
+    @RequestMapping("/voucher-approve")
+    public String voucherApprove() {
+        return "admin/voucher-approve";
+    }
 }
 
 
