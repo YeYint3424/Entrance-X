@@ -23,10 +23,7 @@ public class User {
     private String name, userName,email,gender,password;
 
     private LocalDate dateOfBirth;
-
-    @Column(length = 5)
-    private String status;
-
+    private int status;
     @Column(length = 15)
     private  String phone;
 
