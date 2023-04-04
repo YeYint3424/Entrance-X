@@ -39,76 +39,85 @@
     <h3 style="color:white">Sign Up as Organizer !</h3>
 </div>
 
-<form class="form-horizontal" action="/">
+<form class="form-horizontal" th:method="post">
+    <div class="form-group">
+        <label class="control-label col-sm-5" for="organizerName">Organizer Name:</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="organizerName" name="organizerName" required>
+        </div>
+    </div>
+    <br>
+    <div class="form-group" th:method="post">
+        <label class="control-label col-sm-5" for="userName">Organizer Name:</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="userName" name="userName" required>
+        </div>
+    </div>
 
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="orgname">Organizer Name:</label>
-        <div class="col-xs-3">
-            <input type="text" class="form-control" id="orgname" name="orgname">
-        </div>
-    </div>
     <br>
     <div class="form-group">
-        <label class="control-label col-sm-5" for="orgemail">Organizer Email:</label>
+        <label class="control-label col-sm-5" for="organizerEmail">Organizer Email:</label>
         <div class="col-xs-3">
-            <input type="email" class="form-control" id="orgemail" name="orgemail">
+            <input type="email" class="form-control" id="organizerEmail" name="organizerEmail" required>
         </div>
     </div>
     <br>
     <div class="from-group">
-        <label class="control-label col-sm-5" for="orgphone">Enter a phone number (Organizer):</label>
+        <label class="control-label col-sm-5" for="organizerPhone">Enter a phone number (Organizer):</label>
         <div class="col-xs-3">
-            <input type="tel" id="orgphone" name="orgphone" placeholder="09-1234567">
+            <input type="tel" id="organizerPhone" name="organizerPhone" placeholder="09-1234567" required>
         </div>
     </div>
     <br>
     <br><br>
     <div class="form-group">
-        <label class="control-label col-sm-5" for="cname">Company Name:</label>
+        <label class="control-label col-sm-5" for="companyName">Company Name:</label>
         <div class="col-xs-3">
-            <input type="text" class="form-control" id="cname" name="cname">
+            <input type="text" class="form-control" id="companyName" name="companyName" required>
         </div>
     </div>
     <br>
     <div class="form-group">
-        <label class="control-label col-sm-5" for="cemail">Company Email:</label>
+        <label class="control-label col-sm-5" for="companyEmail">Company Email:</label>
         <div class="col-xs-3">
-            <input type="email" class="form-control" id="cemail" name="cemail">
+            <input type="email" class="form-control" id="companyEmail" name="companyEmail" required>
         </div>
     </div>
     <br>
     <div class="from-group">
-        <label class="control-label col-sm-5" for="cphone">Enter a phone number (Company):</label>
+        <label class="control-label col-sm-5" for="companyPhone">Enter a phone number (Company):</label>
         <div class="col-xs-3">
-            <input type="tel" id="cphone" name="cphone" placeholder="09-1234567">
+            <input type="tel" id="companyPhone" name="companyPhone" placeholder="09-1234567" required>
         </div>
     </div>
     <br>
     <br><br>
     <div class="form-group">
-        <label class="control-label col-sm-5" for="caddress">Company Address:</label>
+        <label class="control-label col-sm-5" for="companyAddress">Company Address:</label>
         <div class="col-xs-3">
-            <textarea class="form-control rows=5" id="caddress" name="caddress"></textarea>
+            <textarea class="form-control rows=5" id="companyAddress" name="companyAddress" required></textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-5" for="comment">Bio:</label>
+        <label class="control-label col-sm-5" for="companyBio">Bio:</label>
         <div class="col-xs-3">
-        <textarea class="form-control" rows="5" id="comment"></textarea>
+        <textarea class="form-control" rows="5" id="companyBio" name="companyBio"></textarea>
         </div>
     </div>
     <br>
     <div class="form-group">
         <label class="control-label col-sm-5" for="password">Password:</label>
         <div class="col-xs-3">
-            <input type="password" class="form-control" id="password"  name="password">
+            <input type="password" class="form-control" id="password"  name="password" required>
         </div>
     </div>
     <br>
     <div class="form-group">
         <label class="control-label col-sm-5" for="cpassword">Confirm Password:</label>
         <div class="col-xs-3">
-            <input type="password" class="form-control" id="cpassword"  name="cpassword">
+            <input type="password" class="form-control" id="cpassword"  name="cpassword" required>
+            <br>
+            <span id="password-match"></span>
         </div>
     </div>
     <br>
@@ -127,6 +136,19 @@
         <p>By signing up, you agree to our <a href="/termsandcondition">terms and conditions.</a></p>
     </ul>
 </div>
-
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            var password = $('#password').val();
+            var cpassword = $('#cpassword').val();
+            if (password != cpassword) {
+                event.preventDefault();
+                $('#password-match').text('Passwords don\'t match');
+            } else {
+                $('#password-match').text('Passwords match');
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -40,26 +40,30 @@
 </div>
 
 
+<<<<<<< HEAD
 <form class="form-horizontal" action="user-page" method="post">
+=======
+<form class="form-horizontal" th:method="post" id="signup-form">
+>>>>>>> 45bbc45cfa7b33c4e806045d802bcf4de9fdd3cb
 
     <div class="form-group">
         <label class="control-label col-sm-5" for="name">Your Name:</label>
         <div class="col-xs-3">
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
     </div>
     <br>
     <div class="form-group">
         <label class="control-label col-sm-5" for="userName">Username:</label>
         <div class="col-xs-3">
-            <input type="text" class="form-control" id="userName" name="userName">
+            <input type="text" class="form-control" id="userName" name="userName" required>
         </div>
     </div>
     <br>
     <div class="from-group">
         <label class="control-label col-sm-5" for="dob">Date of Birth:</label>
         <div class="col-xs-3">
-             <input type="date" class="form-control" id="dob" name="dateOfBirth">
+             <input type="date" class="form-control" id="dob" name="dateOfBirth" required>
         </div>
     </div>
     <br>
@@ -90,28 +94,31 @@
     <div class="from-group">
     <label class="control-label col-sm-5" for="phone">Enter a phone number:</label>
         <div class="col-xs-3">
-    <input type="tel" id="phone" name="phone" placeholder="09777159554"  >
+    <input type="tel" id="phone" name="phone" placeholder="09777159554" required>
         </div>
     </div>
     <br><br><br>
     <div class="form-group">
         <label class="control-label col-sm-5" for="email">Email:</label>
         <div class="col-xs-3">
-            <input type="email" class="form-control" id="email"  name="email">
+            <input type="email" class="form-control" id="email"  name="email" required>
         </div>
     </div>
     <br>
     <div class="form-group">
         <label class="control-label col-sm-5" for="password">Password:</label>
         <div class="col-xs-3">
-            <input type="password" class="form-control" id="password"  name="password">
+            <input type="password" class="form-control" id="password"  name="password" required>
         </div>
     </div>
     <br>
     <div class="form-group">
         <label class="control-label col-sm-5" for="cpassword">Confirm Password:</label>
         <div class="col-xs-3">
-            <input type="password" class="form-control" id="cpassword"  name="cpassword">
+            <input type="password" class="form-control" id="cpassword"  name="cpassword" required>
+            <br>
+            <span id="password-match"></span>
+            <br>
             <br>
             <a th:href="@{/org-signup}">Organizer Sign-Up !</a>
         </div>
@@ -132,5 +139,19 @@
         <p>By signing up, you agree to our <a href="/termsandcondition">terms and conditions.</a></p>
     </ul>
 </div>
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            var password = $('#password').val();
+            var cpassword = $('#cpassword').val();
+            if (password != cpassword) {
+                event.preventDefault();
+                $('#password-match').text('Passwords don\'t match');
+            } else {
+                $('#password-match').text('Passwords match');
+            }
+        });
+    });
+</script>
 </body>
 </html>
