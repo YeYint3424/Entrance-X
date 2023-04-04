@@ -20,13 +20,13 @@ public class Organizer {
     private int organizer_id;
 
     @Column(length = 30)
-    private String userName, organizerName,  companyName,organizerEmail,companyEmail, password;
+    private String userName, organizerName,  companyName,organizerEmail,companyEmail;
 
 
     @Column(length = 15)
     private  String organizerPhone, companyPhone;
 
-    private String companyAddress,companyBio;
+    private String companyAddress,companyBio, password;
     private int status;
 
 //  one to many from Organizer to Event

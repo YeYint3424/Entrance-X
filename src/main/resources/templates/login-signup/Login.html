@@ -25,10 +25,27 @@
             color: #cfd2d6;
         }
 
+
+
+
     </style>
 
 </head>
 <body>
+
+<nav class="navbar navbar-inverse" style="background-color: #111111">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <a class="navbar-brand" style="color: white;font-family: fantasy">EntranceX</a>
+        </div>
+
+        <form class="navbar-form navbar-right" action="">
+            <button type="submit" class="btn" style="background-color:#111111;color:#dddddd" >Home</button>
+            <button type="submit" class="btn btn-default">Back</button>
+        </form>
+    </div>
+</nav>
 
 <div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
     <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
@@ -40,18 +57,21 @@
     <form class="form-horizontal" method="post">
 
         <div class="form-group">
-                <label class="control-label col-sm-5" for="username">Username:</label>
+                <label class="control-label col-sm-5" for="userName">Username:</label>
             <div class="col-xs-3">
-                <input type="text" class="form-control" id="username" name="username">
+                <input type="text" class="form-control" id="userName" name="userName" placeholder="Username"required>
             </div>
         </div>
         <br>
         <div class="form-group">
-            <label class="control-label col-sm-5" for="password">Password:</label>
+            <label class="control-label col-sm-5" for="loginPassword">Password:</label>
             <div class="col-xs-3">
-                <input type="password" class="form-control" id="password"  name="password">
+                <input type="password" class="form-control" id="loginPassword"  name="loginPassword" placeholder="Password" required>
+                <br>
+                <span th:if="${param.error}" class="error">Username or Password doesn't match! Please Try Again.</span>
             </div>
         </div>
+
         <br>
         <ul class="pager">
             <li>

@@ -3,6 +3,8 @@ package com.EntranceX.mm.EntranceX.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +22,14 @@ public class User {
     private int user_id;
 
     @Column(length = 30)
-    private String name, userName,email,gender,password;
+    private String name, userName,email,gender;
 
     private LocalDate dateOfBirth;
     private int status;
     @Column(length = 15)
     private  String phone;
 
+    private String password;
 //    one to many from user to order & history
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TicketOrder_History> orderHistory= new ArrayList<>();

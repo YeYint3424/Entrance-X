@@ -10,10 +10,13 @@ import com.EntranceX.mm.EntranceX.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,6 +25,8 @@ import java.util.Date;
 @Controller
 public class PageController {
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
     UserDao userDao;
@@ -88,22 +93,24 @@ public class PageController {
 
 
     @PostMapping(value = "/login")
-    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("password")String password, HttpServletRequest request) {
+    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("loginPassword")String loginPassword, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
-        User user = userDao.findByUserNameAndPassword(userName, password);
-        Organizer organizer = organizerDao.findByUserNameAndPassword(userName, password);
-        Admin admin = adminDao.findByUserNameAndPassword(userName, password);
+        User user = userDao.findByUserName(userName);
+        Organizer organizer = organizerDao.findByUserName(userName);
+        Admin admin = adminDao.findByUserName(userName);
 
-        if (user != null) {
+        if (user!=null && passwordEncoder.matches(loginPassword, user.getPassword())) {
+
             // User login successful
             return "redirect:/user-page";
-        } else if (organizer != null) {
+        } else if (organizer!=null && passwordEncoder.matches(loginPassword, organizer.getPassword())) {
             // Organizer login successful
             return "redirect:/org-page";
-        } else if (admin != null) {
+        } else if (admin!=null && passwordEncoder.matches(loginPassword, admin.getPassword())) {
             // Admin login successful
             return "redirect:/admin";
         } else {
+            redirectAttributes.addAttribute("error", true);
             // Login failed
             return "redirect:/login";
         }
