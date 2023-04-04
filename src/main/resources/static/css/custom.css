@@ -41,9 +41,9 @@ body{
 }
 .wrapper .main-content .slide-img{
     margin-top: 90px;
-    max-height: 450px;
-    min-height: 450px;
-    margin-bottom: 80px;
+    max-height: 460px;
+    min-height: 460px;
+    margin-bottom: 70px;
 }
 .add-event-img{
     max-height: 200px;
@@ -71,6 +71,10 @@ body{
     font-size: 25px;
     color: white;
     position: center;
+}
+.card-text{
+    color: #940068;
+    text-shadow:1px 1px white ;
 }
 .wrapper .main-content .event-see-more{
     font-size: 25px;
