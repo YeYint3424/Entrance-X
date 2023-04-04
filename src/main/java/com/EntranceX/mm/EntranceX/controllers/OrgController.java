@@ -3,6 +3,7 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.models.Organizer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class OrgController {
 @Autowired
     OrganizerDao organizerDao;
+@Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/org-profile")
     public String org_profile(){return "org/org-profile";}
@@ -45,10 +48,8 @@ public class OrgController {
                                         @RequestParam("companyAddress") String companyAddress, @RequestParam("companyBio") String companyBio,
                                         @RequestParam("password") String password) {
 
-//
-//        int orgPh=Integer.valueOf(organizerPhone);
-//        int comPh=Integer.valueOf(companyPhone);
-        Organizer organizer = new Organizer(userName, organizerName, companyName, organizerEmail, organizerPhone, companyEmail, companyPhone,companyAddress,   companyBio, password);
+        String encodedPassword = passwordEncoder.encode(password);
+        Organizer organizer = new Organizer(userName, organizerName, companyName, organizerEmail, organizerPhone, companyEmail, companyPhone,companyAddress,   companyBio, encodedPassword);
         organizer.setUserName(userName);
         organizerDao.save(organizer);
         return "redirect:/login";

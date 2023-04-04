@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrganizerDao extends JpaRepository <Organizer, Integer>{
-    Organizer findByUserNameAndPassword(String userName, String password);
+    Organizer findByUserName(String userName);
 }

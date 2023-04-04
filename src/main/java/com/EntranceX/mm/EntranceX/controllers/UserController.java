@@ -4,6 +4,7 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,9 @@ import java.time.LocalDate;
 public class UserController {
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/user-profile")
     public String user_profile(){
@@ -81,8 +85,9 @@ public class UserController {
     public String userRegister(@RequestParam("name")String name, @RequestParam("userName") String userName, @RequestParam("dateOfBirth") LocalDate dateOfBirth,
                                @RequestParam("gender") String gender, @RequestParam("phone") String phone,
                                @RequestParam("email") String email, @RequestParam("password") String password) {
-//        int ph=Integer.valueOf(phone);
-        User user = new User(name , userName, email, gender,  phone,password, dateOfBirth);
+
+        String encodedPassword = passwordEncoder.encode(password);
+        User user = new User(name , userName, email, gender,  phone,encodedPassword, dateOfBirth);
 
         userDao.save(user);
         return "redirect:/login";
