@@ -14,9 +14,9 @@ public class TicketOrder_History {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int order_id;
 
-    private int standardTicketSold, VipTicketQuantitySold,  VVipTicketQuantitySold, totalPrice;
+    private int standardTicketSold, VipTicketQuantitySold,  VVipTicketQuantitySold, totalPrice, status;
 
-//
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

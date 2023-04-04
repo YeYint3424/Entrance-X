@@ -23,10 +23,7 @@ public class Event {
     @Column(length = 30)
     private String eventName, venue, time;
 
-    @Column(length = 10)
-    private String status;
-
-    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, shippingCost;
+    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, shippingCost, status;
     private LocalDate date;
     private String artist, paymentMethod, eventDescription;
 
