@@ -16,12 +16,12 @@ public class TicketOrder_History {
 
     private int standardTicketSold, VipTicketQuantitySold,  VVipTicketQuantitySold, totalPrice;
 
-//many to one from order & history to user
+//
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-//many to one from order & history to event
+    //many to one from order & history to event
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private Event event;

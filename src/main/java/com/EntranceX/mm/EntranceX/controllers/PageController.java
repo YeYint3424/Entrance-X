@@ -88,7 +88,7 @@ public class PageController {
 
 
     @PostMapping(value = "/login")
-    public String LoginPagePost(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpServletRequest request) {
+    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("password")String password, HttpServletRequest request) {
 
         User user = userDao.findByUserNameAndPassword(userName, password);
         Organizer organizer = organizerDao.findByUserNameAndPassword(userName, password);
@@ -110,21 +110,7 @@ public class PageController {
     }
 
 
-    @GetMapping(value = "user/signup")
-    public String userRegister() {
-        return "login-signup/UserSignUp";
-    }
 
-    @PostMapping(value = "user/signup")
-    public String userRegister(@RequestParam("name") String name, @RequestParam("userName") String userName, @RequestParam("dateOfBirth") LocalDate dateOfBirth,
-                               @RequestParam("gender") String gender, @RequestParam("phone") String phone,
-                               @RequestParam("email") String email, @RequestParam("password") String password) {
-//        int ph=Integer.valueOf(phone);
-        User user = new User(name, userName, email, gender, phone, password, dateOfBirth);
-
-        userDao.save(user);
-        return "redirect:/login";
-    }
 
 
 //    @PostMapping(value = "user/signup")
@@ -139,9 +125,10 @@ public class PageController {
 
 
     @RequestMapping("/admin")
-    public String admin() {
+    public String admin(){
         return "admin/admin";
     }
+
 
     @RequestMapping("/event-approve")
     public String eventApprove() {
@@ -156,6 +143,4 @@ public class PageController {
         return "admin/voucher-approve";
     }
 }
-
-
 

@@ -10,22 +10,9 @@ body{
 
 }
 .wrapper{
-    background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
+    background: linear-gradient(to left, #710056, #6d00ff,darkblue);
     min-height: 100vh;
     width: 100%;
-    background-size: 200% 200%;
-    animation: color 10s ease-in-out infinite;
-}
-@keyframes color {
-    0%{
-        background-position: 0 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0 50%;
-    }
 }
 
 .wrapper .container .main-content{
@@ -53,8 +40,10 @@ body{
     position: center;
 }
 .wrapper .main-content .slide-img{
-    max-height: 350px;
-    min-height: 350px;
+    margin-top: 90px;
+    max-height: 450px;
+    min-height: 450px;
+    margin-bottom: 80px;
 }
 .add-event-img{
     max-height: 200px;
@@ -77,9 +66,9 @@ body{
 }
 
 .wrapper .main-content .event-type{
+    font-family: Jokerman;
     font-size: 25px;
-    color: greenyellow;
-    text-shadow: 2px 2px 3px brown;
+    color: white;
     position: center;
 }
 .wrapper .main-content .event-see-more{

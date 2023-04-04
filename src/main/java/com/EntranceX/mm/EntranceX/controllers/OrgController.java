@@ -33,12 +33,12 @@ public class OrgController {
         return "org/sale-record";
     }
 
-    @GetMapping(value = "organizer/signup")
+    @GetMapping(value = "/org-signup")
     public String organizerRegister() {
         return "login-signup/OrganizerSignUp";
     }
 
-    @PostMapping(value = "organizer/signup")
+    @PostMapping(value = "/org-signup")
     public String organizerRegisterPost(@RequestParam("userName") String userName, @RequestParam("organizerName") String organizerName, @RequestParam("organizerEmail") String organizerEmail,
                                         @RequestParam("organizerPhone") String organizerPhone, @RequestParam("companyName") String companyName,
                                         @RequestParam("companyEmail") String companyEmail, @RequestParam("companyPhone") String companyPhone,

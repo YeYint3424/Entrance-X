@@ -18,10 +18,19 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int user_id;
-    private String name, userName,email,gender,password,phone;
+
+    @Column(length = 30)
+    private String name, userName,email,gender,password;
+
     private LocalDate dateOfBirth;
 
-    //one to many from user to order & history
+    @Column(length = 5)
+    private String status;
+
+    @Column(length = 15)
+    private  String phone;
+
+//    one to many from user to order & history
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TicketOrder_History> orderHistory= new ArrayList<>();
 

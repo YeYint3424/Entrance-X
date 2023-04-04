@@ -18,8 +18,17 @@ public class Organizer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int organizer_id;
-    private String userName, organizerName, organizerPhone, companyName,organizerEmail,companyEmail,companyPhone, companyAddress,companyBio,password;
 
+    @Column(length = 30)
+    private String userName, organizerName,  companyName,organizerEmail,companyEmail, password;
+
+    @Column(length = 5)
+    private String status;
+
+    @Column(length = 15)
+    private  String organizerPhone, companyPhone;
+
+    private String companyAddress,companyBio;
 
 //  one to many from Organizer to Event
     @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL, orphanRemoval = true)

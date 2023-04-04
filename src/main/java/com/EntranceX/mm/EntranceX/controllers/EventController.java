@@ -30,23 +30,23 @@ public class EventController {
                                     @RequestParam("standardTicketQuantity")int standardTicketQuantity, @RequestParam("standardTicketPrice")int standardTicketPrice,
                                     @RequestParam("vipTicketQuantity")int vipTicketQuantity, @RequestParam("vipTicketPrice")int vipTicketPrice,
                                     @RequestParam("vvipTicketQuantity")int vvipTicketQuantity, @RequestParam("vvipTicketPrice")int vvipTicketPrice,
-                                    @RequestParam("promotion")String promotion, @RequestParam("shippingCost")int shippingCost, @RequestParam("paymentMethod")String paymentMethod,
+                                    @RequestParam("promotion")int promotion, @RequestParam("shippingCost")int shippingCost, @RequestParam("paymentMethod")String paymentMethod,
                                     @RequestParam("eventDescription")String eventDescription) throws IOException {
 
 
         // Encode the byte array to a Base64 string
          String encodedPhoto = Base64.encodeBase64String(eventPhoto.getBytes());
 
-        String stp=String.valueOf(standardTicketPrice);
-        String vtp=String.valueOf(vipTicketPrice);
-        String vvtp=String.valueOf(vvipTicketPrice);
-        String stq=String.valueOf(standardTicketQuantity);
-        String vtq=String.valueOf(vipTicketQuantity);
-        String vvtq=String.valueOf(vvipTicketQuantity);
+//        String stp=String.valueOf(standardTicketPrice);
+//        String vtp=String.valueOf(vipTicketPrice);
+//        String vvtp=String.valueOf(vvipTicketPrice);
+//        String stq=String.valueOf(standardTicketQuantity);
+//        String vtq=String.valueOf(vipTicketQuantity);
+//        String vvtq=String.valueOf(vvipTicketQuantity);
 
 
 
-        Event event= new Event(eventName, venue, artist, promotion, paymentMethod, eventDescription, shippingCost, stp, stq,vtp, vtq,vvtp,vvtq,date,time,eventPhoto.getBytes(),encodedPhoto.getBytes());
+        Event event= new Event(eventName, venue, artist, promotion, paymentMethod, eventDescription, shippingCost, standardTicketPrice, standardTicketQuantity,vipTicketPrice, vipTicketQuantity,vvipTicketPrice,vvipTicketQuantity,date,time,eventPhoto.getBytes(),encodedPhoto.getBytes());
 
         eventDao.save(event);
 
