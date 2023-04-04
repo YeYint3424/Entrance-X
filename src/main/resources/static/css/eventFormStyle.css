@@ -1,21 +1,7 @@
 html body{
     padding-top:130px;
     font-family:sans-serif;
-    background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
-    animation: color 10s ease-in-out infinite;
-}
-
-
-@keyframes color {
-    0%{
-        background-position: 0 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0 50%;
-    }
+    background:linear-gradient(rgb(73, 67, 73),rgb(29, 3, 28));
 }
 
 /* navbar */
@@ -169,15 +155,15 @@ html body{
 
 
 
-.input-box, .ticket-box, .promotion-box, .form-btn{
+.input-box, .ticket-box, .promotion-box, .form-btn, .payment-box{
     padding-bottom:15px;
 }
 
-.ticket-box h5{
+.ticket-box h5, .payment-box h5{
     font-size:17px;
 }
 
-.ticket-type label{
+.ticket-type label, .payment-type label{
     font-size:14px;
 }
 
@@ -188,15 +174,26 @@ html body{
     flex-wrap: wrap;
 }
 
-.ticket-box .ticket{
+.payment-box :where(.payment-type, .payment) {
+    display:flex;
+    align-items:center;
+    column-gap:50px;
+    flex-wrap: wrap;
+}
+
+.ticket-box .ticket, .payment-box .payment{
     column-gap: 5px;
 }
 
-.ticket input{
+.ticket input, .payment input{
     accent-color:turquoise;
 }
 
 .ticket-box :where(.ticket input, .ticket label){
+    cursor:pointer;
+}
+
+.payment-box :where(.payment input, .payment label){
     cursor:pointer;
 }
 

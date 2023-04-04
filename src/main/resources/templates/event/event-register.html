@@ -9,10 +9,11 @@
     <title>event registeration form</title>
 </head>
 <body>
+
 <!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" ><img src="css/exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#" ><img src="exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
@@ -35,9 +36,10 @@
 
                             <li><a href="">Events</a>
                                 <ul>
-                                    <li><a href="/org-ongoing">Ongoing</a></li>
-                                    <li><a href="/org-future">Future</a></li>
-                                    <li><a href="/org-sale-record">Sale Record</a></li>
+                                    <li><a href="">Trending</a></li>
+                                    <li><a href="">This month</a></li>
+                                    <li><a href="">Upcoming</a></li>
+                                    <li><a href="">Promotion</a></li>
                                 </ul>
                             </li>
                             <li><a  href="">Sign Up</a></li>
@@ -63,35 +65,42 @@
                 <h4>Event Registration Form</h4>
             </div>
             <div class="panel-body">
-                <form method="post" enctype="multipart/form-data">
+                <form>
                     <div class="input-box mb-3">
                         <label for="eventName" class="form-label">Event Name</label>
-                        <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Enter event name" required>
-                    </div>
-
-                    <div class="input-box mb-3" style="width:49%;display:inline-block">
-                        <label for="time" class="form-label">Time</label>
-                        <input type="time" class="form-control" id="time" name="time" placeholder="Enter event time" required>
-                    </div>
-
-                    <div class="input-box mb-3" style="width:49%;display:inline-block">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" placeholder="Enter event date" required>
+                        <input type="text" class="form-control" id="eventName" placeholder="Enter event name" required>
                     </div>
 
                     <div class="input-box mb-3">
-                        <label for="venue" class="form-label">Venue</label>
-                        <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event venue" required>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" placeholder="dd-mm-yyyy" required>
+                    </div>
+
+
+                    <div class="input-box mb-3" style="width:49%;display:inline-block">
+                        <label for="startTime" class="form-label">Start Time</label>
+                        <input type="time" class="form-control" id="startTime" placeholder="Enter event start time" required>
+                    </div>
+
+                    <div class="input-box mb-3" style="width:49%;display:inline-block">
+                        <label for="endTime" class="form-label">End Time</label>
+                        <input type="time" class="form-control" id="endTime" placeholder="Enter event end time" required>
+                    </div>
+
+
+                    <div class="input-box mb-3">
+                        <label for="place" class="form-label">Place</label>
+                        <input type="text" class="form-control" id="place" placeholder="Enter event place" required>
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="artist" class="form-label">Artists</label>
-                        <input type="text" class="form-control" id="artist" name="artist" placeholder="Enter artist names" required>
+                        <input type="text" class="form-control" id="artist" placeholder="Enter artist names" required>
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="eventPhoto" class="form-label">Event Photo</label>
-                        <input type="file" class="form-control" id="eventPhoto" name="eventPhoto" accept="image/*" required>
+                        <input type="file" class="form-control" id="eventPhoto" required>
                     </div>
 
                     <div class="ticket-box">
@@ -119,40 +128,44 @@
                         </div>
                     </div>
 
-<!--                    <div class="input-box mb-3">-->
-<!--                        <label for="ticketLimit" class="form-label">Ticket Limit</label>-->
-<!--                        <input type="number" class="form-control" id="ticketLimit" placeholder="Enter ticket limit" required>-->
-<!--                    </div>-->
 
-                    <div class="input-box mb-3" id="standard-check" style="display:none">
+                    <div id="standard-check" style="display:none">
+                        <div class="input-box mb-3" >
+                            <label for="standardPrice" class="form-label">Standard Ticket Price</label>
+                            <input type="number" min="1" class="form-control" id="standardPrice" placeholder="Enter standard ticket price in kyats" required>
 
-                        <label for="standardTicketQuantity" class="form-label">Standard Ticket Quantity</label>
-                        <input type="number" class="form-control" id="standardTicketQuantity" name="standardTicketQuantity" placeholder="Enter Standard Ticket Quantity" >
-                        <br>
-                        <label for="standardTicketPrice" class="form-label">Standard Ticket Price</label>
-                        <input type="number" class="form-control" id="standardTicketPrice" name="standardTicketPrice" placeholder="Enter standard ticket price in kyats" >
-
+                        </div>
+                        <div class="input-box mb-3">
+                            <label for="standardTicketLimit" class="form-label">Standard Ticket Limit</label>
+                            <input type="number" min="1" class="form-control" id="standardTicketLimit" placeholder="Enter standard ticket limit" required>
+                        </div>
                     </div>
 
-                    <div class="input-box mb-3" id="vip-check" style="display:none">
+                    <div id="vip-check" style="display:none">
+                        <div class="input-box mb-3">
+                            <label for="vipPrice" class="form-label">VIP Ticket Price</label>
+                            <input type="number" min="1" class="form-control" id="vipPrice" placeholder="Enter VIP ticket price in kyats" required>
 
-                        <label for="vipTicketQuantity" class="form-label">Vip Ticket Quantity</label>
-                        <input type="number" class="form-control" id="vipTicketQuantity" name="vipTicketQuantity" placeholder="Enter Vip Ticket Quantity" >
-                        <br>
-                        <label for="vipTicketPrice" class="form-label">Vip Ticket Price</label>
-                        <input type="number" class="form-control" id="vipTicketPrice" name="vipTicketPrice" placeholder="Enter Vip Ticket price in kyats" >
-
+                        </div>
+                        <div class="input-box mb-3">
+                            <label for="vipTicketLimit" class="form-label">VIP Ticket Limit</label>
+                            <input type="number" min="1" class="form-control" id="vipTicketLimit" placeholder="Enter VIP ticket limit" required>
+                        </div>
                     </div>
 
-                    <div class="input-box mb-3" id="vvip-check" style="display:none">
+                    <div id="vvip-check" style="display:none">
+                        <div class="input-box mb-3" >
+                            <label for="vvipPrice" class="form-label">VVIP Ticket Price</label>
+                            <input type="number" min="1" class="form-control" id="vvipPrice" placeholder="Enter VVIP ticket price in kyats" required>
 
-                        <label for="vvipTicketQuantity" class="form-label">VVip Ticket Quantity</label>
-                        <input type="number" class="form-control" id="vvipTicketQuantity" name="vvipTicketQuantity" placeholder="Enter VVip Ticket Quantity">
-                        <br>
-                        <label for="VVipTicketPrice" class="form-label">VVip Ticket Price</label>
-                        <input type="number" class="form-control" id="VVipTicketPrice" name="vvipTicketPrice" placeholder="Enter VVip Ticket price in kyats">
-
+                        </div>
+                        <div class="input-box mb-3">
+                            <label for="vvipTicketLimit" class="form-label">VVIP Ticket Limit</label>
+                            <input type="number" min="1" class="form-control" id="vvipTicketLimit" placeholder="Enter VVIP ticket limit" required>
+                        </div>
                     </div>
+
+
 
 
                     <div class="promotion-box form-check mb-3">
@@ -165,32 +178,45 @@
                     <div id="promotion-info" style="display:none">
                         <div class="input-box mb-3">
                             <label for="promotion" class="form-label">Promotion</label>
-                            <input type="number" class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %">
+                            <input type="number" min="0.01" max="100" step=".01" ^\d*\.\d{2}$ class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %">
                         </div>
-
-<!--                        <div class="input-box mb-3">-->
-<!--                            <label for="promotionPrice" class="form-label">New Price for Promotion</label>-->
-<!--                            <input type="number" class="form-control" id="promotionPrice"  placeholder="Enter new price for promotion in kyats">-->
-<!--                        </div>-->
                     </div>
 
-                    <div class="input-box mb-3">
-                        <label for="shippingCost" class="form-label">Shipping Fee</label>
-                        <input type="number" class="form-control" id="shippingCost" name="shippingCost" placeholder="Enter shipping fee in kyats" required>
+                    <div class="payment-box">
+                        <h5>Payment Method</h5>
+                        <div class="payment-type">
+                            <div class="payment form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="Wavepay" id="wavepay" name="paymentMethod" onclick="showWavepay()">
+                                <label class="form-check-label" for="wavepay" >
+                                    Wavepay
+                                </label>
+                            </div>
+                            <div class="payment form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="Kpay" id="kpay" name="paymentMethod" onclick="showKpay()">
+                                <label class="form-check-label" for="kpay">
+                                    Kpay
+                                </label>
+                            </div>
+
+                        </div>
                     </div>
 
-<!--                    <div class="input-box mb-3">-->
-<!--                        <label for="total" class="form-label">Total</label>-->
-<!--                        <input type="number" class="form-control" id="total" placeholder="Enter total price in kyats" required>-->
-<!--                    </div>-->
+                    <div id="wavepay-check" style="display:none">
+                        <div class="input-box mb-3" >
+                            <label for="wavepayQR" class="form-label">Wavepay QR Image</label>
+                            <input type="file" class="form-control" id="wavepayQR" >
+                        </div>
+                    </div>
+
+                    <div id="kpay-check" style="display:none">
+                        <div class="input-box mb-3" >
+                            <label for="kpayQR" class="form-label">Kpay QR Image</label>
+                            <input type="file" class="form-control" id="kpayQR" >
+                        </div>
+                    </div>
 
                     <div class="input-box form-floating mb-3">
-                        <textarea class="form-control" placeholder="Describe the event..." id="paymentMethod" name="paymentMethod" style="height:150px"></textarea>
-                        <label for="paymentMethod">Enter Payment Method and Payment Account</label>
-                    </div>
-
-                    <div class="input-box form-floating mb-3">
-                        <textarea class="form-control" placeholder="Describe the event..." id="eventDescription" name="eventDescription" style="height:150px"></textarea>
+                        <textarea class="form-control"  id="eventDescription" style="height:150px"></textarea>
                         <label for="eventDescription">Event Description</label>
                     </div>
                     <div class="form-btn">
@@ -207,7 +233,7 @@
 <footer>
     <div class="footer-content">
 
-        <img src="css/exlogotest3.png"  alt="logo">
+        <img src="exlogotest3.png"  alt="logo">
         <p >ENTRANCEX</p>
 
 
@@ -281,7 +307,29 @@
         }
     }
 
+    function showWavepay(){
+        var wavepay=document.getElementById("wavepay");
+        var wavepayCheck=document.getElementById("wavepay-check");
+        if(wavepay.checked == true){
+            wavepayCheck.style.display="block";}
+        else{
+            wavepayCheck.style.display="none";
+        }
+    }
+
+    function showKpay(){
+        var kpay=document.getElementById("kpay");
+        var kpayCheck=document.getElementById("kpay-check");
+        if(kpay.checked == true){
+            kpayCheck.style.display="block";}
+        else{
+            kpayCheck.style.display="none";
+        }
+    }
+
 </script>
+</body>
+</html>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
