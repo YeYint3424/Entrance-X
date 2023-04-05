@@ -20,7 +20,8 @@ public class Admin {
     @Column(length = 30)
     private String adminName, userName, email, password;
 
-
+    @Column(length = 15)
+    private String role;
 
 
 }

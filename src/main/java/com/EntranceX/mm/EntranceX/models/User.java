@@ -27,7 +27,7 @@ public class User {
     private LocalDate dateOfBirth;
     private int status;
     @Column(length = 15)
-    private  String phone;
+    private  String phone, role;
 
     private String password;
 //    one to many from user to order & history
