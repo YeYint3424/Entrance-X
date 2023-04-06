@@ -29,11 +29,7 @@ public class Event {
 
     @Lob
     @Column(columnDefinition = "longblob")
-    private byte[] photo;
-
-    @Lob
-    @Column(columnDefinition = "longblob")
-    private byte[] encodedPhoto;
+    private byte[] photo,encodedPhoto;
 
 //  many to one join with event to organizer
     @ManyToOne(fetch = FetchType.LAZY)

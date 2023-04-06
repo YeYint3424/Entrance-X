@@ -10,14 +10,16 @@
 </head>
 <body>
 <!--navbar-->
+
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" ><img src="css/exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" href="/org-page">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/organizer-signup}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -32,21 +34,18 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-
-                            <li><a href="">Events</a>
+                            <li><a style="color: white">Events</a>
                                 <ul>
                                     <li><a href="/org-ongoing">Ongoing</a></li>
                                     <li><a href="/org-future">Future</a></li>
                                     <li><a href="/org-sale-record">Sale Record</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
-                            <li><a  href="">About</a></li>
-                            <li><a  href="">Help</a></li>
-                            <li><a  href="">Contact</a></li>
-                            <li><a  href="">Terms and Conditions</a></li>
-                            <li><a  href="">Privacy Policy</a></li>
+                            <li><a  href="/org-help">Help</a></li>
+                            <li><a  href="/org-about">About</a></li>
+                            <li><a  href="/org-contact">Contact</a></li>
+                            <li><a  href="/org-term">Terms and Conditions</a></li>
+                            <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,6 +53,26 @@
         </div>
     </div>
 </nav>
+<!--        nav-bar end         -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--event form-->
 <div class="container">

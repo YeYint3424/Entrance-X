@@ -10,22 +10,9 @@ body{
 
 }
 .wrapper{
-    background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     min-height: 100vh;
     width: 100%;
-    background-size: 200% 200%;
-    animation: color 10s ease-in-out infinite;
-}
-@keyframes color {
-    0%{
-        background-position: 0 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0 50%;
-    }
 }
 
 .wrapper .container .main-content{
@@ -40,9 +27,9 @@ body{
     position: center;
 }
 .card-title{
+    font-family: "Lucida Handwriting";
     color: white;
-    text-shadow: 1px 2px brown;
-    text-outline: #111111;
+    text-shadow: 1px 2px black;
     font-size: 23px;
     position: center;
     right: 80px;
@@ -53,8 +40,10 @@ body{
     position: center;
 }
 .wrapper .main-content .slide-img{
-    max-height: 350px;
-    min-height: 350px;
+    margin-top: 90px;
+    max-height: 460px;
+    min-height: 460px;
+    margin-bottom: 70px;
 }
 .add-event-img{
     max-height: 200px;
@@ -77,10 +66,15 @@ body{
 }
 
 .wrapper .main-content .event-type{
+    font-family: Serif;
+    text-shadow:2px 2px 3px black ;
     font-size: 25px;
-    color: greenyellow;
-    text-shadow: 2px 2px 3px brown;
+    color: white;
     position: center;
+}
+.card-text{
+    color: #ffffff;
+    text-shadow:1px 1px black ;
 }
 .wrapper .main-content .event-see-more{
     font-size: 25px;
@@ -177,7 +171,6 @@ body{
 .navlist1 a i:hover{
     font-size: 22px;
 }
-
 
 
 #offcanvasRight{
@@ -524,6 +517,7 @@ footer .footer-content .social li{
     }
 }
 .card{
+    background: linear-gradient(to left, #6bf7ff, #00b3be);
     box-shadow: 4px 4px #111111;
 }
 

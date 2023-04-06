@@ -20,9 +20,15 @@
         <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </li>
+                <li class="navlist1"><a class="navlist2" href="/user-page">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -37,9 +43,7 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-
-                            <li><a href="">Events
-                            </a>
+                            <li><a class="text:white">Events</a>
                                 <ul>
                                     <li><a href="/user-trending">Trending</a></li>
                                     <li><a href="/user-this-month">This month</a></li>
@@ -49,12 +53,11 @@
                                     <li><a href="/user-history">History</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
-                            <li><a  href="">About</a></li>
-                            <li><a  href="">Contact</a></li>
-                            <li><a  href="">Terms and Conditions</a></li>
-                            <li><a  href="">Privacy Policy</a></li>
+                            <li><a  href="/user-about">About</a></li>
+                            <li><a  href="/user-help">help</a></li>
+                            <li><a  href="/user-contact">Contact</a></li>
+                            <li><a  href="/user-term">Terms and Conditions</a></li>
+                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,6 +65,25 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="container mx-auto" id="cardContainer">
