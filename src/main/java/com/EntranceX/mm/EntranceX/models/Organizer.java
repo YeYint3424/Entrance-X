@@ -37,6 +37,153 @@ public class Organizer {
     @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events= new ArrayList<>();
 
+    public Organizer(String userName, String organizerName, String companyName, String organizerEmail, String organizerPhone, String companyEmail, String companyPhone, String companyAddress, String companyBio, String encodedPassword) {
+    }
+
+    public int getOrganizer_id() {
+        return organizer_id;
+    }
+
+    public void setOrganizer_id(int organizer_id) {
+        this.organizer_id = organizer_id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getOrganizerName() {
+        return organizerName;
+    }
+
+    public void setOrganizerName(String organizerName) {
+        this.organizerName = organizerName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getOrganizerEmail() {
+        return organizerEmail;
+    }
+
+    public void setOrganizerEmail(String organizerEmail) {
+        this.organizerEmail = organizerEmail;
+    }
+
+    public String getCompanyEmail() {
+        return companyEmail;
+    }
+
+    public void setCompanyEmail(String companyEmail) {
+        this.companyEmail = companyEmail;
+    }
+
+    public String getOrganizerPhone() {
+        return organizerPhone;
+    }
+
+    public void setOrganizerPhone(String organizerPhone) {
+        this.organizerPhone = organizerPhone;
+    }
+
+    public String getCompanyPhone() {
+        return companyPhone;
+    }
+
+    public void setCompanyPhone(String companyPhone) {
+        this.companyPhone = companyPhone;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public String getCompanyBio() {
+        return companyBio;
+    }
+
+    public void setCompanyBio(String companyBio) {
+        this.companyBio = companyBio;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public byte[] getKpayQr() {
+        return kpayQr;
+    }
+
+    public void setKpayQr(byte[] kpayQr) {
+        this.kpayQr = kpayQr;
+    }
+
+    public byte[] getWavepayQr() {
+        return wavepayQr;
+    }
+
+    public void setWavepayQr(byte[] wavepayQr) {
+        this.wavepayQr = wavepayQr;
+    }
+
+    public byte[] getKpayQrEncoded() {
+        return kpayQrEncoded;
+    }
+
+    public void setKpayQrEncoded(byte[] kpayQrEncoded) {
+        this.kpayQrEncoded = kpayQrEncoded;
+    }
+
+    public byte[] getWavepayQrEncoded() {
+        return wavepayQrEncoded;
+    }
+
+    public void setWavepayQrEncoded(byte[] wavepayQrEncoded) {
+        this.wavepayQrEncoded = wavepayQrEncoded;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
     public Organizer(int organizer_id, String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status, byte[] kpayQr, byte[] wavepayQr, byte[] kpayQrEncoded, byte[] wavepayQrEncoded) {
         this.organizer_id = organizer_id;
         this.userName = userName;
