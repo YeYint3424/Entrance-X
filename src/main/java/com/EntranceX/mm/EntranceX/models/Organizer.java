@@ -29,15 +29,13 @@ public class Organizer {
     private String companyAddress,companyBio, password;
     private int status;
 
-    @Lob
-    @Column(columnDefinition = "longblob")
-    private byte[] kpayQr, wavepayQr, kpayQrEncoded, wavepayQrEncoded;
+
 
 //  one to many from Organizer to Event
     @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events= new ArrayList<>();
 
-    public Organizer(int organizer_id, String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status, byte[] kpayQr, byte[] wavepayQr, byte[] kpayQrEncoded, byte[] wavepayQrEncoded) {
+    public Organizer(int organizer_id, String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password) {
         this.organizer_id = organizer_id;
         this.userName = userName;
         this.organizerName = organizerName;
@@ -49,14 +47,11 @@ public class Organizer {
         this.companyAddress = companyAddress;
         this.companyBio = companyBio;
         this.password = password;
-        this.status = status;
-        this.kpayQr = kpayQr;
-        this.wavepayQr = wavepayQr;
-        this.kpayQrEncoded = kpayQrEncoded;
-        this.wavepayQrEncoded = wavepayQrEncoded;
+
+
     }
 
-    public Organizer(String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status, byte[] kpayQr, byte[] wavepayQr, byte[] kpayQrEncoded, byte[] wavepayQrEncoded) {
+    public Organizer(String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password) {
         this.userName = userName;
         this.organizerName = organizerName;
         this.companyName = companyName;
@@ -67,11 +62,8 @@ public class Organizer {
         this.companyAddress = companyAddress;
         this.companyBio = companyBio;
         this.password = password;
-        this.status = status;
-        this.kpayQr = kpayQr;
-        this.wavepayQr = wavepayQr;
-        this.kpayQrEncoded = kpayQrEncoded;
-        this.wavepayQrEncoded = wavepayQrEncoded;
+
+
     }
 
     public Organizer() {

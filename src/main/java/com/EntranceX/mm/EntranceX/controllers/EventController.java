@@ -1,55 +1,43 @@
 package com.EntranceX.mm.EntranceX.controllers;
 
+
 import com.EntranceX.mm.EntranceX.dao.EventDao;
+import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
+import com.EntranceX.mm.EntranceX.dto.EventDto;
+
 import com.EntranceX.mm.EntranceX.models.Event;
-import jakarta.annotation.PostConstruct;
-import org.apache.tomcat.util.codec.binary.Base64;
+import com.EntranceX.mm.EntranceX.services.EventService;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
+
 
 @Controller
 public class EventController {
-@Autowired
+    @Autowired
     EventDao eventDao;
 
+    @Autowired
+    OrganizerDao organizerDao;
+    @Autowired
+    EventService eventService;
+
     @GetMapping("/event-register")
-    public String registerEvent(){return "event/event-register";}
+    public String registerEvent(HttpSession session){
+        session.getAttribute("LoginOrganizer");
+        return "event/event-register";}
 
-    @PostMapping("/event-register")
-    public String registerEventPost(@RequestParam("eventName") String eventName, @RequestParam("time") String time, @RequestParam("date")LocalDate date,
-                                    @RequestParam("venue") String venue, @RequestParam("artist")String artist, @RequestParam("eventPhoto") MultipartFile eventPhoto,
-                                    @RequestParam("standardTicketQuantity")int standardTicketQuantity, @RequestParam("standardTicketPrice")int standardTicketPrice,
-                                    @RequestParam("vipTicketQuantity")int vipTicketQuantity, @RequestParam("vipTicketPrice")int vipTicketPrice,
-                                    @RequestParam("vvipTicketQuantity")int vvipTicketQuantity, @RequestParam("vvipTicketPrice")int vvipTicketPrice,
-                                    @RequestParam("promotion")int promotion, @RequestParam("shippingCost")int shippingCost, @RequestParam("paymentMethod")String paymentMethod,
-                                    @RequestParam("eventDescription")String eventDescription) throws IOException {
-
-
-        // Encode the byte array to a Base64 string
-         String encodedPhoto = Base64.encodeBase64String(eventPhoto.getBytes());
-
-//        String stp=String.valueOf(standardTicketPrice);
-//        String vtp=String.valueOf(vipTicketPrice);
-//        String vvtp=String.valueOf(vvipTicketPrice);
-//        String stq=String.valueOf(standardTicketQuantity);
-//        String vtq=String.valueOf(vipTicketQuantity);
-//        String vvtq=String.valueOf(vvipTicketQuantity);
-
-
-
-        Event event= new Event(eventName, venue, artist, promotion, paymentMethod, eventDescription, shippingCost, standardTicketPrice, standardTicketQuantity,vipTicketPrice, vipTicketQuantity,vvipTicketPrice,vvipTicketQuantity,date,time,eventPhoto.getBytes(),encodedPhoto.getBytes());
-
-        eventDao.save(event);
-
+    @PostMapping(value = "/event-register")
+    public String createEvent(@ModelAttribute EventDto eventDto, Model model) throws IOException {
+        eventService.createEvent(eventDto);
+        model.addAttribute("message", "Event created successfully!");
         return "redirect:/org-page";
     }
 

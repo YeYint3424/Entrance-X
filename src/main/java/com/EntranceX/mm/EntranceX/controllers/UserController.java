@@ -2,14 +2,16 @@ package com.EntranceX.mm.EntranceX.controllers;
 
 
 import com.EntranceX.mm.EntranceX.dao.UserDao;
+import com.EntranceX.mm.EntranceX.dto.EventDto;
+import com.EntranceX.mm.EntranceX.dto.UserDto;
+import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.User;
+import com.EntranceX.mm.EntranceX.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -21,6 +23,9 @@ public class UserController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping("/user-profile")
     public String user_profile(){
@@ -82,14 +87,10 @@ public class UserController {
     }
 
     @PostMapping(value = "/user-signup")
-    public String userRegister(@RequestParam("name")String name, @RequestParam("userName") String userName, @RequestParam("dateOfBirth") LocalDate dateOfBirth,
-                               @RequestParam("gender") String gender, @RequestParam("phone") String phone,
-                               @RequestParam("email") String email, @RequestParam("password") String password) {
+    public String userRegisterPost(@ModelAttribute UserDto userDto, Model model) {
+        userService.createUser(userDto);
+        model.addAttribute("message", "Event created successfully!");
 
-        String encodedPassword = passwordEncoder.encode(password);
-        User user = new User(name , userName, email, gender,  phone,encodedPassword, dateOfBirth);
-
-        userDao.save(user);
         return "redirect:/login";
     }
 

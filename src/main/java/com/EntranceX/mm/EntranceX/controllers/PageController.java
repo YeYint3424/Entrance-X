@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class PageController {
@@ -48,10 +50,7 @@ public class PageController {
         return "main/user-page";
     }
 
-    @GetMapping("/org-page")
-    public String org_home() {
-        return "main/org-page";
-    }
+
 
     @GetMapping("/about")
     public String about() {
@@ -93,7 +92,8 @@ public class PageController {
 
 
     @PostMapping(value = "/login")
-    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("loginPassword")String loginPassword, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("loginPassword")String loginPassword, HttpServletRequest request, RedirectAttributes redirectAttributes,
+                                Model model) {
 
         User user = userDao.findByUserName(userName);
         Organizer organizer = organizerDao.findByUserName(userName);
@@ -101,12 +101,21 @@ public class PageController {
 
         if (user!=null && passwordEncoder.matches(loginPassword, user.getPassword())) {
 
+            HttpSession session = request.getSession();
+            session.setAttribute("LoginUser",user);
+
             // User login successful
             return "redirect:/user-page";
         } else if (organizer!=null && passwordEncoder.matches(loginPassword, organizer.getPassword())) {
+            HttpSession session = request.getSession();
+            session.setAttribute("LoginOrganizer",organizer);
+
             // Organizer login successful
             return "redirect:/org-page";
         } else if (admin!=null && passwordEncoder.matches(loginPassword, admin.getPassword())) {
+            HttpSession session = request.getSession();
+            session.setAttribute("LoginAdmin",admin);
+
             // Admin login successful
             return "redirect:/admin";
         } else {
@@ -117,37 +126,43 @@ public class PageController {
     }
 
 
+    @GetMapping("/admin")
+    public String admin(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+
+            return "admin/admin";
+        } else {
+            return "redirect:/login";
+        }
+        }
 
 
-
-//    @PostMapping(value = "user/signup")
-//    public String userRegister(@RequestParam("userName") String userName, @RequestParam("dateOfBirth") LocalDate dateOfBirth,
-//                               @RequestParam("gender") String gender, @RequestParam("phone") String phone,
-//                               @RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("name")String name) {
-//
-//        userService.createUser(name, userName, email ,gender, phone, password, dateOfBirth);
-//       ;
-//        return "redirect:/login";
-//    }
-
-
-    @RequestMapping("/admin")
-    public String admin(){
-        return "admin/admin";
-    }
-
-
-    @RequestMapping("/event-approve")
-    public String eventApprove() {
+    @GetMapping("/event-approve")
+    public String eventApprove(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
         return "admin/event-approve";
+    }else {
+            return "redirect:/login"; }
     }
-    @RequestMapping("/unban")
-    public String unban() {
+
+    @GetMapping("/unban")
+    public String unban(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
         return "admin/unban";
-    }
-    @RequestMapping("/voucher-approve")
-    public String voucherApprove() {
+    }else {
+        return "redirect:/login"; }}
+
+    @GetMapping("/voucher-approve")
+    public String voucherApprove(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
         return "admin/voucher-approve";
     }
+    else {
+        return "redirect:/login"; }
+}
 }
 
