@@ -55,4 +55,7 @@ public class EventController {
 
     @GetMapping("/event-detail")
     public String eventDetails(){return "event/event-detail";}
+
+    @GetMapping("/order-payment")
+    public String orderPayment(){return "event/order-payment";}
 }
