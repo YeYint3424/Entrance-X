@@ -9,13 +9,36 @@
     <link href="http://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/custom.css">
+    <style>
+        body{
+            font-family: "Times New Roman";
+            background: white;
+            margin-top: 60px;
+
+        }
+        .card{
+            background: #000000;
+            text-align: center;
+            color: revert;
+            font-family: "Times New Roman";
+        }
+        .card-body{
+            font-size: 20px;
+            font-family: "Times New Roman";
+            color: white;
+        }
+        .card-body i{
+            font-size: 25px;
+        }
+
+    </style>
 
     <title>Admin</title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="css/ex.jpg" width="30px" height="30px" alt=""> Entrance-X</a>
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
@@ -27,86 +50,79 @@
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/unban">UnBan</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/">Log-Out</a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out from Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<div class="wrapper" style="background: midnightblue">
-    <!--         main page         -->
-    <!--        Event Type          -->
-    <div class="container event-type" >
-
-        <table class="table"style="margin-top: 65px;" >
-            <thead>
-            <tr>
-                <th scope="col " class="event-type tc">User</th>
-            </tr>
-            </thead>
-        </table>
-        <table class="table table-striped tc">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Username</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td style="color: white">1</td>
-                <td style="color: white">Minpapa</td>
-                <td style="color: white">Phay Phay</td>
-                <td style="color: white"><button type="submit" class="btn btn-danger">Ban</button></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <table class="table"style="margin-top: 70px;" >
-            <thead>
-            <tr>
-                <th scope="col " class="event-type tc">Organizer</th>
-            </tr>
-            </thead>
-        </table>
-        <table class="table table-striped tc">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Org-Name</th>
-                <th scope="col">Username</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td style="color: white">1</td>
-                <td style="color: white">mm.org</td>
-                <td style="color: white">papa</td>
-                <td style="color: white"><button type="submit" class="btn btn-danger">Ban</button></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-<footer>
-    <div class="footer-content">
-
-        <img src="" width="40px" height="40px" alt="logo">
-        <p>ENTRANCEX</p>
-
-        <div class="footer-bottom">
-            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
         </div>
     </div>
+</div>
+    <!--         main page         -->
+    <div class="container" style="margin-top: 100px">
+       <div class="row">
+           <div class="col-md-3">
+               <div class="card" style="width: 10rem;height: 10rem">
+                   <div class="card-body">
+                       Event-Approve
+                       <br>
+                       <br>
+                       <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+                   </div>
+               </div>
+           </div>
 
+           <div class="col-md-3">
+               <div class="card" style="width: 10rem;height: 10rem">
+                   <div class="card-body">
+                       Event-Approve
+                       <br>
+                       <br>
+                       <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+                   </div>
+               </div>
+           </div>
 
-</footer>
+           <div class="col-md-3">
+               <div class="card" style="width: 10rem;height: 10rem">
+                   <div class="card-body">
+                       Event-Approve
+                       <br>
+                       <br>
+                       <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+                   </div>
+               </div>
+           </div>
+
+           <div class="col-md-3">
+               <div class="card" style="width: 10rem;height: 10rem">
+                   <div class="card-body">
+                       Event-Approve
+                       <br>
+                       <br>
+                       <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
 
 
 
