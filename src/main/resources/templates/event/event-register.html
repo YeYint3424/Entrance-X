@@ -65,42 +65,42 @@
                 <h4>Event Registration Form</h4>
             </div>
             <div class="panel-body">
-                <form>
+                <form method="post" enctype="multipart/form-data">
                     <div class="input-box mb-3">
                         <label for="eventName" class="form-label">Event Name</label>
-                        <input type="text" class="form-control" id="eventName" placeholder="Enter event name" required>
+                        <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Enter event name" required>
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" placeholder="dd-mm-yyyy" required>
+                        <input type="date" class="form-control" id="date" name="date" placeholder="dd-mm-yyyy" required>
                     </div>
 
 
                     <div class="input-box mb-3" style="width:49%;display:inline-block">
                         <label for="startTime" class="form-label">Start Time</label>
-                        <input type="time" class="form-control" id="startTime" placeholder="Enter event start time" required>
+                        <input type="time" class="form-control" id="startTime" name="startTime" placeholder="Enter event start time" required>
                     </div>
 
                     <div class="input-box mb-3" style="width:49%;display:inline-block">
                         <label for="endTime" class="form-label">End Time</label>
-                        <input type="time" class="form-control" id="endTime" placeholder="Enter event end time" required>
+                        <input type="time" class="form-control" id="endTime" name="endTime" placeholder="Enter event end time" required>
                     </div>
 
 
                     <div class="input-box mb-3">
-                        <label for="place" class="form-label">Place</label>
-                        <input type="text" class="form-control" id="place" placeholder="Enter event place" required>
+                        <label for="venue" class="form-label">Place</label>
+                        <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event place" required>
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="artist" class="form-label">Artists</label>
-                        <input type="text" class="form-control" id="artist" placeholder="Enter artist names" required>
+                        <input type="text" class="form-control" id="artist" name="artist" placeholder="Enter artist names" required>
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="eventPhoto" class="form-label">Event Photo</label>
-                        <input type="file" class="form-control" id="eventPhoto" required>
+                        <input type="file" class="form-control" id="eventPhoto" name="eventPhoto" required accept="image/*">
                     </div>
 
                     <div class="ticket-box">
@@ -132,36 +132,36 @@
                     <div id="standard-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="standardPrice" class="form-label">Standard Ticket Price</label>
-                            <input type="number" min="1" class="form-control" id="standardPrice" placeholder="Enter standard ticket price in kyats" required>
+                            <input type="number" min="1" class="form-control" id="standardPrice" name="standardTicketPrice" placeholder="Enter standard ticket price in kyats" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="standardTicketLimit" class="form-label">Standard Ticket Limit</label>
-                            <input type="number" min="1" class="form-control" id="standardTicketLimit" placeholder="Enter standard ticket limit" required>
+                            <input type="number" min="1" class="form-control" id="standardTicketLimit" name="standardTicketQuantity" placeholder="Enter standard ticket limit" required>
                         </div>
                     </div>
 
                     <div id="vip-check" style="display:none">
                         <div class="input-box mb-3">
                             <label for="vipPrice" class="form-label">VIP Ticket Price</label>
-                            <input type="number" min="1" class="form-control" id="vipPrice" placeholder="Enter VIP ticket price in kyats" required>
+                            <input type="number" min="1" class="form-control" id="vipPrice" name="vipTicketPrice" placeholder="Enter VIP ticket price in kyats" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="vipTicketLimit" class="form-label">VIP Ticket Limit</label>
-                            <input type="number" min="1" class="form-control" id="vipTicketLimit" placeholder="Enter VIP ticket limit" required>
+                            <input type="number" min="1" class="form-control" id="vipTicketLimit" name="vipTicketQuantity" placeholder="Enter VIP ticket limit" required>
                         </div>
                     </div>
 
                     <div id="vvip-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="vvipPrice" class="form-label">VVIP Ticket Price</label>
-                            <input type="number" min="1" class="form-control" id="vvipPrice" placeholder="Enter VVIP ticket price in kyats" required>
+                            <input type="number" min="1" class="form-control" id="vvipPrice" name="vvipTicketPrice" placeholder="Enter VVIP ticket price in kyats" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="vvipTicketLimit" class="form-label">VVIP Ticket Limit</label>
-                            <input type="number" min="1" class="form-control" id="vvipTicketLimit" placeholder="Enter VVIP ticket limit" required>
+                            <input type="number" min="1" class="form-control" id="vvipTicketLimit" name="vvipTicketQuantity" placeholder="Enter VVIP ticket limit" required>
                         </div>
                     </div>
 
@@ -204,20 +204,24 @@
                     <div id="wavepay-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="wavepayQR" class="form-label">Wavepay QR Image</label>
-                            <input type="file" class="form-control" id="wavepayQR" >
+                            <input type="file" class="form-control" id="wavepayQR" name="wavepayQr" accept="image/*">
                         </div>
                     </div>
 
                     <div id="kpay-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="kpayQR" class="form-label">Kpay QR Image</label>
-                            <input type="file" class="form-control" id="kpayQR" >
+                            <input type="file" class="form-control" id="kpayQR" name="kpayQr" accept="image/*">
                         </div>
                     </div>
 
                     <div class="input-box form-floating mb-3">
-                        <textarea class="form-control"  id="eventDescription" style="height:150px"></textarea>
+                        <textarea class="form-control"  id="eventDescription" name="eventDescription" style="height:150px"></textarea>
                         <label for="eventDescription">Event Description</label>
+                    </div>
+                    <div class="input-box mb-3">
+                        <label for="status" class="form-label"></label>
+                        <input type="hidden" class="form-control" id="status" name="status" value="0">
                     </div>
                     <div class="form-btn">
                         <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>

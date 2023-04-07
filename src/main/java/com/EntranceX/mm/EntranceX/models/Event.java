@@ -21,15 +21,17 @@ public class Event {
     private int event_id;
 
     @Column(length = 30)
-    private String eventName, venue, time;
+    private String eventName, venue, startTime, endTime;
 
-    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, shippingCost, status;
+    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, status;
     private LocalDate date;
-    private String artist, paymentMethod, eventDescription;
+    private String artist, eventDescription;
 
     @Lob
     @Column(columnDefinition = "longblob")
-    private byte[] photo,encodedPhoto;
+    private String encodedPhoto, kpayQrEncoded, wavepayQrEncoded;
+
+
 
 //  many to one join with event to organizer
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,44 +47,5 @@ public class Event {
     public Event() {
     }
 
-    public Event(int event_id, String eventName, String venue, String artist, int promotion, String paymentMethod, String eventDescription,  int shippingCost, int standardTicketPrice, int standardTicketQuantity, int vipTicketPrice, int vipTicketQuantity, int vvipTicketPrice, int vvipTicketQuantity, LocalDate date, String time, byte[] photo, byte[]encodedPhoto) {
-        this.event_id = event_id;
-        this.eventName = eventName;
-        this.venue = venue;
-        this.artist = artist;
-        this.promotion = promotion;
-        this.paymentMethod = paymentMethod;
-        this.eventDescription = eventDescription;
-        this.encodedPhoto = encodedPhoto;
-        this.shippingCost = shippingCost;
-        this.standardTicketPrice = standardTicketPrice;
-        this.standardTicketQuantity = standardTicketQuantity;
-        this.vipTicketPrice = vipTicketPrice;
-        this.vipTicketQuantity = vipTicketQuantity;
-        this.vvipTicketPrice = vvipTicketPrice;
-        this.vvipTicketQuantity = vvipTicketQuantity;
-        this.date = date;
-        this.time = time;
-        this.photo = photo;
-    }
 
-    public Event(String eventName, String venue, String artist, int promotion, String paymentMethod, String eventDescription, int shippingCost, int standardTicketPrice, int standardTicketQuantity, int vipTicketPrice, int vipTicketQuantity, int vvipTicketPrice, int vvipTicketQuantity, LocalDate date, String time, byte[] photo,byte[]encodedPhoto) {
-        this.eventName = eventName;
-        this.venue = venue;
-        this.artist = artist;
-        this.promotion = promotion;
-        this.paymentMethod = paymentMethod;
-        this.eventDescription = eventDescription;
-        this.encodedPhoto = encodedPhoto;
-        this.shippingCost = shippingCost;
-        this.standardTicketPrice = standardTicketPrice;
-        this.standardTicketQuantity = standardTicketQuantity;
-        this.vipTicketPrice = vipTicketPrice;
-        this.vipTicketQuantity = vipTicketQuantity;
-        this.vvipTicketPrice = vvipTicketPrice;
-        this.vvipTicketQuantity = vvipTicketQuantity;
-        this.date = date;
-        this.time = time;
-        this.photo = photo;
-    }
 }
