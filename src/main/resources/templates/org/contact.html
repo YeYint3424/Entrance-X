@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/navfooter.css">
@@ -9,24 +9,10 @@
 
     <style>
         body{
-            background: linear-gradient(90deg,red,purple,darkblue, #10b4c0);
-            animation: color 10s ease-in-out infinite;
+            background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
 
         }
 
-
-
-        @keyframes color {
-            0%{
-                background-position: 0 50%;
-            }
-            50%{
-                background-position: 100% 50%;
-            }
-            100%{
-                background-position: 0 50%;
-            }
-        }
         @media (max-width:979px){
             #title{
                 padding-top:60px;
@@ -43,16 +29,20 @@
 </head>
 <body>
 
-
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="/org-page">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/organizer-signup}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+                <li class="navlist1">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </li>
+                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/login}">LogIn</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-signup}">SIGN-UP</a></li>
             </ul>
 
 
@@ -67,18 +57,22 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-                            <li><a style="color: white">Events</a>
+
+                            <li><a class="text:white">Events
+                            </a>
                                 <ul>
-                                    <li><a href="/org-ongoing">Ongoing</a></li>
-                                    <li><a href="/org-future">Future</a></li>
-                                    <li><a href="/org-sale-record">Sale Record</a></li>
+                                    <li><a href="/main-trending">Trending</a></li>
+                                    <li><a href="/main-this-month">This month</a></li>
+                                    <li><a href="/main-upcoming">Upcoming</a></li>
+                                    <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/org-help">Help</a></li>
-                            <li><a  href="/org-about">About</a></li>
-                            <li><a  href="/org-contact">Contact</a></li>
-                            <li><a  href="/org-term">Terms and Conditions</a></li>
-                            <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
+                            <li><a  th:href="@{/user-signup}">Sign-Up</a></li>
+                            <li><a  th:href="@{/login}">Log-In</a></li>
+                            <li><a  href="/about">About</a></li>
+                            <li><a  href="/contact">Contact</a></li>
+                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
+                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,28 +80,8 @@
         </div>
     </div>
 </nav>
-<!--        nav-bar end         -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Organizar Log-Out</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
 
-                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
-            </div>
-            <div class="modal-footer">
-                <a href="/">
-                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="title" class="py-md-5" style="text-align:center"><h5  style="padding-top:70px">We are here for you!</h5>
+<div id="title" class="py-md-5" style="text-align:center;color:#ffffff"><h5  style="padding-top:70px">We are here for you!</h5>
     <h6>Everyday: 7AM - 10pm MMT </h6></div>
 <div class="py-md-3">
     <div class="card text-center mb-3 mx-auto py-md-4" style="width: 270px; background-color:azure">
@@ -184,11 +158,11 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="/org-about">About</a></li>
-                <li><a href="/org-help">Help</a></li>
-                <li><a href="/org-contact">Contact</a></li>
-                <li><a href="/org-term">Terms and Conditions</a></li>
-                <li><a href="/org-privacyPolicy">Privacy Policy</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/help">Help</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/termsandconditions">Terms and Conditions</a></li>
+                <li><a href="/privacypolicy">Privacy Policy</a></li>
             </ul>
         </div>
 
@@ -199,6 +173,9 @@
 
 
 </footer>
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

@@ -1,7 +1,7 @@
 html body{
     font-family: sans-serif;
     padding-top:60px;
-    background:linear-gradient(rgb(73, 67, 73),rgb(29, 3, 28));
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);;
 }
 
 /* navbar */
@@ -157,7 +157,7 @@ html body{
     text-align: center;
     border-bottom-style: inset;
 
-    background:linear-gradient(90deg,rgb(92, 81, 92),rgb(199, 151, 191));
+    background:linear-gradient(90deg, #46c8ce, #2da3ff);
 
 
 }
@@ -176,7 +176,7 @@ html body{
 }
 
 #body-part{
-    background-color: rgb(235, 213, 231);
+    background-color: rgb(215, 227, 235);
 }
 
 .row h5{
@@ -203,7 +203,7 @@ html body{
 .card-footer{
     width:100%;
     text-align:center;
-    background:linear-gradient(90deg,rgb(92, 81, 92),rgb(199, 151, 191));
+    background:linear-gradient(90deg, #46c8ce, #2da3ff);
 }
 
 
@@ -213,13 +213,13 @@ html body{
     width:80px;
     border-radius:20px;
     color:#fff;
-    background-color:rgb(136, 73, 125);
+    background-color: #4b50ff;
     transition:all 0.2s ease;
     font-weight:bold;
 }
 
 .card-btn:hover{
-    background-color:rgb(68, 14, 59) ;
+    background-color: #1118ff;
 
 }
 

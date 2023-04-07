@@ -1,6 +1,6 @@
 
 html body{
-    background-color: #000;
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     padding:100px;
 }
 
@@ -137,9 +137,11 @@ html body{
 #card1 {
     width: auto;
     height: auto;
-    background: #000;
-    border: 2px solid #07ff07;
-    box-shadow: 2px 2px 15px #dafae6 inset;
+    background: transparent;
+    border:0;
+    font-weight:bold;
+    /*border: 2px solid #07ff07;
+    box-shadow: 2px 2px 15px #dafae6 inset; */
     text-align: center;
     color: #e8e8e8;
     display: flex;
@@ -148,10 +150,11 @@ html body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#card1:hover {
+
+/* #card1:hover {
     color: #07ff07;
     box-shadow: 2px 2px 15px #07ff07 inset;
-}
+} */
 
 .rainbow-hover{
     margin:8px;
@@ -363,6 +366,11 @@ footer .footer-content .social li{
 
     #container1{
         width:auto;
+    }
+
+    .rainbow-hover{
+        font-size:12px;
+        width:80px;
     }
 
     #paymentScreenshot{

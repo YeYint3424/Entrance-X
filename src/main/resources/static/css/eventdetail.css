@@ -1,6 +1,6 @@
 html body{
-    background-color: black;
-    padding-top:35px;
+    background: black;
+    padding-top:55px;
 
 }
 
@@ -138,9 +138,11 @@ html body{
 
 }
 
+
 #col1{
     border-right:1px solid;
     border-color: #39FF14;
+
 }
 
 .container p, .input-box{
@@ -152,11 +154,13 @@ html body{
     padding:10px;
     margin-top:30px;
     margin-bottom:30px;
+    margin-left:15px;
 
 }
 
 .text1 p{
     padding:4px;
+
 }
 
 #col2{
@@ -164,14 +168,22 @@ html body{
 
     margin-top:30px;
     margin-bottom:30px;
+
 }
 
 #col2-text{
     margin-left:15px;
+
 }
 .input-box{
     width:420px;
     padding:10px;
+
+}
+
+.input-box label{
+    font-family:Lucida Sans;
+    color:#fff;
 }
 
 .rainbow-hover{
@@ -379,6 +391,14 @@ footer .footer-content .social li{
     #explore-btn:hover{
         color:#8000ff;
         font-size:20px;
+    }
+
+    #text1{
+        margin-bottom:0;
+    }
+
+    #col2{
+        margin-top:0;
     }
 
     .footer-menu ul{
