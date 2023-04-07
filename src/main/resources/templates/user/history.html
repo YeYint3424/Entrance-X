@@ -32,10 +32,9 @@
 
 </head>
 <body>
-
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png" width="30px" height="30px" alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
@@ -46,7 +45,7 @@
                 </li>
                 <li class="navlist1"><a class="navlist2" href="/user-page">HOME</a></li>
                 <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href="/">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -83,15 +82,35 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="wrapper">
 
         <!--        Event Type          -->
-        <div class="container event-type" style="margin-top: 60px;">
+        <div class="container event-type" style="margin-top: 60px; text-shadow: 1px 2px black;">
 
             <table class="table" >
                 <thead>
                 <tr>
-                    <th scope="col " class="event-type" >Your History/bought ticket list</th>
+                    <th scope="col " class="event-type" style="color: white" >Your History/bought ticket list</th>
                 </tr>
                 </thead>
             </table>
@@ -106,10 +125,10 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row" style="color: white">1</th>
+                    <td style="color: white">Mark</td>
+                    <td style="color: white">Otto</td>
+                    <td style="color: white">@mdo</td>
                 </tr>
                 </tbody>
             </table>

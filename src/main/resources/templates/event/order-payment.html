@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/orderpayment.css">
+    <title>Purchase Payment</title>
+</head>
+<body>
+
+<!--navbar-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"> EntranceX</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+            </ul>
+
+
+            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+
+                </div>
+
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <ul>
+
+                            <li><a href="">Events
+                            </a>
+                                <ul>
+                                    <li><a href="">Trending</a></li>
+                                    <li><a href="">This month</a></li>
+                                    <li><a href="">Upcoming</a></li>
+                                    <li><a href="">Promotion</a></li>
+                                </ul>
+                            </li>
+                            <li><a  href="">Sign Up</a></li>
+                            <li><a  href="">Sign Out</a></li>
+                            <li><a  href="">About</a></li>
+                            <li><a  href="">Contact</a></li>
+                            <li><a  href="">Terms and Conditions</a></li>
+                            <li><a  href="">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mx-auto" id="container1" style="width:auto">
+    <div class="card" id="card1">
+        <h5 style="text-align:center;padding:30px;padding-bottom: 0;">Total : 100000 MMK</h5>
+        <div style="text-align:center;padding:30px"><h6 style="padding:5px">Wavepay</h6>
+            <img src="css/qrcode.jpg" width="200" height="200">
+        </div>
+        <div style="text-align:center;padding:30px"><h6 style="padding:5px">Kpay</h6>
+            <img src="css/qrcode.jpg" width="200" height="200">
+        </div>
+        <form>
+            <div class="input-box mb-3 mx-auto" style="margin-bottom:50px;width:350px;padding:30px;">
+                <label for="paymentScreenshot" class="form-label">Payment Screenshot</label>
+                <input type="file" class="form-control mx-auto" id="paymentScreenshot" style="border-radius: 4px;
+        border: 1px solid #fe4567;">
+            </div>
+            <div style="text-align:center;padding:30px">
+
+                <button data-label="Register" class="rainbow-hover" type="reset"  ><span class="sp">Back</span></button>
+                <button data-label="Register" class="rainbow-hover" type="submit"  ><span class="sp">Check Out</span></button>
+            </div>
+
+    </div>
+    </form>
+</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p>ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

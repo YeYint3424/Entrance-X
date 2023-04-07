@@ -1,12 +1,10 @@
+
 html body{
-    font-family: sans-serif;
-    padding-top:60px;
-    background:linear-gradient(rgb(73, 67, 73),rgb(29, 3, 28));
+    background-color: #000;
+    padding:100px;
 }
 
 /* navbar */
-
-
 .navlistright{
     display:inline;
     float:right;
@@ -136,108 +134,99 @@ html body{
     border-bottom:none;
 }
 
-/* profile card */
-
-#cardContainer{
-    margin:60px;
-
-}
-
-.profile{
-    margin-bottom:70px;
-
-
-}
-
-
-.profile-header{
-
-    height:30vh;
-    padding-bottom:50px;
+#card1 {
+    width: auto;
+    height: auto;
+    background: #000;
+    border: 2px solid #07ff07;
+    box-shadow: 2px 2px 15px #dafae6 inset;
     text-align: center;
-    border-bottom-style: inset;
-
-    background:linear-gradient(90deg,rgb(92, 81, 92),rgb(199, 151, 191));
-
-
+    color: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.header-content{
-    margin:20px;
-    padding:20px;
-    color:#fff;
-
+#card1:hover {
+    color: #07ff07;
+    box-shadow: 2px 2px 15px #07ff07 inset;
 }
 
-.header-content i{
-    padding:30px;
-    margin:15px;
-    margin-bottom:30px;
-}
-
-#body-part{
-    background-color: rgb(235, 213, 231);
-}
-
-.row h5{
-    font-size:18px;
-    font-weight: 500;
-}
-
-.row p{
-    font-size:15px;
-    font-weight:450;
-}
-
-#user-icon{
-    font-size:35px;
-    padding:15px;
-    border:1px solid;
-    border-radius: 50%;
-}
-
-.row{
-    padding:10px;
-}
-
-.card-footer{
-    width:100%;
-    text-align:center;
-    background:linear-gradient(90deg,rgb(92, 81, 92),rgb(199, 151, 191));
-}
-
-
-.card-btn{
-    margin:15px;
+.rainbow-hover{
+    margin:8px;
     padding:5px;
-    width:80px;
-    border-radius:20px;
+    width:100px;
+    border-radius: 9px;
+    border:1px solid;
+    background-color: black;
     color:#fff;
-    background-color:rgb(136, 73, 125);
-    transition:all 0.2s ease;
-    font-weight:bold;
-}
-
-.card-btn:hover{
-    background-color:rgb(68, 14, 59) ;
-
 }
 
 
+.rainbow-hover:hover {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff7576;
+    background-color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    position: relative;
+    line-height: 15px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 2px #39FF14,
+    0px 4px 16px #39FF14;
+    transform-style: preserve-3d;
+    transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    perspective: 600px;
+    transition: transform 0.3s;
+    width:auto;
+}
+
+.sp:hover {
+    background: linear-gradient(
+            90deg,
+            #866ee7,
+            #ea60da,
+            #ed8f57,
+            #fbd41d,
+            #2cca91
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    display: block;
+}
+
+.rainbow-hover:active {
+    transition: 0.3s;
+    transform: scale(0.93);
+}
 
 
+/*footer */
 
+/* *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+} */
 
 
 
 footer{
-
-    bottom:0;
+    padding-top:40px;
+    margin-top:50px;
+    position:absolute;
     left:0;
     right:0;
+    /* bottom:0; */
     background:#111;
     height:auto;
-    padding-top:40px;
     width:100%;
     color:white;
 
@@ -249,6 +238,7 @@ footer{
     justify-content:center;
     flex-direction:column;
     text-align:center;
+
 }
 
 .footer-content p{
@@ -341,7 +331,9 @@ footer .footer-content .social li{
 }
 
 @media(max-width:500px){
-
+    body{
+        padding-top:70px;
+    }
 
     .navlist2{
         width:95px;
@@ -369,6 +361,15 @@ footer .footer-content .social li{
         font-size:20px;
     }
 
+    #container1{
+        width:auto;
+    }
+
+    #paymentScreenshot{
+        width:200px;
+        font-size: 10px;
+    }
+
     .footer-menu ul{
         display:inline;
 
@@ -378,3 +379,4 @@ footer .footer-content .social li{
         margin-bottom:20px;
     }
 }
+

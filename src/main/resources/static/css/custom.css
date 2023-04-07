@@ -10,7 +10,7 @@ body{
 
 }
 .wrapper{
-    background: linear-gradient(to left, #710056, #6d00ff,darkblue);
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     min-height: 100vh;
     width: 100%;
 }
@@ -73,8 +73,8 @@ body{
     position: center;
 }
 .card-text{
-    color: #940068;
-    text-shadow:1px 1px white ;
+    color: #ffffff;
+    text-shadow:1px 1px black ;
 }
 .wrapper .main-content .event-see-more{
     font-size: 25px;
@@ -171,7 +171,6 @@ body{
 .navlist1 a i:hover{
     font-size: 22px;
 }
-
 
 
 #offcanvasRight{
@@ -518,6 +517,9 @@ footer .footer-content .social li{
     }
 }
 .card{
-    box-shadow: 4px 4px #111111;
+    background: linear-gradient(to left, #6bf7ff, #00b3be);
+}
+.card:hover{
+    box-shadow: 0 0 15px #111111;
 }
 

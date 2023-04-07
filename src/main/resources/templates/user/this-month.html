@@ -45,7 +45,7 @@
                 </li>
                 <li class="navlist1"><a class="navlist2" href="/user-page">HOME</a></li>
                 <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href="/">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -82,6 +82,26 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="wrapper">    <!--         main page         -->
     <div class="container main-content">
 
@@ -103,19 +123,20 @@
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
                              class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body rounded" style="background: linear-gradient(to left, aqua, greenyellow);">
-                            <h5 class="card-title">
+                        <div class="card-body rounded">
 
-                                Event Title
+                        <h5 class="card-title">
 
-                            </h5>
-                            <p class="card-text">
+                            One direction
 
-                                Event Info
+                        </h5>
+                        <p class="card-text">
 
-                            </p>
-                            <a href="/event-detail" class="btn btn-primary">More Detail</a>
-                        </div>
+                            10.4.2023
+
+                        </p>
+                        <a href="/event-detail" class="btn btn-dark">More Detail</a>
+                    </div>
 
                     </div>
                 </div>
