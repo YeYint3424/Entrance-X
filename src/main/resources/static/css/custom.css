@@ -518,6 +518,8 @@ footer .footer-content .social li{
 }
 .card{
     background: linear-gradient(to left, #6bf7ff, #00b3be);
-    box-shadow: 4px 4px #111111;
+}
+.card:hover{
+    box-shadow: 0 0 15px #111111;
 }
 
