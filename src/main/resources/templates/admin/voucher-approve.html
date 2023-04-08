@@ -9,7 +9,11 @@
     <link href="http://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/custom.css">
-
+<style>
+  tbody{
+      color: black;
+  }
+</style>
     <title>Admin</title>
 </head>
 <body>
@@ -26,27 +30,38 @@
                 </li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/unban">UnBan</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/">Log-Out</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/userList">User-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/orgList">Org-List</a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out from Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<div class="wrapper" style="background: midnightblue">
-    <!--         main page         -->
-    <!--        Event Type          -->
-    <div class="container event-type" >
-
-        <table class="table"style="margin-top: 65px;" >
-            <thead>
-            <tr>
-                <th scope="col " class="event-type tc">Voucher</th>
-            </tr>
-            </thead>
-        </table>
-        <table class="table table-striped tc">
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="container" style="margin-top: 100px" >
+        <h3 style="font-family: ben  ;color: black;">Voucher Approve</h3>
+        <div class="table-responsive" style="height: 430px; overflow-y: auto;">
+            <table class="table table-success table-striped ">
             <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -59,12 +74,68 @@
             </thead>
             <tbody>
             <tr>
-                <td style="color: white">1</td>
-                <td style="color: white">mg mg</td>
-                <td style="color: white">GOD-X</td>
-                <td style="color: white"><button type="submit" class="btn btn-primary">Detail</button></td>
-                <td style="color: white"><button type="submit" class="btn btn-success">Approve</button></td>
-                <td style="color: white"><button type="submit" class="btn btn-danger">Cancel</button></td>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>mg mg</td>
+                <td>GOD-X</td>
+                <td><button type="submit" class="btn btn-primary">Detail</button></td>
+                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
             </tr>
             </tbody>
         </table>
