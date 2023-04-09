@@ -31,18 +31,13 @@
 
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt=""> Entrance-X</a>
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </li>
-                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/login}">LogIn</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/user-signup}">SIGN-UP</a></li>
+                <li class="navlist1"><a class="navlist2" href="/org-page">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/organizer-signup}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" href=""><i class="fa-solid fa-user-tie" ></i></a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -57,22 +52,18 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-
-                            <li><a class="text:white">Events
-                            </a>
+                            <li><a style="color: white">Events</a>
                                 <ul>
-                                    <li><a href="/main-trending">Trending</a></li>
-                                    <li><a href="/main-this-month">This month</a></li>
-                                    <li><a href="/main-upcoming">Upcoming</a></li>
-                                    <li><a href="/main-promotion">Promotion</a></li>
+                                    <li><a href="/org-ongoing">Ongoing</a></li>
+                                    <li><a href="/org-future">Future</a></li>
+                                    <li><a href="/org-sale-record">Sale Record</a></li>
                                 </ul>
                             </li>
-                            <li><a  th:href="@{/user-signup}">Sign-Up</a></li>
-                            <li><a  th:href="@{/login}">Log-In</a></li>
-                            <li><a  href="/about">About</a></li>
-                            <li><a  href="/contact">Contact</a></li>
-                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
-                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
+                            <li><a  href="/org-help">Help</a></li>
+                            <li><a  href="/org-about">About</a></li>
+                            <li><a  href="/org-contact">Contact</a></li>
+                            <li><a  href="/org-term">Terms and Conditions</a></li>
+                            <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -80,7 +71,26 @@
         </div>
     </div>
 </nav>
+<!--        nav-bar end         -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Organizar Log-Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/">
+                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="title" class="py-md-5" style="text-align:center;color:#ffffff"><h5  style="padding-top:70px">We are here for you!</h5>
     <h6>Everyday: 7AM - 10pm MMT </h6></div>
 <div class="py-md-3">

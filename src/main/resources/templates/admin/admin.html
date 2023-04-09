@@ -14,7 +14,8 @@
             font-family: "Times New Roman";
             background: white;
             margin-top: 60px;
-
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
         .card{
             background: #000000;
@@ -44,17 +45,17 @@
         <a class="navbar-brand" href="/admin"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </li>
+<!--                <li class="navlist1">-->
+<!--                    <form class="d-flex" role="search">-->
+<!--                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>-->
+<!--                    </form>-->
+<!--                </li>-->
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/userList">User-List</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px" href="/orgList">Org-List</a></li>
-                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/userList">User-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/orgList">Org-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="position: relative;bottom: 8px" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
         </div>
@@ -82,64 +83,64 @@
     <!--         main page         -->
     <div class="container" style="margin-top: 100px">
        <div class="row">
+             <div class="col-md-3">
+                   <div class="card" style="width: 10rem;height: 10rem">
+                        <a href="/event-approve">
+                            <div class="card-body">
+                                Event-Approve
+                                <br>
+                                <br>
+                                <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+                            </div>
+                        </a>
+                   </div>
+             </div>
+
                <div class="col-md-3">
-                   <a href="/event-approve">
-                       <div class="card" style="width: 10rem;height: 10rem">
-                           <div class="card-body">
-                               Event-Approve
+                   <div class="card" style="width: 10rem;height: 10rem">
+                       <a href="/voucher-approve">
+                           <div class="card-body" style="margin-top:2px;font-size: 17px">
+                               Voucher-Approve
                                <br>
                                <br>
-                               <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+                               <i class="fa-solid fa-ticket" style="color: #ffffff;"></i>
                            </div>
-                       </div>
-                   </a>
+                        </a>
+                   </div>
                </div>
 
-           <div class="col-md-3">
-               <a href="/voucher-approve">
+               <div class="col-md-3">
                    <div class="card" style="width: 10rem;height: 10rem">
-                       <div class="card-body" style="margin-top:2px;font-size: 17px">
-                           Voucher-Approve
-                           <br>
-                           <br>
-                           <i class="fa-solid fa-ticket" style="color: #ffffff;"></i>
-                       </div>
+                       <a href="/userList">
+                           <div class="card-body">
+                               User
+                               <br>
+                               <br>
+                               <i class="fa-regular fa-circle-user" style="color: #ffffff;"></i>
+                           </div>
+                       </a>
                    </div>
-               </a>
-           </div>
+               </div>
 
-           <div class="col-md-3">
-               <a href="/userList">
+                <div class="col-md-3">
                    <div class="card" style="width: 10rem;height: 10rem">
-                       <div class="card-body">
-                           User
-                           <br>
-                           <br>
-                           <i class="fa-regular fa-circle-user" style="color: #ffffff;"></i>
-                       </div>
+                       <a href="/orgList">
+                           <div class="card-body">
+                               Organizer
+                               <br>
+                               <br>
+                               <i class="fa-solid fa-user-tie" style="color: #ffffff;"></i>
+                           </div>
+                       </a>
                    </div>
-               </a>
-           </div>
-
-           <div class="col-md-3">
-               <a href="/orgList">
-                   <div class="card" style="width: 10rem;height: 10rem">
-                       <div class="card-body">
-                           Organizer
-                           <br>
-                           <br>
-                           <i class="fa-solid fa-user-tie" style="color: #ffffff;"></i>
-                       </div>
-                   </div>
-               </a>
-           </div>
+                </div>
 
        </div>
     </div>
 
-    <div class="container" style="margin-top: 50px" >
-        <h3 style="font-family: ben  ;color: black;">Event Approve</h3>
-        <div class="table-responsive" style="height: 200px; overflow-y: auto;">
+    <div class="container" style="margin-top: 40px" >
+        <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Event Approve</h3>
+        <div class="table-responsive" style="height: 285px; overflow-y: auto;margin-top: 2rem;">
             <table class="table table-success table-striped ">
                 <thead>
                 <tr>
