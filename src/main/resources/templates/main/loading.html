@@ -1,10 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <title>Check Status</title>
 </head>
 <body>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1"><a class="navlist2" href="">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+            </ul>
 
+
+            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+
+                </div>
+
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <ul>
+
+                            <li><a href="">Events
+                            </a>
+                                <ul>
+                                    <li><a href="">Trending</a></li>
+                                    <li><a href="">This month</a></li>
+                                    <li><a href="">Upcoming</a></li>
+                                    <li><a href="">Promotion</a></li>
+                                </ul>
+                            </li>
+                            <li><a  href="">Sign Up</a></li>
+                            <li><a  href="">Sign Out</a></li>
+                            <li><a  href="">About</a></li>
+                            <li><a  href="">Contact</a></li>
+                            <li><a  href="">Terms and Conditions</a></li>
+                            <li><a  href="">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div id="historyh4"><h4>Event History</h4></div>
+    <div class="table-wrapper">
+        <table class="table table-light table-hover">
+            <thead >
+            <tr>
+                <th scope="col">Event Name</th>
+                <th scope="col">Event Date</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+
+                <td>Justice World Tour</td>
+                <td>5/30/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <td>Big Mountain Festival</td>
+            <td>7/11/2023</td>
+            <td>
+                <div class="dot-wave">
+                    <div class="dot-wave__dot"></div>
+                    <div class="dot-wave__dot"></div>
+                    <div class="dot-wave__dot"></div>
+                    <div class="dot-wave__dot"></div>
+                </div>
+            </td>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td>
+                    <div class="dot-wave">
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                        <div class="dot-wave__dot"></div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eras Tour</td>
+                <td>4/22/2023</td>
+                <td><i class="fa-solid fa-check" style="font-size:22px"></i></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
