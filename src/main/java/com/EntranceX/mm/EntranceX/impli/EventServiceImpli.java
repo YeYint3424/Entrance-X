@@ -1,25 +1,33 @@
 package com.EntranceX.mm.EntranceX.impli;
 
 import com.EntranceX.mm.EntranceX.dao.EventDao;
+import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dto.EventDto;
 import com.EntranceX.mm.EntranceX.models.Event;
+import com.EntranceX.mm.EntranceX.models.Organizer;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventServiceImpli implements EventService {
     @Autowired
     EventDao eventDao;
 
+    @Autowired
+    OrganizerDao organizerDao;
+
     public EventServiceImpli(EventDao eventDao) {
         this.eventDao = eventDao;
     }
     @Override
-    public Event createEvent(EventDto eventDto) throws IOException {
+    public Event createEvent(EventDto eventDto, int organizer_id) throws IOException {
+        Organizer organizer=organizerDao.findById(organizer_id).orElseThrow(() -> new UserNotFoundException("User not found"));
         Event event = new Event();
         event.setEventName(eventDto.getEventName());
         event.setVenue(eventDto.getVenue());
@@ -36,7 +44,7 @@ public class EventServiceImpli implements EventService {
         event.setVvipTicketPrice(eventDto.getVvipTicketPrice());
         event.setVvipTicketQuantity(eventDto.getVvipTicketQuantity());
         event.setStatus(eventDto.getStatus());
-
+        event.setOrganizer(organizer);
         // Encode and set the photo
         byte[] photoBytes = eventDto.getPhoto().getBytes();
         String encodedPhoto = Base64.getEncoder().encodeToString(photoBytes);
@@ -54,4 +62,11 @@ public class EventServiceImpli implements EventService {
 
         return eventDao.save(event);
     }
+
+    @Override
+    public List<Event> getEventsByOrganizerId(int organizer_id) {
+        return eventDao.findByOrganizerId(organizer_id);
+    }
+
+
 }

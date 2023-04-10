@@ -46,8 +46,4 @@ public class EventController {
 
     @GetMapping("/order-payment")
     public String orderPayment(){return "event/order-payment";}
-
-    @GetMapping("/loading")
-        public String loading(){return "main/loading";}
-
 }

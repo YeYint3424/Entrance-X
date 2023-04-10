@@ -92,8 +92,7 @@ public class PageController {
 
 
     @PostMapping(value = "/login")
-    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("loginPassword")String loginPassword, HttpServletRequest request, RedirectAttributes redirectAttributes,
-                                Model model) {
+    public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("loginPassword")String loginPassword, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
         User user = userDao.findByUserName(userName);
         Organizer organizer = organizerDao.findByUserName(userName);
@@ -102,19 +101,19 @@ public class PageController {
         if (user!=null && passwordEncoder.matches(loginPassword, user.getPassword())) {
 
             HttpSession session = request.getSession();
-            session.setAttribute("LoginUser",user);
+            session.setAttribute("LoginUser",user.getId());
 
             // User login successful
             return "redirect:/user-page";
         } else if (organizer!=null && passwordEncoder.matches(loginPassword, organizer.getPassword())) {
             HttpSession session = request.getSession();
-            session.setAttribute("LoginOrganizer",organizer);
+            session.setAttribute("LoginOrganizer",organizer.getId());
 
             // Organizer login successful
             return "redirect:/org-page";
         } else if (admin!=null && passwordEncoder.matches(loginPassword, admin.getPassword())) {
             HttpSession session = request.getSession();
-            session.setAttribute("LoginAdmin",admin);
+            session.setAttribute("LoginAdmin",admin.getId());
 
             // Admin login successful
             return "redirect:/admin";

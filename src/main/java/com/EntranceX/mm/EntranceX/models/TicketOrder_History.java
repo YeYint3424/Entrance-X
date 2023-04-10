@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class TicketOrder_History {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int order_id;
+    private int id;
 
     private int standardTicketSold, VipTicketQuantitySold,  VVipTicketQuantitySold, totalPrice, status;
 

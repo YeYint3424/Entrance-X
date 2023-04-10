@@ -10,8 +10,15 @@
 
     <link rel="stylesheet" href="css/custom.css">
     <style>
-        body{
-            background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+        @media (max-width:750px){
+            #introTitle{
+                padding-top:40px;
+
+            }
+
+            #title{
+
+            }
         }
 
         .nav-item a:hover{
@@ -25,13 +32,13 @@
 
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1"><a class="navlist2" href="/org-page">HOME</a></li>
                 <li class="navlist1"><a class="navlist2" th:href="@{/organizer-signup}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" href="/org-profile"><i class="fa-solid fa-user-tie" ></i></a></li>
-                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" href="/">SIGN OUT</a></li>
             </ul>
 
 
@@ -67,35 +74,16 @@
 </nav>
 
 <!--        nav-bar end         -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Organizar Log-Out</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
-            </div>
-            <div class="modal-footer">
-                <a href="/">
-                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="wrapper">
     <!--         main page         -->
     <div class="container main-content">
 
-        <div class="container add-event" style="margin-top: 100px;">
+        <div class="container add-event">
 
 
                 <div class="card text-bg-light">
-                    <button type="submit" class="btn">
+                    <button type="submit" class="btn btn-outline-secondary">
                         <img src="css/concertexop.png" class="card-img add-event-img" alt="...">
                         <div class="card-img-overlay">
                             <h5 class="card-title add-event-title">ADD EVENT</h5>
@@ -151,7 +139,7 @@
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
                              class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body rounded">
+                        <div class="card-body rounded" style="background: linear-gradient(to right, #8000ff, #009faa);">
                             <h5 class="card-title">
 
                                 Event Title
@@ -190,7 +178,7 @@
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
                              class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body rounded" >
+                        <div class="card-body rounded" style="background: linear-gradient(to left, #00ff8f, #00a4b4);">
                             <h5 class="card-title">
 
                                 Event Title
@@ -201,7 +189,7 @@
                                 Event Info
 
                             </p>
-                            <a href="/event-detail" class="btn btn-dark">More Detail</a>
+                            <a href="/event-detail" class="btn btn-warning">More Detail</a>
                         </div>
 
                     </div>

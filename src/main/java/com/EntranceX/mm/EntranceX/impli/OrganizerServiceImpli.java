@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OrganizerServiceImpli implements OrganizerService {
     @Autowired
@@ -21,7 +23,7 @@ public class OrganizerServiceImpli implements OrganizerService {
     @Override
     public Organizer createOrganizer(OrganizerDto organizerDto) {
         Organizer organizer=new Organizer();
-        organizer.setOrganizerName(organizerDto.getOrganizerName());
+        organizer.setUserName(organizerDto.getUserName());
         organizer.setOrganizerName(organizerDto.getOrganizerName());
         organizer.setCompanyName(organizerDto.getCompanyName());
         organizer.setOrganizerEmail(organizerDto.getOrganizerEmail());
@@ -37,5 +39,12 @@ public class OrganizerServiceImpli implements OrganizerService {
         organizer.setPassword(encodedPassword);
 
         return organizerDao.save(organizer);
+    }
+
+    @Override
+    public Organizer getOrganizerById(int organizer_id) {
+        Optional<Organizer> organizer  = organizerDao.findById(organizer_id);
+        return organizer.orElse(null);
+
     }
 }
