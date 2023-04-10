@@ -64,8 +64,8 @@ public class EventServiceImpli implements EventService {
     }
 
     @Override
-    public List<Event> getEventsByOrganizerId(int organizer_id) {
-        return eventDao.findByOrganizerId(organizer_id);
+    public List<Event> getEventsByOrganizerId(int organizerId) {
+        return eventDao.findByOrganizerId(organizerId);
     }
 
 

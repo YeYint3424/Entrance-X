@@ -10,6 +10,6 @@ import java.util.Optional;
 
 
 public interface EventService {
-    Event createEvent(EventDto eventDto, int organizer_id) throws IOException;
-    List<Event> getEventsByOrganizerId(int organizer_id);
+    Event createEvent(EventDto eventDto, int organizerId) throws IOException;
+    List<Event> getEventsByOrganizerId(int organizerId);
 }

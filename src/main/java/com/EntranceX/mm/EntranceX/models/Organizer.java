@@ -29,6 +29,7 @@ public class  Organizer {
 
     private String companyAddress,companyBio, password;
     private int status;
+//    0 for unban and 1 for ban in status
 
 
 //  one to many from Organizer to Event

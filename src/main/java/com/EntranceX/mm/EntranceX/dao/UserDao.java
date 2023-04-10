@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface UserDao extends JpaRepository<User, Integer> {
     User findByUserName(String userName);
-
+    User findByEmail(String email);
 
 }

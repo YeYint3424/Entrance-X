@@ -30,7 +30,7 @@ public class OrganizerServiceImpli implements OrganizerService {
         organizer.setCompanyEmail(organizerDto.getCompanyEmail());
         organizer.setOrganizerPhone(organizerDto.getOrganizerPhone());
         organizer.setCompanyPhone(organizerDto.getCompanyPhone());
-        organizer.setRole(organizerDto.getRole());
+        organizer.setStatus(organizerDto.getStatus());
         organizer.setCompanyAddress(organizerDto.getCompanyAddress());
         organizer.setCompanyBio(organizerDto.getCompanyBio());
         organizer.setStatus(organizerDto.getStatus());

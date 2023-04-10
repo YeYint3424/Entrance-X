@@ -73,12 +73,12 @@ public class OrgController {
             int organizerId=(int)session.getAttribute("LoginOrganizer");
             List<Event> events = eventService.getEventsByOrganizerId(organizerId);
             for (Event event : events) {
+                byte[]photoByte=Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
 
-                event.setPhoto(Base64.getDecoder().decode(event.getEncodedPhoto()));
-                model.addAttribute("events", events);
+
             }
+            model.addAttribute("events", events);
 
-            System.out.println(events);
             return "org/ongoing";
         } else {
             return "redirect:/login";
@@ -113,7 +113,6 @@ public class OrgController {
     @PostMapping(value = "/org-signup")
     public String organizerRegisterPost(@ModelAttribute OrganizerDto organizerDto, Model model) {
         organizerService.createOrganizer(organizerDto);
-        model.addAttribute("message", "Event created successfully!");
         return "redirect:/login";
     }
 }

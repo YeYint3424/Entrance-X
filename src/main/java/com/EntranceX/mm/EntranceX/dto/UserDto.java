@@ -13,7 +13,6 @@ public class UserDto {
 
     private String name, userName,email,gender,phone, role,password;
     private LocalDate dateOfBirth;
-    private int status;
     private List<TicketOrder_History> orderHistory= new ArrayList<>();
     private List<WatchLater> watchLater = new ArrayList<>();
 }

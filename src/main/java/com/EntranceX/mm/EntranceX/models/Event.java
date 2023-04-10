@@ -23,7 +23,9 @@ public class Event {
     @Column(length = 30)
     private String eventName, venue, startTime, endTime;
 
-    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, status;
+    private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity,
+            status;
+//    0 for pending and 1 for accept in status
     private LocalDate date;
     private String artist, eventDescription;
 
@@ -31,9 +33,7 @@ public class Event {
     @Column(columnDefinition = "longblob")
     private String encodedPhoto, kpayQrEncoded, wavepayQrEncoded;
 
-    @Lob
-    @Column(columnDefinition = "longblob")
-    private byte[]photo,kpayQr,wavepayQr;
+
 
 
 //  many to one join with event to organizer

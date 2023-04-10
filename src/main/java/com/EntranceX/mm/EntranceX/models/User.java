@@ -25,7 +25,6 @@ public class User {
     private String name, userName,email,gender;
 
     private LocalDate dateOfBirth;
-    private int status;
     @Column(length = 15)
     private  String phone, role;
 
