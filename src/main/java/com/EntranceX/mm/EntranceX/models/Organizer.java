@@ -7,17 +7,18 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
 @Data
 
 @Table(name = "Organizer Data")
-public class Organizer {
+public class  Organizer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int organizer_id;
+    private int id;
 
     @Column(length = 30)
     private String userName, organizerName,  companyName,organizerEmail,companyEmail;
@@ -28,17 +29,15 @@ public class Organizer {
 
     private String companyAddress,companyBio, password;
     private int status;
+//    0 for unban and 1 for ban in status
 
-    @Lob
-    @Column(columnDefinition = "longblob")
-    private byte[] kpayQr, wavepayQr, kpayQrEncoded, wavepayQrEncoded;
 
 //  one to many from Organizer to Event
     @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events= new ArrayList<>();
 
-    public Organizer(int organizer_id, String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status, byte[] kpayQr, byte[] wavepayQr, byte[] kpayQrEncoded, byte[] wavepayQrEncoded) {
-        this.organizer_id = organizer_id;
+    public Organizer(int id, String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status) {
+        this.id = id;
         this.userName = userName;
         this.organizerName = organizerName;
         this.companyName = companyName;
@@ -50,13 +49,10 @@ public class Organizer {
         this.companyBio = companyBio;
         this.password = password;
         this.status = status;
-        this.kpayQr = kpayQr;
-        this.wavepayQr = wavepayQr;
-        this.kpayQrEncoded = kpayQrEncoded;
-        this.wavepayQrEncoded = wavepayQrEncoded;
+
     }
 
-    public Organizer(String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status, byte[] kpayQr, byte[] wavepayQr, byte[] kpayQrEncoded, byte[] wavepayQrEncoded) {
+    public Organizer(String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status) {
         this.userName = userName;
         this.organizerName = organizerName;
         this.companyName = companyName;
@@ -68,12 +64,36 @@ public class Organizer {
         this.companyBio = companyBio;
         this.password = password;
         this.status = status;
-        this.kpayQr = kpayQr;
-        this.wavepayQr = wavepayQr;
-        this.kpayQrEncoded = kpayQrEncoded;
-        this.wavepayQrEncoded = wavepayQrEncoded;
+
     }
 
     public Organizer() {
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Organizer ID: ").append(id).append("\n");
+        sb.append("User Name: ").append(userName).append("\n");
+        sb.append("Organizer Name: ").append(organizerName).append("\n");
+        sb.append("Company Name: ").append(companyName).append("\n");
+        sb.append("Organizer Email: ").append(organizerEmail).append("\n");
+        sb.append("Company Email: ").append(companyEmail).append("\n");
+        sb.append("Organizer Phone: ").append(organizerPhone).append("\n");
+        sb.append("Company Phone: ").append(companyPhone).append("\n");
+        sb.append("Company Address: ").append(companyAddress).append("\n");
+        sb.append("Company Bio: ").append(companyBio).append("\n");
+        sb.append("Password: ").append(password).append("\n");
+        sb.append("Status: ").append(status).append("\n");
+        sb.append("Events:\n");
+        for (Event event : events) {
+            sb.append(event).append("\n");
+        }
+        return sb.toString();
+    }
+
+
+
+
+
 }

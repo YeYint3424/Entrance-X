@@ -1,4 +1,4 @@
-package com.EntranceX.mm.EntranceX.controllers;
+package com.EntranceX.mm.EntranceX.impli;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -8,6 +8,7 @@ import com.EntranceX.mm.EntranceX.dto.EventDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.services.EventService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,24 +31,45 @@ public class EventController {
     EventService eventService;
 
     @GetMapping("/event-register")
-    public String registerEvent(HttpSession session){
-        session.getAttribute("LoginOrganizer");
-        return "event/event-register";}
+    public String registerEvent(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+        return "event/event-register";
+        }else {
+            return "redirect:/login";
+        }
+    }
 
     @PostMapping(value = "/event-register")
-    public String createEvent(@ModelAttribute EventDto eventDto, Model model) throws IOException {
-        eventService.createEvent(eventDto);
-        model.addAttribute("message", "Event created successfully!");
+    public String createEvent(@ModelAttribute EventDto eventDto, HttpServletRequest request) throws IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int organizerId=(int) session.getAttribute("LoginOrganizer");
+        eventService.createEvent(eventDto, organizerId);
+
         return "redirect:/org-page";
+    }else {
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/event-detail")
-    public String eventDetails(){return "event/event-detail";}
+    public String eventDetails(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+        return "event/event-detail";
+        }else {
+            return "redirect:/login";
+        }
+    }
 
     @GetMapping("/order-payment")
-    public String orderPayment(){return "event/order-payment";}
-
-    @GetMapping("/loading")
-        public String loading(){return "main/loading";}
-
+    public String orderPayment(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+        return "event/order-payment";}
+        else {
+        return "redirect:/login";
+    }
+}
 }

@@ -5,4 +5,5 @@ import com.EntranceX.mm.EntranceX.models.Organizer;
 
 public interface OrganizerService {
     Organizer createOrganizer(OrganizerDto organizerDto);
+    Organizer getOrganizerById(int organizer_id);
 }

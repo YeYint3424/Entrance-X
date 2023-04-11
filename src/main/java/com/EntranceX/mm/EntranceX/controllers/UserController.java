@@ -7,11 +7,14 @@ import com.EntranceX.mm.EntranceX.dto.UserDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.User;
 import com.EntranceX.mm.EntranceX.services.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -28,56 +31,107 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/user-profile")
-    public String user_profile(){
-        return "user/user-profile";
+    public String user_profile(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/user-profile";
+        } else {
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/user-profile-update")
-    public String user_update(){
-        return "user/user-update";
+    public String user_update(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/user-update";
+        } else {
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/user-this-month")
-    public String user_thismonth(){ return "user/this-month"; }
+    public String user_thismonth(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/this-month";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
     @GetMapping("/user-promotion")
-    public String user_promotion(){
-        return "user/promotion";
+    public String user_promotion(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/promotion";
+        } else {
+            return "redirect:/login";
+        }
     }
+
     @GetMapping("/user-trending")
-    public String user_trending(){
-        return "user/trending";
+    public String user_trending(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/trending";
+        } else {
+            return "redirect:/login";
+        }
     }
+
     @GetMapping("/user-upcoming")
-    public String user_upcoming(){
-        return "user/upcoming";
+    public String user_upcoming(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/upcoming";
+        } else {
+            return "redirect:/login";
+        }
     }
+
     @GetMapping("/user-history")
-    public String user_history(){
-        return "user/history";
+    public String user_history(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/history";
+        } else {
+            return "redirect:/login";
+        }
     }
+
     @GetMapping("/user-watch-later")
-    public String user_watch_later(){
-        return "user/watch-later";
+    public String user_watch_later(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/watch-later";
+        } else {
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/user-about")
-    public String userAbout(){
+    public String userAbout() {
         return "user/about";
     }
+
     @GetMapping("/user-help")
-    public String userHelp(){
+    public String userHelp() {
         return "user/help";
     }
+
     @GetMapping("/user-term")
-    public String userTerm(){
+    public String userTerm() {
         return "user/termCondition";
     }
+
     @GetMapping("/user-privacyPolicy")
-    public String userPrivacyPolicy(){
+    public String userPrivacyPolicy() {
         return "user/privacyPolicy";
     }
+
     @GetMapping("/user-contact")
-    public String userContact(){
+    public String userContact() {
         return "user/contact";
     }
 
@@ -87,11 +141,22 @@ public class UserController {
     }
 
     @PostMapping(value = "/user-signup")
-    public String userRegisterPost(@ModelAttribute UserDto userDto, Model model) {
-        userService.createUser(userDto);
-        model.addAttribute("message", "Event created successfully!");
+    public String userRegisterPost(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes) {
+        if (userDao.findByUserName(userDto.getUserName()) == null && userDao.findByEmail(userDto.getEmail()) == null) {
+            userService.createUser(userDto);
+            return "redirect:/login";
+        } else if (userDao.findByUserName(userDto.getUserName()) != null) {
+            redirectAttributes.addAttribute("userNameExist", true);
+            return "redirect:/user-signup";
+        } else if (userDao.findByEmail(userDto.getEmail()) != null) {
+            redirectAttributes.addAttribute("emailExist", true);
+            return "redirect:/user-signup";
+        }else{
+            redirectAttributes.addAttribute("userNameExist", true);
+            redirectAttributes.addAttribute("emailExist", true);
+            return "redirect:/user-signup";
+        }
 
-        return "redirect:/login";
     }
 
 }

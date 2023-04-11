@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class WatchLater {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int watchLater_id;
+    private int id;
 
 //    many to one from watch later to event
     @ManyToOne(fetch = FetchType.LAZY)

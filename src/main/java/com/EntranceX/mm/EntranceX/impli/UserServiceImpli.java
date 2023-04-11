@@ -31,7 +31,6 @@ public class UserServiceImpli implements UserService {
         user.setPhone(userDto.getPhone());
         user.setRole(userDto.getRole());
         user.setDateOfBirth(userDto.getDateOfBirth());
-        user.setStatus(userDto.getStatus());
 
         String encodedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(encodedPassword);
