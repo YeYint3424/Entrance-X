@@ -4,6 +4,7 @@
     font-family: 'poppins',sans-serif;
     box-sizing: border-box;
 }
+
 body{
     overflow-x: hidden;
     min-height: 100vh;
@@ -27,7 +28,6 @@ body{
     position: center;
 }
 .card-title{
-    font-family: "Lucida Handwriting";
     color: white;
     text-shadow: 1px 2px black;
     font-size: 23px;
