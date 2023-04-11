@@ -26,8 +26,8 @@ public class EventServiceImpli implements EventService {
         this.eventDao = eventDao;
     }
     @Override
-    public Event createEvent(EventDto eventDto, int organizer_id) throws IOException {
-        Organizer organizer=organizerDao.findById(organizer_id).orElseThrow(() -> new UserNotFoundException("User not found"));
+    public Event createEvent(EventDto eventDto, int organizerId) throws IOException {
+        Organizer organizer=organizerDao.findById(organizerId).orElseThrow(() -> new UserNotFoundException("User not found"));
         Event event = new Event();
         event.setEventName(eventDto.getEventName());
         event.setVenue(eventDto.getVenue());
@@ -66,6 +66,13 @@ public class EventServiceImpli implements EventService {
     @Override
     public List<Event> getEventsByOrganizerId(int organizerId) {
         return eventDao.findByOrganizerId(organizerId);
+    }
+
+    @Override
+    public Event showEventDetail(int eventId) {
+        return eventDao.findById(eventId).orElseThrow(() -> new EventNotFoundException("Event not found"));
+
+
     }
 
 

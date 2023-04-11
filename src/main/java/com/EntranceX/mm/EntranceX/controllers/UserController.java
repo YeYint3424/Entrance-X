@@ -4,6 +4,7 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.EventDto;
 import com.EntranceX.mm.EntranceX.dto.UserDto;
+import com.EntranceX.mm.EntranceX.dto.WatchLaterDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.User;
 import com.EntranceX.mm.EntranceX.services.UserService;
@@ -158,5 +159,14 @@ public class UserController {
         }
 
     }
-
+    @PostMapping("/user-watch-later-button")
+    public String watchLater(HttpServletRequest request, @RequestParam int userId, int eventId){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            userService.saveEventToWatchLater(userId, eventId);
+            return "redirect:/event-detail";
+        }else {
+            return "redirect:/login";
+        }
+    }
 }

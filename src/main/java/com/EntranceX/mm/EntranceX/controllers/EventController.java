@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Base64;
 
 
 @Controller
@@ -54,9 +55,16 @@ public class EventController {
     }
 
     @GetMapping("/event-detail")
-    public String eventDetails(HttpServletRequest request){
+    public String eventDetails(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int userId=(int) session.getAttribute("LoginOrganizer");
+            Event eventDetails=eventService.showEventDetail(eventId);
+            String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
+            byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
+            model.addAttribute("eventDetails",eventDetails);
+            model.addAttribute("eventTime", eventTime);
+            model.addAttribute("userId", userId);
         return "event/event-detail";
         }else {
             return "redirect:/login";

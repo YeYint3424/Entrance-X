@@ -132,36 +132,36 @@
                     <div id="standard-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="standardPrice" class="form-label">Standard Ticket Price</label>
-                            <input type="number" min="1" class="form-control" id="standardPrice" name="standardTicketPrice" placeholder="Enter standard ticket price in kyats" required>
+                            <input type="number" min="0" class="form-control" id="standardPrice" name="standardTicketPrice" placeholder="Enter standard ticket price in kyats" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="standardTicketLimit" class="form-label">Standard Ticket Limit</label>
-                            <input type="number" min="1" class="form-control" id="standardTicketLimit" name="standardTicketQuantity" placeholder="Enter standard ticket limit" required>
+                            <input type="number" min="0" class="form-control" id="standardTicketLimit" name="standardTicketQuantity" placeholder="Enter standard ticket limit" required>
                         </div>
                     </div>
 
                     <div id="vip-check" style="display:none">
                         <div class="input-box mb-3">
                             <label for="vipPrice" class="form-label">VIP Ticket Price</label>
-                            <input type="number" min="1" class="form-control" id="vipPrice" name="vipTicketPrice" placeholder="Enter VIP ticket price in kyats" required>
+                            <input type="number" min="0" class="form-control" id="vipPrice" name="vipTicketPrice" placeholder="Enter VIP ticket price in kyats" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="vipTicketLimit" class="form-label">VIP Ticket Limit</label>
-                            <input type="number" min="1" class="form-control" id="vipTicketLimit" name="vipTicketQuantity" placeholder="Enter VIP ticket limit" required>
+                            <input type="number" min="0" class="form-control" id="vipTicketLimit" name="vipTicketQuantity" placeholder="Enter VIP ticket limit" required>
                         </div>
                     </div>
 
                     <div id="vvip-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="vvipPrice" class="form-label">VVIP Ticket Price</label>
-                            <input type="number" min="1" class="form-control" id="vvipPrice" name="vvipTicketPrice" placeholder="Enter VVIP ticket price in kyats" required>
+                            <input type="number" min="0" class="form-control" id="vvipPrice" name="vvipTicketPrice" placeholder="Enter VVIP ticket price in kyats" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="vvipTicketLimit" class="form-label">VVIP Ticket Limit</label>
-                            <input type="number" min="1" class="form-control" id="vvipTicketLimit" name="vvipTicketQuantity" placeholder="Enter VVIP ticket limit" required>
+                            <input type="number" min="0" class="form-control" id="vvipTicketLimit" name="vvipTicketQuantity" placeholder="Enter VVIP ticket limit" required>
                         </div>
                     </div>
 
@@ -178,7 +178,7 @@
                     <div id="promotion-info" style="display:none">
                         <div class="input-box mb-3">
                             <label for="promotion" class="form-label">Promotion</label>
-                            <input type="number" min="0.01" max="100" step=".01" ^\d*\.\d{2}$ class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %">
+                            <input type="number" min="0.00" max="100" step=".01" ^\d*\.\d{2}$ class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %">
                         </div>
                     </div>
 
