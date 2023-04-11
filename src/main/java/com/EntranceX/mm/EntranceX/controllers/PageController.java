@@ -128,23 +128,23 @@ public class PageController {
 
     @GetMapping("/admin")
     public String admin(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginAdmin") != null) {
-
+//        HttpSession session = request.getSession(false);
+//        if (session != null && session.getAttribute("LoginAdmin") != null) {
+//
             return "admin/admin";
-        } else {
-            return "redirect:/login";
-        }
+//        } else {
+//            return "redirect:/login";
+//        }
         }
 
 
     @GetMapping("/event-approve")
     public String eventApprove(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginAdmin") != null) {
+//        HttpSession session = request.getSession(false);
+//        if (session != null && session.getAttribute("LoginAdmin") != null) {
         return "admin/event-approve";
-    }else {
-            return "redirect:/login"; }
+//    }else {
+//            return "redirect:/login"; }
     }
 
     @GetMapping("/unban")
@@ -157,12 +157,21 @@ public class PageController {
 
     @GetMapping("/voucher-approve")
     public String voucherApprove(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginAdmin") != null) {
+//        HttpSession session = request.getSession(false);
+//        if (session != null && session.getAttribute("LoginAdmin") != null) {
         return "admin/voucher-approve";
     }
-    else {
-        return "redirect:/login"; }
+//    else {
+//        return "redirect:/login"; }
+//}
+
+@GetMapping("/userList")
+    public String userList(){
+        return "admin/userList";
 }
+    @GetMapping("/orgList")
+    public String orgList(){
+        return "admin/orgList";
+    }
 }
 
