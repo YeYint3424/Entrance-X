@@ -158,6 +158,13 @@ html body{
 
 }
 
+.watch-later-icon{
+    float:right;
+}
+
+.watch-later-icon:hover{
+    font-size:24px;
+}
 .text1 p{
     padding:4px;
 

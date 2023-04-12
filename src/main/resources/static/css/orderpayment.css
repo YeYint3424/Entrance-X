@@ -1,7 +1,7 @@
 
 html body{
     background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
-    padding:100px;
+    padding:60px;
     overflow-x:hidden;
 }
 
@@ -151,11 +151,29 @@ html body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+#container1 h4{
+    font-weight:bold;
+    color: #fdfff8;
+    text-align: center;
+    padding:20px;
+    padding-bottom:40px;
 
-/* #card1:hover {
-    color: #07ff07;
-    box-shadow: 2px 2px 15px #07ff07 inset;
-} */
+}
+
+
+#container1 p{
+    font-size:18px;
+    font-weight:bold;
+    color:#fdfff8;
+}
+
+#container1 h6, #container1 label{
+    font-size:17px;
+    color: #fdfff8;
+    font-weight: bold;
+}
+
+
 
 .rainbow-hover{
     margin:8px;
