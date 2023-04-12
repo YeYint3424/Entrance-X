@@ -2,6 +2,7 @@ html body{
     padding-top:130px;
     font-family:sans-serif;
     background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+    overflow-x:hidden;
 }
 
 /* navbar */

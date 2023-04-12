@@ -2,6 +2,7 @@
 html body{
     background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     padding:100px;
+    overflow-x:hidden;
 }
 
 /* navbar */

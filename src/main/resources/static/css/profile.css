@@ -184,9 +184,15 @@ html body{
     font-weight: 500;
 }
 
+
+
 .row p{
-    font-size:15px;
-    font-weight:450;
+    font-size:17px;
+    font-weight: 400;
+}
+
+.left-title{
+    font-weight: bold;
 }
 
 #user-icon{

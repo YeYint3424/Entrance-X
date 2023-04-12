@@ -84,17 +84,17 @@
             <div class="panel-body">
                 <form method="post" enctype="multipart/form-data">
                     <div class="input-box mb-3">
-                        <label for="orgname" class="form-label">Organizer Name</label>
-                        <input type="text" class="form-control" id="orgname" name="orgname" value="evensis">
+                        <label for="orgname" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="orgname" name="orgname" value="mark12">
                     </div>
 
                     <div class="input-box mb-3">
-                        <label for="orgemail" class="form-label">Organizer Email</label>
-                        <input type="email" class="form-control" id="orgemail" name="orgemail" value="evensis@gamil.com" >
+                        <label for="orgemail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="orgemail" name="orgemail" value="mark@gamil.com" >
                     </div>
 
                     <div class="input-box mb-3" >
-                        <label for="orgphone" class="form-label">Organizer Phone</label>
+                        <label for="orgphone" class="form-label">Phone</label>
                         <input type="tel" class="form-control" id="orgphone" name="orgphone" value="0934739434">
                     </div>
 
@@ -122,6 +122,14 @@
                         <textarea class="form-control"  id="comment" name="comment" style="height:150px">Universal was founded in 1990 and is located in Yangon, Myanmar. As a good event management company we have good links with various types of suppliers, performers as well as technicians.</textarea>
                         <label for="comment">Bio</label>
                     </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="old-password" class="form-label">Enter Old Password</label>
+                        <input type="password" class="form-control" id="old-password" name="old-password" >
+                    </div>
+                    <br>
+                    <span id="password-match"></span>
+                    <br>
 
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
@@ -183,7 +191,20 @@
 </footer>
 
 
-
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            var old_password = $('#old-password').val();
+            var oldPassword = 123;  /* replace 123 with login-password using thymeleaf */
+            if (old_password != oldPassword) {
+                event.preventDefault();
+                $('#password-match').text('Password Incorrect! Try again.');
+            } else {
+                $('#password-match').text('Passwords match');
+            }
+        });
+    });
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

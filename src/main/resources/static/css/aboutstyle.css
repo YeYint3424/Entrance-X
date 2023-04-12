@@ -3,6 +3,7 @@ body{
     font-family:sans-serif;
     background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     animation: color 10s ease-in-out infinite;
+    overflow-x:hidden;
 }
 
 

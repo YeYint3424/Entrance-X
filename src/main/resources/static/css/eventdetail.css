@@ -1,7 +1,7 @@
 html body{
     background: black;
     padding-top:55px;
-
+    overflow-x:hidden;
 }
 
 .navlistright{

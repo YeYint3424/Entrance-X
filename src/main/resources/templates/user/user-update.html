@@ -89,20 +89,13 @@
             </div>
             <div class="panel-body">
                 <form method="post" enctype="multipart/form-data">
-                    <div class="input-box mb-3">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="Harry">
-                    </div>
+
 
                     <div class="input-box mb-3" >
                         <label for="userName" class="form-label">Username</label>
                         <input type="text" class="form-control" id="userName" name="userName" value="harry12" >
                     </div>
 
-                    <div class="input-box mb-3">
-                        <label for="dob" class="form-label">Date of Birth</label>
-                        <input type="text" class="form-control" id="dob" name="dob" value="2/22/2023">
-                    </div>
 
                     <div class="ticket-box">
                         <h5>Gender</h5>
@@ -140,13 +133,21 @@
                     </div>
 
                     <div class="input-box mb-3" >
+                        <label for="old-password" class="form-label">Enter Old Password</label>
+                        <input type="password" class="form-control" id="old-password" name="old-password" >
+                    </div>
+                    <br>
+                    <span id="password-match"></span>
+                    <br>
+
+                    <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
-                        <input type="password" class="form-control" id="password" name="password" value="123">
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Confirm New Password</label>
-                        <input type="password" class="form-control" id="cpassword" name="cpassword" value="123">
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" >
                     </div>
 
 
@@ -198,7 +199,20 @@
 </footer>
 
 
-
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            var old_password = $('#old-password').val();
+            var oldPassword = 123;  /* replace 123 with login-password using thymeleaf */
+            if (old_password != oldPassword) {
+                event.preventDefault();
+                $('#password-match').text('Password Incorrect! Try again.');
+            } else {
+                $('#password-match').text('Passwords match');
+            }
+        });
+    });
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
