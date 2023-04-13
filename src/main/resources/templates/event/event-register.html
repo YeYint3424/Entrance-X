@@ -93,10 +93,17 @@
                         <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event place" required>
                     </div>
 
-                    <div class="input-box mb-3">
+                   <!-- <div class="input-box mb-3">
                         <label for="artist" class="form-label">Artists</label>
                         <input type="text" class="form-control" id="artist" name="artist" placeholder="Enter artist names" required>
-                    </div>
+                    </div>  -->
+
+                    <div class="input-box mb-3"></div>
+                    <label for="artist1" class="form-label">Main Artist</label>
+                    <input type="text" class="form-control" id="artist1" name="artist" placeholder="Enter artist names" required>
+                    <div id="artist-fields" style="padding:10px;padding-left:0" ></div>
+                    <button type="button" id="add-artist">+</button>
+            </div>
 
                     <div class="input-box mb-3">
                         <label for="eventPhoto" class="form-label">Event Photo</label>
@@ -330,6 +337,22 @@
             kpayCheck.style.display="none";
         }
     }
+
+    const addArtistButton = document.getElementById("add-artist");
+    const artistFields = document.getElementById("artist-fields");
+    const artist = [];
+
+    addArtistButton.addEventListener("click", () => {
+        const artistNumber = artist.length + 1;
+    const artistInput = document.createElement("input");
+    artistInput.type= "text";
+    artistInput.id='artist${artistNumber}';
+    artistInput.name="artist";
+    artistInput.required=true;
+    artistFields.appendChild(artistInput);
+    artists.push(artistInput);
+    }
+    );
 
 </script>
 </body>
