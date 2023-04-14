@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 
 @Entity
 @Data
@@ -14,8 +15,11 @@ public class TicketOrder_History {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int standardTicketSold, VipTicketQuantitySold,  VVipTicketQuantitySold, totalPrice, status;
+    private int standardTicketSold, vipTicketSold,  vvipTicketSold, totalPrice, status;
 
+    @Lob
+    @Column(columnDefinition = "longblob")
+    private String encodedPaymentScreenShot;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

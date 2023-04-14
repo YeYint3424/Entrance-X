@@ -116,7 +116,7 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col " th:each="event : ${events}" >
+                <div class="col " th:each="event : ${events}" th:if="${event.date > localDate}">
 
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}" class="card-img-top" width="150" height="250" alt="...">
@@ -129,10 +129,10 @@
                     </div>
                 </div>
                 <!--                for 1 event                     -->
-            </div>
-        </div>
 
-            </div>
+        </div>
+        </div>
+    </div>
         </div>
 
 <!--            Footer            -->

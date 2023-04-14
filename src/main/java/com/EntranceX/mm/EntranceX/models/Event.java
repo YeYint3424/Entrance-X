@@ -24,7 +24,7 @@ public class Event {
     private String eventName, venue, startTime, endTime;
 
     private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity,
-            status;
+            status, standardTicketAvailableQuantity,  vipTicketAvailableQuantity,  vvipTicketAvailableQuantity;
 //    0 for pending and 1 for accept in status
     private LocalDate date;
     private String artist, eventDescription;
@@ -46,6 +46,7 @@ public class Event {
 //  one to many from event to watch later
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WatchLater> watchLater= new ArrayList<>();
+
 
     public Event() {
     }

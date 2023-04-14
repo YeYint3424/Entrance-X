@@ -45,6 +45,9 @@ public class EventServiceImpli implements EventService {
         event.setVvipTicketQuantity(eventDto.getVvipTicketQuantity());
         event.setStatus(eventDto.getStatus());
         event.setOrganizer(organizer);
+        event.setStandardTicketAvailableQuantity(eventDto.getStandardTicketQuantity());
+        event.setVipTicketAvailableQuantity(eventDto.getVipTicketQuantity());
+        event.setVvipTicketAvailableQuantity(eventDto.getVvipTicketQuantity());
         // Encode and set the photo
         byte[] photoBytes = eventDto.getPhoto().getBytes();
         String encodedPhoto = Base64.getEncoder().encodeToString(photoBytes);

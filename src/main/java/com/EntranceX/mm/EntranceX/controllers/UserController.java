@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.Base64;
+import java.util.List;
 
 
 @Controller
@@ -52,9 +54,16 @@ public class UserController {
     }
 
     @GetMapping("/user-this-month")
-    public String user_thismonth(HttpServletRequest request) {
+    public String user_thismonth(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            List<Event> events = userService.getEvents();
+            for (Event event : events) {
+                byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+            }
+            model.addAttribute("events", events);
+
             return "user/this-month";
         } else {
             return "redirect:/login";
@@ -62,9 +71,15 @@ public class UserController {
     }
 
     @GetMapping("/user-promotion")
-    public String user_promotion(HttpServletRequest request) {
+    public String user_promotion(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            List<Event> events = userService.getEvents();
+            for (Event event : events) {
+                byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+            }
+            model.addAttribute("events", events);
             return "user/promotion";
         } else {
             return "redirect:/login";

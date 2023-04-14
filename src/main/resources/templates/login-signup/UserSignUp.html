@@ -54,13 +54,7 @@
 
 <form class="form-horizontal" th:method="post" id="signup-form">
 
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="name">Your Name:</label>
-        <div class="col-xs-3">
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-    </div>
-    <br>
+
     <div class="form-group">
         <label class="control-label col-sm-5" for="userName">Username:</label>
         <div class="col-xs-3">
@@ -68,6 +62,7 @@
         </div>
     </div>
     <br>
+
     <div class="from-group">
         <label class="control-label col-sm-5">Gender:</label>
 
@@ -118,16 +113,12 @@
             <br>
             <span id="password-match"></span>
             <br>
-            <a th:href="@{/org-signup}">Organizer Sign-Up !</a>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-5" for="role"></label>
-        <div class="col-xs-3">
-            <input type="hidden" class="form-control" id="role"  name="role" value="USER">
+            <br>
+            <a th:href="@{/org-signup}">Sign-Up for Organizer!</a>
         </div>
     </div>
 
+    <br>
     <ul class="pager">
         <li>
             <button type="submit" class="btn" style="background-color:#111111;color:#dddddd">Create</button>

@@ -13,17 +13,16 @@
 <!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="css/exlogotest3.png"> EntranceX</a>
+        <a class="navbar-brand" th:href="@{/}"><img src="css/exlogotest3.png"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="/login">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/}">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/login}">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}">SIGN OUT</a></li>
             </ul>
 
 
             <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
-
             <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                     <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
@@ -37,18 +36,18 @@
                             <li><a href="">Events
                             </a>
                                 <ul>
-                                    <li><a href="/user-trending">Trending</a></li>
-                                    <li><a href="/user-this-month">This month</a></li>
-                                    <li><a href="/user-upcoming">Upcoming</a></li>
-                                    <li><a href="/user-promotion">Promotion</a></li>
+                                    <li><a th:href="@{/user-trending}">Trending</a></li>
+                                    <li><a th:href="@{/user-this-month}">This month</a></li>
+                                    <li><a th:href="@{/user-upcoming}">Upcoming</a></li>
+                                    <li><a th:href="@{/user-promotion}">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/user-signup">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
-                            <li><a  href="/about">About</a></li>
-                            <li><a  href="/contact">Contact</a></li>
-                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
-                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
+                            <li><a  th:href="@{/user-signup}">Sign Up</a></li>
+                            <li><a  th:href="@{/sign-out}">Sign Out</a></li>
+                            <li><a  th:href="@{/about}">About</a></li>
+                            <li><a  th:href="@{/contact}">Contact</a></li>
+                            <li><a  th:href="@{/termsandconditions}">Terms and Conditions</a></li>
+                            <li><a  th:href="@{/privacypolicy}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,8 +67,9 @@
                 <div style="text-align:center;margin-top:40px;"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
                 <div class="text1" style=" font-family:Lucida Sans; color:#fff">
 
-                    <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}"><i class="watch-later-icon"  class="fa-solid fa-square-plus" ></i>
-                        <i class="watch-later-icon" class="fa-solid fa-square-minus" style="display:none"></i>
+                    <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
+                        <i class="watch-later-icon fa-solid fa-square-plus" ></i>
+                        <i class="watch-later-icon fa-solid fa-square-minus" style="display:none"></i>
                     </p>
                     <p th:text="${eventDetails.artist}"></p>
                     <p> from <span th:text="${eventTime}"></span></p>
@@ -82,77 +82,77 @@
         <div class="col">
             <div class="container mx-auto">
                 <div  id="col2" >
-                    <div id="col2-text" style=" font-family:Lucida Sans;
-    color:#fff;">
+                    <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
                         <div class="row">
-                            <p class="col">Available Ticket Types </p>  <p class="col">Standard, VIP, VVIP</p>
+                            <p class="col" th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
+                            <p class="col" th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
+                            <p class="col" th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
                         </div>
                         <div class="row">
                             <p class="col">Standard Ticket Price</p>
                             <p class="col" th:text="${eventDetails.standardTicketPrice}"></p>
-
-
-
                         </div>
-
                         <div class="row">
                             <p class="col">VIP Ticket Price </p>
                             <p class="col" th:text="${eventDetails.vipTicketPrice}"></p>
-
-                            <div  th:if="${eventDetails.vipTicketPrice}==0" class="alert alert-danger" role="alert">
-                                VIP ticket is currently out of stock.
-                            </div>
-
                         </div>
                         <div class="row">
-                            <p class="col">VVIP Ticket Price </p>  <p class="col" th:text="${eventDetails.vvipTicketPrice}"></p>
+                            <p class="col">VVIP Ticket Price </p>
+                            <p class="col" th:text="${eventDetails.vvipTicketPrice}"></p>
                         </div>
-                        <div class="row"><p class="col">Promotion </p> <p class="col" th:text="${eventDetails.promotion} + '%'"></p> </div>
-                    </div>
-                    <form>
-                        <div class="input-box mb-3" style="display:none">
-                            <label for="user_id" class="form-label">User ID</label>
-                            <input type="number"  class="form-control" id="user_id" th:value="${userId}" hidden>
+                        <div class="row" th:if="${eventDetails.promotion > 0}">
+                            <p class="col">Promotion </p>
+                            <p class="col" th:text="${eventDetails.promotion} + '%'"></p>
                         </div>
+                    <form method="post">
+                        <div class="input-box mb-3">
+                            <input type="hidden" name="userId" th:value="${userId}" >
 
-                        <div class="input-box mb-3" style="display:none">
-                            <label for="event_id" class="form-label">Event ID</label>
-                            <input type="number"  class="form-control" id="event_id" th:value="${eventDetails.id}" hidden>
                         </div>
 
+                        <div class="input-box mb-3">
+                            <input type="hidden" name="eventId" th:value="${eventDetails.id}" >
+                        </div>
 
-                        <div class="input-box mb-3" >
+
+                        <div th:if="${eventDetails.standardTicketQuantity > 0}" class="input-box mb-3" >
                             <label for="standardTicketQuantity" class="form-label">Standard Ticket Quantity</label>
-                            <input type="number" min="1" max="5" class="form-control" id="standardTicketQuantity" name="standardTicketSold" th:if="${eventDetails.standardTicketQuantity > 0}" placeholder="How many standard tickets you want to buy?" >
-                            <div th:if="${eventDetails.standardTicketQuantity}==0" class="alert alert-danger" role="alert" th:text="'Standard ticket is currently out of stock.'">
-
+                            <input type="number" min="0" max="5" class="form-control" id="standardTicketQuantity"  th:if="${eventDetails.standardTicketQuantity > 0}"  name="standardTicketSold" placeholder="How many standard tickets you want to buy?" required>
+                            <div th:if="${eventDetails.standardTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'Standard ticket is currently out of stock.'">
                             </div>
                         </div>
 
-                        <div class="input-box mb-3">
+                        <div th:if="${eventDetails.vipTicketQuantity > 0}" class="input-box mb-3">
                             <label for="vipTicketQuantity" class="form-label">VIP Ticket Quantity</label>
-                            <input type="number" min="1" max="5" class="form-control" id="vipTicketQuantity" name="vipTicketSold" th:if="${eventDetails.vipTicketQuantity > 0}"placeholder="How many VIP tickets you want to buy?" >
-                            <div th:if="${eventDetails.vipTicketQuantity}==0" class="alert alert-danger" role="alert" th:text="'VIP ticket is currently out of stock.'">
-
+                            <input type="number" min="0" max="5" class="form-control" id="vipTicketQuantity"  th:if="${eventDetails.vipTicketQuantity > 0}" name="vipTicketSold" placeholder="How many VIP tickets you want to buy?" required>
+                            <div th:if="${eventDetails.vipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VIP ticket is currently out of stock.'">
                             </div>
                         </div>
 
-                        <div class="input-box mb-3">
+                        <div th:if="${eventDetails.vvipTicketQuantity > 0}" class="input-box mb-3">
                             <label for="vvipTicketQuantity" class="form-label">VVIP Ticket Quantity</label>
-                            <input type="number" min="1" max="5" class="form-control" id="vvipTicketQuantity" name="vvipTicketSold" th:if="${eventDetails.vvipTicketQuantity > 0}"placeholder="How many VVIP tickets you want to buy?" >
-                            <div th:if="${eventDetails.vvipTicketQuantity}==0" class="alert alert-danger" role="alert" th:text="'VVIP ticket is currently out of stock.'">
-
+                            <input type="number" min="0" max="5" class="form-control" id="vvipTicketQuantity"  th:if="${eventDetails.vvipTicketQuantity > 0}" name="vvipTicketSold" placeholder="How many VVIP tickets you want to buy?" required>
+                            <div th:if="${eventDetails.vvipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VVIP ticket is currently out of stock.'">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="status"></label>
+                            <div class="col-xs-3">
+                                <input type="hidden" class="form-control" id="status"  name="status" value="0">
+                            </div>
+                        </div>
                         <div style="text-align:center">
                             <button type="reset" data-label="Register" class="rainbow-hover"><span class="sp">Cancel</span></button>
-                            <button type="submit" data-label="Register" class="rainbow-hover"  ><a href="/order-payment" style="text-decoration:none;color:#fff"><span class="sp">Purchase</span></a></button>
+                            <button type="submit" data-label="Register" class="rainbow-hover">
+                                <a style="text-decoration:none;color:#fff"><span class="sp">Purchase</span></a>
+                            </button>
                         </div>
+
                     </form>
 
 
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,12 +176,12 @@
 
             <div class="footer-menu">
                 <ul class="f-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/help">Help</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/termsandconditions">Terms and Conditions</a></li>
-                    <li><a href="/privacypolicy">Privacy Policy</a></li>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/about}">About</a></li>
+                    <li><a th:href="@{/help}">Help</a></li>
+                    <li><a th:href="@{/contact}">Contact</a></li>
+                    <li><a th:href="@{/termsandconditions}">Terms and Conditions</a></li>
+                    <li><a th:href="@{/privacypolicy}">Privacy Policy</a></li>
                 </ul>
             </div>
 

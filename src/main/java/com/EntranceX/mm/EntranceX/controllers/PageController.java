@@ -46,8 +46,13 @@ public class PageController {
     }
 
     @GetMapping("/user-page")
-    public String user_home() {
+    public String user_home(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
         return "main/user-page";
+        } else {
+            return "redirect:/login";
+        }
     }
 
 
@@ -123,6 +128,14 @@ public class PageController {
             return "redirect:/login";
         }
     }
+    @GetMapping("/sign-out")
+    public String signOut(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); }
+        return "redirect:/";
+    }
+
 
 
     @GetMapping("/admin")

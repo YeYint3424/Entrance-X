@@ -24,7 +24,6 @@ public class OrganizerServiceImpli implements OrganizerService {
     public Organizer createOrganizer(OrganizerDto organizerDto) {
         Organizer organizer=new Organizer();
         organizer.setUserName(organizerDto.getUserName());
-        organizer.setOrganizerName(organizerDto.getOrganizerName());
         organizer.setCompanyName(organizerDto.getCompanyName());
         organizer.setOrganizerEmail(organizerDto.getOrganizerEmail());
         organizer.setCompanyEmail(organizerDto.getCompanyEmail());

@@ -5,9 +5,12 @@ import com.EntranceX.mm.EntranceX.dao.EventDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dto.EventDto;
 
+import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
 import com.EntranceX.mm.EntranceX.models.Event;
+import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
 import com.EntranceX.mm.EntranceX.services.EventService;
 
+import com.EntranceX.mm.EntranceX.services.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -30,6 +33,8 @@ public class EventController {
     OrganizerDao organizerDao;
     @Autowired
     EventService eventService;
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("/event-register")
     public String registerEvent(HttpServletRequest request){
@@ -46,7 +51,7 @@ public class EventController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             int organizerId=(int) session.getAttribute("LoginOrganizer");
-        eventService.createEvent(eventDto, organizerId);
+            eventService.createEvent(eventDto, organizerId);
 
         return "redirect:/org-page";
     }else {
@@ -57,25 +62,52 @@ public class EventController {
     @GetMapping("/event-detail")
     public String eventDetails(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginOrganizer") != null) {
-            int userId=(int) session.getAttribute("LoginOrganizer");
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int) session.getAttribute("LoginUser");
             Event eventDetails=eventService.showEventDetail(eventId);
             String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
             byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
+
             model.addAttribute("eventDetails",eventDetails);
             model.addAttribute("eventTime", eventTime);
             model.addAttribute("userId", userId);
+
         return "event/event-detail";
         }else {
             return "redirect:/login";
         }
     }
-
-    @GetMapping("/order-payment")
-    public String orderPayment(HttpServletRequest request){
+    @PostMapping("/event-detail")
+    public String eventDetailsPost(HttpServletRequest request, Model model,
+                                   @ModelAttribute TicketOrder_HistoryDto ticketOrder){
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginOrganizer") != null) {
-        return "event/order-payment";}
+        if (session != null && session.getAttribute("LoginUser") != null) {
+
+            model.addAttribute("ticketOrder", ticketOrder);
+            Event eventDetails=eventService.showEventDetail(ticketOrder.getEventId());
+
+            String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
+            byte[] decodedKpayQr = Base64.getDecoder().decode(eventDetails.getKpayQrEncoded().getBytes());
+            byte[] decodedWavePayQr = Base64.getDecoder().decode(eventDetails.getWavepayQrEncoded().getBytes());
+            model.addAttribute("eventDetails",eventDetails);
+            model.addAttribute("eventTime", eventTime);
+            return "event/order-payment";
+        }else {
+            return "redirect:/login";
+        }
+    }
+
+
+
+
+    @PostMapping("/order-payment")
+    public String orderPayment(HttpServletRequest request, @ModelAttribute TicketOrder_HistoryDto ticketOrderDto) throws IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+
+            System.out.println(ticketOrderDto);
+            orderService.orderRequest(ticketOrderDto);
+        return "user/history";}
         else {
         return "redirect:/login";
     }

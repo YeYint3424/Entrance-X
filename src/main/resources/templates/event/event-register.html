@@ -93,12 +93,8 @@
                         <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event place" required>
                     </div>
 
-                   <!-- <div class="input-box mb-3">
-                        <label for="artist" class="form-label">Artists</label>
-                        <input type="text" class="form-control" id="artist" name="artist" placeholder="Enter artist names" required>
-                    </div>  -->
 
-                    <div class="input-box mb-3"></div>
+                    <div class="input-box mb-3">
                     <label for="artist1" class="form-label">Main Artist</label>
                     <input type="text" class="form-control" id="artist1" name="artist" placeholder="Enter artist names" required>
                     <div id="artist-fields" style="padding:10px;padding-left:0" ></div>
@@ -139,42 +135,37 @@
                     <div id="standard-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="standardPrice" class="form-label">Standard Ticket Price</label>
-                            <input type="number" min="0" class="form-control" id="standardPrice" name="standardTicketPrice" placeholder="Enter standard ticket price in kyats" required>
+                            <input type="number" min="0" class="form-control" id="standardPrice" name="standardTicketPrice" placeholder="Enter standard ticket price in kyats" value="0" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="standardTicketLimit" class="form-label">Standard Ticket Limit</label>
-                            <input type="number" min="0" class="form-control" id="standardTicketLimit" name="standardTicketQuantity" placeholder="Enter standard ticket limit" required>
+                            <input type="number" min="0" class="form-control" id="standardTicketLimit" name="standardTicketQuantity" placeholder="Enter standard ticket limit" value="0" required>
                         </div>
                     </div>
 
                     <div id="vip-check" style="display:none">
                         <div class="input-box mb-3">
                             <label for="vipPrice" class="form-label">VIP Ticket Price</label>
-                            <input type="number" min="0" class="form-control" id="vipPrice" name="vipTicketPrice" placeholder="Enter VIP ticket price in kyats" required>
+                            <input type="number" min="0" class="form-control" id="vipPrice" name="vipTicketPrice" placeholder="Enter VIP ticket price in kyats" value="0" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="vipTicketLimit" class="form-label">VIP Ticket Limit</label>
-                            <input type="number" min="0" class="form-control" id="vipTicketLimit" name="vipTicketQuantity" placeholder="Enter VIP ticket limit" required>
+                            <input type="number" min="0" class="form-control" id="vipTicketLimit" name="vipTicketQuantity" placeholder="Enter VIP ticket limit" value="0" required>
                         </div>
                     </div>
-
                     <div id="vvip-check" style="display:none">
                         <div class="input-box mb-3" >
                             <label for="vvipPrice" class="form-label">VVIP Ticket Price</label>
-                            <input type="number" min="0" class="form-control" id="vvipPrice" name="vvipTicketPrice" placeholder="Enter VVIP ticket price in kyats" required>
+                            <input type="number" min="0" class="form-control" id="vvipPrice" name="vvipTicketPrice" placeholder="Enter VVIP ticket price in kyats" value="0" required>
 
                         </div>
                         <div class="input-box mb-3">
                             <label for="vvipTicketLimit" class="form-label">VVIP Ticket Limit</label>
-                            <input type="number" min="0" class="form-control" id="vvipTicketLimit" name="vvipTicketQuantity" placeholder="Enter VVIP ticket limit" required>
+                            <input type="number" min="0" class="form-control" id="vvipTicketLimit" name="vvipTicketQuantity" placeholder="Enter VVIP ticket limit" value="0" required>
                         </div>
                     </div>
-
-
-
-
                     <div class="promotion-box form-check mb-3">
                         <input class="form-check-input" type="checkbox"  id="promotion-check"  onclick="showPromotion()">
                         <label class="form-check-label" for="promotion-check" >
@@ -185,7 +176,7 @@
                     <div id="promotion-info" style="display:none">
                         <div class="input-box mb-3">
                             <label for="promotion" class="form-label">Promotion</label>
-                            <input type="number" min="0.00" max="100" step=".01" ^\d*\.\d{2}$ class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %">
+                            <input type="number" min="0.00" max="100" step=".01" ^\d*\.\d{2}$ class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %" value="0">
                         </div>
                     </div>
 

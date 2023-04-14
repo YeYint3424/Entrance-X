@@ -21,7 +21,7 @@ public class  Organizer {
     private int id;
 
     @Column(length = 30)
-    private String userName, organizerName,  companyName,organizerEmail,companyEmail;
+    private String userName, companyName,organizerEmail,companyEmail;
 
 
     @Column(length = 15)
@@ -36,10 +36,9 @@ public class  Organizer {
     @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events= new ArrayList<>();
 
-    public Organizer(int id, String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status) {
+    public Organizer(int id, String userName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status) {
         this.id = id;
         this.userName = userName;
-        this.organizerName = organizerName;
         this.companyName = companyName;
         this.organizerEmail = organizerEmail;
         this.companyEmail = companyEmail;
@@ -52,9 +51,8 @@ public class  Organizer {
 
     }
 
-    public Organizer(String userName, String organizerName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status) {
+    public Organizer(String userName, String companyName, String organizerEmail, String companyEmail, String organizerPhone, String companyPhone, String companyAddress, String companyBio, String password, int status) {
         this.userName = userName;
-        this.organizerName = organizerName;
         this.companyName = companyName;
         this.organizerEmail = organizerEmail;
         this.companyEmail = companyEmail;
@@ -75,7 +73,6 @@ public class  Organizer {
         StringBuilder sb = new StringBuilder();
         sb.append("Organizer ID: ").append(id).append("\n");
         sb.append("User Name: ").append(userName).append("\n");
-        sb.append("Organizer Name: ").append(organizerName).append("\n");
         sb.append("Company Name: ").append(companyName).append("\n");
         sb.append("Organizer Email: ").append(organizerEmail).append("\n");
         sb.append("Company Email: ").append(companyEmail).append("\n");

@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -38,24 +40,17 @@ public class OrgController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             List<Organizer> organizers = organizerDao.findAll();
+            return "main/org-page";
+        } else{
+                return "redirect:/login";} }
 
-
-                return "main/org-page"; }
-        else{
-                return "redirect:/login";
-            }
-        }
     @GetMapping("/org-profile")
     public String org_profile(HttpServletRequest request){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
         return "org/org-profile";
         } else{
-            return "redirect:/login";
-        }
-    }
-
-
+            return "redirect:/login"; } }
 
     @GetMapping("/org-profile-update")
     public String org_update(HttpServletRequest request) {
@@ -63,9 +58,8 @@ public class OrgController {
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             return "org/org-update";
         } else {
-            return "redirect:/login";
-        }
-    }
+            return "redirect:/login"; } }
+
     @GetMapping("/org-ongoing")
     public String org_ongoing(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
@@ -74,16 +68,12 @@ public class OrgController {
             List<Event> events = eventService.getEventsByOrganizerId(organizerId);
             for (Event event : events) {
                 byte[]photoByte=Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
-
-
             }
             model.addAttribute("events", events);
-
+            model.addAttribute("localDate", LocalDate.now());
             return "org/ongoing";
-        } else {
-            return "redirect:/login";
-        }
-    }
+        }else{
+            return "redirect:/login"; } }
 
 
     @GetMapping("/org-future")
@@ -91,19 +81,16 @@ public class OrgController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
         return "org/future";
-    }else {
-            return "redirect:/login";
-        }
-        }
+    }else{
+            return "redirect:/login"; } }
+
     @GetMapping("/org-sale-record")
     public String org_Sale_Record(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
         return "org/sale-record";
-    }else {
-            return "redirect:/login";
-        }
-        }
+    }else{
+            return "redirect:/login"; } }
 
     @GetMapping(value = "/org-signup")
     public String organizerRegister() {

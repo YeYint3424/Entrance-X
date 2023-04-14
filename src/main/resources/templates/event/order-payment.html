@@ -14,12 +14,12 @@
 <!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="css/exlogotest3.png"> EntranceX</a>
+        <a class="navbar-brand" th:href="@{/}"><img src="css/exlogotest3.png"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="/login">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/}">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/login}">SIGN IN</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}">SIGN OUT</a></li>
             </ul>
 
 
@@ -38,18 +38,18 @@
                             <li><a href="">Events
                             </a>
                                 <ul>
-                                    <li><a href="/user-trending">Trending</a></li>
-                                    <li><a href="/user-this-month">This month</a></li>
-                                    <li><a href="/user-upcoming">Upcoming</a></li>
-                                    <li><a href="/user-promotion">Promotion</a></li>
+                                    <li><a th:href="@{/user-trending}">Trending</a></li>
+                                    <li><a th:href="@{/user-this-month}">This month</a></li>
+                                    <li><a th:href="@{/user-upcoming}">Upcoming</a></li>
+                                    <li><a th:href="@{/user-promotion}">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/user-signup">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
-                            <li><a  href="/about">About</a></li>
-                            <li><a  href="/contact">Contact</a></li>
-                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
-                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
+                            <li><a  th:href="@{/user-signup}">Sign Up</a></li>
+                            <li><a  th:href="@{/sign-out}">Sign Out</a></li>
+                            <li><a  th:href="@{/about}">About</a></li>
+                            <li><a  th:href="@{/contact}">Contact</a></li>
+                            <li><a  th:href="@{/termsandconditions}">Terms and Conditions</a></li>
+                            <li><a  th:href="@{/privacypolicy}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,46 +62,83 @@
    <!-- <div class="card" id="card1"> -->
         <div style="padding:30px;padding-bottom: 0">
             <h4 >PAY FOR YOUR TICKETS HERE!</h4>
+            <div style="text-align: center;">
+                <p>You have ordered <span th:text="${ticketOrder.standardTicketSold}"></span> standard tickets, <span th:text="${ticketOrder.vipTicketSold}"></span> VIP tickets, and <span th:text="${ticketOrder.vvipTicketSold}"></span> VVIP tickets.</p>
+            </div>
+
             <div class="row">
-                <p class="col" style="text-align:right"> Event Name</p> <p class="col" style="text-align:left"> Eras Tour</p>
+                <p class="col" style="text-align:right"> Event Name</p> <p class="col" th:text="${eventDetails.eventName}" style="text-align:left"> </p>
+            </div>
+
+            <div class="row">
+                <p class="col" style="text-align:right"> Standard Ticket Price</p> <p class="col" th:text="${eventDetails.standardTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
 
             <div class="row" >
-                <p class="col" style="text-align:right"> Ticket Type</p> <p class="col" style="text-align:left"> Standard</p>
+                <p class="col" style="text-align:right"> Standard Ticket Quantity</p> <p class="col" th:text="${ticketOrder.standardTicketSold}" style="text-align:left"></p>
             </div>
 
             <div class="row">
-                <p class="col" style="text-align:right"> Standard Ticket Price</p> <p class="col" style="text-align:left"> 100000 MMK</p>
+                <p class="col" style="text-align:right"> VIP Ticket Price</p> <p class="col" th:text="${eventDetails.vipTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
 
             <div class="row" >
-                <p class="col" style="text-align:right"> Promotion</p> <p class="col" style="text-align:left"> 5%</p>
+                <p class="col" style="text-align:right"> VIP Ticket Quantity</p> <p class="col" th:text="${ticketOrder.vipTicketSold}" style="text-align:left"> </p>
+            </div>
+
+            <div class="row">
+                <p class="col" style="text-align:right"> VVIP Ticket Price</p> <p class="col" th:text="${eventDetails.vvipTicketPrice + 'MMK'}" style="text-align:left"></p>
+            </div>
+
+            <div class="row" >
+                <p class="col" style="text-align:right"> VVIP Ticket Quantity</p> <p class="col" th:text="${ticketOrder.vvipTicketSold}" style="text-align:left"> </p>
+            </div>
+
+            <div class="row" >
+                <p class="col" style="text-align:right"> Promotion</p> <p class="col" th:text="${eventDetails.promotion + '%'}" style="text-align:left"></p>
             </div>
             <div class="row">
-                <p class="col" style="text-align:right"> Total</p> <p class="col" style="text-align:left">95000 MMK</p>
+                <p class="col" style="text-align:right"> Total</p> <p class="col" name="totalPrice" th:text="${((eventDetails.standardTicketPrice * ticketOrder.standardTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vipTicketPrice * ticketOrder.vipTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vvipTicketPrice * ticketOrder.vvipTicketSold)* (100 - eventDetails.promotion) / 100)}" style="text-align:left"></p>
             </div>
 
         </div>
       <!--  <h5 style="text-align:center;padding:30px;padding-bottom: 0;">Total : 100000 MMK</h5> -->
         <div style="text-align:center;padding:30px"><h6 style="padding:5px">Wavepay</h6>
-            <img src="css/qrcode.jpg" width="200" height="200">
+            <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.wavepayQrEncoded}}" width="200" height="200">
         </div>
         <div style="text-align:center;padding:30px"><h6 style="padding:5px">Kpay</h6>
-            <img src="css/qrcode.jpg" width="200" height="200">
+            <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.kpayQrEncoded}}" width="200" height="200">
         </div>
-        <form>
+        <form th:action="@{/order-payment}" method="post" enctype="multipart/form-data">
+            <div class="input-box mb-3">
+                <input type="hidden" name="userId" th:value="${ticketOrder.userId}" >
+            </div>
+            <div class="input-box mb-3">
+                 <input type="hidden" name="eventId" th:value="${ticketOrder.eventId}" >
+            </div>
+            <div class="input-box mb-3">
+                <input type="hidden" name="standardTicketSold" th:value="${ticketOrder.standardTicketSold}" >
+            </div>
+            <div class="input-box mb-3">
+                <input type="hidden" name="vipTicketSold" th:value="${ticketOrder.vipTicketSold}" >
+            </div>
+            <div class="input-box mb-3">
+                <input type="hidden" name="vvipTicketSold" th:value="${ticketOrder.vvipTicketSold}" >
+            </div>
+            <div class="input-box mb-3">
+                <input type="hidden" name="status" th:value="${ticketOrder.status}" >
+            </div>
             <div class="input-box mb-3 mx-auto" style="margin-bottom:50px;width:350px;padding:30px;">
-                <label for="paymentScreenshot" class="form-label">Payment Screenshot</label>
-                <input type="file" class="form-control mx-auto" id="paymentScreenshot" style="border-radius: 4px;
-        border: 1px solid #fe4567;">
+                <label for="paymentScreenShot" class="form-label">Payment Screenshot</label>
+                <input type="file" class="form-control mx-auto" id="paymentScreenShot" name="paymentScreenShot" style="border-radius: 4px;
+        border: 1px solid #fe4567;" accept="image/*" required>
             </div>
             <div style="text-align:center;padding:30px">
 
-                <button data-label="Register" class="rainbow-hover" type="reset" ><a href="/event-detail" style="text-decoration: none;color:#ffffff"><span class="sp">Back</span></a></button>
-                <button data-label="Register" class="rainbow-hover" type="submit"  ><span class="sp">Check Out</span></button>
+                <button data-label="Register" class="rainbow-hover" type="reset" ><a style="text-decoration: none;color:#ffffff"><span class="sp">Back</span></a></button>
+                <button data-label="Register" class="rainbow-hover" type="submit" ><span class="sp">Check Out</span></button>
             </div>
 
-    </div>
     </form>
 </div>
 </div>
@@ -125,12 +162,12 @@
 
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/help">Help</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/termsandconditions">Terms and Conditions</a></li>
-                <li><a href="/privacypolicy">Privacy Policy</a></li>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/about}">About</a></li>
+                <li><a th:href="@{/help}">Help</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+                <li><a th:href="@{/termsandconditions}">Terms and Conditions</a></li>
+                <li><a th:href="@{/privacypolicy}">Privacy Policy</a></li>
             </ul>
         </div>
 
