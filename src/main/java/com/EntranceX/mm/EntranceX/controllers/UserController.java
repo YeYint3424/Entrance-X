@@ -131,7 +131,7 @@ public class UserController {
         return "user/about";
     }
 
-    @GetMapping("/user-help")
+    @GetMapping("/user-faq")
     public String userHelp() {
         return "user/help";
     }

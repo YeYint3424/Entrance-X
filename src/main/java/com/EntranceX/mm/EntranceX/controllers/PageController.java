@@ -67,7 +67,7 @@ public class PageController {
         return "main/contact";
     }
 
-    @GetMapping("/help")
+    @GetMapping("/faq")
     public String help() {
         return "main/help";
     }
