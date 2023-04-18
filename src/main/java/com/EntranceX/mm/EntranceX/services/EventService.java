@@ -11,4 +11,5 @@ public interface EventService {
     Event createEvent(EventDto eventDto, int organizerId) throws IOException;
     List<Event> getEventsByOrganizerId(int organizerId);
     Event showEventDetail(int eventId);
+    List<Event> getEvents();
 }

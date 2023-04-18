@@ -15,14 +15,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpli implements UserService {
     @Autowired
     private UserDao userDao;
-
-    @Autowired
-    private WatchLaterDao watchLaterDao;
 
     @Autowired
     private EventDao eventDao;
@@ -40,8 +38,6 @@ public class UserServiceImpli implements UserService {
         user.setEmail(userDto.getEmail());
         user.setGender(userDto.getGender());
         user.setPhone(userDto.getPhone());
-
-
         String encodedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(encodedPassword);
 
@@ -49,19 +45,26 @@ public class UserServiceImpli implements UserService {
     }
 
     @Override
-    public WatchLater saveEventToWatchLater(int userId, int eventId) {
-        User user = new User();
-        user.setId(userId);
-        Event event = new Event();
-        event.setId(eventId);
-        WatchLater watchLater=new WatchLater();
-        watchLater.setUser(user);
-        watchLater.setEvent(event);
-        return watchLaterDao.save(watchLater);
+    public List<User> getAllUserList() {
+        return userDao.findAll();
     }
 
     @Override
-    public List<Event> getEvents() {
-        return eventDao.findAll();
+    public User getUserData(int userId) {
+        return userDao.findById(userId).orElse(null);
     }
+
+    @Override
+    public User editProfile(UserDto userDto, int userId) {
+        User user=userDao.findById(userId).orElse(null);
+        user.setUserName(userDto.getUserName());
+        user.setEmail(userDto.getEmail());
+        user.setPhone(userDto.getPhone());
+        user.setGender(userDto.getGender());
+        String encodedPassword=passwordEncoder.encode(userDto.getPassword());
+        user.setPassword(encodedPassword);
+        return userDao.save(user);
+    }
+
+
 }

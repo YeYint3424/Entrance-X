@@ -4,4 +4,5 @@ import com.EntranceX.mm.EntranceX.models.WatchLater;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WatchLaterDao extends JpaRepository<WatchLater,Integer> {
+    WatchLater findByUserIdAndEventId(int userId, int eventId);
 }

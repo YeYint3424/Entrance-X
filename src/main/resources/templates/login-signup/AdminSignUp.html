@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>User Sign Up</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+
+            overflow-x: hidden;
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            color: #cfd2d6;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse" style="background-color: #111111" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" style="color: white;font-family: fantasy">EntranceX</a>
+        </div>
+
+        <form class="navbar-form navbar-right" action="">
+            <button type="submit" class="btn" style="background-color:#111111;color:#dddddd" ><a href="/" style="text-decoration: none;color:#ffffff">Home</a></button>
+            <button type="submit" class="btn btn-default"><a href="/" style="text-decoration: none;color:#ffffff">Back</a></button>
+        </form>
+    </div>
+</nav>
+
+<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:2px solid;padding:0">
+    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
+        <h2 style="color:white">Welcome from Extrance-X</h2>
+        <br>
+        <h3 style="color:white">Please Admin Sign Up !</h3>
+    </div>
+
+
+    <form class="form-horizontal" th:method="post" id="signup-form">
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="userName">Username:</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="userName" name="userName" required>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="password">Password:</label>
+            <div class="col-xs-3">
+                <input type="password" class="form-control" id="password"  name="password" required>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="cpassword">Confirm Password:</label>
+            <div class="col-xs-3">
+                <input type="password" class="form-control" id="cpassword"  name="cpassword" required>
+                <br>
+                <span id="password-match"></span>
+            </div>
+        </div>
+
+        <br>
+        <ul class="pager">
+            <li>
+                <button type="submit" class="btn" style="background-color:#111111;color:#dddddd">Create</button>
+            </li>
+        </ul>
+    </form>
+
+    <ul class="pager">
+        <li>
+            <button type="submit" class="btn" style="background-color:#ffffff;color:#dddddd"><a href="/">Back</a></button>
+        </li>
+    </ul>
+    <ul class="pager">
+        <p>By signing up, you agree to our <a href="/termsandcondition">terms and conditions.</a></p>
+    </ul>
+</div>
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            var password = $('#password').val();
+            var cpassword = $('#cpassword').val();
+            if (password != cpassword) {
+                event.preventDefault();
+                $('#password-match').text('Passwords don\'t match');
+            } else {
+                $('#password-match').text('Passwords match');
+            }
+        });
+    });
+</script>
+</body>
+</html>

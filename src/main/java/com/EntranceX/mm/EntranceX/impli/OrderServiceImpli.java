@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 
 @Service
 public class OrderServiceImpli implements OrderService {
@@ -36,11 +37,16 @@ public class OrderServiceImpli implements OrderService {
         Event event=eventDao.findById(ticketOrderDto.getEventId()).orElseThrow(() -> new EventNotFoundException("Event not found"));
         ticketOrder.setUser(user);
         ticketOrder.setEvent(event);
-
+        ticketOrder.setTotalPrice(ticketOrderDto.getTotalPrice());
         byte[] paymentScreenShotPhoto=ticketOrderDto.getPaymentScreenShot().getBytes();
         String encodedPaymentScreenShot = Base64.getEncoder().encodeToString(paymentScreenShotPhoto);
         ticketOrder.setEncodedPaymentScreenShot(encodedPaymentScreenShot);
 
         return ticketOrderDao.save(ticketOrder);
+    }
+
+    @Override
+    public List<TicketOrder_History> getAllOrder() {
+        return ticketOrderDao.findAll();
     }
 }

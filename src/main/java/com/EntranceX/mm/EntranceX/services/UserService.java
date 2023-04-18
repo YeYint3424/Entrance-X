@@ -11,8 +11,10 @@ import java.util.List;
 
 public interface UserService {
         User createUser(UserDto userDto);
-        WatchLater saveEventToWatchLater(int userId, int eventId);
-        List<Event> getEvents();
+        List<User> getAllUserList();
+        User getUserData(int userId);
+        User editProfile(UserDto userDto, int userId);
+
     }
 
 

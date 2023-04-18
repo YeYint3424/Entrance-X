@@ -8,9 +8,11 @@ import com.EntranceX.mm.EntranceX.dto.EventDto;
 import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
+import com.EntranceX.mm.EntranceX.models.WatchLater;
 import com.EntranceX.mm.EntranceX.services.EventService;
 
 import com.EntranceX.mm.EntranceX.services.OrderService;
+import com.EntranceX.mm.EntranceX.services.WatchLaterService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -21,6 +23,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Base64;
 
 
@@ -35,11 +39,14 @@ public class EventController {
     EventService eventService;
     @Autowired
     OrderService orderService;
+    @Autowired
+    WatchLaterService watchLaterService;
 
     @GetMapping("/event-register")
-    public String registerEvent(HttpServletRequest request){
+    public String registerEvent(HttpServletRequest request, Model model){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
+
         return "event/event-register";
         }else {
             return "redirect:/login";
@@ -51,6 +58,7 @@ public class EventController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             int organizerId=(int) session.getAttribute("LoginOrganizer");
+            eventDto.setRequestTime(LocalDateTime.now());
             eventService.createEvent(eventDto, organizerId);
 
         return "redirect:/org-page";
@@ -68,6 +76,7 @@ public class EventController {
             String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
             byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
 
+
             model.addAttribute("eventDetails",eventDetails);
             model.addAttribute("eventTime", eventTime);
             model.addAttribute("userId", userId);
@@ -77,7 +86,7 @@ public class EventController {
             return "redirect:/login";
         }
     }
-    @PostMapping("/event-detail")
+    @PostMapping("/order-payment")
     public String eventDetailsPost(HttpServletRequest request, Model model,
                                    @ModelAttribute TicketOrder_HistoryDto ticketOrder){
         HttpSession session = request.getSession(false);
@@ -100,14 +109,14 @@ public class EventController {
 
 
 
-    @PostMapping("/order-payment")
+    @PostMapping("/send-order-to-admin")
     public String orderPayment(HttpServletRequest request, @ModelAttribute TicketOrder_HistoryDto ticketOrderDto) throws IOException {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
 
             System.out.println(ticketOrderDto);
             orderService.orderRequest(ticketOrderDto);
-        return "user/history";}
+        return "redirect:/user-history";}
         else {
         return "redirect:/login";
     }

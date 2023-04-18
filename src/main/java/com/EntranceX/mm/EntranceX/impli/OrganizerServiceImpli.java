@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,9 +42,30 @@ public class OrganizerServiceImpli implements OrganizerService {
     }
 
     @Override
-    public Organizer getOrganizerById(int organizer_id) {
-        Optional<Organizer> organizer  = organizerDao.findById(organizer_id);
-        return organizer.orElse(null);
+    public Organizer getOrganizerById(int organizerId) {
+        return organizerDao.findById(organizerId).orElse(null);
 
+
+    }
+
+    @Override
+    public List<Organizer> getAllOrganizerList() {
+        return organizerDao.findAll();
+    }
+
+    @Override
+    public Organizer editProfile(OrganizerDto organizerDto, int organizerId) {
+        Organizer organizer=organizerDao.findById(organizerId).orElse(null);
+        organizer.setUserName(organizerDto.getUserName());
+        organizer.setOrganizerEmail(organizerDto.getOrganizerEmail());
+        organizer.setOrganizerPhone(organizerDto.getOrganizerPhone());
+        organizer.setOrganizerPhone(organizerDto.getOrganizerPhone());
+        organizer.setCompanyPhone(organizerDto.getCompanyPhone());
+        organizer.setCompanyEmail(organizerDto.getCompanyEmail());
+        organizer.setCompanyAddress(organizerDto.getCompanyAddress());
+        organizer.setCompanyBio(organizerDto.getCompanyBio());
+        String password=passwordEncoder.encode(organizerDto.getPassword());
+        organizer.setPassword(password);
+        return organizerDao.save(organizer);
     }
 }

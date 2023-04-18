@@ -18,10 +18,10 @@ public class Admin {
     private int id;
 
     @Column(length = 30)
-    private String adminName, userName, email, password;
+    private String userName;
 
-    @Column(length = 15)
-    private String role;
+    private String password;
+
 
 
 

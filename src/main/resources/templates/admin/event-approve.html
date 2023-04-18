@@ -61,73 +61,23 @@
             <table class="table table-success table-striped ">
                 <thead>
                 <tr>
+                    <th scope="col">No.</th>
                     <th scope="col">Event Name</th>
-                    <th scope="col">Org-Name</th>
-                    <th scope="col">Event-Date</th>
+                    <th scope="col">Organizer Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Register Time</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr> <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr> <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
+                <tr th:each="event , eventIndex :${eventList}">
+                    <td th:text="${eventIndex.index +1}"></td>
+                    <td th:text="${event.eventName}"></td>
+                    <td th:text="${event.organizer.userName}"></td>
+                    <td th:text="${event.date}"></td>
+                    <td th:text="${#temporals.format(event.requestTime, 'yyyy-MM-dd HH:mm')}"></td>
                     <td><button type="submit" class="btn btn-primary">Detail</button></td>
                     <td><button type="submit" class="btn btn-success">Approve</button></td>
                     <td><button type="submit" class="btn btn-danger">Cancel</button></td>
@@ -150,53 +100,19 @@
             <table class="table table-success table-striped ">
                 <thead>
                 <tr>
+                    <th scope="col">No.</th>
                     <th scope="col">Event Name</th>
-                    <th scope="col">Org-Name</th>
-                    <th scope="col">Event-Date</th>
+                    <th scope="col">Organizer Name</th>
+                    <th scope="col">Event Date</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
+                <tr th:each="event , eventIndex :${eventList}">
+                    <td th:text="${eventIndex.index +1}"></td>
+                    <td th:text="${event.eventName}"></td>
+                    <td th:text="${event.organizer.userName}"></td>
+                    <td th:text="${event.date}"></td>
                     <td><button type="submit" class="btn btn-primary">Detail</button></td>
                 </tr>
 

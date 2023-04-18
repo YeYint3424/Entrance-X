@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -45,18 +46,45 @@ public class OrgController {
                 return "redirect:/login";} }
 
     @GetMapping("/org-profile")
-    public String org_profile(HttpServletRequest request){
+    public String org_profile(HttpServletRequest request, Model model){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int organizerId=(int)session.getAttribute("LoginOrganizer");
+            Organizer organizerData=organizerService.getOrganizerById(organizerId);
+            model.addAttribute("organizerData", organizerData);
         return "org/org-profile";
         } else{
             return "redirect:/login"; } }
 
     @GetMapping("/org-profile-update")
-    public String org_update(HttpServletRequest request) {
+    public String org_update(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int organizerId=(int)session.getAttribute("LoginOrganizer");
+            Organizer organizerData=organizerService.getOrganizerById(organizerId);
+            model.addAttribute("organizerEdit", organizerData);
             return "org/org-update";
+        } else {
+            return "redirect:/login"; } }
+
+    @PostMapping("/org-profile-update")
+    public String org_updatePost(HttpServletRequest request, Model model, OrganizerDto organizerDto,
+                                 @RequestParam("oldPassword") String oldPassword, RedirectAttributes redirectAttributes) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int organizerId=(int)session.getAttribute("LoginOrganizer");
+            Organizer organizerData=organizerService.getOrganizerById(organizerId);
+            model.addAttribute("organizerData", organizerData);
+            if(passwordEncoder.matches(oldPassword, organizerData.getPassword()) && !passwordEncoder.matches(organizerDto.getPassword(),organizerData.getPassword())){
+                organizerService.editProfile(organizerDto, organizerId);
+                return "redirect:/org-page";
+            }else if(passwordEncoder.matches(organizerDto.getPassword(),organizerData.getPassword())){
+                redirectAttributes.addAttribute("alreadyUse", true);
+                return "redirect:/org-profile-update";
+            }else{
+                redirectAttributes.addAttribute("error", true);
+                return "redirect:/org-profile-update";
+            }
         } else {
             return "redirect:/login"; } }
 

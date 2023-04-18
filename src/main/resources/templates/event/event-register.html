@@ -176,7 +176,7 @@
                     <div id="promotion-info" style="display:none">
                         <div class="input-box mb-3">
                             <label for="promotion" class="form-label">Promotion</label>
-                            <input type="number" min="0.00" max="100" step=".01" ^\d*\.\d{2}$ class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %" value="0">
+                            <input type="number" min="0" max="100" class="form-control" id="promotion" name="promotion" placeholder="Enter promotion in %" value="0">
                         </div>
                     </div>
 
@@ -221,6 +221,11 @@
                         <label for="status" class="form-label"></label>
                         <input type="hidden" class="form-control" id="status" name="status" value="0">
                     </div>
+<!--                    <div class="input-box mb-3">-->
+<!--                        <label for="requestTime" class="form-label"></label>-->
+<!--                        <input type="datetime-local" class="form-control" id="requestTime" name="requestTime" th:value="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}">-->
+<!--                    </div>-->
+
                     <div class="form-btn">
                         <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>
                         <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>

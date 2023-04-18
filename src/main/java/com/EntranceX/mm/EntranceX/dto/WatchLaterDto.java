@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class WatchLaterDto {
+    private int userId, eventId;
     private Event event;
     private User user;
 }
