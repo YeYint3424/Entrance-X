@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class AdminDto {
-    private String adminName, userName, email, password,role;
+    private String userName, password;
 }

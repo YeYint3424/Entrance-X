@@ -61,27 +61,27 @@
     <div class="container" style="margin-top: 100px" >
         <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">User-List</h3>
         <div class="table-responsive" style="height: 450px; overflow-y: auto; margin-top: 2rem;">
-            <table class="table table-success table-striped ">
+            <table class="table table-success table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No.</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Gender</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>mg mg</td>
-                    <td>mggm@gmail.com</td>
-                    <td><button type="submit" class="btn btn-info">Detail</button></td>
-                    <td><button type="submit" class="btn btn-danger">Ban</button></td>
+                <tr th:each="user, userIndex : ${userList}">
+                    <td th:text="${userIndex.index + 1}"></td>
+                    <td th:text="${user.userName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.gender}"></td>
                 </tr>
-
                 </tbody>
             </table>
+
 
 
         </div>

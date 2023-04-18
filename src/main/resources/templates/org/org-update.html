@@ -83,61 +83,66 @@
                 <h4>Organizer Profile Update</h4>
             </div>
             <div class="panel-body">
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" th:object="${organizerEdit}">
                     <div class="input-box mb-3">
                         <label for="orgname" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="orgname" name="orgname" value="mark12">
+                        <input type="text" class="form-control" id="orgname" name="userName" th:value="${organizerEdit.userName}">
                     </div>
 
                     <div class="input-box mb-3">
-                        <label for="orgemail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="orgemail" name="orgemail" value="mark@gamil.com" >
+                        <label for="organizerEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="organizerEmail" name="organizerEmail" th:value="${organizerEdit.organizerEmail}">
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="orgphone" class="form-label">Phone</label>
-                        <input type="tel" class="form-control" id="orgphone" name="orgphone" value="0934739434">
+                        <input type="tel" class="form-control" id="orgphone" name="organizerPhone" th:value="${organizerEdit.organizerPhone}">
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="cname" class="form-label">Company Name</label>
-                        <input type="text" class="form-control" id="cname" name="cname" value="Universal">
+                        <input type="text" class="form-control" id="cname" name="companyName" th:value="${organizerEdit.companyName}">
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="cemail" class="form-label">Company Email</label>
-                        <input type="email" class="form-control" id="cemail" name="cemail" value="universal@gmail.com">
+                        <input type="email" class="form-control" id="cemail" name="companyEmail" th:value="${organizerEdit.companyEmail}">
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="cphone" class="form-label">Company Phone</label>
-                        <input type="tel" class="form-control" id="cphone" name="cphone" value="0934739434">
+                        <input type="tel" class="form-control" id="cphone" name="companyPhone" th:value="${organizerEdit.companyPhone}">
                     </div>
 
                     <div class="input-box mb-3">
                         <label for="caddress" class="form-label">Company Address</label>
-                        <input type="text" class="form-control" id="caddress" name="caddress" value="12/234, Hlaing, Yangon">
+                        <input type="text" class="form-control" id="caddress" name="companyAddress" th:value="${organizerEdit.companyAddress}">
                     </div>
 
                     <div class="input-box form-floating mb-3">
-                        <textarea class="form-control"  id="comment" name="comment" style="height:150px">Universal was founded in 1990 and is located in Yangon, Myanmar. As a good event management company we have good links with various types of suppliers, performers as well as technicians.</textarea>
+                        <textarea class="form-control" id="comment" name="companyBio" style="height:150px" th:field="*{companyBio}" th:value="${organizerEdit.companyBio}"></textarea>
                         <label for="comment">Bio</label>
                     </div>
 
+
                     <div class="input-box mb-3" >
-                        <label for="old-password" class="form-label">Enter Old Password</label>
-                        <input type="password" class="form-control" id="old-password" name="old-password" >
+                        <label for="oldPassword" class="form-label">Enter Old Password</label>
+                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
+                        <br>
+                        <span th:if="${param.error}" class="error">Password doesn't match! Please Try Again.</span>
                     </div>
 
 
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
-                        <input type="password" class="form-control" id="password" name="password" value="123">
+                        <input type="password" class="form-control" id="password" name="password" required>
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="cpassword" class="form-label">Confirm New Password</label>
-                        <input type="password" class="form-control" id="cpassword" name="cpassword" value="123">
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" required>
+                        <br>
+                        <span th:if="${param.alreadyUse}" class="error">Password is already Used. Try New Password.</span>
                     </div>
 
 

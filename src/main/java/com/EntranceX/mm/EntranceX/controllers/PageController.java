@@ -3,10 +3,12 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.dao.AdminDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
+import com.EntranceX.mm.EntranceX.dto.AdminDto;
 import com.EntranceX.mm.EntranceX.models.Admin;
 import com.EntranceX.mm.EntranceX.models.Organizer;
 import com.EntranceX.mm.EntranceX.models.User;
 
+import com.EntranceX.mm.EntranceX.services.AdminService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,8 @@ public class PageController {
     @Autowired
     OrganizerDao organizerDao;
 
+    @Autowired
+    AdminService adminService;
 
     @GetMapping("/")
     public String main() {
@@ -138,52 +142,17 @@ public class PageController {
 
 
 
-    @GetMapping("/admin")
-    public String admin(HttpServletRequest request) {
-//        HttpSession session = request.getSession(false);
-//        if (session != null && session.getAttribute("LoginAdmin") != null) {
-//
-            return "admin/admin";
-//        } else {
-//            return "redirect:/login";
-//        }
-        }
 
 
-    @GetMapping("/event-approve")
-    public String eventApprove(HttpServletRequest request) {
-//        HttpSession session = request.getSession(false);
-//        if (session != null && session.getAttribute("LoginAdmin") != null) {
-        return "admin/event-approve";
-//    }else {
-//            return "redirect:/login"; }
+    @GetMapping("entrancex-control-station")
+    public String adminSignUp(){
+        return "login-signup/AdminSignUp";
     }
-
-    @GetMapping("/unban")
-    public String unban(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginAdmin") != null) {
-        return "admin/unban";
-    }else {
-        return "redirect:/login"; }}
-
-    @GetMapping("/voucher-approve")
-    public String voucherApprove(HttpServletRequest request) {
-//        HttpSession session = request.getSession(false);
-//        if (session != null && session.getAttribute("LoginAdmin") != null) {
-        return "admin/voucher-approve";
-    }
-//    else {
-//        return "redirect:/login"; }
-//}
-
-@GetMapping("/userList")
-    public String userList(){
-        return "admin/userList";
-}
-    @GetMapping("/orgList")
-    public String orgList(){
-        return "admin/orgList";
+    @PostMapping("entrancex-control-station")
+    public String adminSignUpPost(AdminDto adminDto){
+        adminService.createAdmin(adminDto);
+        return "redirect:/login";
     }
 }
+
 

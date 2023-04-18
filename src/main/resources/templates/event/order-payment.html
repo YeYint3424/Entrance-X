@@ -110,7 +110,7 @@
         <div style="text-align:center;padding:30px"><h6 style="padding:5px">Kpay</h6>
             <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.kpayQrEncoded}}" width="200" height="200">
         </div>
-        <form th:action="@{/order-payment}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/send-order-to-admin}" method="post" enctype="multipart/form-data">
             <div class="input-box mb-3">
                 <input type="hidden" name="userId" th:value="${ticketOrder.userId}" >
             </div>

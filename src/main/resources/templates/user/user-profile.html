@@ -105,7 +105,7 @@
                         <p style="margin:10px;font-weight:bold" class="left-title">Username</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px" >harry12</p>
+                        <p style="margin:10px" th:text="${userData.userName}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -115,7 +115,7 @@
                         <p style="margin:10px;font-weight:bold" class="left-title">Gender</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px"> Male</p>
+                        <p style="margin:10px" th:text="${userData.gender}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -125,7 +125,7 @@
                         <p style="margin:10px;font-weight:bold">Phone</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">093473493</p>
+                        <p style="margin:10px" th:text="${'0' + userData.phone}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -137,7 +137,7 @@
                         <p style="margin:10px;font-weight:bold">Email</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">harry@gmail.com</p>
+                        <p style="margin:10px" th:text="${userData.email}"></p>
                     </div>
                 </div>
 

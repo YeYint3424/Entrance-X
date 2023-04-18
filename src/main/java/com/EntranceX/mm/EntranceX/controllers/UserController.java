@@ -7,7 +7,9 @@ import com.EntranceX.mm.EntranceX.dto.UserDto;
 import com.EntranceX.mm.EntranceX.dto.WatchLaterDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.User;
+import com.EntranceX.mm.EntranceX.services.EventService;
 import com.EntranceX.mm.EntranceX.services.UserService;
+import com.EntranceX.mm.EntranceX.services.WatchLaterService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +35,19 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    EventService eventService;
+
+    @Autowired
+    WatchLaterService watchLaterService;
+
     @GetMapping("/user-profile")
-    public String user_profile(HttpServletRequest request) {
+    public String user_profile(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            User userData=userService.getUserData(userId);
+            model.addAttribute("userData", userData);
             return "user/user-profile";
         } else {
             return "redirect:/login";
@@ -44,21 +55,49 @@ public class UserController {
     }
 
     @GetMapping("/user-profile-update")
-    public String user_update(HttpServletRequest request) {
+    public String userUpdate(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            User userData=userService.getUserData(userId);
+            model.addAttribute("userEdit", userData);
             return "user/user-update";
         } else {
             return "redirect:/login";
         }
     }
 
+    @PostMapping("/user-profile-update")
+    public String userUpdatePost(HttpServletRequest request, Model model, @RequestParam("oldPassword") String oldPassword,
+                                 UserDto userDto, RedirectAttributes redirectAttributes) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            User userData=userService.getUserData(userId);
+            model.addAttribute("userData", userData);
+            if(passwordEncoder.matches(oldPassword, userData.getPassword()) && !passwordEncoder.matches(userDto.getPassword(),userData.getPassword())){
+                userService.editProfile(userDto, userId);
+                return "redirect:/user-page";
+            }else if(passwordEncoder.matches(userDto.getPassword(),userData.getPassword())){
+                redirectAttributes.addAttribute("alreadyUse", true);
+                return "redirect:/user-profile-update";
+            }else{
+                redirectAttributes.addAttribute("error", true);
+                return "redirect:/user-profile-update";
+            }
+
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+
     @GetMapping("/user-this-month")
     public String user_thismonth(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
             int userId=(int)session.getAttribute("LoginUser");
-            List<Event> events = userService.getEvents();
+            List<Event> events = eventService.getEvents();
             for (Event event : events) {
                 byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
             }
@@ -75,7 +114,7 @@ public class UserController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
             int userId=(int)session.getAttribute("LoginUser");
-            List<Event> events = userService.getEvents();
+            List<Event> events = eventService.getEvents();
             for (Event event : events) {
                 byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
             }
@@ -116,15 +155,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user-watch-later")
-    public String user_watch_later(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginUser") != null) {
-            return "user/watch-later";
-        } else {
-            return "redirect:/login";
-        }
-    }
+
 
     @GetMapping("/user-about")
     public String userAbout() {
@@ -174,12 +205,28 @@ public class UserController {
         }
 
     }
-    @PostMapping("/user-watch-later-button")
-    public String watchLater(HttpServletRequest request, @RequestParam int userId, int eventId){
+    @PostMapping("/watch-later-add")
+    public String watchLaterAdd(HttpServletRequest request, @RequestParam("userId")int userId,
+                                @RequestParam("eventId")int eventId){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
-            userService.saveEventToWatchLater(userId, eventId);
-            return "redirect:/event-detail";
+            System.out.println(userId);
+            System.out.println(eventId);
+            watchLaterService.saveEventToWatchLater(userId, eventId);
+            return String.format("redirect:/event-detail?eventId=%d", eventId);
+        }else {
+            return "redirect:/login";
+        }
+    }
+
+    @PostMapping("/watch-later-remove")
+    public String watchLaterRemove(HttpServletRequest request, @RequestParam("userId")int userId,
+                                   @RequestParam("eventId")int eventId){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            watchLaterService.removeEventFromWatchLater(userId, eventId);
+            return String.format("redirect:/event-detail?eventId=%d", eventId);
+
         }else {
             return "redirect:/login";
         }

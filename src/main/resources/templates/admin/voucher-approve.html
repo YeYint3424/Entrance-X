@@ -64,20 +64,25 @@
             <table class="table table-success table-striped ">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Username</th>
+                <th scope="col">No.</th>
+                <th scope="col">Buyer Name</th>
                 <th scope="col">Event Name</th>
-                <th scope="col">Payment</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Payment ScreenShot</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>mg mg</td>
-                <td>GOD-X</td>
-                <td><img alt="payment-ss"></td>
+            <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}">
+                <td th:text="${ticketOrderIndex.index + 1}"></td>
+                <td th:text="${ticketOrder.user.userName}"></td>
+                <td th:text="${ticketOrder.event.eventName}"></td>
+                <td th:text="${ticketOrder.totalPrice}"></td>
+                <td>
+                <img th:src="@{'data:image/jpeg;base64,' + ${ticketOrder.encodedPaymentScreenShot}}"
+                    width="100" height="100">
+                </td>
                 <td><button type="submit" class="btn btn-success">Approve</button></td>
                 <td><button type="submit" class="btn btn-danger">Cancel</button></td>
             </tr>
@@ -91,21 +96,24 @@
 
     <div class="container">
         <div class="container" style="margin-top: 1rem" >
-            <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Voucher-Approve</h3>
+            <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Vouchers</h3>
             <div class="table-responsive" style="height: 200px; overflow-y: auto; margin-top: 2rem;">
                 <table class="table table-success table-striped ">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Username</th>
+                        <th scope="col">No.</th>
+                        <th scope="col">Buyer Name</th>
                         <th scope="col">Event Name</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>mg mg</td>
-                        <td>GOD-X</td>
+                    <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}">
+                        <td th:text="${ticketOrderIndex.index + 1}"></td>
+                        <td th:text="${ticketOrder.user.userName}"></td>
+                        <td th:text="${ticketOrder.event.eventName}"></td>
+                        <td><button type="submit" class="btn btn-success">Detail</button></td>
+
                     </tr>
 
                     </tbody>

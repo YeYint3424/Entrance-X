@@ -64,16 +64,22 @@
             <table class="table table-success table-striped ">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Organizer-Name</th>
+                    <th scope="col">No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Organizer Email</th>
+                    <th scope="col">Organizer Phone</th>
+                    <th scope="col">Company Name</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>mg mg</td>
+                <tr th:each="organizer, organizerIndex : ${organizerList}">
+                    <td th:text="${organizerIndex.index + 1}"></td>
+                    <td th:text="${organizer.userName}"></td>
+                    <td th:text="${organizer.organizerEmail}"></td>
+                    <td th:text="${organizer.organizerPhone}"></td>
+                    <td th:text="${organizer.companyName}"></td>
                     <td><button type="submit" class="btn btn-info">Detail</button></td>
                     <td><button type="submit" class="btn btn-warning">Warning</button></td>
                 </tr>

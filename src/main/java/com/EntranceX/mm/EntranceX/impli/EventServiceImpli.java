@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +49,8 @@ public class EventServiceImpli implements EventService {
         event.setStandardTicketAvailableQuantity(eventDto.getStandardTicketQuantity());
         event.setVipTicketAvailableQuantity(eventDto.getVipTicketQuantity());
         event.setVvipTicketAvailableQuantity(eventDto.getVvipTicketQuantity());
+
+        event.setRequestTime(eventDto.getRequestTime());
         // Encode and set the photo
         byte[] photoBytes = eventDto.getPhoto().getBytes();
         String encodedPhoto = Base64.getEncoder().encodeToString(photoBytes);
@@ -73,9 +76,11 @@ public class EventServiceImpli implements EventService {
 
     @Override
     public Event showEventDetail(int eventId) {
-        return eventDao.findById(eventId).orElseThrow(() -> new EventNotFoundException("Event not found"));
+        return eventDao.findById(eventId).orElseThrow(() -> new EventNotFoundException("Event not found")); }
 
-
+    @Override
+    public List<Event> getEvents() {
+        return eventDao.findAll();
     }
 
 

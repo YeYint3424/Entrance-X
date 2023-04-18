@@ -182,7 +182,7 @@
                         <p style="margin:10px;font-weight:bold" class="left-title">Username</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px" >mark12</p>
+                        <p style="margin:10px" th:text="${organizerData.userName}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -192,7 +192,7 @@
                         <p style="margin:10px;font-weight:bold" class="left-title">Email</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px"> mark@gmail.com</p>
+                        <p style="margin:10px" th:text="${organizerData.organizerEmail}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -202,7 +202,7 @@
                         <p style="margin:10px;font-weight:bold">Phone</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">093473493</p>
+                        <p style="margin:10px" th:text="${organizerData.organizerPhone}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -212,7 +212,7 @@
                         <p style="margin:10px;font-weight:bold">Company Name</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px"> Universal</p>
+                        <p style="margin:10px" th:text="${organizerData.companyName}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -222,7 +222,7 @@
                         <p style="margin:10px;font-weight:bold">Company Email</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">universal@gmail.com</p>
+                        <p style="margin:10px" th:text="${organizerData.companyEmail}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -232,7 +232,7 @@
                         <p style="margin:10px;font-weight:bold">Company Phone</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">093468374</p>
+                        <p style="margin:10px" th:text="${organizerData.companyPhone}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -242,7 +242,7 @@
                         <p style="margin:10px;font-weight:bold">Company Address</p>
                     </div>
                     <div class="col-md-6" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">12/343, Yangon</p>
+                        <p style="margin:10px" th:text="${organizerData.companyAddress}"></p>
                     </div>
                 </div>
                 <hr class="mx-auto" >
@@ -252,7 +252,7 @@
                         <p style="margin:10px;font-weight:bold">Company Biography</p>
                     </div>
                     <div class="col" style="text-align:left;padding-left:40px;width:50%">
-                        <p style="margin:10px">Universal was founded in 1990 and is located in Yangon, Myanmar. As a good event management company we have good links with various types of suppliers, performers as well as technicians.</p>
+                        <p style="margin:10px" th:text="${organizerData.companyBio}"></p>
                     </div>
                 </div>
             </div>
@@ -260,7 +260,7 @@
 
             <div class="card-footer center">
 
-                <button class="card-btn"><a href="/org-profile-update" style="text-decoration:none;color:#ffffff">Edit</a></button>
+                <button class="card-btn"><a th:href="@{/org-profile-update}" style="text-decoration:none;color:#ffffff">Edit</a></button>
             </div>
         </div>
     </div>

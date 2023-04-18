@@ -28,6 +28,7 @@ public class Event {
 //    0 for pending and 1 for accept in status
     private LocalDate date;
     private String artist, eventDescription;
+    private LocalDateTime requestTime;
 
     @Lob
     @Column(columnDefinition = "longblob")
