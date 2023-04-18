@@ -135,12 +135,16 @@
                         <input type="email" class="form-control" id="email" name="email" th:value="${userEdit.email}">
                     </div>
 
-                    <div class="input-box mb-3" >
-                        <label for="oldPassword" class="form-label">Enter Old Password</label>
-                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
-                        <br>
-                        <span th:if="${param.error}" class="error">Password doesn't match! Please Try Again.</span>
+                    <div class="input-box mb-3" style="display:none">
+                        <label for="db-password" class="form-label">Old Password from DB</label>
+                        <input type="password" class="form-control" id="db-password" name="db-password" value="123" onkeyup='check();'>
                     </div>
+
+                    <div class="input-box mb-3" >
+                        <label for="old-password" class="form-label">Enter Old Password</label>
+                        <input type="password" class="form-control" id="old-password" name="old-password" onkeyup='check();' required>
+                    </div>
+
 
 
                     <div class="input-box mb-3" >
@@ -205,18 +209,33 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('form').submit(function(event) {
-            var old_password = $('#old-password').val();
-            var oldPassword = 123;  /* replace 123 with login-password using thymeleaf */
-            if (old_password != oldPassword) {
-                event.preventDefault();
-                $('#password-match').text('Password Incorrect! Try again.');
-            } else {
-                $('#password-match').text('Passwords match');
-            }
-        });
-    });
+    document.querySelector('#submitbtn').onclick = function(){
+        var old_password=document.querySelector('#old-password').value;
+        var db_password=document.querySelector('#db-password').value;
+
+        if(old_password != db_password){
+            alert("Password incorrect! Try again.");
+
+            return false;
+        }
+        else
+            return true;
+    }
+
+    var check=function(){
+        if(document.getElementById('old-password').value != document.getElementById('db-password').value) {
+            document.getElementById('message').style.color='red';
+            document.getElementById('message').innerHTML = 'incorrect password';
+
+        } else {
+
+            document.getElementById('message').style.color='green';
+            document.getElementById('message').innerHTML = 'password correct!';
+
+
+        }
+
+    }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

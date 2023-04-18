@@ -92,10 +92,20 @@
                         <label for="venue" class="form-label">Place</label>
                         <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event place" required>
                     </div>
-
+                    <div class="input-box mb-3">
+                        <label for="artist" class="form-label">Choose Artist</label>
+                        <select class="form-control" size="3" name="artist" id="artist" multiple>
+                         <option value="Taylor Swift">Taylor Swift</option>
+                            <option value="Justin Bieber">Justin Bieber</option>
+                            <option value="Ariana Grande">Ariana Grande</option>
+                            <option value="Charlie Puth">Charlie Puth</option>
+                            <option value="Camila Cabello">Camila Cabello</option>
+                            <option value="Chris Brown">Chris Brown</option>
+                        </select>
+                    </div>
 
                     <div class="input-box mb-3">
-                    <label for="artist1" class="form-label">Main Artist</label>
+                    <label for="artist1" class="form-label">Add Artist</label>
                     <input type="text" class="form-control" id="artist1" name="artist" placeholder="Enter artist names" required>
                     <div id="artist-fields" style="padding:10px;padding-left:0" ></div>
                     <button type="button" id="add-artist">+</button>
