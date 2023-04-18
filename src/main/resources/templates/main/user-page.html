@@ -89,9 +89,12 @@
                 <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
             </div>
             <div class="modal-footer">
-                <a href="/sign-out">
-                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                </a>
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
             </div>
         </div>
     </div>
@@ -153,7 +156,12 @@
         <table class="table" style="margin-top: 25px;">
             <thead>
             <tr>
-                <th scope="col " class="event-type  ">Trending Events</th>
+                <th scope="col " class="event-type">
+                    Trending Events
+                <span>
+                    <a href="/user-trending" style="font-size:19px;float: right;color: white;text-shadow: 2px 2px 4px black;text-decoration: none;">See More → </a>
+                </span>
+                </th>
             </tr>
             </thead>
         </table>
@@ -188,15 +196,19 @@
 
             </div>
 
-            <a href="/user-trending" style="float: right;color: white;text-shadow: 2px 2px 4px black;text-decoration: none;">See More==></a>
-
 
         </div>
         <!--        Event Type          -->
         <table class="table" style="margin-top: 25px;">
             <thead>
             <tr>
-                <th scope="col " class="event-type">Upcoming</th>
+                <th scope="col " class="event-type">
+                    Upcoming
+                <span>
+                    <a href="/user-upcoming" style="font-size:19px;float: right;color: white;text-shadow: 2px 2px 4px black;text-decoration: none;">See More → </a>
+
+                </span>
+                </th>
             </tr>
             </thead>
         </table>
@@ -231,14 +243,18 @@
 
             </div>
 
-            <a href="/user-upcoming" style="float: right;color: white;text-shadow: 2px 2px 4px black;text-decoration: none;">See More==></a>
-
         </div>
         <!--        Event Type          -->
         <table class="table" style="margin-top: 25px;">
             <thead>
             <tr>
-                <th scope="col " class="event-type ">Promotion</th>
+                <th scope="col " class="event-type ">
+                    Promotion
+                <span>
+                   <a href="/user-promotion" style="font-size:19px;float: right;color: white;text-shadow: 2px 2px 4px black;text-decoration: none;">See More → </a>
+
+                </span>
+                </th>
             </tr>
             </thead>
         </table>
@@ -273,8 +289,6 @@
 
 
             </div>
-
-            <a href="/user-promotion" style="float: right;color: white;text-shadow: 2px 2px 4px black;text-decoration: none;">See More==></a>
 
         </div>
 
