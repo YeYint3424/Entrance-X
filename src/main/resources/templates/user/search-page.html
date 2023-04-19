@@ -31,9 +31,10 @@
 </head>
 <body>
 <!--        nav-bar         -->
+
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="css/exlogotest3.png"  alt=""> Entrance-X</a>
+        <a class="navbar-brand" href=""><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
@@ -42,9 +43,9 @@
                         <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </li>
-                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/login}">LogIn</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{user/signup}">SIGN-UP</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-page}">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-profile}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -59,22 +60,21 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-
-                            <li><a class="text:white">Events
-                            </a>
+                            <li><a class="text:white">Events</a>
                                 <ul>
-                                    <li><a href="/main-trending">Trending</a></li>
-                                    <li><a href="/main-all-event">All-Event</a></li>
-                                    <li><a href="/main-promotion">Promotion</a></li>
+                                    <li><a href="/user-trending">Trending</a></li>
+                                    <li><a href="/user-this-month">This month</a></li>
+                                    <li><a href="/user-upcoming">Upcoming</a></li>
+                                    <li><a href="/user-promotion">Promotion</a></li>
+                                    <li><a href="/user-watch-later">Watch Later</a></li>
+                                    <li><a href="/user-history">History</a></li>
                                 </ul>
                             </li>
-                            <li><a  th:href="@{user/signup}">Sign-Up</a></li>
-                            <li><a  th:href="@{/login}">Log-In</a></li>
-                            <li><a  href="/about">About</a></li>
-                            <li><a  href="/faq">FAQ</a></li>
-                            <li><a  href="/contact">Contact</a></li>
-                            <li><a  href="/termsandconditions">Terms and Conditions</a></li>
-                            <li><a  href="/privacypolicy">Privacy Policy</a></li>
+                            <li><a  href="/user-about">About</a></li>
+                            <li><a  href="/user-faq">FAQ</a></li>
+                            <li><a  href="/user-contact">Contact</a></li>
+                            <li><a  href="/user-term">Terms and Conditions</a></li>
+                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,7 +82,28 @@
         </div>
     </div>
 </nav>
-<!--        nav-bar end         -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div><!--        nav-bar end         -->
 
 <div class="wrapper">
 
@@ -93,7 +114,7 @@
         <table class="table" style="margin-top: 60px;">
             <thead>
             <tr>
-                <th scope="col " class="event-type">Promotion Events</th>
+                <th scope="col " class="event-type">search event name :</th>
             </tr>
             </thead>
         </table>

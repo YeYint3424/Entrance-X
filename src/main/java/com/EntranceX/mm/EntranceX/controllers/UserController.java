@@ -231,4 +231,9 @@ public class UserController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/user-search-page")
+    public String user_search(){
+        return "user/search-page";
+    }
 }

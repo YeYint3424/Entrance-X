@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class OnlyViewController {
 
-    @GetMapping("/main-this-month")
+    @GetMapping("/main-all-event")
     public String main_this_month(){
-        return "event/this-month";
+        return "event/all-event";
     }
     @GetMapping("/main-promotion")
     public String main_promotion(){
@@ -19,9 +19,10 @@ public class OnlyViewController {
     public String main_trending(){
         return "event/trending";
     }
-    @GetMapping("/main-upcoming")
-    public String main_upcoming(){
-        return "event/upcoming";
+
+    @GetMapping("/main-search")
+    public String main_search(){
+        return "main/search-page";
     }
 
 }

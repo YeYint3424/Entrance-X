@@ -36,6 +36,11 @@ public class OrgController {
     @Autowired
     EventService eventService;
 
+    @GetMapping("/org-search-page")
+    public String org_search(){
+        return "org/search-page";
+    }
+
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
