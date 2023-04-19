@@ -1,15 +1,19 @@
 package com.EntranceX.mm.EntranceX.controllers;
 
 
+import com.EntranceX.mm.EntranceX.config.QRCodeGenerator;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
-import com.EntranceX.mm.EntranceX.dto.EventDto;
+
 import com.EntranceX.mm.EntranceX.dto.UserDto;
-import com.EntranceX.mm.EntranceX.dto.WatchLaterDto;
+
 import com.EntranceX.mm.EntranceX.models.Event;
+import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
 import com.EntranceX.mm.EntranceX.models.User;
 import com.EntranceX.mm.EntranceX.services.EventService;
+import com.EntranceX.mm.EntranceX.services.OrderService;
 import com.EntranceX.mm.EntranceX.services.UserService;
 import com.EntranceX.mm.EntranceX.services.WatchLaterService;
+import com.google.zxing.WriterException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +23,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDate;
+
+import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 
@@ -40,6 +45,13 @@ public class UserController {
 
     @Autowired
     WatchLaterService watchLaterService;
+
+    @Autowired
+    QRCodeGenerator qrCodeGenerator;
+
+    @Autowired
+    OrderService orderService;
+
 
     @GetMapping("/user-profile")
     public String user_profile(HttpServletRequest request, Model model) {
@@ -146,9 +158,12 @@ public class UserController {
     }
 
     @GetMapping("/user-history")
-    public String user_history(HttpServletRequest request) {
+    public String user_history(HttpServletRequest request,Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            List<TicketOrder_History> ticketOrder=orderService.getUserOrderList(userId);
+            model.addAttribute("userOrderList", ticketOrder);
             return "user/history";
         } else {
             return "redirect:/login";
@@ -231,9 +246,48 @@ public class UserController {
             return "redirect:/login";
         }
     }
+    @GetMapping("/ticket-voucher")
+    public String ticketVoucher(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            TicketOrder_History ticketOrder=new TicketOrder_History();
+            if(ticketOrder.getEncodedTicketQR()==null){
+                // generate QR code data
+                String data = "Ticket:123456789";
+                // replace with your data
+                int size = 256; // replace with your size
+                byte[] qrCode = new byte[0];
+                try {
+                    qrCode = qrCodeGenerator.generateQrCode(data, size);
+                } catch (WriterException | IOException e) {
+                    e.printStackTrace();
+                }
+                String ticketQR = Base64.getEncoder().encodeToString(qrCode);
+                ticketOrder.setEncodedTicketQR(ticketQR);
+                // add QR code data to the model
+                }else{
 
+            }
+
+            return "main/ticketVoucher";
+        } else {
+            return "redirect:/login";
+        }
+    }
     @GetMapping("/user-search-page")
-    public String user_search(){
-        return "user/search-page";
+    public String user_search(HttpServletRequest request, @RequestParam("eventName") String eventName, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            List<Event> events = eventService.getEventForSearch(eventName);
+            for (Event event : events) {
+                byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+
+            }
+            model.addAttribute("searchName", eventName);
+            model.addAttribute("searchEvents", events);
+            return "user/search-page";
+        } else {
+            return "redirect:/login";
+        }
     }
 }

@@ -3,9 +3,7 @@ package com.EntranceX.mm.EntranceX.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Configuration;
+
 
 @Entity
 @Data
@@ -20,6 +18,10 @@ public class TicketOrder_History {
     @Lob
     @Column(columnDefinition = "longblob")
     private String encodedPaymentScreenShot;
+
+    @Lob
+    @Column(columnDefinition = "longblob")
+    private String encodedTicketQR;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

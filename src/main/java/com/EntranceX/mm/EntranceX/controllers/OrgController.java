@@ -36,10 +36,6 @@ public class OrgController {
     @Autowired
     EventService eventService;
 
-    @GetMapping("/org-search-page")
-    public String org_search(){
-        return "org/search-page";
-    }
 
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request) {
@@ -134,5 +130,21 @@ public class OrgController {
     public String organizerRegisterPost(@ModelAttribute OrganizerDto organizerDto, Model model) {
         organizerService.createOrganizer(organizerDto);
         return "redirect:/login";
+    }
+
+    @GetMapping("/org-search-page")
+    public String org_search(HttpServletRequest request, @RequestParam("eventName") String eventName, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            List<Event> events = eventService.getEventForSearch(eventName);
+            for (Event event : events) {
+                byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+            }
+            model.addAttribute("searchName", eventName);
+            model.addAttribute("searchEvents", events);
+            return "org/search-page";
+        } else {
+            return "redirect:/login";
+        }
     }
 }

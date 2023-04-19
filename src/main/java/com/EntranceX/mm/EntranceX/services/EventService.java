@@ -12,4 +12,5 @@ public interface EventService {
     List<Event> getEventsByOrganizerId(int organizerId);
     Event showEventDetail(int eventId);
     List<Event> getEvents();
+    List<Event> getEventForSearch(String eventName);
 }

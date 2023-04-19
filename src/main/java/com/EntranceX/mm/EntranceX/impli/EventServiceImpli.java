@@ -83,5 +83,10 @@ public class EventServiceImpli implements EventService {
         return eventDao.findAll();
     }
 
+    @Override
+    public List<Event> getEventForSearch(String eventName) {
+        return eventDao.findByEventNameContainingIgnoreCase(eventName);
+    }
+
 
 }

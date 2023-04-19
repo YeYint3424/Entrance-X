@@ -87,12 +87,7 @@ public class PageController {
     }
 
 
-    @GetMapping("/ticket-voucher")
-    public String ticketVoucher() {
 
-
-        return "main/ticketVoucher";
-    }
 
     @GetMapping(value = "/login")
     public String LoginPage() {

@@ -207,9 +207,11 @@
     </table>
     <hr>
     <div style="text-align:center; padding:30px; padding-bottom:50px">
-        <h4 >Your QR Code</h4>
-        <img src="css/qrcode.jpg" width="200" height="200" >
+        <h4>Your QR Code</h4>
+        <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code">
     </div>
+
+
     <hr>
     <div style="padding:35px;padding-top:20px;text-align:center">
         <button type="button">

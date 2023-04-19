@@ -49,4 +49,16 @@ public class OrderServiceImpli implements OrderService {
     public List<TicketOrder_History> getAllOrder() {
         return ticketOrderDao.findAll();
     }
+
+    @Override
+    public TicketOrder_History saveTicketQr(String ticketQR) {
+        TicketOrder_History ticketOrder=new TicketOrder_History();
+        ticketOrder.setEncodedTicketQR(ticketQR);
+        return ticketOrderDao.save(ticketOrder);
+    }
+
+    @Override
+    public List<TicketOrder_History> getUserOrderList(int userId) {
+        return ticketOrderDao.findByUserId(userId);
+    }
 }
