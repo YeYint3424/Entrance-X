@@ -11,14 +11,21 @@
 <body>
 
 <!--navbar-->
+
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/" ><img src="exlogotest3.png" style="padding-bottom:3px" alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href=""><img src="css/exlogotest3.png"  alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" href="/">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" href="/login">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" href="">SIGN OUT</a></li>
+                <!--                <li class="navlist1">-->
+                <!--                    <form th:action="@{/user-search-page}" method="get" class="d-flex" role="search">-->
+                <!--                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="eventName">-->
+                <!--                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>-->
+                <!--                    </form>-->
+                <!--                </li>-->
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-page}">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-profile}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -34,7 +41,8 @@
                     <div class="container">
                         <ul>
 
-                            <li><a href="">Events</a>
+                            <li><a class="text:white">Events
+                            </a>
                                 <ul>
                                     <li><a href="/main-trending">Trending</a></li>
                                     <li><a href="/main-this-month">This month</a></li>
@@ -42,13 +50,13 @@
                                     <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/org-signup">Sign Up</a></li>
-                            <li><a  href="">Sign Out</a></li>
-                            <li><a  href="/org-about">About</a></li>
-                            <li><a  href="/org-faq">FAQ</a></li>
-                            <li><a  href="/org-contact">Contact</a></li>
-                            <li><a  href="/org-term">Terms and Conditions</a></li>
-                            <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
+                            <li><a  th:href="@{/user-signup}">Sign-Up</a></li>
+                            <li><a  th:href="@{/login}">Log-In</a></li>
+                            <li><a  href="/user-about">About</a></li>
+                            <li><a  href="/user-faq">FAQ</a></li>
+                            <li><a  href="/user-contact">Contact</a></li>
+                            <li><a  href="/user-term">Terms and Conditions</a></li>
+                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,8 +64,28 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<!--event form-->
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div><!--event form-->
 <div class="container">
     <div class="event-div col-md-6 mx-auto">
         <div class="panel panel-primary">

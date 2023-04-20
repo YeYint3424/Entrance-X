@@ -26,12 +26,11 @@
             border-bottom: 1px solid white;
         }
     </style>
-    <title> Promotion </title>
-
-
+    <title> Upcoming </title>
+    <link rel="stylesheet" href="../../static/css/custom.css">
 </head>
 <body>
-
+<!--        nav-bar         -->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href=""><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
@@ -63,8 +62,7 @@
                             <li><a class="text:white">Events</a>
                                 <ul>
                                     <li><a href="/user-trending">Trending</a></li>
-                                    <li><a href="/user-this-month">This month</a></li>
-                                    <li><a href="/user-upcoming">Upcoming</a></li>
+                                    <li><a href="/user-all-event">Events</a></li>
                                     <li><a href="/user-promotion">Promotion</a></li>
                                     <li><a href="/user-watch-later">Watch Later</a></li>
                                     <li><a href="/user-history">History</a></li>
@@ -105,14 +103,18 @@
     </div>
 </div>
 
-<div class="wrapper">    <!--         main page         -->
+<!--        nav-bar end         -->
+
+<div class="wrapper">
+
+    <!--         main page         -->
     <div class="container main-content">
 
         <!--        Event Type          -->
         <table class="table" style="margin-top: 60px;">
             <thead>
             <tr>
-                <th scope="col " class="event-type">Event For This Month</th>
+                <th scope="col " class="event-type">Events</th>
             </tr>
             </thead>
         </table>
@@ -122,15 +124,24 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col " th:each="event : ${events}">
+                <div class="col ">
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
-                        <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}" class="card-img-top" width="150" height="250" alt="...">
+                        <img src="https://mosmedia.azureedge.net/cache/d/0/8/0/9/9/d08099b6c7bb968e9462c8db464b71ec6049da04.png"
+                             class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body rounded">
 
-                        <h5 class="card-title" th:text="${event.eventName}"></h5>
-                        <p class="card-text" th:text="${event.date}"></p>
-                        <a th:href="@{/event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
-                    </div>
+                            <h5 class="card-title">
+
+                                Illenium
+
+                            </h5>
+                            <p class="card-text">
+
+                                16.6.2023
+
+                            </p>
+                            <a href="/event-detail" class="btn btn-dark">More Detail</a>
+                        </div>
 
                     </div>
                 </div>
@@ -141,7 +152,6 @@
         </div>
     </div>
 </div>
-
 <!--            Footer            -->
 <footer>
     <div class="footer-content">
@@ -153,7 +163,7 @@
         <ul class="social">
             <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
             <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none" hidden></i></a></li>
 
 
         </ul>

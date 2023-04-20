@@ -61,10 +61,11 @@
                             <li><a class="text:white">Events
                             </a>
                                 <ul>
-                                    <li><a href="/main-trending">Trending</a></li>
-                                    <li><a href="/main-this-month">This month</a></li>
-                                    <li><a href="/main-upcoming">Upcoming</a></li>
-                                    <li><a href="/main-promotion">Promotion</a></li>
+                                    <li><a href="/user-trending">Trending</a></li>
+                                    <li><a href="/user-all-event">Events</a></li>
+                                    <li><a href="/user-promotion">Promotion</a></li>
+                                    <li><a href="/user-watch-later">Watch Later</a></li>
+                                    <li><a href="/user-history">History</a></li>
                                 </ul>
                             </li>
                             <li><a  th:href="@{/user-signup}">Sign-Up</a></li>
@@ -81,6 +82,28 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="title" class="py-md-5" style="text-align:center;color:#ffffff"><h5  style="padding-top:70px">We are here for you!</h5>
     <h6>Everyday: 7AM - 10pm MMT </h6></div>

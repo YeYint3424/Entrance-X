@@ -290,4 +290,9 @@ public class UserController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/user-all-event")
+    public String user_all_event(){
+        return "user/all-event";
+    }
 }
