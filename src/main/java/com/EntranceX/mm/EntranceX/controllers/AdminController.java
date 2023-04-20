@@ -37,7 +37,13 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             List<Event> events=eventService.getEvents();
+            List<User> users=userService.getAllUserList();
+            List<Organizer> organizers=organizerService.getAllOrganizerList();
+            List<TicketOrder_History>vouchers=orderService.getAllOrder();
             model.addAttribute("eventList", events);
+            model.addAttribute("userCount", users);
+            model.addAttribute("organizerCount", organizers);
+            model.addAttribute("voucherApproveCount", vouchers);
         return "admin/admin";
         } else {
             return "redirect:/login";

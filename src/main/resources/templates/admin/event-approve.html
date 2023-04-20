@@ -72,7 +72,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event , eventIndex :${eventList}">
+                <tr th:each="event , eventIndex :${eventList}" th:if="${event.status == 0}">
                     <td th:text="${eventIndex.index +1}"></td>
                     <td th:text="${event.eventName}"></td>
                     <td th:text="${event.organizer.userName}"></td>
@@ -108,7 +108,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event , eventIndex :${eventList}">
+                <tr th:each="event , eventIndex :${eventList}" th:if="${event.status == 1}">
                     <td th:text="${eventIndex.index +1}"></td>
                     <td th:text="${event.eventName}"></td>
                     <td th:text="${event.organizer.userName}"></td>

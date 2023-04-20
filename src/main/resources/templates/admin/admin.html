@@ -99,7 +99,7 @@
              <div class="col-md-3">
                  <div class="card" style="width: 10rem;height: 10rem">
                         <a href="/event-approve">
-                            <span class="notification-badge">10</span>
+                            <span class="notification-badge" th:text="${#lists.size(#lists.filter(eventList, status == 0))}"></span>
                             <div class="card-body">
                                 Event-Approve
                                 <br>
@@ -116,7 +116,7 @@
                <div class="col-md-3">
                    <div class="card" style="width: 10rem;height: 10rem">
                        <a href="/voucher-approve">
-                           <span class="notification-badge">111</span>
+                           <span class="notification-badge" th:text="${#lists.size(#lists.filter(voucherApproveCount, status == 0))}" ></span>
                            <div class="card-body" style="margin-top:2px;font-size: 17px">
                                Voucher-Approve
                                <br>
@@ -139,7 +139,7 @@
                                <br>
                                <i class="fa-regular fa-circle-user" style="color: #ffffff;"></i>
                                <br>
-                               1
+                               <span th:text="${#lists.size(userCount)}"></span>
                                <br>
                            </div>
                        </a>
@@ -155,7 +155,7 @@
                                <br>
                                <i class="fa-solid fa-user-tie" style="color: #ffffff;"></i>
                                <br>
-                               1
+                               <span th:text="${#lists.size(organizerCount)}"></span>
                                <br>
                            </div>
                        </a>
@@ -167,13 +167,10 @@
 
     <div class="container" style="margin-top: 40px" >
         <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Event Approve</h3>
-<<<<<<< HEAD
+
         <div class="table-responsive" style="height: 262px; overflow-y: auto;margin-top: 2rem;">
             <table class="table table-success table-striped ">
-=======
-        <div class="table-responsive" style="height: 285px; overflow-y: auto;margin-top: 2rem;">
-            <table class="table table-success table-striped" >
->>>>>>> bf6cd2278e5bd378d6b1425bfae8c90da02a05c7
+
                 <thead>
                 <tr>
                     <th scope="col">No.</th>
@@ -187,7 +184,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event , eventIndex :${eventList}">
+                <tr th:each="event , eventIndex :${eventList}" th:if="${event.status == 0}">
                     <td th:text="${eventIndex.index +1}"></td>
                     <td th:text="${event.eventName}"></td>
                     <td th:text="${event.organizer.userName}"></td>
@@ -197,82 +194,7 @@
                     <td><button type="submit" class="btn btn-success">Approve</button></td>
                     <td><button type="submit" class="btn btn-danger">Cancel</button></td>
                 </tr>
-<<<<<<< HEAD
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>illenium</td>
-                    <td>Mark</td>
-                    <td>13.4.2023</td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
-                </tr>
 
-=======
->>>>>>> bf6cd2278e5bd378d6b1425bfae8c90da02a05c7
                 <!-- Add more rows if needed -->
                 </tbody>
             </table>

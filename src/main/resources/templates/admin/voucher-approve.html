@@ -74,7 +74,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}">
+            <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}" th:if="${ticketOrder.status == 0}">
                 <td th:text="${ticketOrderIndex.index + 1}"></td>
                 <td th:text="${ticketOrder.user.userName}"></td>
                 <td th:text="${ticketOrder.event.eventName}"></td>
@@ -108,7 +108,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}">
+                    <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}" th:if="${ticketOrder.status == 1}">
                         <td th:text="${ticketOrderIndex.index + 1}"></td>
                         <td th:text="${ticketOrder.user.userName}"></td>
                         <td th:text="${ticketOrder.event.eventName}"></td>
