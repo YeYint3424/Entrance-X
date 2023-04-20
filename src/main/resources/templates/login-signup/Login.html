@@ -2,16 +2,57 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/login.css">
 
-    <!-- Latest compiled and minified CSS -->
+</head>
+<body>
+<div class="content" >
+    <div class="text">
+        Login
+    </div>
+    <form action="">
+        <div class="field">
+
+            <input required="" type="text" class="input" id="userName" name="userName" >
+
+            <label class="label">Username</label>
+        </div>
+        <div class="field">
+            <input required="" type="password" class="input" id="loginPassword" name="loginPassword">
+
+            <label class="label">Password</label>
+        </div>
+        <span style="padding:10px" th:if="${param.error}" class="error" >Username or Password doesn't match! Please Try Again.</span>
+
+        <button class="button">Sign in</button>
+        <div class="sign-up">
+            Not a member?
+            <a href="/user-signup">signup now</a>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!--
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
@@ -70,4 +111,4 @@
 </div>
 
 </body>
-</html>
+</html>  -->
