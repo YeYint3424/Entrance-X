@@ -93,7 +93,7 @@
                         <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event place" required>
                     </div>
                     <div class="input-box mb-3">
-                        <label for="artist" class="form-label">Choose Artist</label>
+                        <label for="artist" class="form-label">Choose Artists</label>
                         <select class="form-control" size="3" name="artist" id="artist" multiple>
                          <option value="Taylor Swift">Taylor Swift</option>
                             <option value="Justin Bieber">Justin Bieber</option>
@@ -104,12 +104,13 @@
                         </select>
                     </div>
 
-                    <div class="input-box mb-3">
-                    <label for="artist1" class="form-label">Add Artist</label>
-                    <input type="text" class="form-control" id="artist1" name="artist" placeholder="Enter artist names" required>
-                    <div id="artist-fields" style="padding:10px;padding-left:0" ></div>
-                    <button type="button" id="add-artist">+</button>
-            </div>
+                    <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px">
+                        <label for="artist1" class="form-label">Add More Artists</label><br>
+                        <input type="text" id="artist1" name="artist" placeholder="Enter Artist Name">
+                        <div id="artist-fields"  style="padding-left:0;padding-right:200px;margin-bottom:20px" ></div>
+                        <button type="button" id="add-artist" >+</button>
+                    </div>
+
 
                     <div class="input-box mb-3">
                         <label for="eventPhoto" class="form-label">Event Photo</label>
@@ -355,6 +356,7 @@
     artistInput.id='artist${artistNumber}';
     artistInput.name="artist";
     artistInput.required=true;
+    artistInput.placeholder="Enter Artist Name";
     artistFields.appendChild(artistInput);
     artists.push(artistInput);
     }
