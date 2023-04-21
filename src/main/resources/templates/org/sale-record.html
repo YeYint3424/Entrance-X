@@ -86,7 +86,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Organizar Log-Out</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -94,9 +94,12 @@
                 <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
             </div>
             <div class="modal-footer">
-                <a href="/">
-                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                </a>
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
             </div>
         </div>
     </div>
@@ -119,13 +122,13 @@
             <table class="table table-striped tc">
                 <thead>
                 <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Event-Name</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Standard Tickets Sold</th>
-                    <th scope="col">VIP Tickets Sold</th>
-                    <th scope="col">VVIP Tickets Sold</th>
-                    <th scope="col">Ticket Sales Revenue</th>
+                    <th scope="col" style="font-size: 16px">No.</th>
+                    <th scope="col" style="font-size: 16px">Event-Name</th>
+                    <th scope="col" style="font-size: 16px">Time</th>
+                    <th scope="col" style="font-size: 16px">Standard Tickets Sold</th>
+                    <th scope="col" style="font-size: 16px">VIP Tickets Sold</th>
+                    <th scope="col" style="font-size: 16px">VVIP Tickets Sold</th>
+                    <th scope="col" style="font-size: 16px">Ticket Sales Revenue</th>
 <!--                    <th scope="col"></th>-->
                 </tr>
                 </thead>

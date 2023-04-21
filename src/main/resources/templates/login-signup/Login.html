@@ -14,17 +14,17 @@
     <div class="text">
         Login
     </div>
-    <form action="">
+    <form th:action="@{/login}" method="post">
         <div class="field">
 
-            <input required="" type="text" class="input" id="userName" name="userName" >
+            <input type="text" class="input" id="userName" name="userName" placeholder="Username" required>
 
-            <label class="label">Username</label>
+<!--            <label class="label">Username</label>-->
         </div>
         <div class="field">
-            <input required="" type="password" class="input" id="loginPassword" name="loginPassword">
+            <input type="password" class="input" id="loginPassword" name="loginPassword" placeholder="Password" required>
 
-            <label class="label">Password</label>
+<!--            <label class="label">Password</label>-->
         </div>
         <span style="padding:10px" th:if="${param.error}" class="error" >Username or Password doesn't match! Please Try Again.</span>
 

@@ -59,7 +59,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Organizar Log-Out</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -67,9 +67,12 @@
                 <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
             </div>
             <div class="modal-footer">
-                <a href="/">
-                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                </a>
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
             </div>
         </div>
     </div>
