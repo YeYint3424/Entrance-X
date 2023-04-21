@@ -78,7 +78,7 @@ public class OrgController {
             model.addAttribute("organizerData", organizerData);
             if(passwordEncoder.matches(oldPassword, organizerData.getPassword()) && !passwordEncoder.matches(organizerDto.getPassword(),organizerData.getPassword())){
                 organizerService.editProfile(organizerDto, organizerId);
-                return "redirect:/org-page";
+                return "redirect:/org-profile";
             }else if(passwordEncoder.matches(organizerDto.getPassword(),organizerData.getPassword())){
                 redirectAttributes.addAttribute("alreadyUse", true);
                 return "redirect:/org-profile-update";

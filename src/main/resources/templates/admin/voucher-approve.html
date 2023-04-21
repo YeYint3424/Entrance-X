@@ -83,7 +83,7 @@
                 <img th:src="@{'data:image/jpeg;base64,' + ${ticketOrder.encodedPaymentScreenShot}}"
                     width="100" height="100">
                 </td>
-                <td><button type="submit" class="btn btn-success">Approve</button></td>
+                <td><a th:href="@{/admin-voucher-approve(voucherId=${ticketOrder.id})}"><button type="submit" class="btn btn-success">Approve</button></a></td>
                 <td><button type="submit" class="btn btn-danger">Cancel</button></td>
             </tr>
 

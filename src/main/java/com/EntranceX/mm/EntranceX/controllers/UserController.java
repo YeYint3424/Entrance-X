@@ -250,24 +250,24 @@ public class UserController {
     public String ticketVoucher(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
-            TicketOrder_History ticketOrder=new TicketOrder_History();
-            if(ticketOrder.getEncodedTicketQR()==null){
-                // generate QR code data
-                String data = "Ticket:123456789";
-                // replace with your data
-                int size = 256; // replace with your size
-                byte[] qrCode = new byte[0];
-                try {
-                    qrCode = qrCodeGenerator.generateQrCode(data, size);
-                } catch (WriterException | IOException e) {
-                    e.printStackTrace();
-                }
-                String ticketQR = Base64.getEncoder().encodeToString(qrCode);
-                ticketOrder.setEncodedTicketQR(ticketQR);
-                // add QR code data to the model
-                }else{
-
-            }
+//            TicketOrder_History ticketOrder=new TicketOrder_History();
+//            if(ticketOrder.getEncodedTicketQR()==null){
+//                // generate QR code data
+//                String data = "Ticket:123456789";
+//                // replace with your data
+//                int size = 256; // replace with your size
+//                byte[] qrCode = new byte[0];
+//                try {
+//                    qrCode = qrCodeGenerator.generateQrCode(data, size);
+//                } catch (WriterException | IOException e) {
+//                    e.printStackTrace();
+//                }
+//                String ticketQR = Base64.getEncoder().encodeToString(qrCode);
+//                ticketOrder.setEncodedTicketQR(ticketQR);
+//                // add QR code data to the model
+//                }else{
+//
+//            }
 
             return "main/ticketVoucher";
         } else {
@@ -292,7 +292,13 @@ public class UserController {
     }
 
     @GetMapping("/user-all-event")
-    public String user_all_event(){
-        return "user/all-event";
+    public String user_all_event(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            return "user/all-event";
+        }else {
+            return "redirect:/login";
+        }
+
     }
 }

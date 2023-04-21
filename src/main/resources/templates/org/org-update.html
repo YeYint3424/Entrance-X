@@ -142,13 +142,15 @@
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
+                        <br>
+                        <span th:if="${param.alreadyUse}" class="error">Password is already Used. Try New Password.</span>
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="cpassword" class="form-label">Confirm New Password</label>
                         <input type="password" class="form-control" id="cpassword" name="cpassword" required>
                         <br>
-                        <span th:if="${param.alreadyUse}" class="error">Password is already Used. Try New Password.</span>
+                        <span th:if="${param.error}" class="error">Please Type same Password and Confirm Password!</span>
                     </div>
 
 
@@ -201,35 +203,7 @@
 </footer>
 
 
-<script>
-    document.querySelector('#submitbtn').onclick = function(){
-        var old_password=document.querySelector('#old-password').value;
-        var db_password=document.querySelector('#db-password').value;
 
-        if(old_password != db_password){
-            alert("Password incorrect! Try again.");
-
-            return false;
-        }
-        else
-            return true;
-    }
-
-    var check=function(){
-        if(document.getElementById('old-password').value != document.getElementById('db-password').value) {
-            document.getElementById('message').style.color='red';
-            document.getElementById('message').innerHTML = 'incorrect password';
-
-        } else {
-
-            document.getElementById('message').style.color='green';
-            document.getElementById('message').innerHTML = 'password correct!';
-
-
-        }
-
-    }
-</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
