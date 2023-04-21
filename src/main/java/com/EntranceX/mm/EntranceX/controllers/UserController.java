@@ -89,7 +89,7 @@ public class UserController {
             model.addAttribute("userData", userData);
             if(passwordEncoder.matches(oldPassword, userData.getPassword()) && !passwordEncoder.matches(userDto.getPassword(),userData.getPassword())){
                 userService.editProfile(userDto, userId);
-                return "redirect:/user-page";
+                return "redirect:/user-profile";
             }else if(passwordEncoder.matches(userDto.getPassword(),userData.getPassword())){
                 redirectAttributes.addAttribute("alreadyUse", true);
                 return "redirect:/user-profile-update";
