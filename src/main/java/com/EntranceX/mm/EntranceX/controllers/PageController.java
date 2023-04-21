@@ -139,11 +139,11 @@ public class PageController {
 
 
 
-    @GetMapping("entrancex-control-station")
+    @GetMapping("/entrancex-control-station")
     public String adminSignUp(){
         return "login-signup/AdminSignUp";
     }
-    @PostMapping("entrancex-control-station")
+    @PostMapping("/entrancex-control-station")
     public String adminSignUpPost(AdminDto adminDto){
         adminService.createAdmin(adminDto);
         return "redirect:/login";

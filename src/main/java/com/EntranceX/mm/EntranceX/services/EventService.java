@@ -13,4 +13,7 @@ public interface EventService {
     Event showEventDetail(int eventId);
     List<Event> getEvents();
     List<Event> getEventForSearch(String eventName);
+    List<Event> getUnApproveEvent(int status);
+    Event approve(int eventId, int status);
+
 }

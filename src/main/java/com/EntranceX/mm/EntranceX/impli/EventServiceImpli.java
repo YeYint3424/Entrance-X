@@ -2,9 +2,11 @@ package com.EntranceX.mm.EntranceX.impli;
 
 import com.EntranceX.mm.EntranceX.dao.EventDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
+import com.EntranceX.mm.EntranceX.dao.TicketOrder_HistoryDao;
 import com.EntranceX.mm.EntranceX.dto.EventDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.Organizer;
+import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public class EventServiceImpli implements EventService {
 
     @Autowired
     OrganizerDao organizerDao;
+
+    @Autowired
+    TicketOrder_HistoryDao ticketOrderDao;
 
     public EventServiceImpli(EventDao eventDao) {
         this.eventDao = eventDao;
@@ -86,6 +91,18 @@ public class EventServiceImpli implements EventService {
     @Override
     public List<Event> getEventForSearch(String eventName) {
         return eventDao.findByEventNameContainingIgnoreCase(eventName);
+    }
+
+    @Override
+    public List<Event> getUnApproveEvent(int status) {
+        return eventDao.findByStatus(status);
+    }
+
+    @Override
+    public Event approve(int eventId, int status) {
+        Event event=eventDao.findById(eventId).orElse(null);
+        event.setStatus(status);
+        return eventDao.save(event);
     }
 
 
