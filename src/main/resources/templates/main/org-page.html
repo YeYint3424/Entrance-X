@@ -32,7 +32,7 @@
 
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
+        <a class="navbar-brand" href="/"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
@@ -66,9 +66,9 @@
                                     <li><a href="/org-sale-record">Sale Record</a></li>
                                 </ul>
                             </li>
-                            <li><a  href="/org-help">Help</a></li>
+
                             <li><a  href="/org-about">About</a></li>
-                            <li><a  href="/faq">FAQ</a></li>
+                            <li><a  href="/org-faq">FAQ</a></li>
                             <li><a  href="/org-contact">Contact</a></li>
                             <li><a  href="/org-term">Terms and Conditions</a></li>
                             <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
@@ -79,11 +79,12 @@
         </div>
     </div>
 </nav>
+<!--        nav-bar end         -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Organizar Log-Out</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -91,14 +92,16 @@
                 <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
             </div>
             <div class="modal-footer">
-                <a href="/">
-                    <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                </a>
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <!--        nav-bar end         -->
