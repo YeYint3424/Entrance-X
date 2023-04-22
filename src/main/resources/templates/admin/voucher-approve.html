@@ -75,7 +75,7 @@
             </thead>
             <tbody>
             <tr th:each="ticketOrder, ticketOrderIndex :${ticketOrderList}" th:if="${ticketOrder.status == 0}">
-                <td th:text="${ticketOrderIndex.index + 1}"></td>
+                <td th:text="${ticketOrderIndex.index + 1}" ></td>
                 <td th:text="${ticketOrder.user.userName}"></td>
                 <td th:text="${ticketOrder.event.eventName}"></td>
                 <td th:text="${ticketOrder.totalPrice}"></td>
@@ -83,13 +83,16 @@
                 <img th:src="@{'data:image/jpeg;base64,' + ${ticketOrder.encodedPaymentScreenShot}}"
                     width="100" height="100">
                 </td>
-                <td><a th:href="@{/admin-voucher-approve(voucherId=${ticketOrder.id})}"><button type="submit" class="btn btn-success">Approve</button></a></td>
+                <td>
+                    <form method="POST" th:action="@{/admin-voucher-approve(voucherId=${ticketOrder.id})}">
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                </td>
                 <td><button type="submit" class="btn btn-danger">Cancel</button></td>
             </tr>
 
             </tbody>
         </table>
-
 
     </div>
 </div>

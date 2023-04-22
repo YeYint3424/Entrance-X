@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TicketOrder_HistoryDao extends JpaRepository<TicketOrder_History, Integer> {
     List<TicketOrder_History> findByUserId(int userId);
+    List<TicketOrder_History> findByStatus(int status);
 }

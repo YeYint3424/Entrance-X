@@ -11,4 +11,9 @@ public interface OrderService{
     List<TicketOrder_History> getAllOrder();
     TicketOrder_History saveTicketQr(String ticketQR);
     List<TicketOrder_History> getUserOrderList(int userId);
+    TicketOrder_History getOrderWithId(int voucherId);
+    TicketOrder_History approve(int voucherId);
+    List<TicketOrder_History> getUnApproveOrder(int status);
+    TicketOrder_History decreaseAvailableTicket(int standardTicketSold, int vipTicketSold,
+                                  int vvipTicketSold, int voucherId);
 }

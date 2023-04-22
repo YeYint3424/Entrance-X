@@ -99,7 +99,7 @@
              <div class="col-md-3">
                  <div class="card" style="width: 10rem;height: 10rem">
                         <a href="/event-approve">
-                            <span class="notification-badge" th:text="${#lists.size(#lists.filter(eventList, status == 0))}"></span>
+                            <span class="notification-badge" th:text="${#lists.size(unApproveEvent)}"></span>
                             <div class="card-body">
                                 Event-Approve
                                 <br>
@@ -116,7 +116,7 @@
                <div class="col-md-3">
                    <div class="card" style="width: 10rem;height: 10rem">
                        <a href="/voucher-approve">
-                           <span class="notification-badge" th:text="${#lists.size(#lists.filter(voucherApproveCount, status == 0))}" ></span>
+                           <span class="notification-badge" th:text="${#lists.size(unApproveVoucher)}" ></span>
                            <div class="card-body" style="margin-top:2px;font-size: 17px">
                                Voucher-Approve
                                <br>

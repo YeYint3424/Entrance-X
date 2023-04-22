@@ -79,7 +79,11 @@
                     <td th:text="${event.date}"></td>
                     <td th:text="${#temporals.format(event.requestTime, 'yyyy-MM-dd HH:mm')}"></td>
                     <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td><button type="submit" class="btn btn-success">Approve</button></td>
+                    <td>
+                        <form method="POST" th:action="@{/admin-event-approve(eventId=${event.id})}">
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                    </td>
                     <td><button type="submit" class="btn btn-danger">Cancel</button></td>
                 </tr>
 

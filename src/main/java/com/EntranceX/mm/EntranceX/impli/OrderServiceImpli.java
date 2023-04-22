@@ -61,4 +61,29 @@ public class OrderServiceImpli implements OrderService {
     public List<TicketOrder_History> getUserOrderList(int userId) {
         return ticketOrderDao.findByUserId(userId);
     }
+
+    @Override
+    public TicketOrder_History getOrderWithId(int voucherId) {
+        return ticketOrderDao.findById(voucherId).orElse(null);
+    }
+
+    @Override
+    public TicketOrder_History approve(int voucherId) {
+        TicketOrder_History ticketOrder=ticketOrderDao.findById(voucherId).orElse(null);
+        ticketOrder.setStatus(1);
+        return ticketOrderDao.save(ticketOrder);
+    }
+
+    @Override
+    public List<TicketOrder_History> getUnApproveOrder(int status) {
+        return ticketOrderDao.findByStatus(status);
+    }
+    @Override
+    public TicketOrder_History decreaseAvailableTicket(int standardTicketSold, int vipTicketSold, int vvipTicketSold, int voucherId) {
+        TicketOrder_History ticketOrder=ticketOrderDao.findById(voucherId).orElse(null);
+        ticketOrder.getEvent().setStandardTicketAvailableQuantity(ticketOrder.getEvent().getStandardTicketAvailableQuantity()-standardTicketSold);
+        ticketOrder.getEvent().setVipTicketAvailableQuantity(ticketOrder.getEvent().getVipTicketAvailableQuantity()-vipTicketSold);
+        ticketOrder.getEvent().setVvipTicketAvailableQuantity(ticketOrder.getEvent().getVvipTicketAvailableQuantity()-vvipTicketSold);
+        return ticketOrderDao.save(ticketOrder);
+    }
 }
