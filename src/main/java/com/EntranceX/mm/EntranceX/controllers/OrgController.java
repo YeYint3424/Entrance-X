@@ -147,4 +147,9 @@ public class OrgController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/org-admin-event-detail")
+    public String org_admin_event_detail(){
+        return "org/event-detail";
+    }
 }

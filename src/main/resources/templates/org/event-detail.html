@@ -13,75 +13,47 @@
 <!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href=""><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
+        <a class="navbar-brand" th:href="@{/user-page}"><img src="css/exlogotest3.png"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1">
-                    <form th:action="@{/user-search-page}" method="get" class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="eventName">
-                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/user-page}">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/user-profile}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+                <li class="navlist1" style="float: right"><button onclick="goBack()">Go Back</button></li>
             </ul>
 
 
-            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+<!--            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>-->
+<!--            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">-->
+<!--                <div class="offcanvas-header">-->
+<!--                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>-->
 
-            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+<!--                </div>-->
 
-                </div>
+<!--                <div class="offcanvas-body">-->
+<!--                    <div class="container">-->
+<!--                        <ul>-->
 
-                <div class="offcanvas-body">
-                    <div class="container">
-                        <ul>
-                            <li><a class="text:white">Events</a>
-                                <ul>
-                                    <li><a href="/user-trending">Trending</a></li>
-                                    <li><a href="/user-all-event">Events</a></li>
-                                    <li><a href="/user-promotion">Promotion</a></li>
-                                    <li><a href="/user-watch-later">Watch Later</a></li>
-                                    <li><a href="/user-history">History</a></li>
-                                </ul>
-                            </li>
-                            <li><a  href="/user-about">About</a></li>
-                            <li><a  href="/user-faq">FAQ</a></li>
-                            <li><a  href="/user-contact">Contact</a></li>
-                            <li><a  href="/user-term">Terms and Conditions</a></li>
-                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<!--                            <li><a href="">Events-->
+<!--                            </a>-->
+<!--                                <ul>-->
+<!--                                    <li><a th:href="@{/user-trending}">Trending</a></li>-->
+<!--                                    <li><a th:href="@{/user-this-month}">This month</a></li>-->
+<!--                                    <li><a th:href="@{/user-upcoming}">Upcoming</a></li>-->
+<!--                                    <li><a th:href="@{/user-promotion}">Promotion</a></li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li><a  th:href="@{/user-signup}">Sign Up</a></li>-->
+<!--                            <li><a  th:href="@{/sign-out}">Sign Out</a></li>-->
+<!--                            <li><a  th:href="@{/about}">About</a></li>-->
+<!--                            <li><a  th:href="@{/faq}">FAQ</a></li>-->
+<!--                            <li><a  th:href="@{/contact}">Contact</a></li>-->
+<!--                            <li><a  th:href="@{/termsandconditions}">Terms and Conditions</a></li>-->
+<!--                            <li><a  th:href="@{/privacypolicy}">Privacy Policy</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </nav>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
-                <span>
-                    <a href="/sign-out">
-                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                    </a>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -220,6 +192,11 @@
 
     </footer>
 
+<script>
+    function goBack() {
+        history.back(); // This will go back to the previous page
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
