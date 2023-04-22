@@ -61,7 +61,6 @@
             <table class="table table-success table-striped ">
                 <thead>
                 <tr>
-                    <th scope="col">No.</th>
                     <th scope="col">Event Name</th>
                     <th scope="col">Organizer Name</th>
                     <th scope="col">Event Date</th>
@@ -72,8 +71,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event , eventIndex :${eventList}" th:if="${event.status == 0}">
-                    <td th:text="${eventIndex.index +1}"></td>
+                <tr th:each="event  :${eventList}" th:if="${event.status == 0}">
+
                     <td th:text="${event.eventName}"></td>
                     <td th:text="${event.organizer.userName}"></td>
                     <td th:text="${event.date}"></td>
@@ -104,7 +103,7 @@
             <table class="table table-success table-striped ">
                 <thead>
                 <tr>
-                    <th scope="col">No.</th>
+
                     <th scope="col">Event Name</th>
                     <th scope="col">Organizer Name</th>
                     <th scope="col">Event Date</th>
@@ -112,8 +111,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event , eventIndex :${eventList}" th:if="${event.status == 1}">
-                    <td th:text="${eventIndex.index +1}"></td>
+                <tr th:each="event :${eventList}" th:if="${event.status == 1}">
+
                     <td th:text="${event.eventName}"></td>
                     <td th:text="${event.organizer.userName}"></td>
                     <td th:text="${event.date}"></td>

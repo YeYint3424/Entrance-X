@@ -5,10 +5,12 @@ import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.AdminDto;
 import com.EntranceX.mm.EntranceX.models.Admin;
+import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.Organizer;
 import com.EntranceX.mm.EntranceX.models.User;
 
 import com.EntranceX.mm.EntranceX.services.AdminService;
+import com.EntranceX.mm.EntranceX.services.EventService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -44,8 +47,17 @@ public class PageController {
     @Autowired
     AdminService adminService;
 
+    @Autowired
+    EventService eventService;
+
     @GetMapping("/")
-    public String main() {
+    public String main(Model model) {
+        List<Event> events=eventService.getEvents();
+        for(Event event: events){
+            byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
+        }
+        model.addAttribute("events", events);
+        model.addAttribute("localDate", LocalDate.now());
         return "main/home";
     }
 
