@@ -39,4 +39,8 @@ public class OnlyViewController {
         return "main/search-page";
     }
 
+    @GetMapping("main-event-detail")
+    public String main_event_detail(){
+        return "main/event-detail";
+    }
 }

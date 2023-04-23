@@ -29,12 +29,14 @@
         </div>
         <span style="padding:10px" th:if="${param.error}" class="error" >Username or Password doesn't match! Please Try Again.</span>
 
-        <button class="button">Sign in</button>
-        <div class="sign-up">
-            Not a member?
-            <a href="/user-signup">signup now</a>
-        </div>
+        <button class="button" style="margin-bottom:0">Sign in</button>
+
     </form>
+    <a href="/" style="text-decoration:none;color: #595959;"><button class="button">Back</button></a>
+    <div class="sign-up">
+        Not a member?
+        <a href="/user-signup">signup now</a>
+    </div>
 </div>
 </div>
 </div>

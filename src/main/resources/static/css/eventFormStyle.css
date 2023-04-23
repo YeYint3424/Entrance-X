@@ -213,10 +213,10 @@ html body{
     cursor:pointer;
 }
 
-  .form-btn{
+ /* .form-btn{
     float:right;
     margin-bottom:60px;
-}
+}  */
 
 #resetbtn, #submitbtn{
     width:80px;

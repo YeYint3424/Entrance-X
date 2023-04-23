@@ -46,6 +46,31 @@ public class OrgController {
         } else{
                 return "redirect:/login";} }
 
+     @GetMapping("/org-about")
+     public String orgAbout(){
+        return "org/about";
+     }
+
+    @GetMapping("/org-faq")
+    public String orgFaq(){
+        return "org/help";
+    }
+
+    @GetMapping("/org-contact")
+    public String orgContact(){
+        return "org/contact";
+    }
+
+    @GetMapping("/org-term")
+    public String orgTerm(){
+        return "org/termCondition";
+    }
+
+    @GetMapping("/org-privacyPolicy")
+    public String orgPrivacy(){
+        return "org/privacyPolicy";
+    }
+
     @GetMapping("/org-profile")
     public String org_profile(HttpServletRequest request, Model model){
         HttpSession session = request.getSession(false);
@@ -146,5 +171,10 @@ public class OrgController {
         } else {
             return "redirect:/login";
         }
+    }
+
+    @GetMapping("/org-admin-event-detail")
+    public String org_admin_event_detail(){
+        return "org/event-detail";
     }
 }
