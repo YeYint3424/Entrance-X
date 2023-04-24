@@ -27,7 +27,7 @@ public class Event {
             status, standardTicketAvailableQuantity,  vipTicketAvailableQuantity,  vvipTicketAvailableQuantity;
 //    0 for pending and 1 for accept in status
     private LocalDate date;
-    private String artist, eventDescription;
+    private String eventDescription;
     private LocalDateTime requestTime;
 
     @Lob
@@ -48,6 +48,8 @@ public class Event {
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WatchLater> watchLater= new ArrayList<>();
 
+    @OneToMany(mappedBy = "event")
+    private List<Event_Artist> eventArtist = new ArrayList<>();
 
     public Event() {
     }
@@ -68,7 +70,6 @@ public class Event {
         sb.append("VVIP Ticket Quantity: ").append(vvipTicketQuantity).append("\n");
         sb.append("Status: ").append(status).append("\n");
         sb.append("Date: ").append(date).append("\n");
-        sb.append("Artist: ").append(artist).append("\n");
         sb.append("Event Description: ").append(eventDescription).append("\n");
         sb.append("Encoded Photo: ").append(encodedPhoto).append("\n");
         sb.append("KPay QR Encoded: ").append(kpayQrEncoded).append("\n");

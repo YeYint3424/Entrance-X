@@ -11,6 +11,8 @@ import com.EntranceX.mm.EntranceX.services.WatchLaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WatchLaterServiceImpli implements WatchLaterService {
     @Autowired
@@ -53,5 +55,10 @@ public class WatchLaterServiceImpli implements WatchLaterService {
     public WatchLater findBySpecificUser(int userId, int eventId) {
         return watchLaterDao.findByUserIdAndEventId(userId, eventId);
 
+    }
+
+    @Override
+    public List<WatchLater> findByUser(int userId) {
+        return watchLaterDao.findByUserId(userId);
     }
 }

@@ -56,6 +56,12 @@ public class PageController {
         for(Event event: events){
             byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
         }
+
+        List<Event> events1=eventService.getPromotionEvents(0);
+        for(Event event: events1){
+            byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
+        }
+        model.addAttribute("promotionEvents", events1);
         model.addAttribute("events", events);
         model.addAttribute("localDate", LocalDate.now());
         return "main/home";
@@ -160,6 +166,8 @@ public class PageController {
         adminService.createAdmin(adminDto);
         return "redirect:/login";
     }
+
+
 }
 
 

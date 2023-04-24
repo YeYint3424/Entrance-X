@@ -12,6 +12,7 @@ public interface EventDao extends JpaRepository<Event, Integer> {
     List <Event> findByOrganizerId(int organizerId);
     List <Event> findByEventNameContainingIgnoreCase(String eventName);
     List <Event> findByStatus(int status);
+    List<Event> findByPromotionGreaterThan(int promotion);
 
 //    @Query("SELECT e FROM Event e WHERE e.eventName LIKE %:eventName% AND e.promotion > 0")
 //    List<Event> findByEventNameContainingAndPromotion(String eventName);

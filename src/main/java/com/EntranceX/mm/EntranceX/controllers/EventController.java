@@ -3,12 +3,12 @@ package com.EntranceX.mm.EntranceX.controllers;
 
 import com.EntranceX.mm.EntranceX.dao.EventDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
-import com.EntranceX.mm.EntranceX.dto.EventDto;
+import com.EntranceX.mm.EntranceX.dto.EventArtistDto;
 
 import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
+import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
-import com.EntranceX.mm.EntranceX.models.WatchLater;
+import com.EntranceX.mm.EntranceX.services.ArtistService;
 import com.EntranceX.mm.EntranceX.services.EventService;
 
 import com.EntranceX.mm.EntranceX.services.OrderService;
@@ -17,13 +17,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
@@ -42,12 +40,15 @@ public class EventController {
     OrderService orderService;
     @Autowired
     WatchLaterService watchLaterService;
+    @Autowired
+    ArtistService artistService;
 
     @GetMapping("/event-register")
     public String registerEvent(HttpServletRequest request, Model model){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
-
+        List<Artist> artists=artistService.getExistingArtists();
+        model.addAttribute("artists", artists);
         return "event/event-register";
         }else {
             return "redirect:/login";
@@ -55,13 +56,13 @@ public class EventController {
     }
 
     @PostMapping(value = "/event-register")
-    public String createEvent(@ModelAttribute EventDto eventDto, HttpServletRequest request) throws IOException {
+    public String createEvent(@ModelAttribute EventArtistDto eventArtistDto, HttpServletRequest request) throws IOException {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             int organizerId=(int) session.getAttribute("LoginOrganizer");
-            eventDto.setRequestTime(LocalDateTime.now());
-            eventService.createEvent(eventDto, organizerId);
-
+            eventArtistDto.setRequestTime(LocalDateTime.now());
+            Event event=eventService.createEvent(eventArtistDto, organizerId);
+            artistService.addArtistForEvent(eventArtistDto, event.getId());
         return "redirect:/org-page";
     }else {
             return "redirect:/login";

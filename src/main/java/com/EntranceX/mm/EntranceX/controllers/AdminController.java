@@ -34,12 +34,6 @@ public class AdminController {
     @Autowired
     OrderService orderService;
 
-    @Autowired
-    QRCodeGenerator qrCodeGenerator;
-
-    @Autowired
-    TicketService ticketService;
-
 
 
     @GetMapping("/admin")
@@ -127,166 +121,18 @@ public class AdminController {
 
     @PostMapping("/admin-voucher-approve")
     public String voucherApproved(HttpServletRequest request, Model model,
-                                  @RequestParam("voucherId")int voucherId, TicketDto ticketDto) {
+                                  @RequestParam("voucherId")int voucherId, TicketDto ticketDto) throws Exception {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
             orderService.approve(voucherId);
             orderService.decreaseAvailableTicket(ticketOrder.getStandardTicketSold(),
                     ticketOrder.getVipTicketSold(), ticketOrder.getVvipTicketSold(), voucherId);
-            for (int i = 1; i <= ticketOrder.getStandardTicketSold() +ticketOrder.getVipTicketSold() + ticketOrder.getVvipTicketSold(); i++) {
-                String data = "Tickets:" + i;
-                int size = 256; // replace with your size
-                byte[] qrCode = new byte[0];
-                try {
-                    qrCode = qrCodeGenerator.generateQrCode(data, size);
-                } catch (WriterException | IOException e) {
-                    e.printStackTrace();
-                }
-                String encodedTicketQR = Base64.getEncoder().encodeToString(qrCode);
-
-                TicketQr ticketQr = new TicketQr();
-                switch (ticketOrder.getStandardTicketSold()) {
-                    case 1:
-                        ticketDto.setEncodedSD1(encodedTicketQR);
-                        break;
-                    case 2:
-                        if (i == 1) {
-                            ticketDto.setEncodedSD1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedSD2(encodedTicketQR);
-                        }
-                        break;
-                    case 3:
-                        if (i == 1) {
-                            ticketDto.setEncodedSD1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedSD2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedSD3(encodedTicketQR);
-                        }
-                        break;
-                    case 4:
-                        if (i == 1) {
-                            ticketDto.setEncodedSD1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedSD2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedSD3(encodedTicketQR);
-                        } else if (i == 4) {
-                            ticketDto.setEncodedSD4(encodedTicketQR);
-                        }
-                        break;
-                    case 5:
-                        if (i == 1) {
-                            ticketDto.setEncodedSD1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedSD2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedSD3(encodedTicketQR);
-                        } else if (i == 4) {
-                            ticketDto.setEncodedSD4(encodedTicketQR);
-                        } else if (i == 5) {
-                            ticketDto.setEncodedSD5(encodedTicketQR);
-                        }
-                        break;
-                }
-                switch (ticketOrder.getVipTicketSold()) {
-                    case 1:
-                        ticketDto.setEncodedVIP1(encodedTicketQR);
-                        break;
-                    case 2:
-                        if (i == 1) {
-                            ticketDto.setEncodedVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVIP2(encodedTicketQR);
-                        }
-                        break;
-                    case 3:
-                        if (i == 1) {
-                            ticketDto.setEncodedVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVIP2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedVIP3(encodedTicketQR);
-                        }
-                        break;
-                    case 4:
-                        if (i == 1) {
-                            ticketDto.setEncodedVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVIP2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedVIP3(encodedTicketQR);
-                        } else if (i == 4) {
-                            ticketDto.setEncodedVIP4(encodedTicketQR);
-                        }
-                        break;
-                    case 5:
-                        if (i == 1) {
-                            ticketDto.setEncodedVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVIP2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedVIP3(encodedTicketQR);
-                        } else if (i == 4) {
-                            ticketDto.setEncodedVIP4(encodedTicketQR);
-                        } else if (i == 5) {
-                            ticketDto.setEncodedVIP5(encodedTicketQR);
-                        }
-                        break;
-                }
-                switch (ticketOrder.getVvipTicketSold()) {
-                    case 1:
-                        ticketDto.setEncodedVVIP1(encodedTicketQR);
-                        break;
-                    case 2:
-                        if (i == 1) {
-                            ticketDto.setEncodedVVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVVIP2(encodedTicketQR);
-                        }
-                        break;
-                    case 3:
-                        if (i == 1) {
-                            ticketDto.setEncodedVVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVVIP2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedVVIP3(encodedTicketQR);
-                        }
-                        break;
-                    case 4:
-                        if (i == 1) {
-                            ticketDto.setEncodedVVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVVIP2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedVVIP3(encodedTicketQR);
-                        } else if (i == 4) {
-                            ticketDto.setEncodedVVIP4(encodedTicketQR);
-                        }
-                        break;
-                    case 5:
-                        if (i == 1) {
-                            ticketDto.setEncodedVVIP1(encodedTicketQR);
-                        } else if (i == 2) {
-                            ticketDto.setEncodedVVIP2(encodedTicketQR);
-                        } else if (i == 3) {
-                            ticketDto.setEncodedVVIP3(encodedTicketQR);
-                        } else if (i == 4) {
-                            ticketDto.setEncodedVVIP4(encodedTicketQR);
-                        } else if (i == 5) {
-                            ticketDto.setEncodedVVIP5(encodedTicketQR);
-                        }
-                        break;
-                }
 
 
-            }
-            ticketService.saveTickets(ticketDto,voucherId);
-            return "redirect:/voucher-approve";
-        } else {
+
+            return "redirect:/voucher-approve";}
+        else {
             return "redirect:/login";
         }
     }

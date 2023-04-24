@@ -9,6 +9,7 @@ import com.EntranceX.mm.EntranceX.dto.UserDto;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
 import com.EntranceX.mm.EntranceX.models.User;
+import com.EntranceX.mm.EntranceX.models.WatchLater;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import com.EntranceX.mm.EntranceX.services.OrderService;
 import com.EntranceX.mm.EntranceX.services.UserService;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 
@@ -108,7 +110,6 @@ public class UserController {
     public String user_thismonth(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
-            int userId=(int)session.getAttribute("LoginUser");
             List<Event> events = eventService.getEvents();
             for (Event event : events) {
                 byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
@@ -250,24 +251,7 @@ public class UserController {
     public String ticketVoucher(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
-//            TicketOrder_History ticketOrder=new TicketOrder_History();
-//            if(ticketOrder.getEncodedTicketQR()==null){
-//                // generate QR code data
-//                String data = "Ticket:123456789";
-//                // replace with your data
-//                int size = 256; // replace with your size
-//                byte[] qrCode = new byte[0];
-//                try {
-//                    qrCode = qrCodeGenerator.generateQrCode(data, size);
-//                } catch (WriterException | IOException e) {
-//                    e.printStackTrace();
-//                }
-//                String ticketQR = Base64.getEncoder().encodeToString(qrCode);
-//                ticketOrder.setEncodedTicketQR(ticketQR);
-//                // add QR code data to the model
-//                }else{
-//
-//            }
+
 
             return "main/ticketVoucher";
         } else {
@@ -300,5 +284,18 @@ public class UserController {
             return "redirect:/login";
         }
 
+    }
+    @GetMapping("user-watch-later")
+    public String watchLater(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int) session.getAttribute("LoginUser");
+            List<WatchLater> watchLaterEvents=watchLaterService.findByUser(userId);
+            model.addAttribute("watchLaterEvents", watchLaterEvents);
+            model.addAttribute("localDate", LocalDate.now());
+            return "user/watch-later";
+        }else {
+            return "redirect:/login";
+        }
     }
 }

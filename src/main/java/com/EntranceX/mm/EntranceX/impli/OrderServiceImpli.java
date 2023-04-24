@@ -1,15 +1,11 @@
 package com.EntranceX.mm.EntranceX.impli;
 
-import com.EntranceX.mm.EntranceX.dao.EventDao;
-import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
-import com.EntranceX.mm.EntranceX.dao.TicketOrder_HistoryDao;
-import com.EntranceX.mm.EntranceX.dao.UserDao;
+import com.EntranceX.mm.EntranceX.config.QRCodeGenerator;
+import com.EntranceX.mm.EntranceX.dao.*;
 import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
-import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.models.Organizer;
-import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
-import com.EntranceX.mm.EntranceX.models.User;
+import com.EntranceX.mm.EntranceX.models.*;
 import com.EntranceX.mm.EntranceX.services.OrderService;
+import com.google.zxing.WriterException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +21,10 @@ public class OrderServiceImpli implements OrderService {
     EventDao eventDao;
     @Autowired
     TicketOrder_HistoryDao ticketOrderDao;
+    @Autowired
+    QRCodeGenerator qrCodeGenerator;
+    @Autowired
+    TicketQrDao ticketQrDao;
 
     @Override
     public TicketOrder_History orderRequest(TicketOrder_HistoryDto ticketOrderDto)throws IOException {
@@ -68,8 +68,38 @@ public class OrderServiceImpli implements OrderService {
     }
 
     @Override
-    public TicketOrder_History approve(int voucherId) {
+    public TicketOrder_History approve(int voucherId) throws IOException, WriterException {
         TicketOrder_History ticketOrder=ticketOrderDao.findById(voucherId).orElse(null);
+        for (int i = 0; i < ticketOrder.getStandardTicketSold(); i++) {
+            TicketQr ticket = new TicketQr();
+            ticket.setTicketType("Standard");
+            String encodedQr=Base64.getEncoder().encodeToString(qrCodeGenerator.generateRandomQRCode(250));
+            ticket.setTicketQr(encodedQr);
+            ticket.setTicketOrder(ticketOrder);
+            ticketQrDao.save(ticket);
+
+        }
+
+        for (int i = 0; i < ticketOrder.getVipTicketSold(); i++) {
+            TicketQr ticket = new TicketQr();
+            ticket.setTicketType("Vip");
+            String encodedQr=Base64.getEncoder().encodeToString(qrCodeGenerator.generateRandomQRCode(250));
+            ticket.setTicketQr(encodedQr);
+            ticket.setTicketOrder(ticketOrder);
+            ticketQrDao.save(ticket);
+
+        }
+
+        for (int i = 0; i < ticketOrder.getVvipTicketSold(); i++) {
+            TicketQr ticket = new TicketQr();
+            ticket.setTicketType("VVip");
+            String encodedQr=Base64.getEncoder().encodeToString(qrCodeGenerator.generateRandomQRCode(250));
+            ticket.setTicketQr(encodedQr);
+            ticket.setTicketOrder(ticketOrder);
+            ticketQrDao.save(ticket);
+
+        }
+
         ticketOrder.setStatus(1);
         return ticketOrderDao.save(ticketOrder);
     }

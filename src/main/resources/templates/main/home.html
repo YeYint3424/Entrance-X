@@ -127,7 +127,8 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event,iterStat : ${events}" th:if="${iterStat.index <= 3 && event.date > localDate && event.promotion != 0}">
+                <div class="col" th:each="event :  ${promotionEvents}" th:if="${event.date > localDate && event.promotion > 0}">
+
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
                              class="card-img-top" width="150" height="250" alt="...">
@@ -138,6 +139,7 @@
                         </div>
 
                     </div>
+
                 </div>
                 <!--                for 1 event                     -->
 
@@ -165,17 +167,19 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event,iterStat : ${events}" th:if="${iterStat.index <= 3 && event.date > localDate}">
-                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
-                        <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
-                             class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body rounded">
-                            <h5 class="card-title" style="font-family: Anurati" th:text="${event.eventName}"></h5>
-                            <p class="card-text" th:text="${event.date}"></p>
-                            <a th:href="@{/event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
+                <div class="col" th:each="event : ${events}" th:if="${event.date > localDate}">
+
+                        <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                            <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
+                                 class="card-img-top" width="150" height="250" alt="...">
+                            <div class="card-body rounded">
+                                <h5 class="card-title" style="font-family: Anurati" th:text="${event.eventName}"></h5>
+                                <p class="card-text" th:text="${event.date}"></p>
+                                <a th:href="@{/event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
+                            </div>
+
                         </div>
 
-                    </div>
                 </div>
                 <!--                for 1 event                     -->
 
@@ -202,17 +206,19 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event,iterStat : ${events}" th:if="${iterStat.index <= 3 && event.date > localDate}">
-                    <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
-                        <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
-                             class="card-img-top" width="150" height="250" alt="...">
-                        <div class="card-body rounded">
-                            <h5 class="card-title" style="font-family: Anurati" th:text="${event.eventName}"></h5>
-                            <p class="card-text" th:text="${event.date}"></p>
-                            <a th:href="@{/event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
+                <div class="col" th:each="event : ${events}" th:if="${event.date > localDate}">
+
+                        <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
+                            <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
+                                 class="card-img-top" width="150" height="250" alt="...">
+                            <div class="card-body rounded">
+                                <h5 class="card-title" style="font-family: Anurati" th:text="${event.eventName}"></h5>
+                                <p class="card-text" th:text="${event.date}"></p>
+                                <a th:href="@{/event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
+                            </div>
+
                         </div>
 
-                    </div>
                 </div>
                 <!--                for 1 event                     -->
 

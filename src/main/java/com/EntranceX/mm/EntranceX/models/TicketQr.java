@@ -9,11 +9,12 @@ public class TicketQr {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+
+    private String ticketType;
+
     @Lob
     @Column(columnDefinition = "longblob")
-    private String encodedSD1, encodedSD2, encodedSD3, encodedSD4, encodedSD5,
-            encodedVIP1, encodedVIP2, encodedVIP3, encodedVIP4, encodedVIP5,
-            encodedVVIP1, encodedVVIP2, encodedVVIP3, encodedVVIP4, encodedVVIP5;
+    private String ticketQr;
 
     @OneToOne
     @JoinColumn(name = "TicketOrder_id", referencedColumnName = "id")

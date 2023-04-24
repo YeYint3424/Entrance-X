@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class EventDto {
-    private String eventName, venue, startTime, endTime,artist, eventDescription, encodedPhoto, kpayQrEncoded, wavepayQrEncoded;
+public class EventArtistDto {
+    private String eventName, venue, startTime, endTime , eventDescription, encodedPhoto, kpayQrEncoded, wavepayQrEncoded;
+    private String[] artist;
     private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, status;
     private LocalDate date;
     private LocalDateTime requestTime;

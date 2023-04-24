@@ -124,16 +124,15 @@
             <table class="table table-striped tc">
                 <thead>
                 <tr>
-                    <th scope="col">No.</th>
                     <th scope="col">Event Name</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody th:each="event : ${watchLaterEvents}" th:if="${event.event.date > localDate}">
                 <tr>
-                    <th scope="row" style="color: white">1</th>
-                    <td style="color: white">Mark</td>
+
+                    <td style="color: white" th:text="${event.event.eventName}"></td>
                     <td><button type="submit" class="btn btn-success">Detail</button></td>
                     <td><button type="submit" class="btn btn-danger">Delete</button></td>
                 </tr>

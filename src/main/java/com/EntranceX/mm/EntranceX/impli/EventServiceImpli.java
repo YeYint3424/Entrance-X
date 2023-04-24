@@ -3,19 +3,17 @@ package com.EntranceX.mm.EntranceX.impli;
 import com.EntranceX.mm.EntranceX.dao.EventDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.TicketOrder_HistoryDao;
-import com.EntranceX.mm.EntranceX.dto.EventDto;
+import com.EntranceX.mm.EntranceX.dto.EventArtistDto;
+import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.Organizer;
-import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EventServiceImpli implements EventService {
@@ -32,44 +30,45 @@ public class EventServiceImpli implements EventService {
         this.eventDao = eventDao;
     }
     @Override
-    public Event createEvent(EventDto eventDto, int organizerId) throws IOException {
+    public Event createEvent(EventArtistDto eventArtistDto, int organizerId) throws IOException {
         Organizer organizer=organizerDao.findById(organizerId).orElseThrow(() -> new UserNotFoundException("User not found"));
         Event event = new Event();
-        event.setEventName(eventDto.getEventName());
-        event.setVenue(eventDto.getVenue());
-        event.setDate(eventDto.getDate());
-        event.setStartTime(eventDto.getStartTime());
-        event.setEndTime(eventDto.getEndTime());
-        event.setArtist(eventDto.getArtist());
-        event.setEventDescription(eventDto.getEventDescription());
-        event.setPromotion(eventDto.getPromotion());
-        event.setStandardTicketPrice(eventDto.getStandardTicketPrice());
-        event.setStandardTicketQuantity(eventDto.getStandardTicketQuantity());
-        event.setVipTicketPrice(eventDto.getVipTicketPrice());
-        event.setVipTicketQuantity(eventDto.getVipTicketQuantity());
-        event.setVvipTicketPrice(eventDto.getVvipTicketPrice());
-        event.setVvipTicketQuantity(eventDto.getVvipTicketQuantity());
-        event.setStatus(eventDto.getStatus());
-        event.setOrganizer(organizer);
-        event.setStandardTicketAvailableQuantity(eventDto.getStandardTicketQuantity());
-        event.setVipTicketAvailableQuantity(eventDto.getVipTicketQuantity());
-        event.setVvipTicketAvailableQuantity(eventDto.getVvipTicketQuantity());
 
-        event.setRequestTime(eventDto.getRequestTime());
+        event.setEventName(eventArtistDto.getEventName());
+        event.setVenue(eventArtistDto.getVenue());
+        event.setDate(eventArtistDto.getDate());
+        event.setStartTime(eventArtistDto.getStartTime());
+        event.setEndTime(eventArtistDto.getEndTime());
+        event.setEventDescription(eventArtistDto.getEventDescription());
+        event.setPromotion(eventArtistDto.getPromotion());
+        event.setStandardTicketPrice(eventArtistDto.getStandardTicketPrice());
+        event.setStandardTicketQuantity(eventArtistDto.getStandardTicketQuantity());
+        event.setVipTicketPrice(eventArtistDto.getVipTicketPrice());
+        event.setVipTicketQuantity(eventArtistDto.getVipTicketQuantity());
+        event.setVvipTicketPrice(eventArtistDto.getVvipTicketPrice());
+        event.setVvipTicketQuantity(eventArtistDto.getVvipTicketQuantity());
+        event.setStatus(eventArtistDto.getStatus());
+        event.setStandardTicketAvailableQuantity(eventArtistDto.getStandardTicketQuantity());
+        event.setVipTicketAvailableQuantity(eventArtistDto.getVipTicketQuantity());
+        event.setVvipTicketAvailableQuantity(eventArtistDto.getVvipTicketQuantity());
+        event.setOrganizer(organizer);
+
+        event.setRequestTime(eventArtistDto.getRequestTime());
         // Encode and set the photo
-        byte[] photoBytes = eventDto.getPhoto().getBytes();
+        byte[] photoBytes = eventArtistDto.getPhoto().getBytes();
         String encodedPhoto = Base64.getEncoder().encodeToString(photoBytes);
         event.setEncodedPhoto(encodedPhoto);
 
         // Encode and set the kpay QR code
-        byte[] kpayQrBytes = eventDto.getKpayQr().getBytes();
+        byte[] kpayQrBytes = eventArtistDto.getKpayQr().getBytes();
         String kpayQrEncoded = Base64.getEncoder().encodeToString(kpayQrBytes);
         event.setKpayQrEncoded(kpayQrEncoded);
 
         // Encode and set the wavepay QR code
-        byte[] wavepayQrBytes = eventDto.getWavepayQr().getBytes();
+        byte[] wavepayQrBytes = eventArtistDto.getWavepayQr().getBytes();
         String wavepayQrEncoded = Base64.getEncoder().encodeToString(wavepayQrBytes);
         event.setWavepayQrEncoded(wavepayQrEncoded);
+
 
         return eventDao.save(event);
     }
@@ -103,6 +102,11 @@ public class EventServiceImpli implements EventService {
         Event event=eventDao.findById(eventId).orElse(null);
         event.setStatus(status);
         return eventDao.save(event);
+    }
+
+    @Override
+    public List<Event> getPromotionEvents(int promotion) {
+        return eventDao.findByPromotionGreaterThan(promotion);
     }
 
 
