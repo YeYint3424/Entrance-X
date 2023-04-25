@@ -7,6 +7,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
     <title>Privacy Policy</title>
     <style>
+        body{
+            background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+            color: white;
+        }
         .container h3{
             padding-top:50px;
         }
@@ -60,24 +64,14 @@
                     <div class="container">
                         <ul>
 
-                            <li><a class="text:white">Events</a>
+                            <li><a class="text:white">Events
+                            </a>
                                 <ul>
                                     <li><a href="/main-trending">Trending</a></li>
-                                    <li><a href="/main-this-month">This month</a></li>
-                                    <li><a href="/main-upcoming">Upcoming</a></li>
+                                    <li><a href="/main-all-event">All-Event</a></li>
                                     <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  th:href="@{/user-signup}">Sign-Up</a></li>
-                            <li><a  th:href="@{/login}">Log-In</a></li>
-                            <li><a href="/main-trending">Trending</a></li>
-                            <li><a href="/main-this-month">This month</a></li>
-                            <li><a href="/main-upcoming">Upcoming</a></li>
-                            <li><a href="/main-promotion">Promotion</a></li>
-                                </ul>
-                            </li>
-                            <li><a  href="/signUp">Sign-Up</a></li>
-                            <li><a  href="/signIn">Log-In</a></li>
                             <li><a  href="/about">About</a></li>
                             <li><a  href="/faq">FAQ</a></li>
                             <li><a  href="/contact">Contact</a></li>
@@ -256,7 +250,7 @@
         <ul class="social">
             <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
             <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none" hidden></i></a></li>
 
 
         </ul>

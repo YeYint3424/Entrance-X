@@ -7,8 +7,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
     <title>Terms and Conditions</title>
     <style>
-
-
+        body{
+            background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+            color: white;
+        }
+        a{
+            font-family: SansSerif;
+            color: greenyellow;
+            text-decoration: none;
+        }
         .container h5{
             padding-top:8px;
         }
@@ -61,13 +68,10 @@
                             </a>
                                 <ul>
                                     <li><a href="/main-trending">Trending</a></li>
-                                    <li><a href="/main-this-month">This month</a></li>
-                                    <li><a href="/main-upcoming">Upcoming</a></li>
+                                    <li><a href="/main-all-event">All-Event</a></li>
                                     <li><a href="/main-promotion">Promotion</a></li>
                                 </ul>
                             </li>
-                            <li><a  th:href="@{/user-signup}">Sign-Up</a></li>
-                            <li><a  th:href="@{/login}">Log-In</a></li>
                             <li><a  href="/about">About</a></li>
                             <li><a  href="/faq">FAQ</a></li>
                             <li><a  href="/contact">Contact</a></li>
@@ -94,7 +98,7 @@
         have accepted its terms.</p>
 
     <h5> Privacy policy </h5>
-    <p>Before you continue using our website, we advise you to read our <a href="">privacy policy</a> regarding our user data collection. It will help you better understand our
+    <p>Before you continue using our website, we advise you to read our <a href="/privacypolicy">privacy policy</a> regarding our user data collection. It will help you better understand our
         practices.</p>
 
     <h5>Intellectual property </h5>
@@ -155,7 +159,7 @@
         <ul class="social">
             <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
             <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none" hidden></i></a></li>
 
 
         </ul>

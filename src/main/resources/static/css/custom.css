@@ -10,6 +10,9 @@ body{
     min-height: 100vh;
 
 }
+.modal-title{
+    color: black;
+}
 .wrapper{
     background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     min-height: 100vh;

@@ -1,8 +1,11 @@
 body{
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     font-family: sans-serif;
     overflow-x:hidden;
 }
-
+.modal-title{
+    color: black;
+}
 /* navbar */
 
 
