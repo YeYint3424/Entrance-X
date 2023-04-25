@@ -51,8 +51,7 @@
                         <button type="submit" class="btn btn-primary" id="submitbtn" style="width:100%">Submit</button>
                     </div> </form>
                       <div class="form-btn" style="text-align:center;width:100%">
-                          <a href="/" style="text-decoration:none">
-                              <button  class="btn btn-primary" id="resetbtn" style="width:100%">Back</button></a>
+                          <button class="btn btn-primary" id="resetbtn" style="width:100%" onclick="goBack()">Back</button>
                     </div>
 
 
@@ -76,6 +75,10 @@
             }
         });
     });
+
+    function goBack(){
+        window.history.back();
+    }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
