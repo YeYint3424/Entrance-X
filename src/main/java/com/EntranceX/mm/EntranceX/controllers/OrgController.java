@@ -177,4 +177,9 @@ public class OrgController {
     public String org_admin_event_detail(){
         return "org/event-detail";
     }
+
+    @GetMapping("/org-old-event")
+        public String org_event(){
+        return "org/org-event-request&old-event";
+        }
 }

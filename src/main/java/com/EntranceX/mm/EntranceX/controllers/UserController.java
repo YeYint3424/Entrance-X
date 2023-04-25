@@ -298,4 +298,9 @@ public class UserController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/user-voucher")
+    public String user_voucher(){
+        return "user/voucher";
+    }
 }

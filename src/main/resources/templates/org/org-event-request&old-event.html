@@ -10,35 +10,83 @@
 
     <link rel="stylesheet" href="css/custom.css">
 
-    <title>Admin</title>
+    <style>
+        @media (max-width:750px){
+            #introTitle{
+                padding-top:40px;
+
+            }
+
+            #title{
+
+            }
+        }
+
+        .nav-item a:hover{
+            border-bottom: 1px solid white;
+        }
+    </style>
+
+    <title> Sale Record </title>
+
 </head>
 <body>
+
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/admin"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
+        <a class="navbar-brand" href="/"><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form th:action="@{/org-search-page}" method="get" class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="eventName">
                         <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/userList">User-List</a></li>
-                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/orgList">Org-List</a></li>
-                <li class="navlist1"><a class="navlist2" style="position: relative;bottom: 8px" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/org-page}">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/event-register}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/org-profile}"><i class="fa-solid fa-user-tie"></i></a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
+
+            <button id="explore-btn" class="btn btn-primary justify-content-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title mx-auto" id="offcanvasRightLabel">Menu</h4>
+
+                </div>
+
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <ul>
+                            <li><a style="color: white">Events</a>
+                                <ul>
+                                    <li><a href="/org-ongoing">Ongoing</a></li>
+                                    <li><a href="/org-future">Future</a></li>
+                                    <li><a href="/org-sale-record">Sale Record</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a  href="/org-about">About</a></li>
+                            <li><a  href="/org-faq">FAQ</a></li>
+                            <li><a  href="/org-contact">Contact</a></li>
+                            <li><a  href="/org-term">Terms and Conditions</a></li>
+                            <li><a  href="/org-privacyPolicy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
+<!--        nav-bar end         -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Log-Out from Admin</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -56,7 +104,6 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="container" style="margin-top: 100px" >
         <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Event-Approve</h3>
@@ -65,27 +112,20 @@
                 <thead>
                 <tr>
                     <th scope="col">Event Name</th>
-                    <th scope="col">Organizer Name</th>
                     <th scope="col">Event Date</th>
                     <th scope="col">Register Time</th>
-                    <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event  :${eventList}" th:if="${event.status == 0}">
+                <tr>
 
-                    <td th:text="${event.eventName}"></td>
-                    <td th:text="${event.organizer.userName}"></td>
-                    <td th:text="${event.date}"></td>
-                    <td th:text="${#temporals.format(event.requestTime, 'yyyy-MM-dd HH:mm')}"></td>
-                    <td><button type="submit" class="btn btn-primary">Detail</button></td>
-                    <td>
-                        <form method="POST" th:action="@{/admin-event-approve(eventId=${event.id})}">
-                            <button type="submit" class="btn btn-success">Approve</button>
-                        </form>
-                    </td>
+                    <td th:text="illenim"></td>
+                    <td th:text="3.4.24"></td>
+                    <td th:text="5.2.24"></td>
+                    <td style="font-size: 25px"><i class="fa-solid fa-spinner fa-spin-pulse"></i></td>
+
                     <td><button type="submit" class="btn btn-danger">Cancel</button></td>
                 </tr>
 
@@ -108,17 +148,15 @@
                 <tr>
 
                     <th scope="col">Event Name</th>
-                    <th scope="col">Organizer Name</th>
                     <th scope="col">Event Date</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event :${eventList}" th:if="${event.status == 1}">
+                <tr>
 
-                    <td th:text="${event.eventName}"></td>
-                    <td th:text="${event.organizer.userName}"></td>
-                    <td th:text="${event.date}"></td>
+                    <td th:text="illenium"></td>
+                    <td th:text="3.2.2005"></td>
                     <td><button type="submit" class="btn btn-primary">Detail</button></td>
                 </tr>
 
@@ -130,6 +168,45 @@
     </div>
 
 </div>
+
+<!--            Footer            -->
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p>ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="/org-about">About</a></li>
+                <li><a href="/org-faq">FAQ</a></li>
+                <li><a href="/org-contact">Contact</a></li>
+                <li><a href="/org-term">Terms and Conditions</a></li>
+                <li><a href="/org-privacyPolicy">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+
+</footer>
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

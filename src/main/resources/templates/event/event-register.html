@@ -116,7 +116,7 @@
                     </div>
                     <div class="input-box mb-3">
                         <label for="artist1234" class="form-label">Choose Artists</label>
-                        <select  th:field="*{artists}" class="form-control" size="5" name="artist1234" id="artist1234" multiple>
+                        <select  th:field="*{artists}" class="form-control" size="5" name="artist1234" id="artist1234" multiple required>
                             <option th:each="option : ${artists}"
                                     th:value="${option.artist}"
                                     th:text="${option.artist}">
