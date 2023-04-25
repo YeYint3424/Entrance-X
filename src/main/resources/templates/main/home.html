@@ -123,7 +123,7 @@
         </table>
 
 
-        <div class="container mt-5 event">
+        <div class="container mt-5 event" style="height:420px;overflow-y: hidden">
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
@@ -163,7 +163,7 @@
         </table>
 
 
-        <div class="container mt-5 event">
+        <div class="container mt-5 event" style="height:420px;overflow-y: hidden">
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
@@ -202,11 +202,11 @@
         </table>
 
 
-        <div class="container mt-5 event">
+        <div class="container mt-5 event" style="height:420px;overflow-y: hidden">
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event : ${events}" th:if="${event.date > localDate}">
+                <div class="col" th:each="event : ${events}"  th:if="${event.date > localDate}"  >
 
                         <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                             <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
