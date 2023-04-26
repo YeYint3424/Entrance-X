@@ -26,11 +26,21 @@ public class OnlyViewController {
         return "event/all-event";
     }
     @GetMapping("/main-promotion")
-    public String main_promotion(){
+    public String main_promotion(Model model){
+        List<Event> events=eventService.getEvents();
+        for(Event event: events){
+            byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
+        }
+        model.addAttribute("events", events);
         return"event/promotion";
     }
     @GetMapping("/main-trending")
-    public String main_trending(){
+    public String main_trending(Model model){
+        List<Event> events=eventService.getEvents();
+        for(Event event: events){
+            byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
+        }
+        model.addAttribute("events", events);
         return "event/trending";
     }
 

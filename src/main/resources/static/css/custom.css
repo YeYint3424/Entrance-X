@@ -6,6 +6,7 @@
 }
 
 body{
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
     overflow-x: hidden;
     min-height: 100vh;
 

@@ -68,9 +68,21 @@ public class PageController {
     }
 
     @GetMapping("/user-page")
-    public String user_home(HttpServletRequest request) {
+    public String user_home(HttpServletRequest request,Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            List<Event> events=eventService.getEvents();
+            for(Event event: events){
+                byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
+            }
+
+            List<Event> events1=eventService.getPromotionEvents(0);
+            for(Event event: events1){
+                byte[]photo= Base64.getDecoder().decode(event.getEncodedPhoto());
+            }
+            model.addAttribute("promotionEvents", events1);
+            model.addAttribute("events", events);
+            model.addAttribute("localDate", LocalDate.now());
         return "main/user-page";
         } else {
             return "redirect:/login";

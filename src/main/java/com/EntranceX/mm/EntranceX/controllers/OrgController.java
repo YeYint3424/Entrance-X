@@ -38,13 +38,17 @@ public class OrgController {
 
 
     @GetMapping("/org-page")
-    public String org_home(HttpServletRequest request) {
+    public String org_home(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
-            List<Organizer> organizers = organizerDao.findAll();
+            int organizerId=(int)session.getAttribute("LoginOrganizer");
+            List<Event> events=eventService.getEventsByOrganizerId(organizerId);
+            model.addAttribute("events" , events);
+
             return "main/org-page";
         } else{
-                return "redirect:/login";} }
+                return "redirect:/login";}
+    }
 
      @GetMapping("/org-about")
      public String orgAbout(){
@@ -130,13 +134,21 @@ public class OrgController {
             return "redirect:/login"; } }
 
 
-    @GetMapping("/org-future")
-    public String org_future(HttpServletRequest request) {
+    @GetMapping("/org-promotion")
+    public String org_future(HttpServletRequest request,Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
-        return "org/future";
-    }else{
-            return "redirect:/login"; } }
+            int organizerId=(int)session.getAttribute("LoginOrganizer");
+            List<Event> events = eventService.getEventsByOrganizerId(organizerId);
+            for (Event event : events) {
+                byte[]photoByte=Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+            }
+            model.addAttribute("events", events);
+            model.addAttribute("localDate", LocalDate.now());
+            return "org/promotion";
+        }else{
+            return "redirect:/login"; }
+    }
 
     @GetMapping("/org-sale-record")
     public String org_Sale_Record(HttpServletRequest request) {

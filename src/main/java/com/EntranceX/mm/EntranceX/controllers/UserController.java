@@ -139,24 +139,21 @@ public class UserController {
     }
 
     @GetMapping("/user-trending")
-    public String user_trending(HttpServletRequest request) {
+    public String user_trending(HttpServletRequest request,Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            List<Event> events = eventService.getEvents();
+            for (Event event : events) {
+                byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+            }
+            model.addAttribute("events", events);
             return "user/trending";
         } else {
             return "redirect:/login";
         }
     }
 
-    @GetMapping("/user-upcoming")
-    public String user_upcoming(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginUser") != null) {
-            return "user/upcoming";
-        } else {
-            return "redirect:/login";
-        }
-    }
 
     @GetMapping("/user-history")
     public String user_history(HttpServletRequest request,Model model) {
@@ -276,9 +273,15 @@ public class UserController {
     }
 
     @GetMapping("/user-all-event")
-    public String user_all_event(HttpServletRequest request, Model model){
+    public String user_all_event(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int)session.getAttribute("LoginUser");
+            List<Event> events = eventService.getEvents();
+            for (Event event : events) {
+                byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+            }
+            model.addAttribute("events", events);
             return "user/all-event";
         }else {
             return "redirect:/login";
