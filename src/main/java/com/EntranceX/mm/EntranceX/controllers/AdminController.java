@@ -57,6 +57,9 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/admin-eventdetail")
+    public String admin_eventdetail(){return "admin/admin-eventdetail";}
+
 
     @GetMapping("/event-approve")
     public String eventApprove(HttpServletRequest request, Model model) {

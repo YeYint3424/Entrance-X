@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/eventdetail.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
+    <title>Event Details</title>
+
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/admin"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/userList">User-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/orgList">Org-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="position: relative;bottom: 8px" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out from Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="text-align:center;margin:30px;margin-top:40px"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
+<div class="row" id="event-row">
+    <div class="col" id="col1" >
+        <div class="container mx-auto">
+
+            <div class="text1" style=" font-family:Lucida Sans; color:#fff">
+
+                <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
+                </p>
+                <p th:text="${eventDetails.artist}"></p>
+                <p> from <span th:text="${eventTime}"></span></p>
+                <p th:text="${eventDetails.date}"></p>
+                <p th:text="${eventDetails.venue}"></p>
+                <p style="height:150px" th:text="${eventDetails.eventDescription}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="container mx-auto">
+            <div  id="col2" >
+                <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
+                    <div class="row">
+                        <p class="col" th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
+                        <p class="col" th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
+                        <p class="col" th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">Standard Ticket Price</p>
+                        <p class="col" th:text="${eventDetails.standardTicketPrice}"></p>
+                    </div>
+                    <div class="row">
+                        <p class="col">VIP Ticket Price </p>
+                        <p class="col" th:text="${eventDetails.vipTicketPrice}"></p>
+                    </div>
+                    <div class="row">
+                        <p class="col">VVIP Ticket Price </p>
+                        <p class="col" th:text="${eventDetails.vvipTicketPrice}"></p>
+                    </div>
+                    <div class="row" th:if="${eventDetails.promotion > 0}">
+                        <p class="col">Promotion </p>
+                        <p class="col" th:text="${eventDetails.promotion} + '%'"></p>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p>ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none"></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/about}">About</a></li>
+                <li><a th:href="@{/faq}">FAQ</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+                <li><a th:href="@{/termsandconditions}">Terms and Conditions</a></li>
+                <li><a th:href="@{/privacypolicy}">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
