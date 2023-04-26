@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="css/eventFormStyle.css">
     <title>event registeration form</title>
+
+
 </head>
 <body>
 
@@ -114,15 +116,20 @@
                         <label for="venue" class="form-label">Place</label>
                         <input type="text" class="form-control" id="venue" name="venue" placeholder="Enter event place" required>
                     </div>
-                    <div class="input-box mb-3">
+
+                  <div class="input-box mb-3">
                         <label for="artist1234" class="form-label">Choose Artists</label>
+                        <div style="padding:5px;padding-left:0">  <input type="text" id="searchInput" placeholder="Search..."></div>
                         <select  th:field="*{artists}" class="form-control" size="5" name="artist1234" id="artist1234" multiple required>
                             <option th:each="option : ${artists}"
                                     th:value="${option.artist}"
                                     th:text="${option.artist}">
                             </option>
                         </select>
+
                     </div>
+
+
 
                     <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px">
                     <label for="artist1" class="form-label">Add More Artists</label><br>
@@ -304,7 +311,65 @@
 
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    var mySelect=document.getElementById("artist1234");
+    var searchInput=document.getElementById("searchInput");
+
+    searchInput.addEventListener("keyup", function(event){
+        var searchText=event.target.value.toLowerCase();
+        var options=mySelect.options;
+        for (let i=0; i<options.length;i++){
+            var optionText= options[i].text.toLowerCase();
+            if(optionText.includes(searchText)){
+                options[i].style.display= "block";
+            }
+            else{
+                options[i].style.display = "none";
+            }
+        }
+    });
+
+
+
+
+    $(document).ready(function(){
+        $('#artist1234').mousedown(function(e){
+            e.preventDefault();
+            var originalScrollTop = $(this).scrollTop();
+            $(this).focus();
+            var mouseDownY=e.pageY;
+            var $this = $(this);
+            var lastSelected=null;
+
+            $this.children('option').each(function(){
+                var thisPos=$(this).offset().top - originalScrollTop;
+                var topPos = thisPos + $this.scrollTop();
+                var bottomPos = topPos + $(this).outerHeight();
+
+                if(mouseDownY >= topPos && mouseDownY <= bottomPos){
+                    if(e.shiftKey && lastSelected){
+                        var start = $this.children('option').index(lastSelected);
+                        var end=$this.children('option').index(this);
+
+                        $this.children('option').slice(Math.min(start, end), Math.max(start, end)+1).prop('selected', true);
+
+                    }
+                    else{
+                        $(this).prop('selected', !$(this).prop('selected'));
+                        lastSelected = this;
+                    }
+                }
+            })
+        })
+    });
+
+
+
+
+
+
+
     function showStandard(){
         var standard=document.getElementById("standard");
         var standardP=document.getElementById("standard-check");
