@@ -63,7 +63,8 @@ public class EventController {
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             int organizerId=(int) session.getAttribute("LoginOrganizer");
             eventArtistDto.setRequestTime(LocalDateTime.now());
-            List<String> selectedArtists = eventArtistDto.getExistArtist();
+
+            System.out.println(eventArtistDto.getExistArtistId());
             Event event=eventService.createEvent(eventArtistDto, organizerId);
             artistService.addArtistForEvent(eventArtistDto, event.getId());
             artistService.addExistArtistForEvent(eventArtistDto, event.getId());

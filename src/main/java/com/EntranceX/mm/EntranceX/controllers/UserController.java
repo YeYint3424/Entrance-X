@@ -10,10 +10,7 @@ import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
 import com.EntranceX.mm.EntranceX.models.User;
 import com.EntranceX.mm.EntranceX.models.WatchLater;
-import com.EntranceX.mm.EntranceX.services.EventService;
-import com.EntranceX.mm.EntranceX.services.OrderService;
-import com.EntranceX.mm.EntranceX.services.UserService;
-import com.EntranceX.mm.EntranceX.services.WatchLaterService;
+import com.EntranceX.mm.EntranceX.services.*;
 import com.google.zxing.WriterException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -53,6 +50,9 @@ public class UserController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    EmailService emailService;
 
 
     @GetMapping("/user-profile")
@@ -142,7 +142,7 @@ public class UserController {
     public String user_trending(HttpServletRequest request,Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
-            int userId=(int)session.getAttribute("LoginUser");
+
             List<Event> events = eventService.getEvents();
             for (Event event : events) {
                 byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
@@ -204,6 +204,7 @@ public class UserController {
     public String userRegisterPost(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes) {
         if (userDao.findByUserName(userDto.getUserName()) == null && userDao.findByEmail(userDto.getEmail()) == null) {
             userService.createUser(userDto);
+            emailService.sendCode(userDto.getEmail());
             return "redirect:/login";
         } else if (userDao.findByUserName(userDto.getUserName()) != null) {
             redirectAttributes.addAttribute("userNameExist", true);

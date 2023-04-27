@@ -120,9 +120,9 @@
                   <div class="input-box mb-3">
                         <label for="artist1234" class="form-label">Choose Artists</label>
                         <div style="padding:5px;padding-left:0">  <input type="text" id="searchInput" placeholder="Search..."></div>
-                        <select  th:field="*{artists}" class="form-control" size="5" name="existArtist" id="artist1234" multiple>
+                        <select   class="form-control" size="5" name="existArtistId" id="artist1234" multiple>
                             <option th:each="option : ${artists}"
-                                    th:value="${option.artistName}"
+                                    th:value="${option.id}"
                                     th:text="${option.artistName}">
                             </option>
                         </select>
@@ -446,7 +446,7 @@
     artists.push(artistInput);
     });
 
-    var selectEl=document.getElementById('existArtist');
+    var selectEl=document.getElementById('artist1234');
     var clearBtnEl= document.getElementById('clear-all-btn');
 
     clearBtnEl.addEventListener('click',()=>{
