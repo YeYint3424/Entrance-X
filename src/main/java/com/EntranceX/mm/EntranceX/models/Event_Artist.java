@@ -10,11 +10,20 @@ public class Event_Artist {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @Override
+    public String toString() {
+        return "Event_Artist{" +
+                "id=" + id +
+                ", artist=" + artist +
+                ", event=" + event +
+                '}';
+    }
 }

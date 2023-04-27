@@ -6,6 +6,7 @@ import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
 import com.EntranceX.mm.EntranceX.models.*;
 import com.EntranceX.mm.EntranceX.services.OrderService;
 import com.google.zxing.WriterException;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +54,6 @@ public class OrderServiceImpli implements OrderService {
     @Override
     public TicketOrder_History saveTicketQr(String ticketQR) {
         TicketOrder_History ticketOrder=new TicketOrder_History();
-        ticketOrder.setEncodedTicketQR(ticketQR);
         return ticketOrderDao.save(ticketOrder);
     }
 
@@ -68,36 +68,33 @@ public class OrderServiceImpli implements OrderService {
     }
 
     @Override
-    public TicketOrder_History approve(int voucherId) throws IOException, WriterException {
+    public TicketOrder_History approve(int voucherId) throws Exception {
         TicketOrder_History ticketOrder=ticketOrderDao.findById(voucherId).orElse(null);
-        for (int i = 0; i < ticketOrder.getStandardTicketSold(); i++) {
+        int standardTicketsSold = ticketOrder.getStandardTicketSold();
+        int vipTicketsSold = ticketOrder.getVipTicketSold();
+        int vvipTicketsSold = ticketOrder.getVvipTicketSold();
+        int totalTicketsSold = standardTicketsSold + vipTicketsSold + vvipTicketsSold;
+
+        for (int i = 0; i < totalTicketsSold; i++) {
+            String qrCodeData = RandomStringUtils.randomAlphanumeric(10);
+
+            int qrCodeSize = 150;
+            byte[] qrCodeImage = QRCodeGenerator.generateQRCode(qrCodeData, qrCodeSize);
+
             TicketQr ticket = new TicketQr();
-            ticket.setTicketType("Standard");
-            String encodedQr=Base64.getEncoder().encodeToString(qrCodeGenerator.generateRandomQRCode(250));
+
+            if (i < standardTicketsSold) {
+                ticket.setTicketType("Standard");
+            } else if (i < standardTicketsSold + vipTicketsSold) {
+                ticket.setTicketType("Vip");
+            } else {
+                ticket.setTicketType("VVip");
+            }
+
+            String encodedQr = Base64.getEncoder().encodeToString(qrCodeImage);
             ticket.setTicketQr(encodedQr);
             ticket.setTicketOrder(ticketOrder);
             ticketQrDao.save(ticket);
-
-        }
-
-        for (int i = 0; i < ticketOrder.getVipTicketSold(); i++) {
-            TicketQr ticket = new TicketQr();
-            ticket.setTicketType("Vip");
-            String encodedQr=Base64.getEncoder().encodeToString(qrCodeGenerator.generateRandomQRCode(250));
-            ticket.setTicketQr(encodedQr);
-            ticket.setTicketOrder(ticketOrder);
-            ticketQrDao.save(ticket);
-
-        }
-
-        for (int i = 0; i < ticketOrder.getVvipTicketSold(); i++) {
-            TicketQr ticket = new TicketQr();
-            ticket.setTicketType("VVip");
-            String encodedQr=Base64.getEncoder().encodeToString(qrCodeGenerator.generateRandomQRCode(250));
-            ticket.setTicketQr(encodedQr);
-            ticket.setTicketOrder(ticketOrder);
-            ticketQrDao.save(ticket);
-
         }
 
         ticketOrder.setStatus(1);

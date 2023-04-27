@@ -48,7 +48,7 @@ public class Event {
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WatchLater> watchLater= new ArrayList<>();
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event_Artist> eventArtist = new ArrayList<>();
 
     public Event() {

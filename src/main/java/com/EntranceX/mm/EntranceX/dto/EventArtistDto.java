@@ -16,6 +16,7 @@ import java.util.List;
 public class EventArtistDto {
     private String eventName, venue, startTime, endTime , eventDescription, encodedPhoto, kpayQrEncoded, wavepayQrEncoded;
     private String[] artist;
+    private List<String> existArtist;
     private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity, status;
     private LocalDate date;
     private LocalDateTime requestTime;

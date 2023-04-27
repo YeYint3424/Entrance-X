@@ -19,10 +19,6 @@ public class TicketOrder_History {
     @Column(columnDefinition = "longblob")
     private String encodedPaymentScreenShot;
 
-    @Lob
-    @Column(columnDefinition = "longblob")
-    private String encodedTicketQR;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

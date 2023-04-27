@@ -12,8 +12,17 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String artist;
+    private String artistName;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event_Artist> eventArtist = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "id=" + id +
+                ", artist='" + artistName + '\'' +
+                ", eventArtist=" + eventArtist +
+                '}';
+    }
 }

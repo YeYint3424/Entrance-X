@@ -109,5 +109,10 @@ public class EventServiceImpli implements EventService {
         return eventDao.findByPromotionGreaterThan(promotion);
     }
 
+    @Override
+    public List<Artist> getArtistByEventId(int eventId) {
+        return eventDao.findArtistsByEventId(eventId);
+    }
+
 
 }

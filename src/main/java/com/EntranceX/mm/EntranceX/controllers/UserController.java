@@ -255,22 +255,7 @@ public class UserController {
             return "redirect:/login";
         }
     }
-    @GetMapping("/user-search-page")
-    public String user_search(HttpServletRequest request, @RequestParam("eventName") String eventName, Model model) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginUser") != null) {
-            List<Event> events = eventService.getEventForSearch(eventName);
-            for (Event event : events) {
-                byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
 
-            }
-            model.addAttribute("searchName", eventName);
-            model.addAttribute("searchEvents", events);
-            return "user/search-page";
-        } else {
-            return "redirect:/login";
-        }
-    }
 
     @GetMapping("/user-all-event")
     public String user_all_event(HttpServletRequest request, Model model) {

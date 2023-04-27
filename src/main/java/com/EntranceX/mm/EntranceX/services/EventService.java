@@ -1,6 +1,7 @@
 package com.EntranceX.mm.EntranceX.services;
 
 import com.EntranceX.mm.EntranceX.dto.EventArtistDto;
+import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
 import java.io.IOException;
 import java.util.List;
@@ -16,5 +17,5 @@ public interface EventService {
     List<Event> getUnApproveEvent(int status);
     Event approve(int eventId, int status);
     List<Event> getPromotionEvents(int promotion);
-
+    List<Artist> getArtistByEventId(int eventId);
 }

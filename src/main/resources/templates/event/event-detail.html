@@ -97,9 +97,12 @@
                     <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
                       <div class="watch-later-icon"> Watch-Later <i class="fa-solid fa-square-plus" ></i> </div>
                     </p>
-                    <p th:text="${eventDetails.artist}"></p>
-                    <p> from <span th:text="${eventTime}"></span></p>
-                    <p th:text="${eventDetails.date}"></p>
+                    <p>List of Artists</p>
+                    <p th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></p>
+                    </p>
+
+                    <p> Event Time : from <span th:text="${eventTime}"></span></p>
+                    <p> Date : <span th:text="${eventDetails.date}"></span></p>
                     <p th:text="${eventDetails.venue}"></p>
                     <p style="height:150px" th:text="${eventDetails.eventDescription}"></p>
                 </div>
@@ -130,7 +133,8 @@
                             <p class="col">Promotion </p>
                             <p class="col" th:text="${eventDetails.promotion} + '%'"></p>
                         </div>
-                    <form method="post">
+
+                    <form th:action="@{/order-payment}" method="post" >
                         <div class="input-box mb-3">
                             <input type="hidden" name="userId" th:value="${userId}" >
 

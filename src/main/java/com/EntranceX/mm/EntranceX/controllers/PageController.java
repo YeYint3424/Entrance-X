@@ -4,12 +4,10 @@ import com.EntranceX.mm.EntranceX.dao.AdminDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.AdminDto;
-import com.EntranceX.mm.EntranceX.models.Admin;
-import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.models.Organizer;
-import com.EntranceX.mm.EntranceX.models.User;
+import com.EntranceX.mm.EntranceX.models.*;
 
 import com.EntranceX.mm.EntranceX.services.AdminService;
+import com.EntranceX.mm.EntranceX.services.ArtistService;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +48,9 @@ public class PageController {
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    ArtistService artistService;
 
     @GetMapping("/")
     public String main(Model model) {
@@ -185,7 +187,40 @@ public class PageController {
         return "redirect:/login";
     }
 
+    @GetMapping("/search-page")
+    public String user_search(HttpServletRequest request, @RequestParam("searchName") String searchName,
+                              @RequestParam("searchType") String searchType,Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            if (searchType.equals("event")) {
+                List<Event> events = eventService.getEventForSearch(searchName);
+                for (Event event : events) {
+                    byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
 
+                }
+                model.addAttribute("searchName", searchName);
+                model.addAttribute("search", events);
+
+            }else if(searchType.equals("artist")){
+                List<Artist> artists= artistService.findArtistForSearch(searchName);
+                List<Event> events = new ArrayList<>();
+                for (Artist artist : artists) {
+                    for (Event_Artist event_artist : artist.getEventArtist()) {
+                        events.add(event_artist.getEvent());
+                    }
+                }
+                for(Event event:events){
+                    byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+                }
+
+            model.addAttribute("searchName", searchName);
+            model.addAttribute("search", events);
+                }
+            return "user/search-page";
+        } else {
+            return "redirect:/login";
+        }
+    }
 }
 
 

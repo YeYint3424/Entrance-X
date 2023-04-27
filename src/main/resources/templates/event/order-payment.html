@@ -129,6 +129,9 @@
             <div class="input-box mb-3">
                 <input type="hidden" name="status" th:value="${ticketOrder.status}" >
             </div>
+            <div class="input-box mb-3">
+                <input type="hidden" name="totalPrice" th:value="${((eventDetails.standardTicketPrice * ticketOrder.standardTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vipTicketPrice * ticketOrder.vipTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vvipTicketPrice * ticketOrder.vvipTicketSold)* (100 - eventDetails.promotion) / 100)}" >
+            </div>
             <div class="input-box mb-3 mx-auto" style="margin-bottom:50px;width:350px;padding:30px;">
                 <label for="paymentScreenShot" class="form-label">Payment Screenshot</label>
                 <input type="file" class="form-control mx-auto" id="paymentScreenShot" name="paymentScreenShot" style="border-radius: 4px;

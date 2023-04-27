@@ -13,7 +13,7 @@ public interface OrderService{
     TicketOrder_History saveTicketQr(String ticketQR);
     List<TicketOrder_History> getUserOrderList(int userId);
     TicketOrder_History getOrderWithId(int voucherId);
-    TicketOrder_History approve(int voucherId) throws IOException, WriterException;
+    TicketOrder_History approve(int voucherId) throws Exception;
     List<TicketOrder_History> getUnApproveOrder(int status);
     TicketOrder_History decreaseAvailableTicket(int standardTicketSold, int vipTicketSold,
                                   int vvipTicketSold, int voucherId);

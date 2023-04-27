@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +34,8 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WatchLater> watchLater = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmailVerificationCode> emailVerificationToken= new ArrayList<>();
 
     public User(int id, String userName, String email, String gender, String phone, String password) {
         this.id = id;

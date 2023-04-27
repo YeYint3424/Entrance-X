@@ -2,17 +2,16 @@ package com.EntranceX.mm.EntranceX.controllers;
 
 
 import com.EntranceX.mm.EntranceX.dao.EventDao;
+import com.EntranceX.mm.EntranceX.dao.Event_ArtistDao;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dto.EventArtistDto;
 
 import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
 import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.services.ArtistService;
-import com.EntranceX.mm.EntranceX.services.EventService;
+import com.EntranceX.mm.EntranceX.models.Event_Artist;
+import com.EntranceX.mm.EntranceX.services.*;
 
-import com.EntranceX.mm.EntranceX.services.OrderService;
-import com.EntranceX.mm.EntranceX.services.WatchLaterService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -42,6 +42,8 @@ public class EventController {
     WatchLaterService watchLaterService;
     @Autowired
     ArtistService artistService;
+    @Autowired
+    Event_ArtistService event_artistService;
 
     @GetMapping("/event-register")
     public String registerEvent(HttpServletRequest request, Model model){
@@ -61,8 +63,10 @@ public class EventController {
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
             int organizerId=(int) session.getAttribute("LoginOrganizer");
             eventArtistDto.setRequestTime(LocalDateTime.now());
+            List<String> selectedArtists = eventArtistDto.getExistArtist();
             Event event=eventService.createEvent(eventArtistDto, organizerId);
             artistService.addArtistForEvent(eventArtistDto, event.getId());
+            artistService.addExistArtistForEvent(eventArtistDto, event.getId());
         return "redirect:/org-page";
     }else {
             return "redirect:/login";
@@ -75,10 +79,19 @@ public class EventController {
         if (session != null && session.getAttribute("LoginUser") != null) {
             int userId=(int) session.getAttribute("LoginUser");
             Event eventDetails=eventService.showEventDetail(eventId);
+
+            List<Event_Artist> eventArtists = eventDetails.getEventArtist();
+            List<Artist> artists = new ArrayList<>();
+            for (Event_Artist eventArtist : eventArtists) {
+                int artistId=eventArtist.getArtist().getId();
+                Artist artist = artistService.findById(artistId);
+                artists.add(artist);
+            }
+
             String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
             byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
 
-
+            model.addAttribute("artists", artists);
             model.addAttribute("eventDetails",eventDetails);
             model.addAttribute("eventTime", eventTime);
             model.addAttribute("userId", userId);
@@ -116,7 +129,7 @@ public class EventController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
 
-            System.out.println(ticketOrderDto);
+
             orderService.orderRequest(ticketOrderDto);
         return "redirect:/user-history";}
         else {
