@@ -2,6 +2,7 @@ package com.EntranceX.mm.EntranceX.controllers;
 
 
 import com.EntranceX.mm.EntranceX.config.QRCodeGenerator;
+import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 
 import com.EntranceX.mm.EntranceX.dto.UserDto;
@@ -53,6 +54,9 @@ public class UserController {
 
     @Autowired
     EmailService emailService;
+
+    @Autowired
+    OrganizerDao organizerDao;
 
 
     @GetMapping("/user-profile")
@@ -202,17 +206,18 @@ public class UserController {
 
     @PostMapping(value = "/user-signup")
     public String userRegisterPost(@ModelAttribute UserDto userDto, RedirectAttributes redirectAttributes) {
-        if (userDao.findByUserName(userDto.getUserName()) == null && userDao.findByEmail(userDto.getEmail()) == null) {
+        if (userDao.findByUserName(userDto.getUserName()) == null && userDao.findByEmail(userDto.getEmail()) == null &&
+                organizerDao.findByUserName(userDto.getUserName()) == null && organizerDao.findByOrganizerEmail(userDto.getEmail()) == null) {
             userService.createUser(userDto);
             emailService.sendCode(userDto.getEmail());
             return "redirect:/login";
-        } else if (userDao.findByUserName(userDto.getUserName()) != null) {
+        } else if (userDao.findByUserName(userDto.getUserName()) != null || organizerDao.findByUserName(userDto.getUserName()) == null) {
             redirectAttributes.addAttribute("userNameExist", true);
             return "redirect:/user-signup";
-        } else if (userDao.findByEmail(userDto.getEmail()) != null) {
+        } else if (userDao.findByEmail(userDto.getEmail()) != null || organizerDao.findByOrganizerEmail(userDto.getEmail()) == null) {
             redirectAttributes.addAttribute("emailExist", true);
             return "redirect:/user-signup";
-        }else{
+        }else {
             redirectAttributes.addAttribute("userNameExist", true);
             redirectAttributes.addAttribute("emailExist", true);
             return "redirect:/user-signup";

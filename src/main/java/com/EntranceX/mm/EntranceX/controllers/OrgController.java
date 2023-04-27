@@ -1,6 +1,7 @@
 package com.EntranceX.mm.EntranceX.controllers;
 
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
+import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.OrganizerDto;
 import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
@@ -42,6 +43,10 @@ public class OrgController {
 
     @Autowired
     ArtistService artistService;
+    
+    @Autowired
+    UserDao userDao;
+    
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
@@ -170,10 +175,27 @@ public class OrgController {
         }
 
     @PostMapping(value = "/org-signup")
-    public String organizerRegisterPost(@ModelAttribute OrganizerDto organizerDto, Model model) {
-        organizerService.createOrganizer(organizerDto);
-        return "redirect:/login";
+    public String organizerRegisterPost(@ModelAttribute OrganizerDto organizerDto, Model model, RedirectAttributes redirectAttributes) {
+        if (userDao.findByUserName(organizerDto.getUserName()) == null && userDao.findByEmail(organizerDto.getOrganizerEmail()) == null &&
+                organizerDao.findByUserName(organizerDto.getUserName()) == null && organizerDao.findByOrganizerEmail(organizerDto.getOrganizerEmail()) == null) {
+            organizerService.createOrganizer(organizerDto);
+//            emailService.sendCode(organizerDto.getEmail());
+            return "redirect:/login";
+        } else if (userDao.findByUserName(organizerDto.getUserName()) != null || organizerDao.findByUserName(organizerDto.getUserName()) == null) {
+            redirectAttributes.addAttribute("userNameExist", true);
+            return "redirect:/org-signup";
+        } else if (userDao.findByEmail(organizerDto.getOrganizerEmail()) != null || organizerDao.findByOrganizerEmail(organizerDto.getOrganizerEmail()) == null) {
+            redirectAttributes.addAttribute("emailExist", true);
+            return "redirect:/org-signup";
+        }else {
+            redirectAttributes.addAttribute("userNameExist", true);
+            redirectAttributes.addAttribute("emailExist", true);
+            return "redirect:/org-signup";
+        }
+
     }
+
+
 
     @GetMapping("/org-search-page")
     public String org_search(HttpServletRequest request, @RequestParam("eventName") String eventName, Model model) {
