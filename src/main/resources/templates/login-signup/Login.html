@@ -27,6 +27,10 @@
 
 <!--            <label class="label">Password</label>-->
         </div>
+        <div class="forgot-pass">
+            <a href="/reset-password">Forgot Password?</a>
+        </div>
+
 
         <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
             <span style="color: #ff0000;font-size: 13px;" th:if="${param.error}" class="error" ><b>Username or Password doesn't match! Please Try Again.</b></span>
@@ -56,70 +60,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-<!--
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <style>
-        body{
-            overflow-x: hidden;
-        }
-        a{
-            color: white;
-        }
-        a:hover{
-            color: #cfd2d6;
-        }
-
-    </style>
-
-</head>
-<body>
-
-<div class="container mx-auto" style="margin:40px;width:750px;display:block;margin-left:270px;border:1px solid;padding:0">
-    <div class="jumbotron text-center" style="background: black;font-size:30px;border-radius:0">
-     <h2 style="color:white">Welcome back from Extrance-X</h2>
-        <br>
-     <h3 style="color:white">Sign in to Account</h3>
-    </div>
-
-    <form class="form-horizontal" method="post">
-
-        <div class="form-group">
-                <label class="control-label col-sm-5" for="userName">Username:</label>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" id="userName" name="userName" placeholder="Username"required>
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <label class="control-label col-sm-5" for="loginPassword">Password:</label>
-            <div class="col-xs-3">
-                <input type="password" class="form-control" id="loginPassword"  name="loginPassword" placeholder="Password" required>
-                <br>
-                <span th:if="${param.error}" class="error">Username or Password doesn't match! Please Try Again.</span>
-            </div>
-        </div>
-
-        <br>
-        <ul class="pager">
-            <li>
-                <button type="submit" class="btn " style="background-color:#111111;color:#dddddd">Sign In</button>
-            </li>
-        </ul>
-    </form>
-    <ul class="pager">
-        <li>
-            <button type="submit" class="btn" style="background-color:#111111;color:#dddddd"><a href="/">Back</a></button>
-        </li>
-    </ul>
-</div>
-
-</body>
-</html>  -->

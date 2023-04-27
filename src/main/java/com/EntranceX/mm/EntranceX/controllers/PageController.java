@@ -157,6 +157,12 @@ public class PageController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/reset-password")
+    public String reset(){
+        return "login-signup/password-reset";
+    }
+
     @GetMapping("/sign-out")
     public String signOut(HttpServletRequest request){
         HttpSession session = request.getSession(false);
