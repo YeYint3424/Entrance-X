@@ -119,19 +119,20 @@
 
                   <div class="input-box mb-3">
                         <label for="artist1234" class="form-label">Choose Artists</label>
-                        <div style="padding:5px;padding-left:0">  <input type="text" id="searchInput" placeholder="Search..."></div>
-                        <select  th:field="*{artists}" class="form-control" size="5" name="artist1234" id="artist1234" multiple required>
+                        <div style="padding:5px;padding-left:0;overflow-y: scroll">  <input type="text" id="searchInput" placeholder="Search..."></div>
+                        <select  th:field="*{artists}" class="form-control" size="5" name="artist1234" id="artist1234" multiple >
                             <option th:each="option : ${artists}"
                                     th:value="${option.artist}"
                                     th:text="${option.artist}">
                             </option>
                         </select>
+                      <button type="button" class="btn btn-primary  btn-sm" id="clear-all-btn" style="margin:10px;margin-bottom:30px;float:right">Clear all</button>
 
                     </div>
 
 
 
-                    <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px">
+                    <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px;margin-top:40px">
                     <label for="artist1" class="form-label">Add More Artists</label><br>
                     <input type="text" id="artist1" name="artist" placeholder="Enter Artist Name">
                     <div id="artist-fields"  style="padding-left:0;padding-right:200px;margin-bottom:20px" ></div>
@@ -139,7 +140,7 @@
                 </div>
 
 
-                    <div class="input-box mb-3">
+                    <div class="input-box mb-3" style="margin-top:30px">
                         <label for="eventPhoto" class="form-label">Event Photo</label>
                         <input type="file" class="form-control" id="eventPhoto" name="photo" required accept="image/*">
                     </div>
@@ -365,8 +366,15 @@
     });
 
 
+var selectEl=document.getElementById('artist1234');
+var clearBtnEl = document.getElementById('clear-all-btn');
 
-
+clearBtnEl.addEventListener('click',() => {
+    var options = selectEl.options;
+    for(let i =0; i<options.length; i++){
+        options[i].selected = false;
+    }
+});
 
 
 
