@@ -59,6 +59,7 @@
     </div>
 </nav>
 
+<!-- show the detail of the ticket the user wants to buy -->
 <div class="container mx-auto" id="container1" style="width:auto">
    <!-- <div class="card" id="card1"> -->
         <div style="padding:30px;padding-bottom: 0">
@@ -103,6 +104,8 @@
             </div>
 
         </div>
+
+    <!-- payment -->
       <!--  <h5 style="text-align:center;padding:30px;padding-bottom: 0;">Total : 100000 MMK</h5> -->
         <div style="text-align:center;padding:30px"><h6 style="padding:5px">Wavepay</h6>
             <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.wavepayQrEncoded}}" width="200" height="200">
@@ -147,6 +150,7 @@
 </div>
 </div>
 
+<!-- footer -->
 <footer>
     <div class="footer-content">
 
