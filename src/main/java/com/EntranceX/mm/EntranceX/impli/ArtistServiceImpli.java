@@ -61,6 +61,7 @@ public class ArtistServiceImpli implements ArtistService {
     public Artist addExistArtistForEvent(EventArtistDto eventArtistDto, int eventId) {
 
         Event event = eventDao.findById(eventId).orElse(null);
+
 //        List<String> selectedArtists = Arrays.asList(eventArtistDto.getExistArtist());
         
 //        for (String selectedArtist : selectedArtists) {
@@ -73,7 +74,19 @@ public class ArtistServiceImpli implements ArtistService {
 //                event_artistDao.save(event_artist);
 //            }
 //        }
-        
+
+
+//        for (int selectedArtist : eventArtistDto.getExistArtistId()) {
+//            Artist artist = artistDao.findById(selectedArtist).orElse(null);
+//            if (artist != null) {
+//                // Artist found, save artist ID in event_artist entity
+//                Event_Artist event_artist = new Event_Artist();
+//                event_artist.setEvent(event);
+//                event_artist.setArtist(artist);
+//                event_artistDao.save(event_artist);
+//            }
+//        }
+//
         return null;
     }
 

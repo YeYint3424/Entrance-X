@@ -13,7 +13,7 @@ public class EmailVerificationCode {
     private int Id;
     private LocalDateTime expiryTime;
 
-    private String encodedCode;
+    private String code;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
