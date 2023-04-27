@@ -1,7 +1,8 @@
 html body{
+    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+
     font-family: sans-serif;
     padding-top:60px;
-    background: linear-gradient(to left, #46c8ce, #2da3ff, blue);;
 }
 
 /* navbar */

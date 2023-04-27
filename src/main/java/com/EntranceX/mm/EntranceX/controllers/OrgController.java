@@ -2,8 +2,11 @@ package com.EntranceX.mm.EntranceX.controllers;
 
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dto.OrganizerDto;
+import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
+import com.EntranceX.mm.EntranceX.models.Event_Artist;
 import com.EntranceX.mm.EntranceX.models.Organizer;
+import com.EntranceX.mm.EntranceX.services.ArtistService;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import com.EntranceX.mm.EntranceX.services.OrganizerService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +40,8 @@ public class OrgController {
     @Autowired
     EventService eventService;
 
-
+    @Autowired
+    ArtistService artistService;
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
@@ -127,6 +132,7 @@ public class OrgController {
             for (Event event : events) {
                 byte[]photoByte=Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
             }
+
             model.addAttribute("events", events);
             model.addAttribute("localDate", LocalDate.now());
             return "org/ongoing";
@@ -196,5 +202,31 @@ public class OrgController {
         }
 
         @GetMapping("/org-eventdetail")
-    public String org_eventdetail(){return "org/org-eventdetail";}
+    public String org_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
+            HttpSession session = request.getSession(false);
+            if (session != null && session.getAttribute("LoginOrganizer") != null) {
+                int orgId=(int) session.getAttribute("LoginOrganizer");
+                Event eventDetails=eventService.showEventDetail(eventId);
+
+                List<Event_Artist> eventArtists = eventDetails.getEventArtist();
+                List<Artist> artists = new ArrayList<>();
+                for (Event_Artist eventArtist : eventArtists) {
+                    int artistId=eventArtist.getArtist().getId();
+                    Artist artist = artistService.findById(artistId);
+                    artists.add(artist);
+                }
+
+                String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
+                byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
+
+                model.addAttribute("artists", artists);
+                model.addAttribute("eventDetails",eventDetails);
+                model.addAttribute("eventTime", eventTime);
+                model.addAttribute("orgId", orgId);
+
+                return "org/org-eventdetail";
+            }else {
+                return "redirect:/login";
+            }
+        }
 }

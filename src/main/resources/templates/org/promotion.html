@@ -27,7 +27,7 @@
             border-bottom: 1px solid white;
         }
     </style>
-    <title> Future Event </title>
+    <title> Promotion </title>
 </head>
 <body>
 
@@ -134,7 +134,7 @@
                         <div class="card-body rounded">
                             <h5 class="card-title"  style="font-family:Slant;font-size: 30px; text-shadow: 2px 3px black" th:text="${event.eventName}"></h5>
                             <p class="card-text" th:text="${event.date}"> </p>
-                            <a href="/event-detail"th:href="@{/org-admin-event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
+                            <a th:href="@{/org-eventdetail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
                         </div>
 
                     </div>
