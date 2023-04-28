@@ -55,26 +55,24 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-
-=======
 <!-- Event details -->
-<div style="text-align:center;margin:30px;margin-top:40px"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
->>>>>>> 960e39e84ad6c0b56bcf94dff0c4803e70e85bae
 <div class="row" id="event-row">
     <div class="col" id="col1" >
         <div class="container mx-auto">
-            <div style="text-align:center;margin:30px;margin-top:40px"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
-
+            <div style="text-align:center;margin-top:40px;"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
             <div class="text1" style=" font-family:Lucida Sans; color:#fff">
 
                 <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
+                    <!--                      <div class="watch-later-icon"> Watch-Later <i class="fa-solid fa-square-plus" ></i> </div>-->
+                    <!--                    <div class="watch-later-icon"> Remove Watch-Later <i class="fa-solid fa-square-minus" style="display:none"></i></div>-->
                 </p>
-                <p th:text="${eventDetails.artist}"></p>
-                <p> from <span th:text="${eventTime}"></span></p>
-                <p th:text="${eventDetails.date}"></p>
-                <p th:text="${eventDetails.venue}"></p>
-                <p style="height:150px" th:text="${eventDetails.eventDescription}"></p>
+                <p>List of Artists : <span th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"/>
+                </p>
+
+                <p> Event Time : from <span th:text="${eventTime}"></span></p>
+                <p> Date : <span th:text="${eventDetails.date}"></span></p>
+                <p> Place : <span th:text="${eventDetails.venue}"/></p>
+                <p style="height:150px">Description : <span th:text="${eventDetails.eventDescription}"/></p>
             </div>
         </div>
     </div>

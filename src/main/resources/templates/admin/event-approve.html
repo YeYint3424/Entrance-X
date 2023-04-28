@@ -106,30 +106,27 @@
 </div>
 
 <div class="container" style="margin-top: 30px" >
-    <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Organizer-List</h3>
-    <div class="table-responsive" style="height: 450px; overflow-y: auto; margin-top: 2rem;">
-        <table id="example" class="table table-success table-striped ">
+    <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Event-List</h3>
+    <div class="table" style="height: 450px; margin-top: 2rem;">
+        <table id="example" class="table table-success  ">
             <thead>
             <tr>
 
-                <th scope="col">Name</th>
-                <th scope="col">Organizer Email</th>
-                <th scope="col">Organizer Phone</th>
-                <th scope="col">Company Name</th>
-                <th scope="col"></th>
+                <th scope="col">Event-Name</th>
+                <th scope="col">Org-Name</th>
+                <th scope="col">Event-Date</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="organizer : ${organizerList}">
+            <tr>
 
-                <td th:text="${organizer.userName}"></td>
-                <td th:text="${organizer.organizerEmail}"></td>
-                <td th:text="${organizer.organizerPhone}"></td>
-                <td th:text="${organizer.companyName}"></td>
-                <td><button type="submit" class="btn btn-info">Detail</button></td>
-                <td><button type="submit" class="btn btn-warning">Warning</button></td>
+                <td>a</td>
+                <td>aa</td>
+                <td>11</td>
+                <td>hlh</td>
             </tr>
+            
 
             </tbody>
         </table>

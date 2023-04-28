@@ -35,7 +35,8 @@ public class AdminController {
     @Autowired
     OrderService orderService;
 
-
+    @Autowired
+    ArtistService artistService;
 
     @GetMapping("/admin")
     public String admin(HttpServletRequest request, Model model) {
@@ -59,12 +60,33 @@ public class AdminController {
     }
 
     @GetMapping("/admin-eventdetail")
-    public String admin_eventdetail(){return "admin/admin-eventdetail";}
+    public String admin_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
+//        HttpSession session = request.getSession(false);
+            Event eventDetails=eventService.showEventDetail(eventId);
+
+            List<Event_Artist> eventArtists = eventDetails.getEventArtist();
+            List<Artist> artists = new ArrayList<>();
+            for (Event_Artist eventArtist : eventArtists) {
+                int artistId=eventArtist.getArtist().getId();
+                Artist artist = artistService.findById(artistId);
+                artists.add(artist);
+            }
+
+            String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
+            byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
+
+            model.addAttribute("artists", artists);
+            model.addAttribute("eventDetails",eventDetails);
+            model.addAttribute("eventTime", eventTime);
+
+            return "admin/admin-eventdetail";
+        }
 
 
     @GetMapping("/event-approve")
     public String eventApprove(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
+
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             List<Event> events = eventService.getEvents();
             model.addAttribute("eventList", events);
