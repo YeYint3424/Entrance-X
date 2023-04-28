@@ -40,11 +40,11 @@
 <!--                     data-action='submit'>Submit</button>-->
 <!--        </div>-->
 
-        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-        <button class="g-recaptcha"
-                data-sitekey="6Lejy70lAAAAACYNvYtbSCUE24PZdfDbr7nYX5e_"
-                data-action="submit"
-                onclick="onSubmit()">Submit</button>
+<!--        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">-->
+<!--        <button class="g-recaptcha"-->
+<!--                data-sitekey="6Lejy70lAAAAACYNvYtbSCUE24PZdfDbr7nYX5e_"-->
+<!--                data-action="submit"-->
+<!--                onclick="onSubmit()">Submit</button>-->
 
         <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
             <span style="color: #ff0000;font-size: 13px;" th:if="${param.error}" class="error" ><b>Username or Password doesn't match! Please Try Again.</b></span>
@@ -75,17 +75,17 @@
 <!--        document.getElementById("demo-form").submit();-->
 <!--    }-->
 <!--</script>-->
-<script src="https://www.google.com/recaptcha/api.js?render=6Lejy70lAAAAACYNvYtbSCUE24PZdfDbr7nYX5e_"></script>
-<script>
-    function onSubmit() {
-        grecaptcha.execute('6Lejy70lAAAAACYNvYtbSCUE24PZdfDbr7nYX5e_', {action: 'submit'}).then(function(token) {
-            // Add the reCAPTCHA response token to the form data
-            document.getElementById('g-recaptcha-response').value = token;
-            // Submit the form
-            document.getElementById('demo-form').submit();
-        });
-    }
-</script>
+<!--<script src="https://www.google.com/recaptcha/api.js?render=6Lejy70lAAAAACYNvYtbSCUE24PZdfDbr7nYX5e_"></script>-->
+<!--<script>-->
+<!--    function onSubmit() {-->
+<!--        grecaptcha.execute('6Lejy70lAAAAACYNvYtbSCUE24PZdfDbr7nYX5e_', {action: 'submit'}).then(function(token) {-->
+<!--            // Add the reCAPTCHA response token to the form data-->
+<!--            document.getElementById('g-recaptcha-response').value = token;-->
+<!--            // Submit the form-->
+<!--            document.getElementById('demo-form').submit();-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
