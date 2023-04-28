@@ -11,7 +11,7 @@
     <style>
 
         html body{
-            background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+            background-color: #cac2ff;
         }
 
         .navbar{
@@ -62,6 +62,17 @@
         }
 
 
+
+        .voucher-qr{
+            margin:3px;
+            margin-bottom:7px;
+        }
+
+        .ticket-qr{
+            font-size:20px;
+            padding:15px;
+        }
+
         .voucher-footer{
             width:100%;
             bottom:0;
@@ -111,11 +122,11 @@
 
     <div class="container-fluid">
 
-        <a class="navbar-brand mx-auto" href="/">
+        <a class="navbar-brand mx-auto" href="/user-page">
             <img src="css/exlogotest3.png"  alt="logo" style="display:inline"><p style="display:inline;color:#ffffff;font-family:fantasy"> EntranceX</p></a>
     </div>
 </nav>
-<div style="padding:20px; color:rgb(193,255,179); text-align: center;">
+<div style="padding:20px; color:rgb(44,89,42); text-align: center;">
     <h3>Ticket Comfirmation</h3>
     <h5>Congratulations! Your ticket has been successfully purchased.</h5>
 </div>
@@ -131,49 +142,59 @@
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Date</p></th>
+            <th scope="row"><p class="pth">Date:</p></th>
             <td><p class="ptd">20.4.2023</p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Start Time</p></th>
+            <th scope="row"><p class="pth">Start Time:</p></th>
             <td ><p class="ptd">6pm</p></td>
 
         </tr>
 
         <tr>
-            <th scope="row"><p class="pth">End Time</p></th>
+            <th scope="row"><p class="pth">End Time:</p></th>
             <td ><p class="ptd">8pm</p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Place</p></th>
+            <th scope="row"><p class="pth">Place:</p></th>
             <td ><p class="ptd">Arena Complex</p></td>
 
         </tr>
         <tr>
-            <th  scope="row"><p class="pth">Ticket Type</p></th>
-            <td><p class="ptd">vip</p></td>
+            <th  scope="row"><p class="pth">Ticket Type:</p></th>
+            <td><p class="ptd">Standard, VIP, VVIP</p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Ticket Quantity</p></th>
+            <th scope="row"><p class="pth">Ticket Quantity:</p></th>
             <td ><p class="ptd">1</p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Price</p></th>
-            <td ><p class="ptd">100000kyats</p></td>
+            <th scope="row"><p class="pth">Standard Ticket Price:</p></th>
+            <td ><p class="ptd">100000 MMK</p></td>
 
         </tr>
         <tr>
-            <th  scope="row"><p class="pth">Promotion</p></th>
+            <th scope="row"><p class="pth">VIP Ticket Price:</p></th>
+            <td ><p class="ptd">120000 MMK</p></td>
+
+        </tr>
+        <tr>
+            <th scope="row"><p class="pth">VVIP Ticket Price:</p></th>
+            <td ><p class="ptd">130000 MMK</p></td>
+
+        </tr>
+        <tr>
+            <th  scope="row"><p class="pth">Promotion:</p></th>
             <td ><p class="ptd">5%</p></td>
 
         </tr>
 
         <tr>
-            <th  scope="row"><p class="pth">Total</p></th>
+            <th  scope="row"><p class="pth">Total:</p></th>
             <td ><p class="ptd">95000 MMK</p></td>
 
         </tr>
@@ -187,23 +208,23 @@
 
         <tbody>
         <tr>
-            <th class="w-25" scope="row"  ><p class="pth">Name</p></th>
+            <th class="w-25" scope="row"  ><p class="pth">Name:</p></th>
             <td class="w-25" ><p class="ptd">Harry</p></td>
 
         </tr>
 
         <tr>
-            <th class="w-25" scope="row"  ><p class="pth">Username</p></th>
+            <th class="w-25" scope="row"  ><p class="pth">Username:</p></th>
             <td class="w-25" ><p class="ptd">harry12</p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Email</p></th>
+            <th scope="row"><p class="pth">Email:</p></th>
             <td><p class="ptd">harry@gmail.com</p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Phone No</p></th>
+            <th scope="row"><p class="pth">Phone No:</p></th>
             <td ><p class="ptd">093873463</p></td>
 
         </tr>
@@ -213,8 +234,36 @@
     <hr>
     <div style="text-align:center; padding:30px; padding-bottom:50px">
         <h4>Your QR Code</h4>
-        <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code">
-    </div>
+       <!-- <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code"> -->
+<div class="qr-div">
+    <h6 class="ticket-qr">Standard Tickets</h6>
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+</div>
+        <hr>
+
+        <div class="qr-div" >
+            <h6 class="ticket-qr"> VIP Tickets</h6>
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        </div>
+
+        <hr>
+        <div class="qr-div">
+            <h6 class="ticket-qr">VVIP Tickets</h6>
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        </div>
+
 
 
     <hr>
