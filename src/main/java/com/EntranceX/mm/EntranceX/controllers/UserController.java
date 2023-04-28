@@ -209,7 +209,7 @@ public class UserController {
         if (userDao.findByUserName(userDto.getUserName()) == null && userDao.findByEmail(userDto.getEmail()) == null &&
                 organizerDao.findByUserName(userDto.getUserName()) == null && organizerDao.findByOrganizerEmail(userDto.getEmail()) == null) {
             userService.createUser(userDto);
-            emailService.sendCode(userDto.getEmail());
+//            emailService.sendCode(userDto.getEmail());
             return "redirect:/login";
         } else if (userDao.findByUserName(userDto.getUserName()) != null || organizerDao.findByUserName(userDto.getUserName()) == null) {
             redirectAttributes.addAttribute("userNameExist", true);

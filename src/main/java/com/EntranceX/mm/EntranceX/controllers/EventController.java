@@ -64,10 +64,11 @@ public class EventController {
             int organizerId=(int) session.getAttribute("LoginOrganizer");
             eventArtistDto.setRequestTime(LocalDateTime.now());
 
-            System.out.println(eventArtistDto.getExistArtistId());
+
             Event event=eventService.createEvent(eventArtistDto, organizerId);
             artistService.addArtistForEvent(eventArtistDto, event.getId());
-            artistService.addExistArtistForEvent(eventArtistDto, event.getId());
+            if(eventArtistDto.getExistArtistId()!=null){
+                artistService.addExistArtistForEvent(eventArtistDto, event.getId());}
         return "redirect:/org-page";
     }else {
             return "redirect:/login";
