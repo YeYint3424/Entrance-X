@@ -126,7 +126,7 @@
                                     th:text="${option.artistName}">
                             </option>
                         </select>
-                        <button type="button" class="btn btn-primary  btn-sm" id="clear-all-btn" style="margin: 10px; margin-bottom: 30px;float: right">Clear All</button>
+                        <button type="button" class="btn btn-primary  btn-sm" onclick="clearSelectedOptions()" style="margin: 10px; margin-bottom: 30px;float: right">Clear All</button>
                     </div>
 
 
@@ -365,7 +365,12 @@
     });
 
 
-
+function clearSelectedOptions(){
+    var selectElement = document.getElementById("artist1234");
+    for(var i=0; i<selectElement.options.length;i++){
+        selectElement.options[i].selected = false;
+    }
+}
 
 
 
@@ -446,7 +451,7 @@
     artists.push(artistInput);
     });
 
-    var selectEl=document.getElementById('artist1234');
+   /* var selectEl=document.getElementById('artist1234');
     var clearBtnEl= document.getElementById('clear-all-btn');
 
     clearBtnEl.addEventListener('click',()=>{
@@ -454,7 +459,7 @@
         for(let i=0; i<options.length; i++){
             options[i].selected=false;
         }
-    });
+    }); */
 
 </script>
 
