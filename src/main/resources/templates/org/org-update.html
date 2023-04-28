@@ -137,20 +137,20 @@
 
                     <div class="input-box mb-3" >
                         <label for="old-password" class="form-label">Enter Old Password</label>
-                        <input type="password" class="form-control" id="old-password" name="old-password" onkeyup='check();' required>
+                        <input type="password" class="form-control" id="old-password" name="old-password" onkeyup='check();' >
                     </div>
 
 
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" >
                         <br>
                         <span th:if="${param.alreadyUse}" class="error">Password is already Used. Try New Password.</span>
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="cpassword" class="form-label">Confirm New Password</label>
-                        <input type="password" class="form-control" id="cpassword" name="cpassword" required>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" >
                         <br>
                         <span th:if="${param.error}" class="error">Please Type same Password and Confirm Password!</span>
                     </div>
