@@ -67,7 +67,7 @@
     <div class="container" style="margin-top: 100px" >
         <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">Voucher-Approve</h3>
         <div class="table-responsive" style="height: 200px; overflow-y: auto; margin-top: 2rem;">
-            <table id="example1111" class="table table-success table-striped ">
+            <table id="example1" class="table table-success ">
             <thead>
             <tr>
                 <th scope="col">Buyer Name</th>
@@ -160,7 +160,13 @@
         table.buttons().container()
             .appendTo( '#example_wrapper .col-md-6:eq(0)' );
     } );
+    $(document).ready(function() {
+        var table = $('#example1').DataTable( {
+            lengthChange: false,
 
+        } );
+
+    } );
 
 </script>
 </body>
