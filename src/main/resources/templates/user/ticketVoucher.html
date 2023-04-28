@@ -138,28 +138,28 @@
         <tbody>
         <tr>
             <th class="w-25" scope="row"  ><p class="pth">Event Name</p></th>
-            <td class="w-25" ><p class="ptd">Eras tours</p></td>
+            <td class="w-25" ><p class="ptd" th:text="${ticketOrder.event.eventName}"></p></td>
 
         </tr>
         <tr>
             <th scope="row"><p class="pth">Date:</p></th>
-            <td><p class="ptd">20.4.2023</p></td>
+            <td><p class="ptd" th:text="${ticketOrder.event.date}"></p></td>
 
         </tr>
         <tr>
             <th scope="row"><p class="pth">Start Time:</p></th>
-            <td ><p class="ptd">6pm</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.startTime}"></p></td>
 
         </tr>
 
         <tr>
             <th scope="row"><p class="pth">End Time:</p></th>
-            <td ><p class="ptd">8pm</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.endTime}"></p></td>
 
         </tr>
         <tr>
             <th scope="row"><p class="pth">Place:</p></th>
-            <td ><p class="ptd">Arena Complex</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.venue}"></p></td>
 
         </tr>
         <tr>
@@ -167,35 +167,45 @@
             <td><p class="ptd">Standard, VIP, VVIP</p></td>
 
         </tr>
-        <tr>
+        <tr th:if="${ticketOrder.standardTicketSold>0}">
             <th scope="row"><p class="pth">Ticket Quantity:</p></th>
-            <td ><p class="ptd">1</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.standardTicketSold}"></p></td>
 
         </tr>
-        <tr>
+        <tr th:if="${ticketOrder.vipTicketSold>0}">
+            <th scope="row"><p class="pth">Ticket Quantity:</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.vipTicketSold}"></p></td>
+
+        </tr>
+        <tr th:if="${ticketOrder.vvipTicketSold>0}">
+            <th scope="row"><p class="pth">Ticket Quantity:</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.vvipTicketSold}"></p></td>
+
+        </tr>
+        <tr th:if="${ticketOrder.standardTicketSold>0}">
             <th scope="row"><p class="pth">Standard Ticket Price:</p></th>
-            <td ><p class="ptd">100000 MMK</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.standardTicketPrice} + 'MMK'"></p></td>
 
         </tr>
-        <tr>
+        <tr th:if="${ticketOrder.vipTicketSold>0}">
             <th scope="row"><p class="pth">VIP Ticket Price:</p></th>
-            <td ><p class="ptd">120000 MMK</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.vipTicketPrice} + 'MMK'"></p></td>
 
         </tr>
-        <tr>
+        <tr th:if="${ticketOrder.vvipTicketSold>0}">
             <th scope="row"><p class="pth">VVIP Ticket Price:</p></th>
-            <td ><p class="ptd">130000 MMK</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.vvipTicketPrice} + 'MMK'"  ></p></td>
 
         </tr>
-        <tr>
+        <tr th:if="${ticketOrder.event.promotion>0}">
             <th  scope="row"><p class="pth">Promotion:</p></th>
-            <td ><p class="ptd">5%</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.promotion}+'%'"></p></td>
 
         </tr>
 
         <tr>
             <th  scope="row"><p class="pth">Total:</p></th>
-            <td ><p class="ptd">95000 MMK</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.totalPrice} + 'MMK'"></p></td>
 
         </tr>
 
@@ -209,23 +219,18 @@
         <tbody>
         <tr>
             <th class="w-25" scope="row"  ><p class="pth">Name:</p></th>
-            <td class="w-25" ><p class="ptd">Harry</p></td>
+            <td class="w-25" ><p class="ptd" th:text="${ticketOrder.user.userName}"></p></td>
 
         </tr>
 
-        <tr>
-            <th class="w-25" scope="row"  ><p class="pth">Username:</p></th>
-            <td class="w-25" ><p class="ptd">harry12</p></td>
-
-        </tr>
         <tr>
             <th scope="row"><p class="pth">Email:</p></th>
-            <td><p class="ptd">harry@gmail.com</p></td>
+            <td><p class="ptd" th:text="${ticketOrder.user.email}"></p></td>
 
         </tr>
         <tr>
             <th scope="row"><p class="pth">Phone No:</p></th>
-            <td ><p class="ptd">093873463</p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.user.phone}"></p></td>
 
         </tr>
 
@@ -235,33 +240,22 @@
     <div style="text-align:center; padding:30px; padding-bottom:50px">
         <h4>Your QR Code</h4>
        <!-- <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code"> -->
-<div class="qr-div">
-    <h6 class="ticket-qr">Standard Tickets</h6>
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+<div class="qr-div" th:each="qr: ${ticketOrder}" th:if="${qr.ticketType == 'Standard'}">
+    <h6 class="ticket-qr">Standard Ticket QRs</h6>
+        <img th:if="${qr.ticketType == 'Standard'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
+
 </div>
         <hr>
 
-        <div class="qr-div" >
-            <h6 class="ticket-qr"> VIP Tickets</h6>
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <div class="qr-div" th:each="qr: ${ticketOrder}" th:if="${qr.ticketType== 'Vip'}">
+            <h6 class="ticket-qr"> VIP Ticket QRs</h6>
+            <img th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 
         <hr>
-        <div class="qr-div">
-            <h6 class="ticket-qr">VVIP Tickets</h6>
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
-        <img src="css/qrcode.jpg" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <div class="qr-div" th:each="qr: ${ticketOrder}" th:if="${qr.ticketType== 'VVip'}">
+            <h6 class="ticket-qr">VVIP Ticket QRs</h6>
+            <img th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 
 

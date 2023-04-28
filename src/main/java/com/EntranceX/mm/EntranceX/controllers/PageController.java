@@ -122,19 +122,33 @@ public class PageController {
 
 
     @GetMapping(value = "/login")
-    public String LoginPage() {
-        return "login-signup/Login";
+    public String LoginPage(HttpServletRequest request) {
+        HttpSession session=request.getSession(false);
+        if(session == null){
+            return "login-signup/Login";
+        }
+        else if(session.getAttribute("LoginOrganizer") != null){
+            return "redirect:/org-page";
+        }
+        else if(session.getAttribute("LoginAdmin") != null){
+            return "redirect:/admin";
+        }
+        else if(session.getAttribute("LoginUser") != null){
+            return "redirect:/user-page";
+        }
+
+        return null;
     }
 
 
     @PostMapping(value = "/login")
     public String LoginPagePost(@RequestParam ("userName") String userName, @RequestParam ("loginPassword")String loginPassword, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
+
         User user = userDao.findByUserName(userName);
         Organizer organizer = organizerDao.findByUserName(userName);
         Admin admin = adminDao.findByUserName(userName);
-
-        if (user!=null && passwordEncoder.matches(loginPassword, user.getPassword())) {
+         if(user!=null && passwordEncoder.matches(loginPassword, user.getPassword())) {
 
             HttpSession session = request.getSession();
             session.setAttribute("LoginUser",user.getId());

@@ -113,4 +113,9 @@ public class OrderServiceImpli implements OrderService {
         ticketOrder.getEvent().setVvipTicketAvailableQuantity(ticketOrder.getEvent().getVvipTicketAvailableQuantity()-vvipTicketSold);
         return ticketOrderDao.save(ticketOrder);
     }
+
+    @Override
+    public TicketOrder_History getSpecificTicketForUser(int orderId, int userId, int eventId) {
+        return ticketOrderDao.findByIdAndUserIdAndEventId(orderId, userId, eventId);
+    }
 }

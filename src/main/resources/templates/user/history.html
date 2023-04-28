@@ -124,20 +124,25 @@
             <table class="table table-striped tc">
                 <thead>
                 <tr>
-                    <th scope="col">No.</th>
                     <th scope="col">Event-Name</th>
+                    <th scope="col">Standard Ticket Purchase</th>
+                    <th scope="col">Vip Ticket Purchase</th>
+                    <th scope="col">VVip Ticket Purchase</th>
                     <th scope="col">Total Price</th>
 
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="userOrder, userOrderIndex :${userOrderList}">
-                    <th scope="row" style="color: white" th:text="userOrderIndex + 1"></th>
-                    <td style="color: white" th:text="${userOrder.event.id}"></td>
+                <tr th:each="userOrder:${userOrderList}" th:if="${userOrder.status==1}">
+
+                    <td style="color: white" th:text="${userOrder.event.eventName}"></td>
+                    <td style="color: white" th:text="${userOrder.standardTicketSold}"></td>
+                    <td style="color: white" th:text="${userOrder.vipTicketSold}"></td>
+                    <td style="color: white" th:text="${userOrder.vvipTicketSold}"></td>
                     <td style="color: white" th:text="${userOrder.totalPrice}"></td>
 
-                    <td style="color: white"><a th:href="@{/ticket-voucher(userId=userOrder.userId, eventId=userOrder.event.id) }" style="text-decoration: none"><button type="submit" class="btn btn-success">Detail</button></a></td>
+                    <td style="color: white"><a th:href="@{/ticket-voucher(eventId=${userOrder.event.id} , orderId=${userOrder.id}) }" style="text-decoration: none"><button type="submit" class="btn btn-success">Detail</button></a></td>
                 </tr>
                 </tbody>
             </table>

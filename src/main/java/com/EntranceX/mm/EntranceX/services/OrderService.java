@@ -17,4 +17,5 @@ public interface OrderService{
     List<TicketOrder_History> getUnApproveOrder(int status);
     TicketOrder_History decreaseAvailableTicket(int standardTicketSold, int vipTicketSold,
                                   int vvipTicketSold, int voucherId);
+    TicketOrder_History getSpecificTicketForUser(int orderId, int userId, int eventId);
 }

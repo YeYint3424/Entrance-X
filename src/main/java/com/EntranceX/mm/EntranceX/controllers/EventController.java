@@ -133,7 +133,7 @@ public class EventController {
 
 
             orderService.orderRequest(ticketOrderDto);
-        return "redirect:/user-history";}
+        return "redirect:/user-voucher";}
         else {
         return "redirect:/login";
     }

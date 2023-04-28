@@ -7,10 +7,7 @@ import com.EntranceX.mm.EntranceX.dao.UserDao;
 
 import com.EntranceX.mm.EntranceX.dto.UserDto;
 
-import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.models.TicketOrder_History;
-import com.EntranceX.mm.EntranceX.models.User;
-import com.EntranceX.mm.EntranceX.models.WatchLater;
+import com.EntranceX.mm.EntranceX.models.*;
 import com.EntranceX.mm.EntranceX.services.*;
 import com.google.zxing.WriterException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -57,6 +54,9 @@ public class UserController {
 
     @Autowired
     OrganizerDao organizerDao;
+
+    @Autowired
+    TicketQrService ticketQrService;
 
 
     @GetMapping("/user-profile")
@@ -251,12 +251,21 @@ public class UserController {
         }
     }
     @GetMapping("/ticket-voucher")
-    public String ticketVoucher(HttpServletRequest request, Model model) {
+    public String ticketVoucher(HttpServletRequest request, Model model,
+                                @RequestParam("eventId")int eventId, @RequestParam("orderId")int orderId) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int) session.getAttribute("LoginUser");
 
 
-            return "main/ticketVoucher";
+            TicketOrder_History ticketOrder=orderService.getSpecificTicketForUser(orderId, userId, eventId);
+            List<TicketQr> ticketQrs = ticketQrService.findByOrderId(ticketOrder.getId());
+            for(TicketQr ticketQr:ticketQrs){
+                byte[] qr=Base64.getDecoder().decode(ticketQr.getTicketQr().getBytes());
+            }
+            model.addAttribute("ticketQr", ticketQrs);
+            model.addAttribute("ticketOrder", ticketOrder);
+            return "user/ticketVoucher";
         } else {
             return "redirect:/login";
         }
@@ -267,7 +276,6 @@ public class UserController {
     public String user_all_event(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
-            int userId=(int)session.getAttribute("LoginUser");
             List<Event> events = eventService.getEvents();
             for (Event event : events) {
                 byte[]photoByte= Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
@@ -294,7 +302,16 @@ public class UserController {
     }
 
     @GetMapping("/user-voucher")
-    public String user_voucher(){
+    public String user_voucher(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int) session.getAttribute("LoginUser");
+
+            List<TicketOrder_History>ticketOrder=orderService.getUserOrderList(userId);
+            model.addAttribute("ticketOrder", ticketOrder);
         return "user/voucher";
+        }else {
+            return "redirect:/login";
+        }
     }
 }

@@ -16,8 +16,8 @@ public class TicketQr {
     @Column(columnDefinition = "longblob")
     private String ticketQr;
 
-    @OneToOne
-    @JoinColumn(name = "TicketOrder_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ticketOrder_id")
     private TicketOrder_History ticketOrder;
 
 }
