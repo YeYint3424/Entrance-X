@@ -16,12 +16,7 @@
         <a class="navbar-brand" href="/admin"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </li>
+
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/userList">User-List</a></li>
@@ -81,9 +76,12 @@
             <div  id="col2" >
                 <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
                     <div class="row">
-                        <p class="col" th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
-                        <p class="col" th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
-                        <p class="col" th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                        <p class="col">Available Ticket Types</p>
+                        <div class="col">
+                            <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
+                            <p th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
+                            <p th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                        </div>
                     </div>
                     <div class="row">
                         <p class="col">Standard Ticket Price</p>

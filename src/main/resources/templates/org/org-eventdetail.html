@@ -116,9 +116,12 @@
             <div  id="col2" >
                 <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
                     <div class="row">
-                        <p class="col" th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
-                        <p class="col" th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
-                        <p class="col" th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                        <p class="col">Available Ticket Types</p>
+                        <div class="col">
+                            <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
+                            <p th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
+                            <p th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                        </div>
                     </div>
                     <div class="row">
                         <p class="col">Standard Ticket Price</p>

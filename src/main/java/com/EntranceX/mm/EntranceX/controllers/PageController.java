@@ -187,6 +187,8 @@ public class PageController {
         return "redirect:/login";
     }
 
+
+
     @GetMapping("/search-page")
     public String user_search(HttpServletRequest request, @RequestParam("searchName") String searchName,
                               @RequestParam("searchType") String searchType,Model model) {
