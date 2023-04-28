@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface OrganizerDao extends JpaRepository <Organizer, Integer>{
     Organizer findByUserName(String userName);
-
+    Organizer findByOrganizerEmail(String email);
 }

@@ -104,6 +104,9 @@
                     <div class="input-box mb-3" >
                         <label for="userName" class="form-label">Username</label>
                         <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter username" required>
+                        <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
+                            <span style="color: #ff0000;font-size: 13px;" th:if="${param.userNameExist}" class="error" ><b>Username is already Exist! Please Try Another Name.</b></span>
+                        </div>
                     </div>
 
 
@@ -140,6 +143,9 @@
                     <div class="input-box mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                        <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
+                            <span style="color: #ff0000;font-size: 13px;" th:if="${param.emailExist}" class="error" ><b>Email is already Exist! Please Try with Another Email.</b></span>
+                        </div>
                     </div>
 
 
