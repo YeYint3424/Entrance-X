@@ -197,9 +197,9 @@
                         </a>
                     </td>
                     <td>
-                        <a method="POST" th:href="@{/admin-event-approve(eventId=${event.id})}">
+                        <form method="POST" th:action="@{/admin-event-approve(eventId=${event.id})}">
                             <button type="submit" class="btn btn-success">Approve</button>
-                        </a>
+                        </form>
                     </td>
                     <td><button type="submit" class="btn btn-danger">Cancel</button></td>
                 </tr>
