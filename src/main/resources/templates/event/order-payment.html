@@ -100,7 +100,7 @@
                 <p class="col" style="text-align:right"> Promotion</p> <p class="col" th:text="${eventDetails.promotion + '%'}" style="text-align:left"></p>
             </div>
             <div class="row">
-                <p class="col" style="text-align:right"> Total</p> <p class="col" name="totalPrice" th:text="${((eventDetails.standardTicketPrice * ticketOrder.standardTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vipTicketPrice * ticketOrder.vipTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vvipTicketPrice * ticketOrder.vvipTicketSold)* (100 - eventDetails.promotion) / 100)}" style="text-align:left"></p>
+                <p class="col" style="text-align:right"> Total</p> <p class="col" name="totalPrice" th:text="${((eventDetails.standardTicketPrice * ticketOrder.standardTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vipTicketPrice * ticketOrder.vipTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vvipTicketPrice * ticketOrder.vvipTicketSold)* (100 - eventDetails.promotion) / 100)+ 'MMK'}" style="text-align:left"></p>
             </div>
 
         </div>

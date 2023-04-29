@@ -133,21 +133,21 @@
 
                         <div th:if="${eventDetails.standardTicketQuantity > 0}" class="input-box mb-3" >
                             <label for="standardTicketQuantity" class="form-label">Standard Ticket Quantity</label>
-                            <input type="number" min="0" max="5" class="form-control" id="standardTicketQuantity"  th:if="${eventDetails.standardTicketQuantity > 0}"  name="standardTicketSold" placeholder="How many standard tickets you want to buy?" required>
+                            <input type="number" min="0" max="5" class="form-control" id="standardTicketQuantity"  th:if="${eventDetails.standardTicketQuantity > 0}"  name="standardTicketSold" placeholder="How many standard tickets you want to buy?" >
                             <div th:if="${eventDetails.standardTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'Standard ticket is currently out of stock.'" value="0">
                             </div>
                         </div>
 
                         <div th:if="${eventDetails.vipTicketQuantity > 0}" class="input-box mb-3">
                             <label for="vipTicketQuantity" class="form-label">VIP Ticket Quantity</label>
-                            <input type="number" min="0" max="5" class="form-control" id="vipTicketQuantity"  th:if="${eventDetails.vipTicketQuantity > 0}" name="vipTicketSold" placeholder="How many VIP tickets you want to buy?" required>
+                            <input type="number" min="0" max="5" class="form-control" id="vipTicketQuantity"  th:if="${eventDetails.vipTicketQuantity > 0}" name="vipTicketSold" placeholder="How many VIP tickets you want to buy?" >
                             <div th:if="${eventDetails.vipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VIP ticket is currently out of stock.'" value="0">
                             </div>
                         </div>
 
                         <div th:if="${eventDetails.vvipTicketQuantity > 0}" class="input-box mb-3">
                             <label for="vvipTicketQuantity" class="form-label">VVIP Ticket Quantity</label>
-                            <input type="number" min="0" max="5" class="form-control" id="vvipTicketQuantity"  th:if="${eventDetails.vvipTicketQuantity > 0}" name="vvipTicketSold" placeholder="How many VVIP tickets you want to buy?" required>
+                            <input type="number" min="0" max="5" class="form-control" id="vvipTicketQuantity"  th:if="${eventDetails.vvipTicketQuantity > 0}" name="vvipTicketSold" placeholder="How many VVIP tickets you want to buy?" >
                             <div th:if="${eventDetails.vvipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VVIP ticket is currently out of stock.'" value="0">
                             </div>
                         </div>
