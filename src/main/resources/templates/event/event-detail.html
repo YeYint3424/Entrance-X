@@ -97,8 +97,7 @@
                     <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
                       <div class="watch-later-icon"> Watch-Later <i class="fa-solid fa-square-plus" ></i> </div>
                     </p>
-                    <p>List of Artists</p>
-                    <p th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></p>
+                    <p>List of Artists: <span th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></span></p>
                     </p>
 
                     <p> Event Time : <span th:text="${eventTime}"></span></p>
