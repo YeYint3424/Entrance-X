@@ -17,6 +17,7 @@ public interface EventDao extends JpaRepository<Event, Integer> {
 
     @Query("SELECT ea.artist FROM Event_Artist ea WHERE ea.event.id = :eventId")
     List<Artist> findArtistsByEventId(int eventId);
+    List<Event> findByEventNameContainingIgnoreCaseAndOrganizerId(String eventName, int organizerId);
 
 //    @Query("SELECT e FROM Event e WHERE e.eventName LIKE %:eventName% AND e.promotion > 0")
 //    List<Event> findByEventNameContainingAndPromotion(String eventName);

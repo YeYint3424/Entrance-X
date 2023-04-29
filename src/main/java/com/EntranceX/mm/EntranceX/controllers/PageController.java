@@ -205,9 +205,9 @@ public class PageController {
 
     @GetMapping("/search-page")
     public String user_search(HttpServletRequest request, @RequestParam("searchName") String searchName,
-                              @RequestParam("searchType") String searchType,Model model) {
+                              @RequestParam("searchType") String searchType,Model model , @RequestParam("organizerId")int organizerId) {
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginUser") != null) {
+        if (session == null || session.getAttribute("LoginUser") != null) {
             if (searchType.equals("event")) {
                 List<Event> events = eventService.getEventForSearch(searchName);
                 for (Event event : events) {
@@ -233,9 +233,35 @@ public class PageController {
             model.addAttribute("search", events);
                 }
             return "user/search-page";
-        } else {
-            return "redirect:/login";
+        } else if(session != null && session.getAttribute("LoginOrganizer") != null){
+
+            if (searchType.equals("event")) {
+                List<Event> events = eventService.getEventForSearchOrganizer(searchName, organizerId);
+                for (Event event : events) {
+                    byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+
+                }
+                model.addAttribute("searchName", searchName);
+                model.addAttribute("search", events);
+
+            }else if(searchType.equals("artist")){
+                List<Artist> artists= artistService.findArtistForSearch(searchName);
+                List<Event> events = new ArrayList<>();
+                for (Artist artist : artists) {
+                    for (Event_Artist event_artist : artist.getEventArtist()) {
+                        events.add(event_artist.getEvent());
+                    }
+                }
+                for(Event event:events){
+                    byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+                }
+
+                model.addAttribute("searchName", searchName);
+                model.addAttribute("search", events);
+            }
+            return "user/search-page";
         }
+        return  null;
     }
 }
 

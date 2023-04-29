@@ -18,4 +18,6 @@ public interface EventService {
     Event approve(int eventId, int status);
     List<Event> getPromotionEvents(int promotion);
     List<Artist> getArtistByEventId(int eventId);
+    List<Event> getEventForSearchOrganizer(String eventName, int organizerId);
+
 }

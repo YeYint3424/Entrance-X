@@ -10,5 +10,6 @@ import java.util.List;
 public interface ArtistDao extends JpaRepository<Artist, Integer> {
     List<Artist> findByArtistNameContainingIgnoreCase(String searchName);
     Artist findByArtistName(String artistName);
+//    List<Artist> findByArtistNameContainingIgnoreCase(String searchName);
 
 }
