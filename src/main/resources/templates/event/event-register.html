@@ -119,28 +119,30 @@
                     </div>
 
                   <div class="input-box mb-3">
+                      <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px; margin-top: 30px; margin-bottom:0">
                         <label for="artist1234" class="form-label">Choose Artists</label>
-                        <div style="padding:5px;padding-left:0">  <input type="text" id="searchInput" placeholder="Search..."></div>
-                        <select  class="form-control" size="5" name="existArtistId" id="artist1234" multiple>
+                        <div style="padding:5px;padding-left:0">  <input style="width:300px" type="text" id="searchInput" placeholder="Search..." ></div>
+                        <select  class="form-control" size="5" style="width:300px" name="existArtistId" id="artist1234" multiple>
                             <option th:each="option : ${artists}"
                                     th:value="${option.id}"
                                     th:text="${option.artistName}">
                             </option>
                         </select>
-                        <button type="button" class="btn btn-primary  btn-sm" onclick="clearSelectedOptions()" style="margin: 10px; margin-bottom: 30px;float: right">Clear All</button>
+                        <button type="button" class="btn btn-primary  btn-sm" onclick="clearSelectedOptions()" style="margin: 10px; margin-left:0">Clear All</button>
                     </div>
+                  </div>
 
 
 
-                    <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px; margin-top: 40px">
+                    <div class="input-box mb-3" style="border:1px solid rgb(164, 164, 182);border-radius:10px;padding:15px; margin-top: 12px">
                     <label for="artist1" class="form-label">Add More Artists</label><br>
                     <input type="text" id="artist1" name="artist" placeholder="Enter Artist Name">
                     <div id="artist-fields"  style="padding-left:0;padding-right:200px;margin-bottom:20px" ></div>
-                    <button type="button" id="add-artist" >+</button>
+                    <button type="button" id="add-artist" style="border:1px solid rgb(164, 164, 182);border-radius:50%">+</button>
                 </div>
 
 
-                    <div class="input-box mb-3">
+                    <div class="input-box mb-3" style=" margin-top: 30px">
                         <label for="eventPhoto" class="form-label">Event Photo</label>
                         <input type="file" class="form-control" id="eventPhoto" name="photo" required accept="image/*">
                     </div>
