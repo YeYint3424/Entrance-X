@@ -166,7 +166,7 @@ public class AdminController {
 
     @PostMapping("/admin-voucher-cancel")
     public String voucherCancel(HttpServletRequest request, Model model,
-                                  @RequestParam("voucherId")int voucherId, TicketDto ticketDto) throws Exception {
+                                  @RequestParam("voucherId")int voucherId) throws Exception {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
@@ -176,6 +176,24 @@ public class AdminController {
         else {
             return "redirect:/login";
         }
+
+
+    }
+
+    @PostMapping("/admin-voucher-reject")
+    public String voucherReject(HttpServletRequest request, Model model,
+                                @RequestParam("voucherId")int voucherId) throws Exception {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
+            orderService.approve(voucherId, 3);
+
+            return "redirect:/voucher-approve";}
+        else {
+            return "redirect:/login";
+        }
+
+
     }
 
     @PostMapping("/admin-event-approve")

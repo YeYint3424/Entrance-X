@@ -77,6 +77,7 @@
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -97,6 +98,11 @@
                 </td>
                 <td>
                     <form method="POST" th:action="@{/admin-voucher-cancel(voucherId=${ticketOrder.id})}">
+                        <button type="submit" class="btn btn-success">Cancel</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" th:action="@{/admin-voucher-reject(voucherId=${ticketOrder.id})}">
                         <button type="submit" class="btn btn-success">Cancel</button>
                     </form>
                 </td>

@@ -318,7 +318,17 @@ public class UserController {
             return "redirect:/login";
         }
     }
+    @PostMapping("/order-remove")
+    public String eventRemove(HttpServletRequest request, Model model, @RequestParam("orderId")int orderId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            TicketOrder_History ticketOrder=orderService.cancel(orderId, 4);
+            return "redirect:/org-old-event";
+        } else {
+            return "redirect:/login";
+        }
 
+    }
 
 
 }

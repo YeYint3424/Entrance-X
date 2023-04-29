@@ -125,12 +125,23 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="ticket :${ticketOrder}" th:if="${ticket.status==0}">
+                <tr th:each="ticket :${ticketOrder}" th:if="${ticket.status==0 || ticket.status==2 || ticket.status==3}">
                     <td th:text="${ticket.event.eventName}"></td>
                     <td th:text="${ticket.event.date}"></td>
                     <td th:text="${ticket.totalPrice}"></td>
-                    <td style="font-size: 25px"><i class="fa-solid fa-spinner fa-spin-pulse"></i></td>
-                    <td>Pending</td>
+                    <td >
+                        <div th:if="${ticket.status}==0"><i class="fa-solid fa-spinner fa-spin-pulse"></i></div>
+                        <div th:if="${ticket.status}==2">Your Order was cancel because of Ticket Stock.</div>
+                        <div th:if="${ticket.status}==3">Your Order was cancel because of information is wrong.</div>
+                    </td>
+                    <td>
+                        <div th:if="${ticket.status}==0"><span>Pending</span></div>
+                        <div th:if="${ticket.status==2 || ticket.status==3}">
+                            <form  method="POST" th:action="@{/order-remove(orderId=${ticket.id})}" >
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
 
 
