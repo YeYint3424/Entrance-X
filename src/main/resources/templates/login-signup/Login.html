@@ -53,6 +53,7 @@
 
         <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
             <span style="color: #ff0000;font-size: 13px;" th:if="${param.error}" class="error" ><b>Username or Password doesn't match! Please Try Again.</b></span>
+            <span style="color: #ff0000;font-size: 13px;" th:if="${param.ban}" class="error" ><b>This Account didnt have permission to Log In.</b></span>
         </div>
         <button class="button" style="margin-bottom:0">Sign in</button>
 

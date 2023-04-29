@@ -80,14 +80,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="organizer : ${organizerList}">
+                <tr th:each="organizer : ${organizerList}" th:if="${organizer.status==0}">
 
                     <td th:text="${organizer.userName}"></td>
                     <td th:text="${organizer.organizerEmail}"></td>
                     <td th:text="${organizer.organizerPhone}"></td>
                     <td th:text="${organizer.companyName}"></td>
-                    <td><button type="submit" class="btn btn-info">Detail</button></td>
-                    <td><button type="submit" class="btn btn-danger">Ban</button></td>
+                    <td><a th:href="@{/admin-organizer-detail(organizerId=${organizer.id})}"><button type="submit" class="btn btn-success">Detail</button></a></td>
+                    <td> <form method="POST" th:action="@{/admin-organizer-ban(organizerId=${organizer.id})}">
+                        <button type="submit" class="btn btn-danger">Ban</button>
+                    </form></td>
                 </tr>
 
                 </tbody>

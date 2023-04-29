@@ -155,7 +155,7 @@ public class PageController {
 
             // User login successful
             return "redirect:/user-page";
-        } else if (organizer!=null && passwordEncoder.matches(loginPassword, organizer.getPassword())) {
+        } else if (organizer!=null && passwordEncoder.matches(loginPassword, organizer.getPassword()) && organizer.getStatus()==0) {
             HttpSession session = request.getSession();
             session.setAttribute("LoginOrganizer",organizer.getId());
 
@@ -167,7 +167,10 @@ public class PageController {
 
             // Admin login successful
             return "redirect:/admin";
-        } else {
+        } else if(organizer!=null && passwordEncoder.matches(loginPassword, organizer.getPassword()) && organizer.getStatus()==1){
+             redirectAttributes.addAttribute("ban", true);
+             return "redirect:/login";
+         } else{
             redirectAttributes.addAttribute("error", true);
             // Login failed
             return "redirect:/login";

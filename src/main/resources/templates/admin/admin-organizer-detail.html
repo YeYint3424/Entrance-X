@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Organizer Profile</title>
+    <style>
+        body{
+            overflow-x:hidden ;
+        }
+        html body{
+            background: linear-gradient(to left, #46c8ce, #2da3ff, blue);
+        }
+    </style>
+</head>
+<body>
+<!--navbar-->
+
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/admin"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
+        <div class="navlistright" >
+            <ul class="navlist mx-auto">
+                <li class="navlist1">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/userList">User-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/orgList">Org-List</a></li>
+                <li class="navlist1"><a class="navlist2" style="position: relative;bottom: 8px" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!--        nav-bar end         -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto" id="cardContainer">
+    <div class="profile col-md-6 mx-auto">
+        <div class="card mb-3 content">
+            <div class="profile-header">
+                <div class="header-content">
+                    <h4>Organizer Profile</h4>
+                    <i class="fa-solid fa-user-tie" id="user-icon"></i>
+                </div>
+            </div>
+
+
+            <!--   <div class="card-body" id="body-part">
+                   <div class="row" style="padding-top:60px">
+                       <div class="col-md-6">
+                           <h5>Organizer Name</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p>Evensis</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Organizer Email</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p> oevensis@gmail.com</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Organizer Phone</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p>093473493</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Company Name</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p> Universal</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Company Email</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p>universal@gmail.com</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Company Phone</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p>093468374</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Company Address</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p>12/343, Hlaing, Yangon</p>
+                       </div>
+                   </div>
+                   <hr>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Bio</h5>
+                       </div>
+                       <div class="col-md-6">
+                           <p>Universal was founded in 1990 and is located in Yangon, Myanmar. As a good event management company we have good links with various types of suppliers, performers as well as technicians.</p>
+                       </div>
+                   </div>
+
+
+
+               </div> -->
+
+            <div class="card-body" id="body-part" style="width:100%">
+                <div class="row" style="margin-top:20px;font-size:17px">
+                    <div class="col" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold" class="left-title">Username</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.userName}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row" style="font-size:17px">
+                    <div class="col" style="text-align:right;padding-right:40px">
+                        <p style="margin:10px;font-weight:bold" class="left-title">Email</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.organizerEmail}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row">
+                    <div class="col" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold">Phone</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.organizerPhone}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row">
+                    <div class="col" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold">Company Name</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.companyName}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row">
+                    <div class="col" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold">Company Email</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.companyEmail}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row">
+                    <div class="col" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold">Company Phone</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.companyPhone}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row">
+                    <div class="col-md-6" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold">Company Address</p>
+                    </div>
+                    <div class="col-md-6" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.companyAddress}"></p>
+                    </div>
+                </div>
+                <hr class="mx-auto" >
+
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col" style="text-align:right;padding-right:40px;width:50%">
+                        <p style="margin:10px;font-weight:bold">Company Biography</p>
+                    </div>
+                    <div class="col" style="text-align:left;padding-left:40px;width:50%">
+                        <p style="margin:10px" th:text="${organizerData.companyBio}"></p>
+                    </div>
+                </div>
+            </div>
+
+
+<!--            <div class="card-footer center">-->
+
+<!--                <a th:href="@{/org-profile-update}" style="text-decoration:none;color:#ffffff"><button class="card-btn">Edit</button></a>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+
+        <img src="css/exlogotest3.png"  alt="logo">
+        <p>ENTRANCEX</p>
+
+
+        <ul class="social">
+            <li><a href="" ><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="" ><i class="fa-brands fa-twitter" style="display:none" hidden></i></a></li>
+
+
+        </ul>
+
+
+
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/org-about">About</a></li>
+                <li><a href="/org-faq">FAQ</a></li>
+                <li><a href="/org-contact">Contact</a></li>
+                <li><a href="/org-term">Terms and Conditions</a></li>
+                <li><a href="/org-privacyPolicy">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&#169 2023 EntranceX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+
+
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

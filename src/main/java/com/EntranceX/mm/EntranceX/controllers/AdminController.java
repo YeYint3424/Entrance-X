@@ -104,15 +104,7 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/unban")
-    public String unban(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginAdmin") != null) {
-            return "admin/unban";
-        } else {
-            return "redirect:/login";
-        }
-    }
+
 
     @GetMapping("/voucher-approve")
     public String voucherApprove(HttpServletRequest request, Model model) {
@@ -295,6 +287,29 @@ public class AdminController {
             model.addAttribute("ticketQr", ticketQrs);
             model.addAttribute("ticketOrder", ticketOrder);
             return "admin/admin-approved-voucher-detail";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    @GetMapping("/admin-organizer-detail")
+    public String adminOrganizerDetail(HttpServletRequest request, Model model, @RequestParam("organizerId")int organizerId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Organizer organizer=organizerService.getOrganizerById(organizerId);
+            model.addAttribute("organizerData", organizer);
+            return "admin/admin-organizer-detail";
+        } else {
+            return "redirect:/login";
+        }
+    }
+    @PostMapping("/admin-organizer-ban")
+    public String adminOrganizerBan(HttpServletRequest request, Model model, @RequestParam("organizerId")int organizerId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Organizer organizer=organizerService.organizerBan(organizerId, 1);
+            model.addAttribute("organizerData", organizer);
+            return "admin/orgList";
         } else {
             return "redirect:/login";
         }

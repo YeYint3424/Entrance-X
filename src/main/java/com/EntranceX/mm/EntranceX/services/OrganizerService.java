@@ -10,4 +10,5 @@ public interface OrganizerService {
     Organizer getOrganizerById(int organizerId);
     List<Organizer> getAllOrganizerList();
     Organizer editProfile(OrganizerDto organizerDto, int organizerId);
+    Organizer organizerBan(int organizerId, int status);
 }
