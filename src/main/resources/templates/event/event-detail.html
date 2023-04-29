@@ -101,10 +101,10 @@
                     </form>
                     </div>
 
-                    <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
+                    <p style="font-weight:bold; font-size:30px;font-family:cursive" th:text="${eventDetails.eventName}">
 
                     </p>
-                    <p>List of Artists: <span th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></span></p>
+                    <p style="display:inline">List of Artists:</p> <span th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></span>
                     </p>
 
                     <p> Event Time : <span th:text="${eventTime}"></span></p>
@@ -118,14 +118,14 @@
             <div class="container mx-auto">
                 <div  id="col2" >
                     <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
-                        <div class="row">
+                        <div class="row" style="padding:20px;padding-left:0">
                             <div class="col">
-                                <p >Available Ticket Types</p>
+                                <p style="display:inline">Available Ticket Types</p>
                             </div>
-                            <div class="col">
-                                <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
-                                <p th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
-                                <p th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                            <div class="col" style="padding-left:45px" >
+                                <span th:if="${eventDetails.standardTicketQuantity > 0}" >Standard, </span>
+                                <span th:if="${eventDetails.vipTicketQuantity > 0}" >VIP, </span>
+                                <span th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</span>
                             </div>
                         </div>
                         <div class="row">
@@ -133,7 +133,7 @@
                                 <p >Standard Ticket Price</p>
                             </div>
                             <div class="col">
-                                <p  th:text="${eventDetails.standardTicketPrice}"></p>
+                                <p  th:text="${eventDetails.standardTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row">
@@ -141,7 +141,7 @@
                                 <p >VIP Ticket Price </p>
                             </div>
                             <div class="col">
-                                <p  th:text="${eventDetails.vipTicketPrice}"></p>
+                                <p  th:text="${eventDetails.vipTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row">
@@ -149,7 +149,7 @@
                                 <p >VVIP Ticket Price </p>
                             </div>
                             <div class="col">
-                                <p  th:text="${eventDetails.vvipTicketPrice}"></p>
+                                <p  th:text="${eventDetails.vvipTicketPrice+ 'MMK'}"></p>
 
                             </div>
                         </div>

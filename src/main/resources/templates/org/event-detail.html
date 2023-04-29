@@ -71,7 +71,9 @@
                         <a href=""> <div class="watch-later-icon"> Watch-Later <i class="fa-solid fa-square-plus" ></i> </div></a>
                     <div class="watch-later-icon"> Remove Watch-Later <i class="fa-solid fa-square-minus" style="display:none"></i></div>
                     </p>
-                    <p th:text="${eventDetails.artist}"></p>
+                    </p>
+                    <p style="display:inline">List of Artists:</p> <span th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></span>
+                    </p>
                     <p> from <span th:text="${eventTime}"></span></p>
                     <p th:text="${eventDetails.date}"></p>
                     <p th:text="${eventDetails.venue}"></p>
@@ -96,20 +98,20 @@
                         <div class="row">
                             <p class="col">Standard Ticket Price </p>
                             <div class="col">
-                                <p  th:text="${eventDetails.standardTicketPrice}"></p>
+                                <p  th:text="${eventDetails.standardTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
 
                         <div class="row">
                             <p class="col">VIP Ticket Price </p>
                             <div class="col">
-                                <p  th:text="${eventDetails.vipTicketPrice}"></p>
+                                <p  th:text="${eventDetails.vipTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row">
                             <p class="col">VVIP Ticket Price </p>
                             <div class="col">
-                                <p  th:text="${eventDetails.vvipTicketPrice}"></p>
+                                <p  th:text="${eventDetails.vvipTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row" th:if="${eventDetails.promotion > 0}">
