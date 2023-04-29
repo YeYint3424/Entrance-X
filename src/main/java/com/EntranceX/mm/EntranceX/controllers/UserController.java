@@ -233,6 +233,7 @@ public class UserController {
             System.out.println(userId);
             System.out.println(eventId);
             watchLaterService.saveEventToWatchLater(userId, eventId);
+
             return String.format("redirect:/event-detail?eventId=%d", eventId);
         }else {
             return "redirect:/login";

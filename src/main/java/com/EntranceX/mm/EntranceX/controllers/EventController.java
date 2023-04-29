@@ -10,6 +10,7 @@ import com.EntranceX.mm.EntranceX.dto.TicketOrder_HistoryDto;
 import com.EntranceX.mm.EntranceX.models.Artist;
 import com.EntranceX.mm.EntranceX.models.Event;
 import com.EntranceX.mm.EntranceX.models.Event_Artist;
+import com.EntranceX.mm.EntranceX.models.WatchLater;
 import com.EntranceX.mm.EntranceX.services.*;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -92,6 +93,13 @@ public class EventController {
 
             String eventTime = eventDetails.getStartTime() + " to " + eventDetails.getEndTime();
             byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
+
+            WatchLater watchLater=watchLaterService.findBySpecificUser(userId, eventId);
+
+            if(watchLater!=null){
+            int watch=1;
+            model.addAttribute("watchLater", watch);
+            }
 
             model.addAttribute("artists", artists);
             model.addAttribute("eventDetails",eventDetails);
