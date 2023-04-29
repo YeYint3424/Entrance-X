@@ -121,6 +121,13 @@ public class EventServiceImpli implements EventService {
         return eventDao.findArtistsByEventId(eventId);
     }
 
+    @Override
+    public Event trending(int eventId, int trending) {
+        Event event=eventDao.findById(eventId).orElse(null);
+        event.setTrending(event.getTrending() + trending);
+
+        return eventDao.save(event);
+    }
 
 
 }

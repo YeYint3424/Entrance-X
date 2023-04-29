@@ -93,6 +93,7 @@
             <div class="container mx-auto">
                 <div style="text-align:center;margin-top:40px;"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
                 <div class="text1" style=" font-family:Lucida Sans; color:#fff">
+
                     <div th:if="${watchLater}!=1">
                     <form th:action="@{/watch-later-add(eventId=${eventDetails.id})}" method="post">
                         <button type="submit" class="watch-later-button" style="padding:8px;float:right;border:1px solid;border-radius:10px">

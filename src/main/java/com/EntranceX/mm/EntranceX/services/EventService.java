@@ -19,5 +19,5 @@ public interface EventService {
     Event cancel(int eventId, int status);
     List<Event> getPromotionEvents(int promotion);
     List<Artist> getArtistByEventId(int eventId);
-
+    Event trending(int eventId, int trending);
 }
