@@ -240,27 +240,28 @@
     <div style="text-align:center; padding:30px; padding-bottom:50px">
         <h4>Your QR Code</h4>
        <!-- <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code"> -->
-<div class="qr-div" th:each="qr: ${ticketOrder}" th:if="${qr.ticketType == 'Standard'}">
-    <h6 class="ticket-qr">Standard Ticket QRs</h6>
-        <img th:if="${qr.ticketType == 'Standard'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
 
-</div>
-        <hr>
-
-        <div class="qr-div" th:each="qr: ${ticketOrder}" th:if="${qr.ticketType== 'Vip'}">
-            <h6 class="ticket-qr"> VIP Ticket QRs</h6>
-            <img th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <h6 class="ticket-qr" >Standard Ticket QRs</h6>
+        <div class="qr-div" th:each="qr: ${ticketQr}" >
+            <img th:if="${qr.ticketType == 'Standard'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 
         <hr>
-        <div class="qr-div" th:each="qr: ${ticketOrder}" th:if="${qr.ticketType== 'VVip'}">
-            <h6 class="ticket-qr">VVIP Ticket QRs</h6>
-            <img th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
+        <h6 class="ticket-qr" > VIP Ticket QRs</h6>
+        <div class="qr-div" th:each="qr: ${ticketQr}" >
+            <img th:if="${qr.ticketType == 'Vip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
+        </div>
+
+        <hr>
+        <h6 class="ticket-qr" >VVIP Ticket QRs</h6>
+        <div class="qr-div" th:each="qr: ${ticketQr}" >
+            <img th:if="${qr.ticketType == 'VVip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 
 
 
-    <hr>
+
+        <hr>
     <div style="padding:35px;padding-top:20px;text-align:center">
         <button type="button">
             Download PDF
