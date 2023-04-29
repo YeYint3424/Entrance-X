@@ -147,7 +147,10 @@
                         <label for="password" class="form-label">Enter New Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                         <br>
-                        <span th:if="${param.alreadyUse}" class="error">Password is already Used. Try New Password.</span>
+                        <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
+                            <span th:if="${param.alreadyUse}" class="error" style="color: red">Password is already Used. Try New Password.</span>
+                        </div>
+
                     </div>
 
                     <div class="input-box mb-3" >
