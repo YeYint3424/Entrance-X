@@ -151,7 +151,7 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
-            orderService.approve(voucherId);
+            orderService.approve(voucherId, 1);
             orderService.decreaseAvailableTicket(ticketOrder.getStandardTicketSold(),
                     ticketOrder.getVipTicketSold(), ticketOrder.getVvipTicketSold(), voucherId);
             return "redirect:/voucher-approve";}
@@ -166,7 +166,7 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
-            orderService.approve(voucherId);
+            orderService.approve(voucherId, 2);
 
             return "redirect:/voucher-approve";}
         else {
@@ -207,20 +207,28 @@ public class AdminController {
     }
 
     @PostMapping("/admin-event-cancel-2")
-    public String eventCanceled2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+    public String eventCanceled2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            Event event=eventService.cancel(eventId, 2);
+            Event event = eventService.cancel(eventId, 2);
             return "redirect:/event-approve";
-        }else {
+        } else {
             return "redirect:/login";
         }
-    }
 
-    @GetMapping("/admin-voucher-detail")
-    public String voucher_detail(){
-        return "admin/voucher-detail";
     }
+        @GetMapping("/admin-voucher-detail")
+        public String voucher_detail (HttpServletRequest request, @RequestParam("userId") int userid, @RequestParam("orderId")int orderId,
+                                      @RequestParam("eventId")int eventId, Model model) {
+            HttpSession session = request.getSession(false);
+            if (session != null && session.getAttribute("LoginAdmin") != null) {
+                TicketOrder_History ticketOrder=orderService.getSpecificTicketForUser(orderId, userid,eventId);
+                model.addAttribute("ticketOrder", ticketOrder);
 
-}
+                return "admin/voucher-detail";
+            } else {
+                return "redirect:/login";
+            }
+        }
+        }
 

@@ -175,7 +175,7 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event :  ${promotionEvents}" th:if="${event.date > localDate && event.promotion > 0 && event.status==1}">
+                <div class="col" th:each="event :  ${promotionEvents}" th:if="${event.date > localDate && event.promotion > 0 && event.status==1 && event.trending>0}">
 
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"

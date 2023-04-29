@@ -76,6 +76,7 @@
                 <th scope="col">Payment ScreenShot</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -87,6 +88,8 @@
                 <img th:src="@{'data:image/jpeg;base64,' + ${ticketOrder.encodedPaymentScreenShot}}"
                     width="100" height="100">
                 </td>
+                <td><a th:href="@{/admin-voucher-detail(userId=${ticketOrder.user.id}, orderId=${ticketOrder.id}, eventId=${ticketOrder.event.id})}"><button type="submit" class="btn btn-success">Detail</button></a></td>
+
                 <td>
                     <form method="POST" th:action="@{/admin-voucher-approve(voucherId=${ticketOrder.id})}">
                         <button type="submit" class="btn btn-success">Approve</button>

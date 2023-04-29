@@ -81,47 +81,54 @@
 
         <tbody>
         <tr>
-            <th class="w-25" scope="row"  ><p class="pth">Standard Tickets Bought</p></th>
-            <td class="w-25" ><p class="ptd" >5</p></td>
+            <th class="w-25" scope="row"  th:if="${ticketOrder.standardTicketSold>0}"><p class="pth">Standard Tickets Bought</p></th>
+            <td class="w-25" ><p class="ptd" th:text="${ticketOrder.standardTicketSold}"></p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">VIP Tickets Bought </p></th>
-            <td><p class="ptd" >0</p></td>
+            <th scope="row" th:if="${ticketOrder.standardTicketSold>0}"><p class="pth">VIP Tickets Bought </p></th>
+            <td><p class="ptd" th:text="${ticketOrder.standardTicketSold}" ></p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">VVIP Tickets Bought</p></th>
-            <td ><p class="ptd" >0</p></td>
+            <th scope="row" th:if="${ticketOrder.standardTicketSold>0}"><p class="pth">VVIP Tickets Bought</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.standardTicketSold}"></p></td>
 
         </tr>
 
         <tr>
-            <th scope="row"><p class="pth">Standard Tickets Left</p></th>
-            <td ><p class="ptd" >900</p></td>
+            <th scope="row" th:if="${ticketOrder.event.standardTicketQuantity>0}"><p class="pth">Standard Tickets Left</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.event.standardTicketAvailableQuantity}"></p></td>
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">VIP Tickets Left</p></th>
-            <td ><p class="ptd">150</p></td>
+            <th scope="row" th:if="${ticketOrder.event.vipTicketQuantity>0}"><p class="pth">VIP Tickets Left</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.event.vipTicketAvailableQuantity}"></p></td>
 
         </tr>
 
         <tr >
-            <th scope="row"><p class="pth">VVIP Tickets Left</p></th>
-            <td ><p class="ptd" >0</p></td>
+            <th scope="row" th:if="${ticketOrder.event.vvipTicketQuantity>0}"><p class="pth">VVIP Tickets Left</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.event.vvipTicketAvailableQuantity}"></p></td>
 
         </tr>
 
 
         </tbody>
     </table>
-    <div style="text-align:center"><button type="button" class="btn btn-dark">Cancel</button>
-        <button type="button" class="btn btn-dark">Approve</button></div>
-</div>
+    <div style="text-align:center">
+        <form style="display:inline-block" method="POST" th:action="@{/admin-voucher-cancel(voucherId=${ticketOrder.id})}">
+            <button type="submit" class="btn btn-success">Cancel</button>
+        </form>
+
+        <form style="display:inline-block" method="POST" th:action="@{/admin-voucher-approve(voucherId=${ticketOrder.id})}">
+            <button type="submit" class="btn btn-success">Approve</button>
+        </form>
+    </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
