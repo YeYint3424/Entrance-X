@@ -25,7 +25,7 @@ public class Event {
 
     private int promotion, standardTicketPrice, standardTicketQuantity, vipTicketPrice, vipTicketQuantity, vvipTicketPrice, vvipTicketQuantity,
             status, standardTicketAvailableQuantity,  vipTicketAvailableQuantity,  vvipTicketAvailableQuantity, trending;
-//    0 for pending and 1 for accept in status
+//    0 for pending, 1 for accept and 2 for cancel in status
     private LocalDate date;
     private String eventDescription;
     private LocalDateTime requestTime;

@@ -154,9 +154,19 @@ public class AdminController {
             orderService.approve(voucherId);
             orderService.decreaseAvailableTicket(ticketOrder.getStandardTicketSold(),
                     ticketOrder.getVipTicketSold(), ticketOrder.getVvipTicketSold(), voucherId);
+            return "redirect:/voucher-approve";}
+        else {
+            return "redirect:/login";
+        }
+    }
 
-
-
+    @PostMapping("/admin-voucher-cancel")
+    public String voucherCancel(HttpServletRequest request, Model model,
+                                  @RequestParam("voucherId")int voucherId, TicketDto ticketDto) throws Exception {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
+            orderService.approve(voucherId);
 
             return "redirect:/voucher-approve";}
         else {
@@ -169,10 +179,43 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             Event event=eventService.approve(eventId, 1);
+            return "redirect:/admin";
+        }else {
+            return "redirect:/login";
+        }
+    }
+    @PostMapping("/admin-event-approve-2")
+    public String eventApproved2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event=eventService.approve(eventId, 1);
             return "redirect:/event-approve";
         }else {
             return "redirect:/login";
         }
     }
+
+    @PostMapping("/admin-event-cancel")
+    public String eventCanceled(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event=eventService.cancel(eventId, 2);
+            return "redirect:/admin";
+        }else {
+            return "redirect:/login";
+        }
+    }
+
+    @PostMapping("/admin-event-cancel-2")
+    public String eventCanceled2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event=eventService.cancel(eventId, 2);
+            return "redirect:/event-approve";
+        }else {
+            return "redirect:/login";
+        }
+    }
+
 }
 

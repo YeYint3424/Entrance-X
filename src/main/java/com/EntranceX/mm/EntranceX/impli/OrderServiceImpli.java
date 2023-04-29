@@ -102,6 +102,13 @@ public class OrderServiceImpli implements OrderService {
     }
 
     @Override
+    public TicketOrder_History cancel(int voucherId) {
+        TicketOrder_History ticketOrder=ticketOrderDao.findById(voucherId).orElse(null);
+        ticketOrder.setStatus(2);
+        return ticketOrderDao.save(ticketOrder);
+    }
+
+    @Override
     public List<TicketOrder_History> getUnApproveOrder(int status) {
         return ticketOrderDao.findByStatus(status);
     }

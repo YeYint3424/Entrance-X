@@ -146,23 +146,22 @@
                         <input type="password" class="form-control" id="old-password" name="oldPassword"  required>
                     </div>
 
-
-
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                        <br>
-                        <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
+                        <input type="password" class="form-control" id="password" name="password" >
+                        <!-- <div class="container" style="color: #ff0000;font-size: 14px;background: #ffb9ab;border: 1px solid #dde1e7;padding:5px;border-radius: 10px" >
                             <span th:if="${param.alreadyUse}" class="error" style="color: red">Password is already Used. Try New Password.</span>
+                        </div> -->
+                        <div class="container" style="background: #ffb9ab;border: 1px solid #dde1e7;margin-top: 5px;border-radius: 10px" >
+                            <span style="color: #ff0000;font-size: 13px;" th:if="${param.alreadyUse}" class="error" ><b>Password is already Used. Try New Password.</b></span>
                         </div>
 
                     </div>
 
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Confirm New Password</label>
-                        <input type="password" class="form-control" id="cpassword" name="cpassword" required>
-                        <br>
-                        <span th:if="${param.error}" class="error">Please Type same Password and Confirm Password!</span>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" >
+                        <div id="password-error" style="color: #ff0000;font-size: 14px"></div>
                     </div>
 
 
@@ -243,6 +242,29 @@
 
 <!--    }-->
 <!--</script>-->
+
+<script>
+    const form=document.querySelector('form');
+    const passwordInput=document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('cpassword');
+    const passwordError=document.getElementById('password-error');
+
+    form.addEventListener('submit',(event) =>{
+        if(passwordInput.value !== confirmPasswordInput.value){
+            event.preventDefault();
+            passwordError.textContent='New password and confirm password do not match! Please Try again.';
+            passwordError.style.background="#ffb9ab";
+            passwordError.style.border="1px solid #dde1e7";
+            passwordError.style.borderRadius="10px";
+            passwordError.style.padding="7px";
+            passwordError.style.width="460px";
+            passwordError.style.marginTop="5px";
+    }else
+    {
+        passwordError.textContent = '';
+    }
+    });
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

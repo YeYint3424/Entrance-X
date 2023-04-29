@@ -14,12 +14,13 @@
 <!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}"><img src="css/exlogotest3.png"> EntranceX</a>
+        <a class="navbar-brand" href=""><img src="css/exlogotest3.png"  alt="logo"> EntranceX</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1"><a class="navlist2" th:href="@{/}">HOME</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/login}">SIGN IN</a></li>
-                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}">SIGN OUT</a></li>
+
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-page}">HOME</a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/user-profile}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li class="navlist1"><a class="navlist2" th:href="@{/sign-out}" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
 
@@ -34,23 +35,21 @@
                 <div class="offcanvas-body">
                     <div class="container">
                         <ul>
-
-                            <li><a href="">Events
-                            </a>
+                            <li><a class="text:white">Events</a>
                                 <ul>
-                                    <li><a th:href="@{/user-trending}">Trending</a></li>
-                                    <li><a th:href="@{/user-this-month}">This month</a></li>
-                                    <li><a th:href="@{/user-upcoming}">Upcoming</a></li>
-                                    <li><a th:href="@{/user-promotion}">Promotion</a></li>
+                                    <li><a href="/user-trending">Trending</a></li>
+                                    <li><a href="/user-all-event">All-Events</a></li>
+                                    <li><a href="/user-promotion">Promotion</a></li>
+                                    <li><a href="/user-watch-later">Watch Later</a></li>
+                                    <li><a href="/user-history">History</a></li>
+                                    <li><a href="/user-voucher">Voucher</a></li>
                                 </ul>
                             </li>
-                            <li><a  th:href="@{/user-signup}">Sign Up</a></li>
-                            <li><a  th:href="@{/sign-out}">Sign Out</a></li>
-                            <li><a  th:href="@{/about}">About</a></li>
-                            <li><a  th:href="@{/faq}">FAQ</a></li>
-                            <li><a  th:href="@{/contact}">Contact</a></li>
-                            <li><a  th:href="@{/termsandconditions}">Terms and Conditions</a></li>
-                            <li><a  th:href="@{/privacypolicy}">Privacy Policy</a></li>
+                            <li><a  href="/user-about">About</a></li>
+                            <li><a  href="/user-faq">FAQ</a></li>
+                            <li><a  href="/user-contact">Contact</a></li>
+                            <li><a  href="/user-term">Terms and Conditions</a></li>
+                            <li><a  href="/user-privacyPolicy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -58,6 +57,28 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
+                <span>
+                    <a href="/sign-out">
+                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- show the detail of the ticket the user wants to buy -->
 <div class="container mx-auto" id="container1" style="width:auto">
@@ -72,6 +93,7 @@
                 <p class="col" style="text-align:right"> Event Name</p> <p class="col" th:text="${eventDetails.eventName}" style="text-align:left"> </p>
             </div>
 
+            <div th:if="${ticketOrder.standardTicketSold} > 0 ">
             <div class="row">
                 <p class="col" style="text-align:right"> Standard Ticket Price</p> <p class="col" th:text="${eventDetails.standardTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
@@ -79,15 +101,19 @@
             <div class="row" >
                 <p class="col" style="text-align:right"> Standard Ticket Quantity</p> <p class="col" th:text="${ticketOrder.standardTicketSold}" style="text-align:left"></p>
             </div>
+            </div>
 
+            <div th:if="${ticketOrder.vipTicketSold} > 0 ">
             <div class="row">
                 <p class="col" style="text-align:right"> VIP Ticket Price</p> <p class="col" th:text="${eventDetails.vipTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
 
-            <div class="row" >
+            <div class="row" th:if="${ticketOrder.vvipTicketSold} > 0 ">
                 <p class="col" style="text-align:right"> VIP Ticket Quantity</p> <p class="col" th:text="${ticketOrder.vipTicketSold}" style="text-align:left"> </p>
             </div>
+            </div>
 
+            <div th:if="${ticketOrder.vvipTicketSold} > 0 ">
             <div class="row">
                 <p class="col" style="text-align:right"> VVIP Ticket Price</p> <p class="col" th:text="${eventDetails.vvipTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
@@ -95,12 +121,13 @@
             <div class="row" >
                 <p class="col" style="text-align:right"> VVIP Ticket Quantity</p> <p class="col" th:text="${ticketOrder.vvipTicketSold}" style="text-align:left"> </p>
             </div>
+            </div>
 
             <div class="row" >
                 <p class="col" style="text-align:right"> Promotion</p> <p class="col" th:text="${eventDetails.promotion + '%'}" style="text-align:left"></p>
             </div>
             <div class="row">
-                <p class="col" style="text-align:right"> Total</p> <p class="col" name="totalPrice" th:text="${((eventDetails.standardTicketPrice * ticketOrder.standardTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vipTicketPrice * ticketOrder.vipTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vvipTicketPrice * ticketOrder.vvipTicketSold)* (100 - eventDetails.promotion) / 100)}" style="text-align:left"></p>
+                <p class="col" style="text-align:right"> Total</p> <p class="col" name="totalPrice" th:text="${((eventDetails.standardTicketPrice * ticketOrder.standardTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vipTicketPrice * ticketOrder.vipTicketSold)* (100 - eventDetails.promotion) / 100) + ((eventDetails.vvipTicketPrice * ticketOrder.vvipTicketSold)* (100 - eventDetails.promotion) / 100)+ 'MMK'}" style="text-align:left"></p>
             </div>
 
         </div>

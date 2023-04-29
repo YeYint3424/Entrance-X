@@ -144,8 +144,12 @@
                     <td style="color: white" th:text="${event.event.date}"></td>
                     <td style="color: white" th:text="${event.event.startTime}"></td>
                     <td style="color: white" th:text="${event.event.endTime}"></td>
-                    <td><button type="submit" class="btn btn-success">Detail</button></td>
-                    <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                    <td><a th:href="@{/event-detail(eventId=${event.event.id})}" class="btn btn-success">Detail</a></td>
+                    <td>
+                       <form th:action="@{/watch-later-remove(eventId=${event.event.id})}" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                       </form>
+                    </td>
                 </tr>
                 </tbody>
             </table>

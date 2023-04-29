@@ -241,12 +241,13 @@ public class UserController {
     }
 
     @PostMapping("/watch-later-remove")
-    public String watchLaterRemove(HttpServletRequest request, @RequestParam("userId")int userId,
+    public String watchLaterRemove(HttpServletRequest request,
                                    @RequestParam("eventId")int eventId){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int) session.getAttribute("LoginUser");
             watchLaterService.removeEventFromWatchLater(userId, eventId);
-            return String.format("redirect:/event-detail?eventId=%d", eventId);
+            return "redirect:/user-watch-later";
 
         }else {
             return "redirect:/login";
@@ -289,7 +290,7 @@ public class UserController {
         }
 
     }
-    @GetMapping("user-watch-later")
+    @GetMapping("/user-watch-later")
     public String watchLater(HttpServletRequest request, Model model){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
