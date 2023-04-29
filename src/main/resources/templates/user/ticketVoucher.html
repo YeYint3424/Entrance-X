@@ -142,7 +142,7 @@
 
         </tr>
         <tr>
-            <th scope="row"><p class="pth">Date:</p></th>
+            <th scope="row"><p class="pth">Event Date:</p></th>
             <td><p class="ptd" th:text="${ticketOrder.event.date}"></p></td>
 
         </tr>
@@ -162,23 +162,19 @@
             <td ><p class="ptd" th:text="${ticketOrder.event.venue}"></p></td>
 
         </tr>
-        <tr>
-            <th  scope="row"><p class="pth">Ticket Type:</p></th>
-            <td><p class="ptd">Standard, VIP, VVIP</p></td>
 
-        </tr>
         <tr th:if="${ticketOrder.standardTicketSold>0}">
-            <th scope="row"><p class="pth">Ticket Quantity:</p></th>
+            <th scope="row"><p class="pth">Standard Ticket Quantity:</p></th>
             <td ><p class="ptd" th:text="${ticketOrder.standardTicketSold}"></p></td>
 
         </tr>
         <tr th:if="${ticketOrder.vipTicketSold>0}">
-            <th scope="row"><p class="pth">Ticket Quantity:</p></th>
+            <th scope="row"><p class="pth">VIP Ticket Quantity:</p></th>
             <td ><p class="ptd" th:text="${ticketOrder.vipTicketSold}"></p></td>
 
         </tr>
         <tr th:if="${ticketOrder.vvipTicketSold>0}">
-            <th scope="row"><p class="pth">Ticket Quantity:</p></th>
+            <th scope="row"><p class="pth">VVIP Ticket Quantity:</p></th>
             <td ><p class="ptd" th:text="${ticketOrder.vvipTicketSold}"></p></td>
 
         </tr>
