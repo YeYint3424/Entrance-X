@@ -92,7 +92,11 @@
                         <button type="submit" class="btn btn-success">Approve</button>
                     </form>
                 </td>
-                <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+                <td>
+                    <form method="POST" th:action="@{/admin-voucher-cancel(voucherId=${ticketOrder.id})}">
+                        <button type="submit" class="btn btn-success">Cancel</button>
+                    </form>
+                </td>
             </tr>
 
             </tbody>

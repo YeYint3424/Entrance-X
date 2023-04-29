@@ -105,6 +105,13 @@ public class EventServiceImpli implements EventService {
     }
 
     @Override
+    public Event cancel(int eventId, int status) {
+        Event event=eventDao.findById(eventId).orElse(null);
+        event.setStatus(status);
+        return eventDao.save(event);
+    }
+
+    @Override
     public List<Event> getPromotionEvents(int promotion) {
         return eventDao.findByPromotionGreaterThan(promotion);
     }

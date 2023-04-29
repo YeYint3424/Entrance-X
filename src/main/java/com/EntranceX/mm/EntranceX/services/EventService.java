@@ -16,6 +16,7 @@ public interface EventService {
     List<Event> getEventForSearch(String eventName);
     List<Event> getUnApproveEvent(int status);
     Event approve(int eventId, int status);
+    Event cancel(int eventId, int status);
     List<Event> getPromotionEvents(int promotion);
     List<Artist> getArtistByEventId(int eventId);
     List<Event> getEventForSearchOrganizer(String eventName, int organizerId);

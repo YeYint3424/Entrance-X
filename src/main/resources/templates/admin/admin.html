@@ -201,7 +201,11 @@
                             <button type="submit" class="btn btn-success">Approve</button>
                         </form>
                     </td>
-                    <td><button type="submit" class="btn btn-danger">Cancel</button></td>
+                    <<td>
+                        <form method="POST" th:action="@{/admin-event-cancel(eventId=${event.id})}">
+                            <button type="submit" class="btn btn-danger">Cancel</button>
+                        </form>
+                    </td>
                 </tr>
 
                 <!-- Add more rows if needed -->

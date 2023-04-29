@@ -93,6 +93,7 @@
                 <p class="col" style="text-align:right"> Event Name</p> <p class="col" th:text="${eventDetails.eventName}" style="text-align:left"> </p>
             </div>
 
+            <div th:if="${ticketOrder.standardTicketSold} > 0 ">
             <div class="row">
                 <p class="col" style="text-align:right"> Standard Ticket Price</p> <p class="col" th:text="${eventDetails.standardTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
@@ -100,21 +101,26 @@
             <div class="row" >
                 <p class="col" style="text-align:right"> Standard Ticket Quantity</p> <p class="col" th:text="${ticketOrder.standardTicketSold}" style="text-align:left"></p>
             </div>
+            </div>
 
+            <div th:if="${ticketOrder.vipTicketSold} > 0 ">
             <div class="row">
                 <p class="col" style="text-align:right"> VIP Ticket Price</p> <p class="col" th:text="${eventDetails.vipTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
 
-            <div class="row" >
+            <div class="row" th:if="${ticketOrder.vvipTicketSold} > 0 ">
                 <p class="col" style="text-align:right"> VIP Ticket Quantity</p> <p class="col" th:text="${ticketOrder.vipTicketSold}" style="text-align:left"> </p>
             </div>
+            </div>
 
+            <div th:if="${ticketOrder.vvipTicketSold} > 0 ">
             <div class="row">
                 <p class="col" style="text-align:right"> VVIP Ticket Price</p> <p class="col" th:text="${eventDetails.vvipTicketPrice + 'MMK'}" style="text-align:left"></p>
             </div>
 
             <div class="row" >
                 <p class="col" style="text-align:right"> VVIP Ticket Quantity</p> <p class="col" th:text="${ticketOrder.vvipTicketSold}" style="text-align:left"> </p>
+            </div>
             </div>
 
             <div class="row" >
