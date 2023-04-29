@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 
 
-    <title>Ticket Comfirmation</title>
+    <title>Admin Approved Voucher Detail</title>
     <style>
 
         html body{
@@ -128,7 +128,7 @@
 </nav>
 <div style="padding:20px; color:rgb(44,89,42); text-align: center;">
     <h3>Ticket Comfirmation</h3>
-    <h5>Congratulations! Your ticket has been successfully purchased.</h5>
+
 </div>
 <hr style="margin-top:0">
 <div class="container">
@@ -180,28 +180,28 @@
         </tr>
         <tr th:if="${ticketOrder.standardTicketSold>0}">
             <th scope="row"><p class="pth">Standard Ticket Price:</p></th>
-            <td ><p class="ptd" th:text="${ticketOrder.event.standardTicketPrice} + 'MMK'"></p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.standardTicketPrice} + ' MMK'"></p></td>
 
         </tr>
         <tr th:if="${ticketOrder.vipTicketSold>0}">
             <th scope="row"><p class="pth">VIP Ticket Price:</p></th>
-            <td ><p class="ptd" th:text="${ticketOrder.event.vipTicketPrice} + 'MMK'"></p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.vipTicketPrice} + ' MMK'"></p></td>
 
         </tr>
         <tr th:if="${ticketOrder.vvipTicketSold>0}">
             <th scope="row"><p class="pth">VVIP Ticket Price:</p></th>
-            <td ><p class="ptd" th:text="${ticketOrder.event.vvipTicketPrice} + 'MMK'"  ></p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.vvipTicketPrice} + ' MMK'"  ></p></td>
 
         </tr>
         <tr th:if="${ticketOrder.event.promotion>0}">
             <th  scope="row"><p class="pth">Promotion:</p></th>
-            <td ><p class="ptd" th:text="${ticketOrder.event.promotion}+'%'"></p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.event.promotion}+' %'"></p></td>
 
         </tr>
 
         <tr>
             <th  scope="row"><p class="pth">Total:</p></th>
-            <td ><p class="ptd" th:text="${ticketOrder.totalPrice} + 'MMK'"></p></td>
+            <td ><p class="ptd" th:text="${ticketOrder.totalPrice} + ' MMK'"></p></td>
 
         </tr>
 
@@ -233,42 +233,42 @@
         </tbody>
     </table>
 </div>
+<hr>
+<div style="text-align:center; padding:30px; padding-bottom:50px">
+    <h4>Your QR Code</h4>
+    <!-- <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code"> -->
+
+    <div th:if="${#lists.contains(ticketQr.![ticketType], 'Standard')}" >
+        <h6 class="ticket-qr">Standard Ticket QRs</h6>
+        <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}">
+            <img th:if="${qr.ticketType == 'Standard'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
+        </div>
+    </div>
+
+
     <hr>
-    <div style="text-align:center; padding:30px; padding-bottom:50px">
-        <h4>Your QR Code</h4>
-       <!-- <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code"> -->
-
-        <div th:if="${#lists.contains(ticketQr.![ticketType], 'Standard')}" >
-            <h6 class="ticket-qr">Standard Ticket QRs</h6>
-            <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}">
-                <img th:if="${qr.ticketType == 'Standard'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
-            </div>
+    <div th:if="${#lists.contains(ticketQr.![ticketType], 'Vip')}" >
+        <h6 class="ticket-qr" > VIP Ticket QRs</h6>
+        <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}" >
+            <img th:if="${qr.ticketType == 'Vip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
-
-
-        <hr>
-        <div th:if="${#lists.contains(ticketQr.![ticketType], 'Vip')}" >
-            <h6 class="ticket-qr" > VIP Ticket QRs</h6>
-            <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}" >
-                <img th:if="${qr.ticketType == 'Vip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
-            </div>
+    </div>
+    <hr>
+    <div th:if="${#lists.contains(ticketQr.![ticketType], 'VVip')}" >
+        <h6 class="ticket-qr" >VVIP Ticket QRs</h6>
+        <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}" >
+            <img th:if="${qr.ticketType == 'VVip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
-        <hr>
-        <div th:if="${#lists.contains(ticketQr.![ticketType], 'VVip')}" >
-            <h6 class="ticket-qr" >VVIP Ticket QRs</h6>
-            <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}" >
-                <img th:if="${qr.ticketType == 'VVip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
-            </div>
-        </div>
+    </div>
 
 
 
-        <hr>
+    <hr>
 
 
-<!--            <div style="padding:35px;padding-top:20px;text-align:center">-->
-<!--                <button type="submit">Download PDF</button>-->
-<!--            </div>-->
+    <!--            <div style="padding:35px;padding-top:20px;text-align:center">-->
+    <!--                <button type="submit">Download PDF</button>-->
+    <!--            </div>-->
 
 
 

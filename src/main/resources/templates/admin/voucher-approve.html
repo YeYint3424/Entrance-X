@@ -98,12 +98,12 @@
                 </td>
                 <td>
                     <form method="POST" th:action="@{/admin-voucher-cancel(voucherId=${ticketOrder.id})}">
-                        <button type="submit" class="btn btn-success">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Cancel</button>
                     </form>
                 </td>
                 <td>
                     <form method="POST" th:action="@{/admin-voucher-reject(voucherId=${ticketOrder.id})}">
-                        <button type="submit" class="btn btn-success">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Reject</button>
                     </form>
                 </td>
             </tr>
@@ -131,7 +131,7 @@
 
                         <td th:text="${ticketOrder.user.userName}"></td>
                         <td th:text="${ticketOrder.event.eventName}"></td>
-                        <td><a href="/admin-voucher-detail"><button type="submit" class="btn btn-success">Detail</button></a></td>
+                        <td><a th:href="@{/admin-approved-voucher-detail(orderId=${ticketOrder.id})}"><button type="submit" class="btn btn-success">Detail</button></a></td>
 
                     </tr>
 
