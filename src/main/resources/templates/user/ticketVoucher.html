@@ -242,19 +242,19 @@
        <!-- <img th:src="'data:image/jpeg;base64,' + ${qrCodeBase64}" width="200" height="200" alt="QR Code"> -->
 
         <h6 class="ticket-qr" >Standard Ticket QRs</h6>
-        <div class="qr-div" th:each="qr: ${ticketQr}" >
+        <div style="display:inline"  class="qr-div" th:each="qr: ${ticketQr}">
             <img th:if="${qr.ticketType == 'Standard'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 
         <hr>
         <h6 class="ticket-qr" > VIP Ticket QRs</h6>
-        <div class="qr-div" th:each="qr: ${ticketQr}" >
+        <div style="display:inline" class="qr-div" th:each="qr: ${ticketQr}" >
             <img th:if="${qr.ticketType == 'Vip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 
         <hr>
         <h6 class="ticket-qr" >VVIP Ticket QRs</h6>
-        <div class="qr-div" th:each="qr: ${ticketQr}" >
+        <div tyle="display:inline" class="qr-div" th:each="qr: ${ticketQr}" >
             <img th:if="${qr.ticketType == 'VVip'}" th:src="'data:image/jpeg;base64,' + ${qr.ticketQr}" width="200" height="200" alt="QR Code" class="voucher-qr">
         </div>
 

@@ -130,6 +130,9 @@
                 <thead>
                 <tr>
                     <th scope="col">Event Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -138,6 +141,9 @@
                 <tr>
 
                     <td style="color: white" th:text="${event.event.eventName}"></td>
+                    <td style="color: white" th:text="${event.event.date}"></td>
+                    <td style="color: white" th:text="${event.event.startTime}"></td>
+                    <td style="color: white" th:text="${event.event.endTime}"></td>
                     <td><button type="submit" class="btn btn-success">Detail</button></td>
                     <td><button type="submit" class="btn btn-danger">Delete</button></td>
                 </tr>
