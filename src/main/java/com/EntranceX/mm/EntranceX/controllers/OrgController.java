@@ -225,18 +225,23 @@ public class OrgController {
         }
     }
 
-    @GetMapping("/org-admin-event-detail")
-    public String org_admin_event_detail(){
-        return "org/event-detail";
-    }
+
 
     @GetMapping("/org-old-event")
-        public String org_event(){
-        return "org/org-event-request&old-event";
+        public String org_event(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int organizerId=(int) session.getAttribute("LoginOrganizer");
+            List<Event> events=eventService.getEventsByOrganizerId(organizerId);
+            model.addAttribute("events", events);
+            return "org/org-event-request&old-event";
+        }else {
+            return "redirect:/login";
         }
+    }
 
         @GetMapping("/org-eventdetail")
-    public String org_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
+        public String org_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
             HttpSession session = request.getSession(false);
             if (session != null && session.getAttribute("LoginOrganizer") != null) {
                 int orgId=(int) session.getAttribute("LoginOrganizer");
@@ -263,4 +268,15 @@ public class OrgController {
                 return "redirect:/login";
             }
         }
+    @PostMapping("/event-remove")
+    public String eventRemove(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            Event event = eventService.cancel(eventId, 4);
+            return "redirect:/org-old-event";
+        } else {
+            return "redirect:/login";
+        }
+
+    }
 }

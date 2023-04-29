@@ -61,7 +61,8 @@ public class AdminController {
 
     @GetMapping("/admin-eventdetail")
     public String admin_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
-//        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false);
+        if(session!=null && session.getAttribute("LoginAdmin")!=null){
             Event eventDetails=eventService.showEventDetail(eventId);
 
             List<Event_Artist> eventArtists = eventDetails.getEventArtist();
@@ -80,6 +81,9 @@ public class AdminController {
             model.addAttribute("eventTime", eventTime);
 
             return "admin/admin-eventdetail";
+        }else{
+            return "redirect:/login";
+        }
         }
 
 
@@ -230,5 +234,27 @@ public class AdminController {
                 return "redirect:/login";
             }
         }
+    @PostMapping("/admin-event-reject")
+    public String eventRejected(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event = eventService.cancel(eventId, 3);
+            return "redirect:/admin";
+        } else {
+            return "redirect:/login";
+        }
+
+    }
+    @PostMapping("/admin-event-reject-2")
+    public String eventRejected2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event = eventService.cancel(eventId, 3);
+            return "redirect:/event-approve";
+        } else {
+            return "redirect:/login";
+        }
+
+    }
         }
 

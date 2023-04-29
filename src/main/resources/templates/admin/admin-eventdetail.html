@@ -87,23 +87,24 @@
                     </div>
 
 
-                    <div class="row">
+                    <div class="row" th:if="${eventDetails.standardTicketQuantity > 0}">
                         <p class="col">Standard Ticket Price </p>
                         <div class="col">
-                            <p  th:text="${eventDetails.standardTicketPrice+ 'MMK'}"></p>
+                            <p  th:text="${eventDetails.standardTicketPrice+ ' MMK'}"></p>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" th:if="${eventDetails.vipTicketQuantity > 0}">
                         <p class="col">VIP Ticket Price </p>
                         <div class="col">
-                            <p  th:text="${eventDetails.vipTicketPrice+ 'MMK'}"></p>
+                            <p  th:text="${eventDetails.vipTicketPrice+ ' MMK'}"></p>
                         </div>
                     </div>
-                    <div class="row">
+
+                    <div class="row" th:if="${eventDetails.vvipTicketQuantity > 0}">
                         <p class="col">VVIP Ticket Price </p>
                         <div class="col">
-                            <p  th:text="${eventDetails.vvipTicketPrice+ 'MMK'}"></p>
+                            <p  th:text="${eventDetails.vvipTicketPrice+ ' MMK'}"></p>
                         </div>
                     </div>
                     <div class="row" th:if="${eventDetails.promotion > 0}">
@@ -113,9 +114,18 @@
                         </div>
                     </div>
 
-           <div style="float:right;margin:20px;margin-right:80px">
-    <button type="button" class="btn btn-light">Cancel</button>
-    <button type="button" class="btn btn-light">Approve</button>
+           <div style="float:right;margin:20px;margin-right:80px" th:if="${eventDetails.status==0}">
+               <form method="POST" th:action="@{/admin-event-cancel-2(eventId=${event.id})}">
+                   <button type="submit" class="btn btn-danger">Cancel</button>
+               </form>
+
+               <form method="POST" th:action="@{/admin-event-approve-2(eventId=${event.id})}">
+                   <button type="submit" class="btn btn-success">Approve</button>
+               </form>
+
+               <form method="POST" th:action="@{/admin-event-reject-2(eventId=${event.id})}">
+                   <button type="submit" class="btn btn-success">Approve</button>
+               </form>
            </div>
 
 

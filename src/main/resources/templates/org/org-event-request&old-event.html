@@ -112,7 +112,51 @@
 <div class="container">
     <div class="container" style="margin-top: 100px" >
         <h3 style="font-family: ben  ;color: #ffffff;text-shadow: 2px 2px 3px #000000">Event-Request</h3>
-        <div class="table-responsive" style="height: 450px; overflow-y: auto; margin-top: 2rem;">
+        <div class="table-responsive" style="height: 200px; overflow-y: auto; margin-top: 2rem;">
+            <table id="example1" class="table table-success table-striped">
+                <thead>
+
+                <tr>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Register Time</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="event :${events}" th:if="${event.status==0 || event.status==2 || event.status==3}">
+
+                    <td th:text="${event.eventName}"></td>
+                    <td th:text="${event.date}"></td>
+                    <td th:text="${event.requestTime}"></td>
+                    <td >
+                        <div th:if="${event.status}==0"><i class="fa-solid fa-spinner fa-spin-pulse"></i></div>
+                        <div th:if="${event.status}==2">Your Event was cancel because of lack of information.</div>
+                        <div th:if="${event.status}==3">Your Event was cancel because your event didnt match our policy.</div>
+
+                    </td>
+                    <td>
+                        <div th:if="${event.status}==0"><span>Pending</span></div>
+                        <div th:if="${event.status==2 || event.status==3}">
+                            <form  method="POST" th:action="@{/event-remove(eventId=${event.id})}" >
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>
+    <div class="container">
+    <div class="container" style="margin-top: 1rem" >
+        <h3 style="font-family: ben  ;color: #ffffff;text-shadow: 2px 2px 3px #000000">Your Events</h3>
+        <div class="table-responsive" style="height: 200px;  margin-top: 2rem;">
             <table id="example" class="table table-success table-striped">
                 <thead>
 
@@ -124,13 +168,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr th:each="event :${events}" th:if="${event.status}==1">
 
-                    <td th:text="illenim"></td>
-                    <td th:text="3.4.24"></td>
-                    <td th:text="5.2.24"></td>
-                    <td style="font-size: 25px"><i class="fa-solid fa-spinner fa-spin-pulse"></i></td>
-
+                    <td th:text="${event.eventName}"></td>
+                    <td th:text="${event.date}"></td>
+                    <td th:text="${event.requestTime}"></td>
+                    <td><a th:href="@{/org-eventdetail(eventId=${event.id})}">
+                        <button type="submit" class="btn btn-primary">Detail</button>
+                    </a></td>
                 </tr>
                 </tbody>
             </table>
@@ -139,7 +184,8 @@
 
         </div>
     </div>
-</div>
+    </div>
+
 
 <!--            Footer            -->
 <footer>
@@ -200,6 +246,14 @@
 
         table.buttons().container()
             .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+    } );
+
+    $(document).ready(function() {
+        var table = $('#example1').DataTable( {
+            lengthChange: false,
+
+        } );
+
     } );
 </script>
 </body>
