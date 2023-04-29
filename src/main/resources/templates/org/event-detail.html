@@ -61,9 +61,10 @@
 
 
     <div class="row" id="event-row">
+        <div style="text-align:center;margin-top:40px;margin:20px;margin-left:0"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="450" height="300" ></div>
         <div class="col" id="col1" >
             <div class="container mx-auto">
-                <div style="text-align:center;margin-top:40px;"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
+
                 <div class="text1" style=" font-family:Lucida Sans; color:#fff">
 
                     <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
@@ -85,26 +86,37 @@
                         <div class="row">
                             <p class="col">Available Ticket Types</p>
                             <div class="col">
-                                <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
-                                <p th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
-                                <p th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
+                                <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard</p>
+                                <p th:if="${eventDetails.vipTicketQuantity > 0}" >VIP</p>
+                                <p th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</p>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <p class="col">Standard Ticket Price </p>
+                            <div class="col">
+                                <p  th:text="${eventDetails.standardTicketPrice}"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p class="col">VIP Ticket Price </p>
+                            <div class="col">
+                                <p  th:text="${eventDetails.vipTicketPrice}"></p>
                             </div>
                         </div>
                         <div class="row">
-                            <p class="col">Standard Ticket Price</p>
-                            <p class="col" th:text="${eventDetails.standardTicketPrice}"></p>
-                        </div>
-                        <div class="row">
-                            <p class="col">VIP Ticket Price </p>
-                            <p class="col" th:text="${eventDetails.vipTicketPrice}"></p>
-                        </div>
-                        <div class="row">
                             <p class="col">VVIP Ticket Price </p>
-                            <p class="col" th:text="${eventDetails.vvipTicketPrice}"></p>
+                            <div class="col">
+                                <p  th:text="${eventDetails.vvipTicketPrice}"></p>
+                            </div>
                         </div>
                         <div class="row" th:if="${eventDetails.promotion > 0}">
                             <p class="col">Promotion </p>
-                            <p class="col" th:text="${eventDetails.promotion} + '%'"></p>
+                            <div class="col">
+                                <p  th:text="${eventDetails.promotion} + '%'"></p>
+                            </div>
                         </div>
                     <form method="post">
                         <div class="input-box mb-3">

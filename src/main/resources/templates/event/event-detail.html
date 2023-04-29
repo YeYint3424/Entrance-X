@@ -101,10 +101,10 @@
                     <p th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></p>
                     </p>
 
-                    <p> Event Time : from <span th:text="${eventTime}"></span></p>
-                    <p> Date : <span th:text="${eventDetails.date}"></span></p>
-                    <p th:text="${eventDetails.venue}"></p>
-                    <p style="height:150px" th:text="${eventDetails.eventDescription}"></p>
+                    <p> Event Time : <span th:text="${eventTime}"></span></p>
+                    <p> Event Date : <span th:text="${eventDetails.date}"></span></p>
+                    <p> Event Place : <span th:text="${eventDetails.venue}"></span></p>
+                    <p> Event Description : <span th:text="${eventDetails.eventDescription}" style="height:150px"></span></p>
                 </div>
             </div>
         </div>
@@ -113,32 +113,47 @@
                 <div  id="col2" >
                     <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
                         <div class="row">
-                            <p class="col">Available Ticket Types</p>
+                            <div class="col">
+                                <p >Available Ticket Types</p>
+                            </div>
                             <div class="col">
                                 <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
                                 <p th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
                                 <p th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p>
                             </div>
                         </div>
-                           <!-- <p class="col" th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
-                            <p class="col" th:if="${eventDetails.vipTicketQuantity > 0}">VIP, </p>
-                            <p class="col" th:if="${eventDetails.vvipTicketQuantity > 0}">VVIP</p> -->
+                        <div class="row">
+                            <div class="col">
+                                <p >Standard Ticket Price</p>
+                            </div>
+                            <div class="col">
+                                <p  th:text="${eventDetails.standardTicketPrice}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p >VIP Ticket Price </p>
+                            </div>
+                            <div class="col">
+                                <p  th:text="${eventDetails.vipTicketPrice}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p >VVIP Ticket Price </p>
+                            </div>
+                            <div class="col">
+                                <p  th:text="${eventDetails.vvipTicketPrice}"></p>
 
-                        <div class="row">
-                            <p class="col">Standard Ticket Price</p>
-                            <p class="col" th:text="${eventDetails.standardTicketPrice}"></p>
-                        </div>
-                        <div class="row">
-                            <p class="col">VIP Ticket Price </p>
-                            <p class="col" th:text="${eventDetails.vipTicketPrice}"></p>
-                        </div>
-                        <div class="row">
-                            <p class="col">VVIP Ticket Price </p>
-                            <p class="col" th:text="${eventDetails.vvipTicketPrice}"></p>
+                            </div>
                         </div>
                         <div class="row" th:if="${eventDetails.promotion > 0}">
-                            <p class="col">Promotion </p>
-                            <p class="col" th:text="${eventDetails.promotion} + '%'"></p>
+                            <div class="col">
+                                <p >Promotion </p>
+                            </div>
+                            <div class="col">
+                                <p  th:text="${eventDetails.promotion} + '%'"></p>
+                            </div>
                         </div>
 
                         <!-- ask user which ticket to buy -->

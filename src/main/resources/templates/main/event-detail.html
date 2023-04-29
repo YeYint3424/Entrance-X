@@ -69,7 +69,7 @@
                     <div class="watch-later-icon" style="padding:8px;float:right;border:1px solid;border-radius:10px"><a href="/" style="text-decoration: none"> Watch-Later <i class="fa-solid fa-square-plus" ></i> </a></div>
 
 
-                    <p style="font-weight:bold; font-size:20px" th:text="${eventDetails.eventName}">
+                    <p style="font-weight:bold; font-size:30px;font-family:cursive" th:text="${eventDetails.eventName}">
 
 <!--                    <div class="watch-later-icon"> Remove Watch-Later <i class="fa-solid fa-square-minus" style="display:none"></i></div>-->
                     </p>
@@ -79,9 +79,9 @@
 
 
                     <p> Event Time : from <span th:text="${eventTime}"></span></p>
-                    <p> Date : <span th:text="${eventDetails.date}"></span></p>
-                    <p> Place : <span th:text="${eventDetails.venue}"/></p>
-                    <p style="height:150px">Description : <span th:text="${eventDetails.eventDescription}"/></p>
+                    <p>Event Date : <span th:text="${eventDetails.date}"></span></p>
+                    <p> Event Place : <span th:text="${eventDetails.venue}"/></p>
+                    <p style="height:150px">Event Description : <span th:text="${eventDetails.eventDescription}"/></p>
                 </div>
             </div>
         </div>
@@ -92,15 +92,15 @@
                         <div class="row">
                             <p class="col">Available Ticket Types</p>
                             <div class="col">
-                                <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard, </p>
-                                <p th:if="${eventDetails.vipTicketQuantity > 0}" >VIP, </p>
+                                <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard</p>
+                                <p th:if="${eventDetails.vipTicketQuantity > 0}" >VIP</p>
                                 <p th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</p>
                             </div>
                         </div>
                         <div class="row">
-                            <p class="col">Standard Ticket Price</p>
+                            <p class="col">Standard Ticket Price </p>
                             <div class="col">
-                            <p  th:text="${eventDetails.standardTicketPrice}"></p>
+                                <p  th:text="${eventDetails.standardTicketPrice}"></p>
                             </div>
                         </div>
                         <div class="row">
