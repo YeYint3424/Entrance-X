@@ -78,7 +78,7 @@ public class OrderServiceImpli implements OrderService {
         for (int i = 0; i < totalTicketsSold; i++) {
             String qrCodeData = RandomStringUtils.randomAlphanumeric(10);
 
-            int qrCodeSize = 150;
+            int qrCodeSize = 200;
             byte[] qrCodeImage = QRCodeGenerator.generateQRCode(qrCodeData, qrCodeSize);
 
             TicketQr ticket = new TicketQr();
