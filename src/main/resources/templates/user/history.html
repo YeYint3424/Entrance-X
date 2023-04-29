@@ -112,41 +112,39 @@
 <div class="wrapper">
 
         <!--        Event Type          -->
-        <div class="container event-type" style="margin-top: 60px; text-shadow: 1px 2px 5px black;">
+    <div class="container">
+        <div class="container" style="margin-top: 100px" >
+            <h3 style="font-family: ben  ;color: #ffffff;text-shadow: 2px 2px 3px #050004">Voucher-Approve</h3>
+            <div class="table-responsive" style="min-height: 450px; overflow-y: auto;overflow-x: hidden; margin-top: 2rem;">
+                <table class="table table-success table-striped ">
+                    <thead>
 
-            <table class="table" >
-                <thead>
-                <tr>
-                    <th scope="col " class="event-type" style="color: white;" ><h3 style="font-family: SansSerif">Your History/bought ticket list</h3></th>
-                </tr>
-                </thead>
-            </table>
-            <table class="table table-striped tc">
-                <thead>
-                <tr>
-                    <th scope="col">Event-Name</th>
-                    <th scope="col">Standard Ticket Purchase</th>
-                    <th scope="col">Vip Ticket Purchase</th>
-                    <th scope="col">VVip Ticket Purchase</th>
-                    <th scope="col">Total Price</th>
+                    <tr>
+                        <th scope="col" style="font-family: SansSerif">Event-Name</th>
+                        <th scope="col" style="font-family: SansSerif">Standard Ticket Purchase</th>
+                        <th scope="col" style="font-family: SansSerif">Vip Ticket Purchase</th>
+                        <th scope="col" style="font-family: SansSerif">VVip Ticket Purchase</th>
+                        <th scope="col" style="font-family: SansSerif">Total Price</th>
 
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="userOrder:${userOrderList}" th:if="${userOrder.status==1}">
+                        <th scope="col" style="font-family: SansSerif"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="userOrder:${userOrderList}" th:if="${userOrder.status==1}">
 
-                    <td style="color: white" th:text="${userOrder.event.eventName}"></td>
-                    <td style="color: white" th:text="${userOrder.standardTicketSold}"></td>
-                    <td style="color: white" th:text="${userOrder.vipTicketSold}"></td>
-                    <td style="color: white" th:text="${userOrder.vvipTicketSold}"></td>
-                    <td style="color: white" th:text="${userOrder.totalPrice}"></td>
+                        <td style="color: #000000" th:text="${userOrder.event.eventName}"></td>
+                        <td style="color: #000000" th:text="${userOrder.standardTicketSold}"></td>
+                        <td style="color: #000000" th:text="${userOrder.vipTicketSold}"></td>
+                        <td style="color: #000000" th:text="${userOrder.vvipTicketSold}"></td>
+                        <td style="color: #000000" th:text="${userOrder.totalPrice}"></td>
 
-                    <td style="color: white"><a th:href="@{/ticket-voucher(eventId=${userOrder.event.id} , orderId=${userOrder.id}) }" style="text-decoration: none"><button type="submit" class="btn btn-success">Detail</button></a></td>
-                </tr>
-                </tbody>
-            </table>
+                        <td style="color: #000000"><a th:href="@{/ticket-voucher(eventId=${userOrder.event.id} , orderId=${userOrder.id}) }" style="text-decoration: none"><button type="submit" class="btn btn-success">Detail</button></a></td>
+                    </tr>
+                    <!-- Add more rows if needed -->
+                    </tbody>
+                </table>
 
+            </div>
         </div>
 
     </div>

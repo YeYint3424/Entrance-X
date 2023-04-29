@@ -225,13 +225,15 @@ public class UserController {
 
     }
     @PostMapping("/watch-later-add")
-    public String watchLaterAdd(HttpServletRequest request, @RequestParam("userId")int userId,
+    public String watchLaterAdd(HttpServletRequest request,
                                 @RequestParam("eventId")int eventId){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
+            int userId=(int) session.getAttribute("LoginUser");
             System.out.println(userId);
             System.out.println(eventId);
             watchLaterService.saveEventToWatchLater(userId, eventId);
+
             return String.format("redirect:/event-detail?eventId=%d", eventId);
         }else {
             return "redirect:/login";
