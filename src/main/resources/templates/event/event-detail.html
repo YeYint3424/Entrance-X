@@ -123,33 +123,33 @@
                                 <p style="display:inline">Available Ticket Types</p>
                             </div>
                             <div class="col" style="padding-left:45px" >
-                                <span th:if="${eventDetails.standardTicketQuantity > 0}" >Standard, </span>
-                                <span th:if="${eventDetails.vipTicketQuantity > 0}" >VIP, </span>
-                                <span th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</span>
+                                <span th:if="${eventDetails.standardTicketQuantity > 0}" >Standard </span>
+                                <span th:if="${eventDetails.vipTicketQuantity > 0}" > VIP </span>
+                                <span th:if="${eventDetails.vvipTicketQuantity > 0}" > VVIP</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col" th:if="${eventDetails.standardTicketQuantity > 0}">
                                 <p >Standard Ticket Price</p>
                             </div>
                             <div class="col">
-                                <p  th:text="${eventDetails.standardTicketPrice+ 'MMK'}"></p>
+                                <p  th:text="${eventDetails.standardTicketPrice+ ' MMK'}"></p>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" th:if="${eventDetails.vipTicketQuantity > 0}">
                             <div class="col">
                                 <p >VIP Ticket Price </p>
                             </div>
-                            <div class="col">
-                                <p  th:text="${eventDetails.vipTicketPrice+ 'MMK'}"></p>
+                            <div class="col" >
+                                <p  th:text="${eventDetails.vipTicketPrice+ ' MMK'}"></p>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" th:if="${eventDetails.vvipTicketQuantity > 0}">
                             <div class="col">
                                 <p >VVIP Ticket Price </p>
                             </div>
                             <div class="col">
-                                <p  th:text="${eventDetails.vvipTicketPrice+ 'MMK'}"></p>
+                                <p  th:text="${eventDetails.vvipTicketPrice+ ' MMK'}"></p>
 
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                 <p >Promotion </p>
                             </div>
                             <div class="col">
-                                <p  th:text="${eventDetails.promotion} + '%'"></p>
+                                <p  th:text="${eventDetails.promotion} + ' %'"></p>
                             </div>
                         </div>
 
@@ -194,6 +194,7 @@
                             <div th:if="${eventDetails.vvipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VVIP ticket is currently out of stock.'" value="0">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="status"></label>
                             <div class="col-xs-3">

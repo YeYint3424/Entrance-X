@@ -121,10 +121,6 @@ public class EventServiceImpli implements EventService {
         return eventDao.findArtistsByEventId(eventId);
     }
 
-    @Override
-    public List<Event> getEventForSearchOrganizer(String eventName, int organizerId) {
-        return null;
-    }
 
 
 }

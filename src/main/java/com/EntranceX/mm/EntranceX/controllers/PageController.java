@@ -205,9 +205,36 @@ public class PageController {
 
     @GetMapping("/search-page")
     public String user_search(HttpServletRequest request, @RequestParam("searchName") String searchName,
-                              @RequestParam("searchType") String searchType,Model model , @RequestParam("organizerId")int organizerId) {
+                              @RequestParam("searchType") String searchType,Model model ) {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("LoginUser") != null) {
+        if(session == null){
+            if (searchType.equals("event")) {
+                List<Event> events = eventService.getEventForSearch(searchName);
+                for (Event event : events) {
+                    byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+
+                }
+                model.addAttribute("searchName", searchName);
+                model.addAttribute("search", events);
+
+            }else if(searchType.equals("artist")){
+                List<Artist> artists= artistService.findArtistForSearch(searchName);
+                List<Event> events = new ArrayList<>();
+                for (Artist artist : artists) {
+                    for (Event_Artist event_artist : artist.getEventArtist()) {
+                        events.add(event_artist.getEvent());
+                    }
+                }
+                for(Event event:events){
+                    byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
+                }
+
+                model.addAttribute("searchName", searchName);
+                model.addAttribute("search", events);
+            }
+            return "main/search-page";
+        }
+        else if ( session.getAttribute("LoginUser") != null) {
             if (searchType.equals("event")) {
                 List<Event> events = eventService.getEventForSearch(searchName);
                 for (Event event : events) {
@@ -234,21 +261,28 @@ public class PageController {
                 }
             return "user/search-page";
         } else if(session != null && session.getAttribute("LoginOrganizer") != null){
-
+            int organizerId=(int) session.getAttribute("LoginOrganizer");
             if (searchType.equals("event")) {
-                List<Event> events = eventService.getEventForSearchOrganizer(searchName, organizerId);
-                for (Event event : events) {
+                List<Event> events = eventService.getEventForSearch(searchName);
+                List<Event> searchEvent=new ArrayList<>();
+                for(Event event:events){
+                    if(event.getOrganizer().getId()==organizerId){
+                        searchEvent.add(event);
+                    }
+                }
+                for (Event event : searchEvent) {
                     byte[] photoByte = Base64.getDecoder().decode(event.getEncodedPhoto().getBytes());
 
                 }
                 model.addAttribute("searchName", searchName);
-                model.addAttribute("search", events);
+                model.addAttribute("search", searchEvent);
 
             }else if(searchType.equals("artist")){
                 List<Artist> artists= artistService.findArtistForSearch(searchName);
                 List<Event> events = new ArrayList<>();
                 for (Artist artist : artists) {
                     for (Event_Artist event_artist : artist.getEventArtist()) {
+                        if(event_artist.getEvent().getOrganizer().getId()==organizerId)
                         events.add(event_artist.getEvent());
                     }
                 }
@@ -259,7 +293,7 @@ public class PageController {
                 model.addAttribute("searchName", searchName);
                 model.addAttribute("search", events);
             }
-            return "user/search-page";
+            return "org/search-page";
         }
         return  null;
     }

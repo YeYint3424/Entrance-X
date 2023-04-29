@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class OrderServiceImpli implements OrderService {
         ticketOrder.setVipTicketSold(ticketOrderDto.getVipTicketSold());
         ticketOrder.setVvipTicketSold(ticketOrderDto.getVvipTicketSold());
         ticketOrder.setStatus(ticketOrderDto.getStatus());
+        ticketOrder.setRequestTime(ticketOrderDto.getRequestTime());
         User user=userDao.findById(ticketOrderDto.getUserId()).orElseThrow(() -> new UserNotFoundException("User not found"));
         Event event=eventDao.findById(ticketOrderDto.getEventId()).orElseThrow(() -> new EventNotFoundException("Event not found"));
         ticketOrder.setUser(user);
@@ -98,6 +100,7 @@ public class OrderServiceImpli implements OrderService {
         }
 
         ticketOrder.setStatus(1);
+        ticketOrder.setPurchaseSuccessTime(LocalDateTime.now());
         return ticketOrderDao.save(ticketOrder);
     }
 

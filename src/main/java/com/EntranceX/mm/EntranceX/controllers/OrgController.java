@@ -3,12 +3,10 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.OrganizerDto;
-import com.EntranceX.mm.EntranceX.models.Artist;
-import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.models.Event_Artist;
-import com.EntranceX.mm.EntranceX.models.Organizer;
+import com.EntranceX.mm.EntranceX.models.*;
 import com.EntranceX.mm.EntranceX.services.ArtistService;
 import com.EntranceX.mm.EntranceX.services.EventService;
+import com.EntranceX.mm.EntranceX.services.OrderService;
 import com.EntranceX.mm.EntranceX.services.OrganizerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -46,6 +44,9 @@ public class OrgController {
     
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    OrderService orderService;
     
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request, Model model) {
@@ -162,9 +163,20 @@ public class OrgController {
     }
 
     @GetMapping("/org-sale-record")
-    public String org_Sale_Record(HttpServletRequest request) {
+    public String org_Sale_Record(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginOrganizer") != null) {
+            int organizerId=(int) session.getAttribute("LoginOrganizer");
+            List<Event> events=eventService.getEventsByOrganizerId(organizerId);
+            List<TicketOrder_History> ticketOrder=new ArrayList<>();
+            for(Event event:events){
+                for(TicketOrder_History ticketOrder_history: event.getOrderHistory()){
+                    ticketOrder.add(ticketOrder_history);
+
+                }
+            }
+            model.addAttribute("ticketOrder", ticketOrder);
+            model.addAttribute("events",events);
         return "org/sale-record";
     }else{
             return "redirect:/login"; } }

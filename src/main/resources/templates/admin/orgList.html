@@ -118,11 +118,8 @@
             var table = $('#example').DataTable( {
                 lengthChange: false,
                 buttons: [
-                    {
-                        extend: 'copy',
-                        split: [ 'pdf', 'excel'],
-                    },
-                    'colvis'
+
+                    'csv', 'pdf', 'excel', 'copy', 'colvis'
                 ]
             } );
 

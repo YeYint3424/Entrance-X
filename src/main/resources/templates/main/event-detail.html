@@ -66,13 +66,7 @@
             <div class="container mx-auto">
                 <div style="text-align:center;margin-top:40px;"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
                 <div class="text1" style=" font-family:Lucida Sans; color:#fff">
-                    <div th:if="${watchLater}!=1">
-                        <form th:action="@{/watch-later-add(eventId=${eventDetails.id})}" method="post">
-                            <button type="submit" class="watch-later-button" style="padding:8px;float:right;border:1px solid;border-radius:10px">
-                                <span style="text-decoration: none">Watch-Later</span> <i class="fa-solid fa-square-plus"></i>
-                            </button>
-                        </form>
-                    </div>
+
 
                     <p style="font-weight:bold; font-size:30px;font-family:cursive" th:text="${eventDetails.eventName}">
 
@@ -100,81 +94,86 @@
                                 <p style="display:inline;padding-left:0">Available Ticket Types</p>
                             </div>
                             <div class="col" style="padding-left:45px" >
-                                <span th:if="${eventDetails.standardTicketQuantity > 0}" >Standard, </span>
-                                <span th:if="${eventDetails.vipTicketQuantity > 0}" >VIP, </span>
-                                <span th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</span>
+                                <span th:if="${eventDetails.standardTicketQuantity > 0}" >Standard </span>
+                                <span th:if="${eventDetails.vipTicketQuantity > 0}" > VIP </span>
+                                <span th:if="${eventDetails.vvipTicketQuantity > 0}" > VVIP</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" th:if="${eventDetails.standardTicketQuantity > 0}">
                             <p class="col">Standard Ticket Price </p>
                             <div class="col">
-                                <p  th:text="${eventDetails.standardTicketPrice+ 'MMK'}"></p>
+                                <p  th:text="${eventDetails.standardTicketPrice+ ' MMK'}"></p>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" th:if="${eventDetails.vipTicketQuantity > 0}">
                             <p class="col">VIP Ticket Price </p>
                             <div class="col">
-                            <p  th:text="${eventDetails.vipTicketPrice+ 'MMK'}"></p>
+                            <p  th:text="${eventDetails.vipTicketPrice+ ' MMK'}"></p>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" th:if="${eventDetails.vvipTicketQuantity > 0}">
                             <p class="col">VVIP Ticket Price </p>
                             <div class="col">
-                            <p  th:text="${eventDetails.vvipTicketPrice+ 'MMK'}"></p>
+                            <p  th:text="${eventDetails.vvipTicketPrice+ ' MMK'}"></p>
                             </div>
                         </div>
                         <div class="row" th:if="${eventDetails.promotion > 0}">
                             <p class="col">Promotion </p>
                             <div class="col">
-                            <p  th:text="${eventDetails.promotion} + '%'"></p>
+                            <p  th:text="${eventDetails.promotion} + ' %'"></p>
                             </div>
                         </div>
-                    <form method="post">
-                        <div class="input-box mb-3">
-                            <input type="hidden" name="userId" th:value="${userId}" >
+<!--                    <form method="post">-->
+<!--                        <div class="input-box mb-3">-->
+<!--                            <input type="hidden" name="userId" th:value="${userId}" >-->
 
-                        </div>
+<!--                        </div>-->
 
-                        <div class="input-box mb-3">
-                            <input type="hidden" name="eventId" th:value="${eventDetails.id}" >
-                        </div>
+<!--                        <div class="input-box mb-3">-->
+<!--                            <input type="hidden" name="eventId" th:value="${eventDetails.id}" >-->
+<!--                        </div>-->
 
 
-                        <div th:if="${eventDetails.standardTicketQuantity > 0}" class="input-box mb-3" >
-                            <label for="standardTicketQuantity" class="form-label">Standard Ticket Quantity</label>
-                            <input type="number" min="0" max="5" class="form-control" id="standardTicketQuantity"  th:if="${eventDetails.standardTicketQuantity > 0}"  name="standardTicketSold" placeholder="How many standard tickets you want to buy?" >
-                            <div th:if="${eventDetails.standardTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'Standard ticket is currently out of stock.'" value="0">
-                            </div>
-                        </div>
+<!--                        <div th:if="${eventDetails.standardTicketQuantity > 0}" class="input-box mb-3" >-->
+<!--                            <label for="standardTicketQuantity" class="form-label">Standard Ticket Quantity</label>-->
+<!--                            <input type="number" min="0" max="5" class="form-control" id="standardTicketQuantity"  th:if="${eventDetails.standardTicketQuantity > 0}"  name="standardTicketSold" placeholder="How many standard tickets you want to buy?" >-->
+<!--                            <div th:if="${eventDetails.standardTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'Standard ticket is currently out of stock.'" value="0">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div th:if="${eventDetails.vipTicketQuantity > 0}" class="input-box mb-3">
-                            <label for="vipTicketQuantity" class="form-label">VIP Ticket Quantity</label>
-                            <input type="number" min="0" max="5" class="form-control" id="vipTicketQuantity"  th:if="${eventDetails.vipTicketQuantity > 0}" name="vipTicketSold" placeholder="How many VIP tickets you want to buy?" >
-                            <div th:if="${eventDetails.vipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VIP ticket is currently out of stock.'" value="0">
-                            </div>
-                        </div>
+<!--                        <div th:if="${eventDetails.vipTicketQuantity > 0}" class="input-box mb-3">-->
+<!--                            <label for="vipTicketQuantity" class="form-label">VIP Ticket Quantity</label>-->
+<!--                            <input type="number" min="0" max="5" class="form-control" id="vipTicketQuantity"  th:if="${eventDetails.vipTicketQuantity > 0}" name="vipTicketSold" placeholder="How many VIP tickets you want to buy?" >-->
+<!--                            <div th:if="${eventDetails.vipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VIP ticket is currently out of stock.'" value="0">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div th:if="${eventDetails.vvipTicketQuantity > 0}" class="input-box mb-3">
-                            <label for="vvipTicketQuantity" class="form-label">VVIP Ticket Quantity</label>
-                            <input type="number" min="0" max="5" class="form-control" id="vvipTicketQuantity"  th:if="${eventDetails.vvipTicketQuantity > 0}" name="vvipTicketSold" placeholder="How many VVIP tickets you want to buy?" >
-                            <div th:if="${eventDetails.vvipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VVIP ticket is currently out of stock.'" value="0">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="status"></label>
-                            <div class="col-xs-3">
-                                <input type="hidden" class="form-control" id="status"  name="status" value="0">
-                            </div>
-                        </div>
-                        <div style="text-align:center">
-                            <button type="reset" data-label="Register" class="rainbow-hover"><span class="sp">Cancel</span></button>
-                            <button type="submit" data-label="Register" class="rainbow-hover">
-                                <a style="text-decoration:none;color:#fff"><span class="sp">Purchase</span></a>
-                            </button>
-                        </div>
+<!--                        <div th:if="${eventDetails.vvipTicketQuantity > 0}" class="input-box mb-3">-->
+<!--                            <label for="vvipTicketQuantity" class="form-label">VVIP Ticket Quantity</label>-->
+<!--                            <input type="number" min="0" max="5" class="form-control" id="vvipTicketQuantity"  th:if="${eventDetails.vvipTicketQuantity > 0}" name="vvipTicketSold" placeholder="How many VVIP tickets you want to buy?" >-->
+<!--                            <div th:if="${eventDetails.vvipTicketAvailableQuantity}==0" class="alert alert-danger" role="alert" th:text="'VVIP ticket is currently out of stock.'" value="0">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label class="control-label col-sm-5" for="status"></label>-->
+<!--                            <div class="col-xs-3">-->
+<!--                                <input type="hidden" class="form-control" id="status"  name="status" value="0">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div style="text-align:center">-->
+<!--                            <button type="reset" data-label="Register" class="rainbow-hover"><span class="sp">Cancel</span></button>-->
+<!--                            <button type="submit" data-label="Register" class="rainbow-hover">-->
+<!--                                <a style="text-decoration:none;color:#fff"><span class="sp">Purchase</span></a>-->
+<!--                            </button>-->
+<!--                        </div>-->
 
-                    </form>
+<!--                    </form>-->
+                        <br>
+                        <br>
+                        <br>
+                        <br>
 
+                        <h3 style="color: red;">Please Login Before You Buy Anything.</h3>
 
 
                     </div>
