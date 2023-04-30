@@ -3,13 +3,8 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.OrganizerDto;
-import com.EntranceX.mm.EntranceX.models.Artist;
-import com.EntranceX.mm.EntranceX.models.Event;
-import com.EntranceX.mm.EntranceX.models.Event_Artist;
-import com.EntranceX.mm.EntranceX.models.Organizer;
-import com.EntranceX.mm.EntranceX.services.ArtistService;
-import com.EntranceX.mm.EntranceX.services.EventService;
-import com.EntranceX.mm.EntranceX.services.OrganizerService;
+import com.EntranceX.mm.EntranceX.models.*;
+import com.EntranceX.mm.EntranceX.services.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +41,16 @@ public class OrgController {
     
     @Autowired
     UserDao userDao;
-    
+
+    @Autowired
+    OrderService orderService;
+
+    @Autowired
+    TicketQrService ticketQrService;
+
+
+
+
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
@@ -251,4 +255,6 @@ public class OrgController {
                 return "redirect:/login";
             }
         }
+
+
 }

@@ -38,6 +38,10 @@ public class AdminController {
     @Autowired
     ArtistService artistService;
 
+
+    @Autowired
+    TicketQrService ticketQrService;
+
     @GetMapping("/admin")
     public String admin(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
@@ -216,6 +220,25 @@ public class AdminController {
             return "redirect:/login";
         }
     }
+    @GetMapping("/ticket-voucher-admin")
+    public String ticket_admin(HttpServletRequest request, Model model,
+                               @RequestParam("eventId")int eventId, @RequestParam("orderId")int orderId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            int adminId = (int) session.getAttribute("LoginAdmin");
 
+
+            TicketOrder_History ticketOrder = orderService.getSpecificTicketForUser(orderId, adminId, eventId);
+            List<TicketQr> ticketQrs = ticketQrService.findByOrderId(ticketOrder.getId());
+            for (TicketQr ticketQr : ticketQrs) {
+                byte[] qr = Base64.getDecoder().decode(ticketQr.getTicketQr().getBytes());
+            }
+            model.addAttribute("ticketQr", ticketQrs);
+            model.addAttribute("ticketOrder", ticketOrder);
+            return "admin/ticket-voucher-admin";
+        } else {
+            return "redirect:/login";
+        }
+    }
 }
 

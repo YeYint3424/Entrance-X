@@ -70,28 +70,6 @@
         </div>
     </div>
 </nav>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Log-Out</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <h5 style="color: rgb(127, 209, 131);">Are you sure want to log out !</h5>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-danger col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;" aria-label="Close">No</button>
-                <span>
-                    <a href="/sign-out">
-                        <button type="submit" class="btn btn-success col-md-2" data-bs-dismiss="modal" style="height: 40px;width: 55px;">Yes</button>
-                    </a>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <div class="container">
@@ -166,17 +144,31 @@
 
                     <div class="form-btn" style="text-align:center">
                         <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>
-                        <button type="submit" class="btn btn-primary" id="submitbtn">Register</button>
+                        <button type="submit" class="btn btn-primary" id="submitbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Register</button>
                     </div>
 
                     <div style="text-align:center;font-size:14px">
                         <p>By signing up, you agree to our <a href="/termsandconditions" style="text-decoration:none;">terms and conditions.</a></p>
                         <p>Go to <a href="org-signup" style="text-decoration:none">Organizer Sign up</a></p>
                     </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create successful</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
 
+                                    <h5 style="color: rgb(0,0,0);">Now you can login!!!</h5>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
 
                 </form>
+
             </div>
         </div>
     </div>
@@ -232,6 +224,31 @@
         });
     });
 </script>
+<script>
+    const form = document.getElementById('exampleModal');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Perform account signup logic here
+
+        // Show success message
+        const alert = document.querySelector('.alert-success');
+        alert.classList.remove('d-none');
+        alert.classList.add('fade', 'show');
+
+        // Reset form fields
+        form.reset();
+
+        // Hide success message after 3 seconds
+        setTimeout(function() {
+            alert.classList.remove('show');
+            alert.classList.add('fade');
+            setTimeout(function() {
+                alert.classList.add('d-none');
+            }, 500);
+        }, 5000);
+    });
+</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
