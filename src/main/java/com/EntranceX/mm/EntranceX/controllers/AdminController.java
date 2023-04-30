@@ -217,5 +217,10 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/admin-voucher-detail")
+    public String voucher_detail(){
+        return "admin/voucher-detail";
+    }
+
 }
 
