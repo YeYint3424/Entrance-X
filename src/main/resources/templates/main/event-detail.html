@@ -66,7 +66,13 @@
             <div class="container mx-auto">
                 <div style="text-align:center;margin-top:40px;"> <img th:src="@{'data:image/jpeg;base64,' + ${eventDetails.encodedPhoto}}" width="350" height="200" ></div>
                 <div class="text1" style=" font-family:Lucida Sans; color:#fff">
-
+                    <div th:if="${watchLater}!=1">
+                        <form th:action="@{/watch-later-add(eventId=${eventDetails.id})}" method="post">
+                            <button type="submit" class="watch-later-button" style="padding:8px;float:right;border:1px solid;border-radius:10px">
+                                <span style="text-decoration: none">Watch-Later</span> <i class="fa-solid fa-square-plus"></i>
+                            </button>
+                        </form>
+                    </div>
 
                     <p style="font-weight:bold; font-size:30px;font-family:cursive" th:text="${eventDetails.eventName}">
 
@@ -78,7 +84,7 @@
                     </p>
 
 
-                    <p> Event Time : from <span th:text="${eventTime}"></span></p>
+                    <p> Event Time : <span th:text="${eventTime}"></span></p>
                     <p>Event Date : <span th:text="${eventDetails.date}"></span></p>
                     <p> Event Place : <span th:text="${eventDetails.venue}"/></p>
                     <p style="height:150px">Event Description : <span th:text="${eventDetails.eventDescription}"/></p>
@@ -89,30 +95,32 @@
             <div class="container mx-auto">
                 <div  id="col2" >
                     <div id="col2-text" style=" font-family:Lucida Sans; color:#fff;">
-                        <div class="row">
-                            <p class="col">Available Ticket Types</p>
+                        <div class="row" style="padding:20px;padding-left:0">
                             <div class="col">
-                                <p th:if="${eventDetails.standardTicketQuantity > 0}">Standard</p>
-                                <p th:if="${eventDetails.vipTicketQuantity > 0}" >VIP</p>
-                                <p th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</p>
+                                <p style="display:inline;padding-left:0">Available Ticket Types</p>
+                            </div>
+                            <div class="col" style="padding-left:45px" >
+                                <span th:if="${eventDetails.standardTicketQuantity > 0}" >Standard, </span>
+                                <span th:if="${eventDetails.vipTicketQuantity > 0}" >VIP, </span>
+                                <span th:if="${eventDetails.vvipTicketQuantity > 0}" >VVIP</span>
                             </div>
                         </div>
                         <div class="row">
                             <p class="col">Standard Ticket Price </p>
                             <div class="col">
-                                <p  th:text="${eventDetails.standardTicketPrice}"></p>
+                                <p  th:text="${eventDetails.standardTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row">
                             <p class="col">VIP Ticket Price </p>
                             <div class="col">
-                            <p  th:text="${eventDetails.vipTicketPrice}"></p>
+                            <p  th:text="${eventDetails.vipTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row">
                             <p class="col">VVIP Ticket Price </p>
                             <div class="col">
-                            <p  th:text="${eventDetails.vvipTicketPrice}"></p>
+                            <p  th:text="${eventDetails.vvipTicketPrice+ 'MMK'}"></p>
                             </div>
                         </div>
                         <div class="row" th:if="${eventDetails.promotion > 0}">
