@@ -39,8 +39,12 @@
             <ul class="navlist mx-auto">
                 <ul class="navlist mx-auto">
                     <li class="navlist1">
-                        <form th:action="@{/org-search-page}" method="get" class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="eventName">
+                        <form th:action="@{/search-page}" method="get" class="d-flex" role="search">
+                            <select class="form-select me-2" name="searchType">
+                                <option value="artist">Artist</option>
+                                <option value="event">Event</option>
+                            </select>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchName">
                             <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </li>

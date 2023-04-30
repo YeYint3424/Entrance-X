@@ -77,12 +77,13 @@ public class EventController {
     }
 
     @GetMapping("/event-detail")
-    public String eventDetails(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
+    public String eventDetails(HttpServletRequest request, @RequestParam("eventId") int eventId,
+                               @RequestParam("trending")int trending, Model model){
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
             int userId=(int) session.getAttribute("LoginUser");
             Event eventDetails=eventService.showEventDetail(eventId);
-
+            eventService.trending(eventId, trending);
             List<Event_Artist> eventArtists = eventDetails.getEventArtist();
             List<Artist> artists = new ArrayList<>();
             for (Event_Artist eventArtist : eventArtists) {

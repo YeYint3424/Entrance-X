@@ -100,6 +100,7 @@ public class EventServiceImpli implements EventService {
     @Override
     public Event approve(int eventId, int status) {
         Event event=eventDao.findById(eventId).orElse(null);
+        assert event != null;
         event.setStatus(status);
         return eventDao.save(event);
     }
@@ -107,6 +108,7 @@ public class EventServiceImpli implements EventService {
     @Override
     public Event cancel(int eventId, int status) {
         Event event=eventDao.findById(eventId).orElse(null);
+        assert event != null;
         event.setStatus(status);
         return eventDao.save(event);
     }
@@ -122,8 +124,12 @@ public class EventServiceImpli implements EventService {
     }
 
     @Override
-    public List<Event> getEventForSearchOrganizer(String eventName, int organizerId) {
-        return null;
+    public Event trending(int eventId, int trending) {
+        Event event=eventDao.findById(eventId).orElse(null);
+        assert event != null;
+        event.setTrending(event.getTrending() + trending);
+
+        return eventDao.save(event);
     }
 
 

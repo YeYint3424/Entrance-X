@@ -39,8 +39,12 @@
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
-                    <form th:action="@{/user-search-page}" method="get" class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="eventName">
+                    <form th:action="@{/search-page}" method="get" class="d-flex" role="search">
+                        <select class="form-select me-2" name="searchType">
+                            <option value="artist">Artist</option>
+                            <option value="event">Event</option>
+                        </select>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchName">
                         <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </li>
@@ -117,14 +121,27 @@
                     <th scope="col">Event Date</th>
                     <th scope="col">Total</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="ticket :${ticketOrder}" th:if="${ticket.status==0}">
+                <tr th:each="ticket :${ticketOrder}" th:if="${ticket.status==0 || ticket.status==2 || ticket.status==3}">
                     <td th:text="${ticket.event.eventName}"></td>
                     <td th:text="${ticket.event.date}"></td>
                     <td th:text="${ticket.totalPrice}"></td>
-                    <td style="font-size: 25px"><i class="fa-solid fa-spinner fa-spin-pulse"></i></td>
+                    <td >
+                        <div th:if="${ticket.status}==0"><i class="fa-solid fa-spinner fa-spin-pulse"></i></div>
+                        <div th:if="${ticket.status}==2">Your Order was cancel because of Ticket Stock.</div>
+                        <div th:if="${ticket.status}==3">Your Order was cancel because of information is wrong.</div>
+                    </td>
+                    <td>
+                        <div th:if="${ticket.status}==0"><span>Pending</span></div>
+                        <div th:if="${ticket.status==2 || ticket.status==3}">
+                            <form  method="POST" th:action="@{/order-remove(orderId=${ticket.id})}" >
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
 
 

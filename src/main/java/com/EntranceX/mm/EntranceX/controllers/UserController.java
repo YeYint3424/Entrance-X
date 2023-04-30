@@ -4,12 +4,9 @@ package com.EntranceX.mm.EntranceX.controllers;
 import com.EntranceX.mm.EntranceX.config.QRCodeGenerator;
 import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
-
 import com.EntranceX.mm.EntranceX.dto.UserDto;
-
 import com.EntranceX.mm.EntranceX.models.*;
 import com.EntranceX.mm.EntranceX.services.*;
-import com.google.zxing.WriterException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +15,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
+
+
+
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -317,4 +318,17 @@ public class UserController {
             return "redirect:/login";
         }
     }
+    @PostMapping("/order-remove")
+    public String eventRemove(HttpServletRequest request, Model model, @RequestParam("orderId")int orderId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginUser") != null) {
+            TicketOrder_History ticketOrder=orderService.cancel(orderId, 4);
+            return "redirect:/org-old-event";
+        } else {
+            return "redirect:/login";
+        }
+
+    }
+
+
 }

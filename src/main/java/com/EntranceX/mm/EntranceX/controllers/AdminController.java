@@ -9,6 +9,7 @@ import com.google.zxing.WriterException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,10 @@ public class AdminController {
     @Autowired
     ArtistService artistService;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
     @Autowired
     TicketQrService ticketQrService;
 
@@ -47,7 +51,7 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             List<Event> events = eventService.getEvents();
-            List<Event> unApproveEvent=eventService.getUnApproveEvent(0);
+            List<Event> unApproveEvent = eventService.getUnApproveEvent(0);
             List<User> users = userService.getAllUserList();
             List<Organizer> organizers = organizerService.getAllOrganizerList();
             List<TicketOrder_History> vouchers = orderService.getUnApproveOrder(0);
@@ -64,14 +68,15 @@ public class AdminController {
     }
 
     @GetMapping("/admin-eventdetail")
-    public String admin_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model){
-//        HttpSession session = request.getSession(false);
-            Event eventDetails=eventService.showEventDetail(eventId);
+    public String admin_eventdetail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event eventDetails = eventService.showEventDetail(eventId);
 
             List<Event_Artist> eventArtists = eventDetails.getEventArtist();
             List<Artist> artists = new ArrayList<>();
             for (Event_Artist eventArtist : eventArtists) {
-                int artistId=eventArtist.getArtist().getId();
+                int artistId = eventArtist.getArtist().getId();
                 Artist artist = artistService.findById(artistId);
                 artists.add(artist);
             }
@@ -80,11 +85,14 @@ public class AdminController {
             byte[] decodedPhoto = Base64.getDecoder().decode(eventDetails.getEncodedPhoto().getBytes());
 
             model.addAttribute("artists", artists);
-            model.addAttribute("eventDetails",eventDetails);
+            model.addAttribute("eventDetails", eventDetails);
             model.addAttribute("eventTime", eventTime);
 
             return "admin/admin-eventdetail";
+        } else {
+            return "redirect:/login";
         }
+    }
 
 
     @GetMapping("/event-approve")
@@ -100,15 +108,7 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/unban")
-    public String unban(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("LoginAdmin") != null) {
-            return "admin/unban";
-        } else {
-            return "redirect:/login";
-        }
-    }
+
 
     @GetMapping("/voucher-approve")
     public String voucherApprove(HttpServletRequest request, Model model) {
@@ -151,72 +151,106 @@ public class AdminController {
 
     @PostMapping("/admin-voucher-approve")
     public String voucherApproved(HttpServletRequest request, Model model,
-                                  @RequestParam("voucherId")int voucherId, TicketDto ticketDto) throws Exception {
+                                  @RequestParam("voucherId") int voucherId, TicketDto ticketDto) throws Exception {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
-            orderService.approve(voucherId);
+            TicketOrder_History ticketOrder = orderService.getOrderWithId(voucherId);
+            orderService.approve(voucherId, 1);
             orderService.decreaseAvailableTicket(ticketOrder.getStandardTicketSold(),
                     ticketOrder.getVipTicketSold(), ticketOrder.getVvipTicketSold(), voucherId);
-            return "redirect:/voucher-approve";}
-        else {
+            return "redirect:/voucher-approve";
+        } else {
             return "redirect:/login";
         }
     }
 
     @PostMapping("/admin-voucher-cancel")
     public String voucherCancel(HttpServletRequest request, Model model,
-                                  @RequestParam("voucherId")int voucherId, TicketDto ticketDto) throws Exception {
+                                @RequestParam("voucherId") int voucherId) throws Exception {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            TicketOrder_History ticketOrder=orderService.getOrderWithId(voucherId);
-            orderService.approve(voucherId);
+            TicketOrder_History ticketOrder = orderService.getOrderWithId(voucherId);
+            orderService.cancel(voucherId, 2);
 
-            return "redirect:/voucher-approve";}
-        else {
+            return "redirect:/voucher-approve";
+        } else {
             return "redirect:/login";
         }
+
+
+    }
+
+    @PostMapping("/admin-voucher-reject")
+    public String voucherReject(HttpServletRequest request, Model model,
+                                @RequestParam("voucherId") int voucherId) throws Exception {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            TicketOrder_History ticketOrder = orderService.getOrderWithId(voucherId);
+            orderService.cancel(voucherId, 3);
+
+            return "redirect:/voucher-approve";
+        } else {
+            return "redirect:/login";
+        }
+
+
     }
 
     @PostMapping("/admin-event-approve")
-    public String eventApproved(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+    public String eventApproved(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            Event event=eventService.approve(eventId, 1);
+            Event event = eventService.approve(eventId, 1);
             return "redirect:/admin";
-        }else {
+        } else {
             return "redirect:/login";
         }
     }
+
     @PostMapping("/admin-event-approve-2")
-    public String eventApproved2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+    public String eventApproved2(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            Event event=eventService.approve(eventId, 1);
+            Event event = eventService.approve(eventId, 1);
             return "redirect:/event-approve";
-        }else {
+        } else {
             return "redirect:/login";
         }
     }
 
     @PostMapping("/admin-event-cancel")
-    public String eventCanceled(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+    public String eventCanceled(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            Event event=eventService.cancel(eventId, 2);
+            Event event = eventService.cancel(eventId, 2);
             return "redirect:/admin";
-        }else {
+        } else {
             return "redirect:/login";
         }
     }
 
     @PostMapping("/admin-event-cancel-2")
-    public String eventCanceled2(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId){
+    public String eventCanceled2(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
-            Event event=eventService.cancel(eventId, 2);
+            Event event = eventService.cancel(eventId, 2);
             return "redirect:/event-approve";
-        }else {
+        } else {
+            return "redirect:/login";
+        }
+
+    }
+
+    @GetMapping("/admin-voucher-detail")
+    public String voucher_detail(HttpServletRequest request, @RequestParam("userId") int userid, @RequestParam("orderId") int orderId,
+                                 @RequestParam("eventId") int eventId, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            TicketOrder_History ticketOrder = orderService.getSpecificTicketForUser(orderId, userid, eventId);
+            model.addAttribute("ticketOrder", ticketOrder);
+
+            return "admin/voucher-detail";
+        } else {
             return "redirect:/login";
         }
     }
@@ -227,6 +261,7 @@ public class AdminController {
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             int adminId = (int) session.getAttribute("LoginAdmin");
 
+<<<<<<< HEAD
 
             TicketOrder_History ticketOrder = orderService.getSpecificTicketForUser(orderId, adminId, eventId);
             List<TicketQr> ticketQrs = ticketQrService.findByOrderId(ticketOrder.getId());
@@ -241,4 +276,69 @@ public class AdminController {
         }
     }
 }
+=======
+    @PostMapping("/admin-event-reject")
+    public String eventRejected(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event = eventService.cancel(eventId, 3);
+            return "redirect:/admin";
+        } else {
+            return "redirect:/login";
+        }
+>>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
 
+    }
+
+    @PostMapping("/admin-event-reject-2")
+    public String eventRejected2(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Event event = eventService.cancel(eventId, 3);
+            return "redirect:/event-approve";
+        } else {
+            return "redirect:/login";
+        }
+
+    }
+
+    @GetMapping("/admin-approved-voucher-detail")
+    public String adminApproveVoucherDetail(HttpServletRequest request, Model model, @RequestParam("orderId")int orderId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            TicketOrder_History ticketOrder=orderService.getOrderWithId(orderId);
+            List<TicketQr> ticketQrs = ticketQrService.findByOrderId(ticketOrder.getId());
+            for(TicketQr ticketQr:ticketQrs){
+                byte[] qr=Base64.getDecoder().decode(ticketQr.getTicketQr().getBytes());
+            }
+            model.addAttribute("ticketQr", ticketQrs);
+            model.addAttribute("ticketOrder", ticketOrder);
+            return "admin/admin-approved-voucher-detail";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    @GetMapping("/admin-organizer-detail")
+    public String adminOrganizerDetail(HttpServletRequest request, Model model, @RequestParam("organizerId")int organizerId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Organizer organizer=organizerService.getOrganizerById(organizerId);
+            model.addAttribute("organizerData", organizer);
+            return "admin/admin-organizer-detail";
+        } else {
+            return "redirect:/login";
+        }
+    }
+    @PostMapping("/admin-organizer-ban")
+    public String adminOrganizerBan(HttpServletRequest request, Model model, @RequestParam("organizerId")int organizerId) {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("LoginAdmin") != null) {
+            Organizer organizer=organizerService.organizerBan(organizerId, 1);
+            model.addAttribute("organizerData", organizer);
+            return "admin/orgList";
+        } else {
+            return "redirect:/login";
+        }
+    }
+}

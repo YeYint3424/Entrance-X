@@ -61,8 +61,9 @@ public class OnlyViewController {
     }
 
     @GetMapping("/main-event-detail")
-    public String main_event_detail(HttpServletRequest request, @RequestParam("eventId") int eventId, Model model) {
-        HttpSession session = request.getSession(false);
+    public String main_event_detail(HttpServletRequest request, @RequestParam("eventId") int eventId,
+                                    @RequestParam("trending")int trending, Model model) {
+            eventService.trending(eventId, trending);
 
             Event eventDetails = eventService.showEventDetail(eventId);
 

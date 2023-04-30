@@ -183,6 +183,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -204,6 +205,11 @@
                     <td>
                         <form method="POST" th:action="@{/admin-event-cancel(eventId=${event.id})}">
                             <button type="submit" class="btn btn-danger">Cancel</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" th:action="@{/admin-event-reject(eventId=${event.id})}">
+                            <button type="submit" class="btn btn-danger">Reject</button>
                         </form>
                     </td>
                 </tr>
@@ -234,11 +240,8 @@
         var table = $('#example').DataTable( {
             lengthChange: false,
             buttons: [
-                {
-                    extend: 'copy',
-                    split: [ 'pdf', 'excel'],
-                },
-                'colvis'
+
+                   'csv', 'pdf', 'excel', 'copy', 'colvis'
             ]
         } );
 

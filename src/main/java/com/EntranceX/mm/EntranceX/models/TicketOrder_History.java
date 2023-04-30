@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class TicketOrder_History {
     private int id;
 
     private int standardTicketSold, vipTicketSold,  vvipTicketSold, totalPrice, status;
-
+    private LocalDateTime requestTime, purchaseSuccessTime;
     @Lob
     @Column(columnDefinition = "longblob")
     private String encodedPaymentScreenShot;

@@ -167,6 +167,10 @@
                 <input type="file" class="form-control mx-auto" id="paymentScreenShot" name="paymentScreenShot" style="border-radius: 4px;
         border: 1px solid #fe4567;" accept="image/*" required>
             </div>
+            <div class="input-box mb-3">
+                <label for="requestTime" class="form-label"></label>
+                <input type="datetime-local" class="form-control" id="requestTime" name="requestTime" th:value="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}" hidden>
+            </div>
             <div style="text-align:center;padding:30px">
 
                 <button data-label="Register" class="rainbow-hover" type="reset" ><a style="text-decoration: none;color:#ffffff"><span class="sp">Back</span></a></button>

@@ -68,4 +68,12 @@ public class OrganizerServiceImpli implements OrganizerService {
         organizer.setPassword(password);
         return organizerDao.save(organizer);
     }
+
+    @Override
+    public Organizer organizerBan(int organizerId, int status) {
+        Organizer organizer=organizerDao.findById(organizerId).orElse(null);
+        assert organizer != null;
+        organizer.setStatus(status);
+        return organizerDao.save(organizer);
+    }
 }
