@@ -4,14 +4,11 @@ import com.EntranceX.mm.EntranceX.dao.OrganizerDao;
 import com.EntranceX.mm.EntranceX.dao.UserDao;
 import com.EntranceX.mm.EntranceX.dto.OrganizerDto;
 import com.EntranceX.mm.EntranceX.models.*;
-<<<<<<< HEAD
 import com.EntranceX.mm.EntranceX.services.*;
-=======
 import com.EntranceX.mm.EntranceX.services.ArtistService;
 import com.EntranceX.mm.EntranceX.services.EventService;
 import com.EntranceX.mm.EntranceX.services.OrderService;
 import com.EntranceX.mm.EntranceX.services.OrganizerService;
->>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +48,6 @@ public class OrgController {
 
     @Autowired
     OrderService orderService;
-<<<<<<< HEAD
 
     @Autowired
     TicketQrService ticketQrService;
@@ -59,9 +55,6 @@ public class OrgController {
 
 
 
-=======
-    
->>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
     @GetMapping("/org-page")
     public String org_home(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
@@ -282,10 +275,6 @@ public class OrgController {
                 return "redirect:/login";
             }
         }
-<<<<<<< HEAD
-
-
-=======
     @PostMapping("/event-remove")
     public String eventRemove(HttpServletRequest request, Model model, @RequestParam("eventId")int eventId) {
         HttpSession session = request.getSession(false);
@@ -297,5 +286,4 @@ public class OrgController {
         }
 
     }
->>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
 }

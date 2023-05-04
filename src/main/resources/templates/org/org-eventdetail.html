@@ -101,7 +101,7 @@
 
                 <p style="font-weight:bold; font-size:30px;font-family:cursive" th:text="${eventDetails.eventName}">
                 </p>
-                <p style="display:inline">List of Artists:</p> <span th:each="artist : ${artists}" th:text="${artist.artistName} + ' '"></span>
+                <p style="display:inline">List of Artists:</p> <span th:each="artist : ${artists}" th:text="${artist.artistName} + ', '"></span>
                 </p>
 
                 <p> Event Time : <span th:text="${eventTime}"></span></p>

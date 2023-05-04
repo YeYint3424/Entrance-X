@@ -105,15 +105,15 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event : ${search}">
+                <div class="col" th:each="event : ${search}" th:if="${event.organizer.status==0}">
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
                              class="card-img-top" width="150" height="250" alt="...">
                         <div class="card-body rounded">
 
-                            <h5 class="card-title" style="font-family:Evidence;font-size: 25px; text-shadow: 2px 3px 5px black" th:text="${event.eventName}"></h5>
+                            <h5 class="card-title" style="font-family:SansSerif;font-size: 25px; text-shadow: 1px 1px 5px black" th:text="${event.eventName}"></h5>
                             <p class="card-text" th:text="${event.date}"></p>
-                            <a th:href="@{/event-detail(eventId=${event.id}, trending=1)}" class="btn btn-dark">More Detail</a>
+                            <a th:href="@{/main-event-detail(eventId=${event.id}, trending=1)}" class="btn btn-dark">More Detail</a>
                         </div>
 
                     </div>

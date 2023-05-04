@@ -4,12 +4,88 @@ html body{
     overflow-x:hidden;
 }
 
-.navbar{
-    background-color: #fff;
-    font-weight:bold;
-    border-bottom: 1px solid;
-    border-width:thin;
+.navlistright{
+    display:inline;
+    float:right;
 }
+.navlistright button i{
+    font-size: 23px;
+}
+
+.navlist{
+    List-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    display:inline;
+}
+
+.navlist1{
+    display:inline-block;
+
+}
+
+.navlist2{
+    text-decoration: none;
+    color:#fff;
+    width:110px;
+    display:block;
+    padding:8px 8px;
+    font-size:15px;
+    text-transform:uppercase;
+    font-weight:bold;
+    text-align:center;
+}
+
+
+.navlist2:hover{
+    font-size:18px;
+    color:#8000ff;
+
+}
+
+.navlistright #explore-btn{
+    display:inline-block;
+    border:none;
+    background-color: transparent;
+    color:#fff;
+    font-size:16px;
+    text-transform:uppercase;
+    font-weight:bold;
+    padding:8px 8px;
+    padding-bottom:13px;
+    width:110px;
+    text-align:center;
+}
+#explore-btn:hover{
+    color:#8000ff;
+    font-size:19px;
+}
+#search {
+    font-size: 10px;
+    padding: 5px ;
+    color: white;
+    background-color: rgb(37, 32, 32);
+}
+#search:hover {
+    color: rgb(37, 32, 32);
+    background-color: white;
+}
+.navlist1 a i{
+    font-size: 19px;
+}
+.navlist1 a i:hover{
+    font-size: 22px;
+}
+
+
+#offcanvasRight{
+    background-color: #111;
+    transition: 0.5s ease;
+    width:auto;
+}
+
+
 
 th{
     text-align:right;

@@ -135,21 +135,18 @@
                     </div>
 
 
-                    <div class="input-box mb-3" style="display:none">
-                        <label for="db-password" class="form-label">Old Password from DB</label>
-                        <input type="password" class="form-control" id="db-password" name="db-password" value="123" >
-                    </div>
+
 
                     <div class="input-box mb-3" >
                         <label for="old-password" class="form-label">Enter Old Password</label>
-                        <input type="password" class="form-control" id="old-password" name="old-password"  >
+                        <input type="password" class="form-control" id="old-password" name="oldPassword"  >
                     </div>
 
 
                     <div class="input-box mb-3" >
                         <label for="password" class="form-label">Enter New Password</label>
                         <input type="password" class="form-control" id="password" name="password" >
-                        <span th:if="${param.alreadyUse}" class="error">Password is already Used. Try New Password.</span>
+                        <span th:if="${param.alreadyUse}" class="error" style="color: red">Password is already Used. Try New Password.</span>
                     </div>
 
                     <div class="input-box mb-3" >
@@ -157,8 +154,6 @@
                         <input type="password" class="form-control" id="cpassword" name="cpassword" >
                         <div id="password-error" style="color: #ff0000;font-size: 14px"></div>
                     </div>
-
-
 
                     <div class="form-btn">
                         <button type="reset" class="btn btn-primary" id="resetbtn">Clear</button>

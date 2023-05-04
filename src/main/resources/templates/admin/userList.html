@@ -25,17 +25,17 @@
         <a class="navbar-brand" href="/admin"><img src="css/exlogotest3.png" width="30px" height="30px" alt=""> Entrance-X</a>
         <div class="navlistright" >
             <ul class="navlist mx-auto">
-                <li class="navlist1">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </li>
+                <!--                <li class="navlist1">-->
+                <!--                    <form class="d-flex" role="search">-->
+                <!--                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+                <!--                        <button class="btn btn-light" type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>-->
+                <!--                    </form>-->
+                <!--                </li>-->
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/event-approve">Event Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 12px" href="/voucher-approve">Voucher Approve</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/userList">User-List</a></li>
                 <li class="navlist1"><a class="navlist2" style="font-size: 14px;position: relative;bottom: 8px" href="/orgList">Org-List</a></li>
-                <li class="navlist1"><a class="navlist2" style="position: relative;bottom: 8px" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
+                <li class="navlist1"><a class="navlist2" style="position: relative;bottom: 8px" href="/sign-out" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">SIGN OUT</a></li>
             </ul>
 
         </div>
@@ -66,7 +66,7 @@
 <div class="container">
     <div class="container" style="margin-top: 100px" >
         <h3 style="font-family: ben  ;color: black;text-shadow: 2px 2px 3px #00a4b4">User-List</h3>
-        <div class="table-responsive" style="height: 450px; overflow-y: auto; margin-top: 2rem;">
+        <div class="table-responsive" style="min-height: 450px;  margin-top: 2rem;">
             <table id="example" class="table table-success table-striped">
                 <thead>
                 <tr>

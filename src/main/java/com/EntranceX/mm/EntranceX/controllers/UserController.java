@@ -234,8 +234,8 @@ public class UserController {
             System.out.println(userId);
             System.out.println(eventId);
             watchLaterService.saveEventToWatchLater(userId, eventId);
-
-            return String.format("redirect:/event-detail?eventId=%d", eventId);
+            int trending=0;
+            return String.format("redirect:/event-detail?eventId=%d&trending=%d", eventId, trending);
         }else {
             return "redirect:/login";
         }
@@ -323,7 +323,7 @@ public class UserController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginUser") != null) {
             TicketOrder_History ticketOrder=orderService.cancel(orderId, 4);
-            return "redirect:/org-old-event";
+            return "redirect:/user-voucher";
         } else {
             return "redirect:/login";
         }

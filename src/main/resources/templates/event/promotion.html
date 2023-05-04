@@ -37,7 +37,7 @@
         <div class="navlistright" >
             <ul class="navlist mx-auto">
                 <li class="navlist1">
-                    <form action="" method="get" class="d-flex" role="search">
+                    <form th:action="@{/search-page}" method="get" class="d-flex" role="search">
                         <select class="form-select me-2" name="searchType">
                             <option value="artist">Artist</option>
                             <option value="event">Event</option>
@@ -105,7 +105,7 @@
             <div class="row row-cols-1 row-cols-md-3">
 
                 <!--                for 1 event                 -->
-                <div class="col" th:each="event :  ${events}" th:if="${event.date > localDate && event.promotion > 0 && event.status==1}">
+                <div class="col" th:each="event :  ${events}" th:if="${event.date > localDate && event.promotion > 0 && event.status==1 && event.organizer.status==0}">
 
                     <div class="card" style="width: 16rem; margin-top: 1rem; margin-bottom: 1rem;">
                         <img th:src="@{'data:image/jpeg;base64,' + ${event.encodedPhoto}}"
@@ -113,7 +113,7 @@
                         <div class="card-body rounded">
                             <h5 class="card-title" style="font-family: Anurati" th:text="${event.eventName}"></h5>
                             <p class="card-text" th:text="${event.date}"></p>
-                            <a th:href="@{/main-event-detail(eventId=${event.id})}" class="btn btn-dark">More Detail</a>
+                            <a th:href="@{/main-event-detail(eventId=${event.id},trending=0)}" class="btn btn-dark">More Detail</a>
                         </div>
 
                     </div>

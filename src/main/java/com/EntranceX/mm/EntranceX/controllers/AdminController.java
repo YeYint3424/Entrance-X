@@ -39,10 +39,6 @@ public class AdminController {
     @Autowired
     ArtistService artistService;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
     @Autowired
     TicketQrService ticketQrService;
 
@@ -247,8 +243,9 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             TicketOrder_History ticketOrder = orderService.getSpecificTicketForUser(orderId, userid, eventId);
-            model.addAttribute("ticketOrder", ticketOrder);
 
+            byte[] Qr=Base64.getDecoder().decode(ticketOrder.getEncodedPaymentScreenShot().getBytes());
+            model.addAttribute("ticketOrder", ticketOrder);
             return "admin/voucher-detail";
         } else {
             return "redirect:/login";
@@ -260,8 +257,6 @@ public class AdminController {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             int adminId = (int) session.getAttribute("LoginAdmin");
-
-<<<<<<< HEAD
 
             TicketOrder_History ticketOrder = orderService.getSpecificTicketForUser(orderId, adminId, eventId);
             List<TicketQr> ticketQrs = ticketQrService.findByOrderId(ticketOrder.getId());
@@ -275,8 +270,7 @@ public class AdminController {
             return "redirect:/login";
         }
     }
-}
-=======
+
     @PostMapping("/admin-event-reject")
     public String eventRejected(HttpServletRequest request, Model model, @RequestParam("eventId") int eventId) {
         HttpSession session = request.getSession(false);
@@ -286,7 +280,6 @@ public class AdminController {
         } else {
             return "redirect:/login";
         }
->>>>>>> 43b4f512fd4c0772960a23754fd7a00e38f385ea
 
     }
 
@@ -336,7 +329,7 @@ public class AdminController {
         if (session != null && session.getAttribute("LoginAdmin") != null) {
             Organizer organizer=organizerService.organizerBan(organizerId, 1);
             model.addAttribute("organizerData", organizer);
-            return "admin/orgList";
+            return "redirect:/orgList";
         } else {
             return "redirect:/login";
         }

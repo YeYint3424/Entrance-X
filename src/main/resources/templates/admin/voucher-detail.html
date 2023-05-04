@@ -80,41 +80,47 @@
     <table class="table table-borderless fw-semibold" style="font-size:17px" >
 
         <tbody>
-        <tr>
-            <th class="w-25" scope="row"  th:if="${ticketOrder.standardTicketSold>0}"><p class="pth">Standard Tickets Bought</p></th>
+        <tr th:if="${ticketOrder.standardTicketSold>0}">
+            <th class="w-25" scope="row"  ><p class="pth">Standard Tickets Bought</p></th>
             <td class="w-25" ><p class="ptd" th:text="${ticketOrder.standardTicketSold}"></p></td>
 
         </tr>
-        <tr>
-            <th scope="row" th:if="${ticketOrder.standardTicketSold>0}"><p class="pth">VIP Tickets Bought </p></th>
-            <td><p class="ptd" th:text="${ticketOrder.standardTicketSold}" ></p></td>
+        <tr  th:if="${ticketOrder.vipTicketSold>0}">
+            <th scope="row"><p class="pth">VIP Tickets Bought </p></th>
+            <td><p class="ptd" th:text="${ticketOrder.vipTicketSold}" ></p></td>
 
         </tr>
-        <tr>
-            <th scope="row" th:if="${ticketOrder.standardTicketSold>0}"><p class="pth">VVIP Tickets Bought</p></th>
-            <td ><p class="ptd" th:text="${ticketOrder.standardTicketSold}"></p></td>
+        <tr th:if="${ticketOrder.vvipTicketSold>0}">
+            <th scope="row" ><p class="pth">VVIP Tickets Bought</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.vvipTicketSold}"></p></td>
 
         </tr>
 
-        <tr>
-            <th scope="row" th:if="${ticketOrder.event.standardTicketQuantity>0}"><p class="pth">Standard Tickets Left</p></th>
+        <tr th:if="${ticketOrder.event.standardTicketQuantity>0}">
+            <th scope="row" ><p class="pth">Standard Tickets Left</p></th>
             <td ><p class="ptd" th:text="${ticketOrder.event.standardTicketAvailableQuantity}"></p></td>
 
         </tr>
-        <tr>
-            <th scope="row" th:if="${ticketOrder.event.vipTicketQuantity>0}"><p class="pth">VIP Tickets Left</p></th>
+        <tr th:if="${ticketOrder.event.vipTicketQuantity>0}">
+            <th scope="row" ><p class="pth">VIP Tickets Left</p></th>
             <td ><p class="ptd" th:text="${ticketOrder.event.vipTicketAvailableQuantity}"></p></td>
 
         </tr>
 
-        <tr >
-            <th scope="row" th:if="${ticketOrder.event.vvipTicketQuantity>0}"><p class="pth">VVIP Tickets Left</p></th>
+        <tr th:if="${ticketOrder.event.vvipTicketQuantity>0}">
+            <th scope="row" ><p class="pth">VVIP Tickets Left</p></th>
             <td ><p class="ptd" th:text="${ticketOrder.event.vvipTicketAvailableQuantity}"></p></td>
 
         </tr>
+        <tr>
+            <th scope="row" ><p class="pth">Total Price</p></th>
+            <td ><p class="ptd" th:text="${ticketOrder.totalPrice} + ' MMK'"></p></td>
 
-
+        </tr>
         </tbody>
+        <div style="text-align: center; margin: 2rem">
+            <img th:src="@{'data:image/jpeg;base64,' + ${ticketOrder.encodedPaymentScreenShot}}" width="409" height="640">
+        </div>
     </table>
     <div style="text-align:center">
         <form style="display:inline-block" method="POST" th:action="@{/admin-voucher-cancel(voucherId=${ticketOrder.id})}">
